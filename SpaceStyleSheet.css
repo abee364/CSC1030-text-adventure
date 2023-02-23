@@ -1,1 +1,22 @@
 /* Testing */
+
+.header{grid-area: hd;}
+.leftCol {grid-area: lc; }
+.rightCol {grid-area: rc;}
+.footer {grid-area: ft;}
+
+
+.wrapper{
+
+    display: grid;
+    grid-template-columns: 50% 50%;
+
+    grid-template-areas: 
+
+        "hd hd"
+        "lc rc"
+        "ft ft";
+
+        gap: 10px;
+       
+      }
