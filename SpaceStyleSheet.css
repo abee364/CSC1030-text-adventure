@@ -1,4 +1,4 @@
-/* Testing */
+
 
 .header{grid-area: hd;}
 .leftCol {grid-area: lc; }
@@ -18,3 +18,12 @@
         "ft ft";
        
       }
+
+  *{
+    font-size: 15px;
+    color: black;
+    font-family: 'Space Grotesk', 'Arial Narrow', Arial, sans-serif;
+
+
+
+    }
