@@ -1,4 +1,13 @@
+/*
 
+Wireframe:
+Background image of room
+Text box : Place for text adventure text to appear/ general game text e.g. (“door locked / “inventory full” and general game output that doesn't provide user interaction.)
+Interaction box : where we build user interaction, e.g. keypad enlarged, interaction with doors, buttons to interact with the text options/ other user interaction
+Item box: for the items to be added to the room, scissors etc
+Footer : Accessibility options / general options that should always exist
+
+*/
 
 .header{grid-area: hd;}
 .textBox {grid-area: textb; }
