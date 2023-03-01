@@ -18,52 +18,68 @@ Footer : Accessibility options / general options that should always exist
 
 .wrapper{
 
-    display: grid;
-    grid-template-columns: 50% 50%;
+          display: grid;
+          grid-template-columns: 50% 50%;
 
-    grid-template-areas: 
+          grid-template-areas: 
 
-        "hd hd"
-        "textb text b"
-        "ib itemb"
-        "ft ft";
-       
-      }
+              "hd hd"
+              "textb text b"
+              "ib itemb"
+              "ft ft";
+            
+        }
 
   *{
-    font-size: 15px;
-    color: black;
-    font-family: 'Space Grotesk', 'Arial Narrow', Arial, sans-serif;
+          font-size: 15px;
+          color: black;
+          font-family: 'Space Grotesk', 'Arial Narrow', Arial, sans-serif;
 
-    }
+        }
 
-    body{
+  body{
 
-      background-color: gray;
-    }
+            background-color: gray;
+            background-image: url("room1img.jpg");
+        }
 
-    .header{
+  .header{
 
-      background-color: rgb(3, 52, 88);
+            background-color: rgb(35, 150, 233);
+            border: 20px;
+            padding-top: 2px;
+            padding-bottom: 1px;
+            padding-left: 5px;
+            padding-right: 5px;
 
-    }
+            margin-bottom: 5px;
+            
 
-    .textBox{
 
-      background-color: orangered;
-    }
+        }
 
-    .interactionBox{
+  .textBox{
 
-      background-color: orangered;
-    }
+            opacity: 0.8;
+            background-color: rgb(255, 68, 0);
+            margin: 40px;
+            border: 1px solid black;
 
-    .itemBox{
+            font-weight: 900;
+            font-size: 75%;
+        }
 
-      background-color: rgb(3, 52, 88);
-    }
+          .interactionBox{
 
-    .footer{
+            background-color: orangered;
+          }
 
-      background-color: gray;
-    }
+          .itemBox{
+
+            background-color: rgb(3, 52, 88);
+          }
+
+          .footer{
+
+            background-color: gray;
+          }
