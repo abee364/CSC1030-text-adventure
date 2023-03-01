@@ -24,6 +24,29 @@
     color: black;
     font-family: 'Space Grotesk', 'Arial Narrow', Arial, sans-serif;
 
+    background-color: grey;
 
 
+
+    }
+
+    .header{
+
+      background-color: aqua;
+
+    }
+
+    .leftCol{
+
+      background-color: orangered;
+    }
+
+    .rightcol{
+
+      background-color: orangered;
+    }
+
+    .footer{
+
+      background-color: gray;
     }
