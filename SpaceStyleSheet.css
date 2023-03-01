@@ -4,6 +4,7 @@
 .textBox {grid-area: textb; }
 .interactionBox {grid-area: ib;}
 .itemBox {grid-area: itemb;}
+.footer {grid-area: ft}
 
 
 .wrapper{
@@ -25,15 +26,16 @@
     color: black;
     font-family: 'Space Grotesk', 'Arial Narrow', Arial, sans-serif;
 
-    background-color: grey;
+    }
 
+    body{
 
-
+      background-color: gray;
     }
 
     .header{
 
-      background-color: aqua;
+      background-color: rgb(3, 52, 88);
 
     }
 
