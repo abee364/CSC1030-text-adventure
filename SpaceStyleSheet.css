@@ -83,3 +83,14 @@ Footer : Accessibility options / general options that should always exist
 
             background-color: gray;
           }
+
+         
+
+          #spanner{
+
+
+            background-image: url("spanner.png");
+            opacity: 0.7;
+            width: 100px;
+            height: 100px;
+          }
