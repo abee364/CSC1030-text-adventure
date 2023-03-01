@@ -1,9 +1,9 @@
 
 
 .header{grid-area: hd;}
-.leftCol {grid-area: lc; }
-.rightCol {grid-area: rc;}
-.footer {grid-area: ft;}
+.textBox {grid-area: textb; }
+.interactionBox {grid-area: ib;}
+.itemBox {grid-area: itemb;}
 
 
 .wrapper{
@@ -14,7 +14,8 @@
     grid-template-areas: 
 
         "hd hd"
-        "lc rc"
+        "textb text b"
+        "ib itemb"
         "ft ft";
        
       }
@@ -36,14 +37,19 @@
 
     }
 
-    .leftCol{
+    .textBox{
 
       background-color: orangered;
     }
 
-    .rightcol{
+    .interactionBox{
 
       background-color: orangered;
+    }
+
+    .itemBox{
+
+      background-color: rgb(3, 52, 88);
     }
 
     .footer{
