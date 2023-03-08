@@ -40,7 +40,7 @@ Footer : Accessibility options / general options that should always exist
   body{
 
             background-color: gray;
-            background-image: url("room1img.jpg");
+            /* background-image: url("room1img.jpg"); */
             background-size: cover;
             background-attachment: fixed;
         }
@@ -98,7 +98,7 @@ Footer : Accessibility options / general options that should always exist
           #spanner{
 
 
-            background-image: url("spanner.png");
+            /* background-image: url("spanner.png"); */
             opacity: 0.7;
             width: 100px;
             height: 100px;
