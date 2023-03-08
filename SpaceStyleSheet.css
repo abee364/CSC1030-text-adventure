@@ -103,3 +103,11 @@ Footer : Accessibility options / general options that should always exist
 
             font-weight: 900;
           }
+
+          .showMe { 
+            display:initial; 
+         } 
+                      
+         .hideMe { 
+            display:none; 
+         } 
