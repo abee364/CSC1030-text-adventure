@@ -32,6 +32,9 @@
         <div class = "header">
 
             <p>Menu Bar</p>
+
+            <button id="nextRoom" onclick="nextRoom()">Next Room</button>
+            <button id="previousRoom" onclick="previousRoom()">Previous Room</button>
         </div>
 
         <div class = "textBox">
@@ -62,9 +65,19 @@
 
         </div>
 
+        <script>
+
+            function nextRoom() {
+
+            window.location.replace("Room4.html")
+            }
 
 
+            function previousRoom() {
 
-    
+                window.location.replace("Room2.html")
+            }
+
+        </script>
     </body>
 </html>

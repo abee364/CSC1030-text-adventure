@@ -32,7 +32,11 @@
     
     <body>
 		<div class = "header">
-        	<p>Menu Bar</p>
+        	
+			<p>Menu Bar</p>
+
+            <button id="nextRoom" onclick="nextRoom()">Next Room</button>
+            <button id="previousRoom" onclick="previousRoom()">Previous Room</button>
         </div>
 		<div class = "interactionBox">
 			<p>You have reached a critical decision point. Attempt to save everyone or escape?</p>
@@ -54,6 +58,20 @@
 				window.alert("You have chosen to attempt to save everyone! Into Room 6...");
 				window.location.href = "room6.html";
 			}
+
+			
+				function nextRoom() {
+
+				window.location.replace("Room5.html")
+				}
+
+
+				function previousRoom() {
+
+					window.location.replace("Room3.html")
+				}
+
+
 		</script>
     </body>
 
