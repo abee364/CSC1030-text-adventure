@@ -35,7 +35,6 @@
 
             <button id="nextRoom" onclick="nextRoom()">Next Room</button>
             <button id="previousRoom" onclick="previousRoom()">Previous Room</button>
-            <a href = "Room2\Room2.html" target = "self"> Next Room</a>
         </div>
 
         <div class = "textBox">
@@ -110,13 +109,8 @@
 				}
 
                 function nextRoom() {
-				
-                   
-                    let aTag =  document.createElement('a');
-                    aTag.innerHTML = "I am a link";
-                    aTag.setAttribute ('href','Room2\Room2.html');
-                    aTag.setAttribute = ('target','blank');
-                    document.body.appendChild(aTag);
+
+                    window.location.replace("Room2.html")
                 }
 
 
