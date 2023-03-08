@@ -15,6 +15,11 @@
             <div class = "header">
 
                 <p>Timer</p>
+
+                <p>Menu Bar</p>
+
+            <button id="nextRoom" onclick="nextRoom()">Next Room</button>
+            <button id="previousRoom" onclick="previousRoom()">Previous Room</button>
             </div>
 
             <h1>Room 5</h1>
@@ -48,6 +53,17 @@
 				window.alert("The guilt overwhelmes you and you head back to fix the gas leak");
                 /*Send back to room 4*/
 				}
+
+                function nextRoom() {
+
+                      window.location.replace("Room6.html")
+                    }
+
+
+                    function previousRoom() {
+
+                        window.location.replace("Room4.html")
+                    }
 
          </script>
     </body>
