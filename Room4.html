@@ -3,34 +3,56 @@
 
     <head>
         <title>Room 4</title>
-		<!-- <link rel="stylesheet" href="SpaceStyleSheet.css"> -->
-		<style>
-			/* TEMP STYLE */
-			* {
-				color: aqua;
-				background-color: black;
-			}
-			button {
-				background-color: rgb(105, 105, 0);
-			}
-		</style>
+		<link rel="stylesheet" href="SpaceStyleSheet.css">
     </head>
+	<style>
+		body{
+			background-size: cover;
+            background-attachment: fixed;
+		}
+		#escape-button {
+			background-image: url("escape.jpg"); /* https://unsplash.com/photos/7Cz6bWjdlDs */
+            font-weight: 900;
+			background-size: cover;
+			width: 100px;
+            height: 100px;
+			color: white;
+			cursor: pointer;
+		}
+		#save-button {
+			background-image: url("save.jpg"); /* https://unsplash.com/photos/nuMOBM0qtv4 */
+			background-size: cover;
+            width: 100px;
+            height: 100px;
+			color: white;
+            font-weight: 900;
+			cursor: pointer;
+		}
+	</style>
     
     <body>
-		<p>You have reached a critical decision point. Attempt to save everyone or escape?</p>
-		<button id="escape-button" onclick="escape()">Escape</button>
-		<button id="save-button" onclick="save()">Save Everyone</button>
+		<div class = "header">
+        	<p>Menu Bar</p>
+        </div>
+		<div class = "interactionBox">
+			<p>You have reached a critical decision point. Attempt to save everyone or escape?</p>
+			<button id="escape-button" onclick="escape()">Escape</button>
+			<button id="save-button" onclick="save()">Save Everyone</button>
+		</div>
+		<div class = "footer">
+            <p>Inventory</p>
+        </div>
 		
 		<script>
 			function escape() {
 				// code to execute when Escape button is clicked
+				window.alert("You have chosen to escape! Into Room 5...");
 				// window.location.href = "room5.html";
-				document.write("You have chosen to escape! Redirecting to Room 5...");
 				}
 			function save() {
 				// code to execute when Save Everyone button is clicked
+				window.alert("You have chosen to attempt to save everyone! Into Room 6...");
 				// window.location.href = "room6.html";
-				document.write("You have chosen to attempt to save everyone! Redirecting to Room 6...");
 			}
 		</script>
     </body>
