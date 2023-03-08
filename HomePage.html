@@ -5,13 +5,24 @@
 
         <title>Test</title>
 
+        <link rel="stylesheet" href="SpaceStyleSheet.css">
+
         <script type="text/javascript">
             var difficulty;
 
 
             function startGame() {
+
+                var name = document.getElementById('name').value;
+
+                var output =
+                    '<h2>' +
+                    'Welcome ' + name + '!' +
+                    '<h2>'
+                    ;
+
+                document.getElementById('info').innerHTML = output;
                 document.getElementById('start').style.display = 'none';
-                document.getElementById('game').style.display = 'initial';
                 var difficultySelect = document.getElementById('difficulty');
 
                 var difficultyStr = "";
@@ -27,29 +38,40 @@
                     case 'hard': difficulty = 1000; break;
                 }
 
-                function processInfo() {
-                    document.getElementById('getDetails').className = "hideMe";
-                    document.getElementById('result').className = "showMe";
-                }
-            } 
+
+            }
+
+
+
         </script>
     </head>
 
     <body>
         <h1>INSERT VERY SUPER COOL GAME NAME</h1>
 
+        <div id="wrapper">
+            <div id="start">
+                <h2>Enter Details Below: </h2>
+                <label for="name">Name: </label>
+                <input type="text" id="name"><br><br>
 
-        <div id="start">
-            <label for="difficulty">Select Your Difficulty: </label>
-            <select id="difficulty">
-                <option value="easy">Easy</option>
-                <option value="medium">Medium</option>
-                <option value="hard">Hard</option>
-            </select>
 
-            <button onclick="startGame();">Start Game</button>
+                <label for="difficulty">Select Your Difficulty: </label>
+                <select id="difficulty">
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+                <br>
+                <button onclick="startGame();">Start Game</button>
+
+            </div>
+            <div id="result">
+                <p>Thank you for your details, we know:</p>
+                <span id="info"></span>
+            </div>
+
         </div>
-
 
     </body>
 
