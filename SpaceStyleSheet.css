@@ -41,6 +41,8 @@ Footer : Accessibility options / general options that should always exist
 
             background-color: gray;
             background-image: url("room1img.jpg");
+            background-size: cover;
+            background-attachment: fixed;
         }
 
   .header{
