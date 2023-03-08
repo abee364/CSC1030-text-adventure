@@ -1,0 +1,172 @@
+<html>
+
+<head>
+    <title>Welcome to The Burger Joint</title>
+    <style type="text/css">
+        * {
+            box-sizing: border-box;
+        }
+
+        .hideMe {
+            display: none;
+        }
+
+        .showMe {
+            display: initial;
+        } 
+
+        body {
+            font-family: verdana, sans-serif;
+            color: white;
+            background-color: black;
+        }
+
+        #wrapper {
+            width: 95%;
+            margin: 50px auto 0px;
+            padding: 50px 0px 50px;
+            ;
+            overflow: auto;
+            background-color: #222629;
+        }
+
+        .centre {
+            display: block;
+            margin: auto;
+        }
+
+        #col1 {
+            width: 70%;
+            float: left;
+            text-align: center;
+            border-right: 1px white solid;
+        }
+
+        #col2 {
+            width: 30%;
+            float: left;
+        }
+
+        #col2 table {
+            width: 75%;
+            margin: auto;
+            font-size: 150%;
+        }
+
+        .RoomButtons {
+            margin: 3%;
+        }
+
+        .Room2Buttons {
+            margin: 3%;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="col1">
+
+            <h1>Space Game</h1>
+
+            <div id ="main" class="showMe">
+                <img class="centre" src="images/Room2.png" style="width:90%;" alt="Burger Joint Logo" />
+            </div>
+            <div id = "explosion" class="hideMe">
+                <img class="centre" src="images/1killer explosion.png" style="width:90%;" alt="Burger Joint Logo" />
+            </div>
+            <div id = "vacume" class="hideMe">
+                <img class="centre" src="images/killer vacume.png" style="width:90%;" alt="Burger Joint Logo" />
+            </div>
+            <div id = "plant" class="hideMe">
+                <img class="centre" src="images/1killer plant.png" style="width:90%;" alt="Burger Joint Logo" />
+            </div>
+            <div id = "win" class="hideMe">
+                <img class="centre" src="images/win.png" style="width:90%;" alt="Burger Joint Logo" />
+            </div>           
+
+        </div>
+
+        <div id="col2" class="showMe">
+
+            <h1>Room 2 </h1>
+
+            <div id="RoomButtons">
+
+                <button onclick="setNextRoom();">Next Room</button>
+                <button onclick="setPreviousRoom();">Previous Room</button>
+
+            </div>
+            <div id="Room2Buttons">
+
+                <p>What do you want to do? </p>
+                <br>
+                <input type="text" id="r" size="35" value="Enter Text..." /> <br><br>
+
+                <button onclick="Yellow();" class="button">Yellow</button>
+                <button onclick="Red();" class="button">Red</button> <br>
+                <button onclick="Blue();" class="button">Blue</button>
+                <button onclick="Green();" class="button">Green</button>
+
+            </div>
+
+
+        </div>
+        <div id="col2Loss" class="hideMe">
+            <h1>Room 2 </h1>
+
+            <p>
+                You Died, sorry :(
+            </p>
+            <button onclick="Restart();" class="button">Restart game </button>
+        </div>
+
+    </div>
+
+    <script>
+        function Loss(){
+            document.getElementById('main').className = "hideMe";
+            document.getElementById('col2').className = "hideMe";
+            document.getElementById('col2Loss').className = "showMe";
+        }
+        function Yellow(){
+            document.getElementById('explosion').className = "showMe";
+            Loss();
+        }
+        function Blue(){
+            document.getElementById('vacume').className = "showMe";
+            Loss();
+        }
+        function Red(){
+            document.getElementById('plant').className = "showMe";
+            Loss();
+        }
+        function Green(){
+            document.getElementById('win').className = "showMe";
+            document.getElementById('main').className = "hideMe";
+            document.getElementById('Room2Buttons').className = "hideMe";
+        }
+        function Restart(){
+            document.getElementById('main').className = "showMe"; 
+            document.getElementById('col2').className = "showMe";
+            document.getElementById('col2Loss').className = "hideMe"; 
+            document.getElementById('win').className = "hideMe"; 
+            document.getElementById('plant').className = "hideMe";  
+            document.getElementById('explosion').className = "hideMe";
+            document.getElementById('vacume').className = "hideMe";    
+             
+        }
+        function setNextRoom() {
+
+
+        }
+
+        function setPreviousRoom() {
+
+
+        }
+
+    </script>
+</body>
+</html>
