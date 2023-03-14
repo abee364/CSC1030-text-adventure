@@ -1,83 +1,109 @@
 <!DOCTYPE html>
 <html>
-    <head>
-   
+
+<head>
+
     <title>Room 1</title>
 
-    <link rel="stylesheet" href="SpaceStyleSheet.css">
+    <!-- <link rel="stylesheet" href="SpaceStyleSheet.css"> -->
 
     <style>
-
-        wrapper{
-
-            /*Insert background image here*/
-            
+        * {
+            box-sizing: border-box;
         }
 
-        
+        .hideMe {
+            display: none;
+        }
 
-        /*Use an external style sheet for styling purposes, but
-        use a style in the head here for defining the objects
-        for each page to begin with. E.g. the tetx box
-        buttons the user can interact with
-        and objcts that will fir over backround they can use, door, torch, sissors etc...*/
-    
-    
+        .showMe {
+            display: initial;
+        }
+
+        body {
+            font-family: verdana, sans-serif;
+            color: white;
+            background-color: black;
+        }
+
+        #wrapper {
+            width: 95%;
+            margin: 50px auto 0px;
+            padding: 50px 0px 50px;
+            ;
+            overflow: auto;
+            background-color: #222629;
+        }
+
+        .centre {
+            display: block;
+            margin: auto;
+        }
+
+        #col1 {
+            width: 70%;
+            float: left;
+            text-align: center;
+            border-right: 1px white solid;
+        }
+
+        #col2 {
+            width: 30%;
+            float: left;
+        }
+
+        #col2 table {
+            width: 75%;
+            margin: auto;
+            font-size: 150%;
+        }
+
+        .RoomButtons {
+            margin: 3%;
+        }
     </style>
-    </head>
-    <body>
+</head>
 
-       
+<body>
+    <div id="wrapper">
+        <!-- Column 1 - Where the photo is  -->
+        <div id="col1">
+            <h1>INSERT AWESOME NAME</h1>
 
-        <div class = "header">
+            <!-- The main photo  -->
+            <div id="main" class="showMe">
+                <img onclick="nextRoom()" class="centre" src="room1img.jpg" style="width:90%;" alt="Burger Joint Logo" />
 
-            <p>Menu Bar</p>
-
-            <button id="nextRoom" onclick="nextRoom()">Next Room</button>
-            <button id="previousRoom" onclick="previousRoom()">Previous Room</button>
+            </div>
         </div>
 
-        <div class = "textBox">
-
-                <p>This is where the text informing the user of what going on can exist</p>
+        <!-- column 2 - where the buttons go -->
+        <div id="col2">
+            <h1>Room 3</h1>
+            <div id="RoomButtons">
+                <button id="previousRoom" onclick="previousRoom()">Previous Room</button>
+                <button id="nextRoom" onclick="nextRoom()">Next Room</button>
+            </div>
+            <h4>What do you want to do?</h4>
         </div>
+    </div>
 
-        <div class = "interactionBox">
 
-            <p>This is the area we can in build user response, buttons, input box, etc</p>
 
-        </div>
+    <script>
 
-        <div class = "itemBox">
-
-            <p>This is where we can add the item images and javascript to make them work</p>
-
-        </div>
-
-        <div class = "footer">
-            <p>footer space if needed/ options pane for accessibility settings/ mute button etc...</p>
-        </div>
-
-        <div class = "wrapper">
-       
-            <h1>Room 1</h1>
-            <img src = "room1img.jpg" alt = "background image" width = 300px height 250px>
-
-        </div>
-
-        <script>
-
-            function nextRoom() {
+        function nextRoom() {
 
             window.location.replace("Room4.html")
-            }
+        }
 
 
-            function previousRoom() {
+        function previousRoom() {
 
-                window.location.replace("Room2.html")
-            }
+            window.location.replace("Room2.html")
+        }
 
-        </script>
-    </body>
+    </script>
+</body>
+
 </html>

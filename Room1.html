@@ -1,82 +1,80 @@
 <!DOCTYPE html>
 <html>
-    <head>
-   
+
+<head>
+
     <title>Room 1</title>
 
     <link rel="stylesheet" href="SpaceStyleSheet.css">
 
-     <style>
-
-        wrapper{
-
+    <style>
+        .wrapper {
+            color: black;
             /*Insert background image here*/
-            
+
         }
 
-        
+
 
         /*Use an external style sheet for styling purposes, but
         use a style in the head here for defining the objects
         for each page to begin with. E.g. the tetx box
         buttons the user can interact with
         and objcts that will fir over backround they can use, door, torch, sissors etc...*/
-    
-    
-        </style>
-    </head>
-    <body>
+    </style>
+</head>
 
-       
-
-        <div class = "header">
-
-            <p>Menu Bar</p>
-
-            <button id="nextRoom" onclick="nextRoom()">Next Room</button>
-            <button id="previousRoom" onclick="previousRoom()">Previous Room</button>
-        </div>
-
-        <div class = "textBox">
-
-                <p>This is where the text informing the user of what going on can exist
-                    <br>
-                    For example, "You have 4 options,<br> pick up the spanner, <br>look at door 1,<br> look at door 2 <br>or
-                    jump out the airlock."
-                </p>
-        </div>
-
-        <div class = "interactionBox">
-
-            <p>This is the area we can in build user response, buttons, input box, etc</p>
-
-            <button id="spanner" onclick="spanner()">Examine Spanner</button>
-            <button id="door1" onclick="door1()">Look at door 1</button>
-            <button id="door2" onclick="door2()">Try door 2</button>
-            <button id="airlock" onclick="airlock()">Jump out the Airlock</button>
-        </div>
-
-        
-        <div class = "itemBox">
-
-            <p>This is where we can add the item images and javascript to make them work</p>
-
-            
+<body>
 
 
-        </div>
 
-        <div class = "footer">
-            <p>Inventory</p>
-        </div>
+    <div class="header">
 
-        <h1>Room 1</h1>
+        <p>Menu Bar</p>
+        <button id="previousRoom" onclick="previousRoom()">Previous Room</button>
+        <button id="nextRoom" onclick="nextRoom()">Next Room</button>
 
-        <div class = "wrapper">
+    </div>
+
+    <div class="textBox">
+
+        <p>This is where the text informing the user of what going on can exist
+            <br>
+            For example, "You have 4 options,<br> pick up the spanner, <br>look at door 1,<br> look at door 2 <br>or
+            jump out the airlock."
+        </p>
+    </div>
+
+    <div class="interactionBox">
+
+        <p>This is the area we can in build user response, buttons, input box, etc</p>
+
+        <button id="spanner" onclick="spanner()">Examine Spanner</button>
+        <button id="door1" onclick="door1()">Look at door 1</button>
+        <button id="door2" onclick="door2()">Try door 2</button>
+        <button id="airlock" onclick="airlock()">Jump out the Airlock</button>
+    </div>
 
 
-        </div>
+    <div class="itemBox">
 
+        <p>This is where we can add the item images and javascript to make them work</p>
+
+
+
+
+    </div>
+
+    <div class="footer">
+        <p>Inventory</p>
+    </div>
+
+    <h1>Room 1</h1>
+
+    <div class="wrapper">
+
+
+    </div>
 
 
 
@@ -84,45 +82,47 @@
 
 
 
-        <script>
 
-			function spanner() {
-				
-				window.alert("You chose the Spanner, You Tool! Try better next time");
-				}
+    <script>
 
-                function door1() {
-				
-				window.alert("Locked... Mabey Try Something else first");
-				}
+        function spanner() {
 
+            window.alert("You chose the Spanner, You Tool! Try better next time");
+        }
 
-                function door2() {
-				
-                    window.alert("Open, Procede to new room.");
-				}
+        function door1() {
+
+            window.alert("Locked... Mabey Try Something else first");
+        }
 
 
-                function airlock() {
-				
-                    window.alert("Well done, you chose death, Goodbye!");
-				}
+        function door2() {
 
-                function nextRoom() {
-
-                    window.location.replace("Room2.html")
-                }
+            window.alert("Open, Procede to new room.");
+        }
 
 
-                function previousRoom() {
-				
-				window.alert("You are already at the beginning");
-				}
+        function airlock() {
 
-         </script>
+            window.alert("Well done, you chose death, Goodbye!");
+        }
+
+        function nextRoom() {
+
+            window.location.replace("Room2.html")
+        }
+
+
+        function previousRoom() {
+
+            window.alert("You are already at the beginning");
+        }
+
+    </script>
 
 
 
-    
-    </body>
+
+</body>
+
 </html>

@@ -13,7 +13,7 @@
 
         .showMe {
             display: initial;
-        } 
+        }
 
         body {
             font-family: verdana, sans-serif;
@@ -60,42 +60,46 @@
         .Room2Buttons {
             margin: 3%;
         }
-
     </style>
 </head>
 
 <body>
     <div id="wrapper">
+
+        <!-- Column 1 - Where the photo is  -->
         <div id="col1">
 
             <h1>Space Game</h1>
 
-            <div id ="main" class="showMe">
+            <!-- The main photo  -->
+            <div id="main" class="showMe">
                 <img class="centre" src="Room2.png" style="width:90%;" alt="Burger Joint Logo" />
             </div>
-            <div id = "explosion" class="hideMe">
+
+            <!-- Different endings -->
+            <div id="explosion" class="hideMe">
                 <img class="centre" src="1killer explosion.png" style="width:90%;" alt="Burger Joint Logo" />
             </div>
-            <div id = "vacume" class="hideMe">
+            <div id="vacume" class="hideMe">
                 <img class="centre" src="killer vacume.png" style="width:90%;" alt="Burger Joint Logo" />
             </div>
-            <div id = "plant" class="hideMe">
+            <div id="plant" class="hideMe">
                 <img class="centre" src="1killer plant.png" style="width:90%;" alt="Burger Joint Logo" />
             </div>
-            <div id = "win" class="hideMe">
+            <div id="win" class="hideMe">
                 <img class="centre" src="win.png" style="width:90%;" alt="Burger Joint Logo" />
-            </div>           
+            </div>
 
         </div>
-
+        <!-- column 2 - where the buttons are  -->
         <div id="col2" class="showMe">
 
             <h1>Room 2 </h1>
 
             <div id="RoomButtons">
 
-                <button onclick="nextRoom();">Next Room</button>
                 <button onclick="previousRoom();">Previous Room</button>
+                <button onclick="nextRoom();">Next Room</button>
 
             </div>
             <div id="Room2Buttons">
@@ -125,37 +129,37 @@
     </div>
 
     <script>
-        function Loss(){
+        function Loss() {
             document.getElementById('main').className = "hideMe";
             document.getElementById('col2').className = "hideMe";
             document.getElementById('col2Loss').className = "showMe";
         }
-        function Yellow(){
+        function Yellow() {
             document.getElementById('explosion').className = "showMe";
             Loss();
         }
-        function Blue(){
+        function Blue() {
             document.getElementById('vacume').className = "showMe";
             Loss();
         }
-        function Red(){
+        function Red() {
             document.getElementById('plant').className = "showMe";
             Loss();
         }
-        function Green(){
+        function Green() {
             document.getElementById('win').className = "showMe";
             document.getElementById('main').className = "hideMe";
             document.getElementById('Room2Buttons').className = "hideMe";
         }
-        function Restart(){
-            document.getElementById('main').className = "showMe"; 
+        function Restart() {
+            document.getElementById('main').className = "showMe";
             document.getElementById('col2').className = "showMe";
-            document.getElementById('col2Loss').className = "hideMe"; 
-            document.getElementById('win').className = "hideMe"; 
-            document.getElementById('plant').className = "hideMe";  
+            document.getElementById('col2Loss').className = "hideMe";
+            document.getElementById('win').className = "hideMe";
+            document.getElementById('plant').className = "hideMe";
             document.getElementById('explosion').className = "hideMe";
-            document.getElementById('vaccume').className = "hideMe";    
-             
+            document.getElementById('vaccume').className = "hideMe";
+
         }
         function nextRoom() {
 
@@ -164,9 +168,10 @@
 
         function previousRoom() {
 
-             window.location.replace("Room1.html")
+            window.location.replace("Room1.html")
         }
 
     </script>
 </body>
+
 </html>
