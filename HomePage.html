@@ -8,19 +8,19 @@
         <link rel="stylesheet" href="SpaceStyleSheet.css">
 
         <style>
-
-        *{color: white;}
-            </style>
+            * {
+                color: black;
+            }
+        </style>
         <script type="text/javascript">
             var difficulty;
-
+            const submit = document.getElementById('submit');
+            let timeRem = 100;
+            let timer;
 
             function startGame() {
-
                 var name = document.getElementById('name').value;
-
                 var output =
-                
                     '<h2>' +
                     'Welcome ' + name + '!' +
                     '<h2>'
@@ -38,11 +38,31 @@
                     }
                 }
                 switch (difficultyStr) {
-                    case 'easy': difficulty = 10; break;
-                    case 'medium': difficulty = 100; break;
-                    case 'hard': difficulty = 1000; break;
+                    case 'easy': timeRem = 150; break;
+                    case 'medium': timeRem = 100; break;
+                    case 'hard': timeRem = 80; break;
+
+                }
+
+            }
+            function startTimer() {
+                document.getElementById('timerText').innerHTML = timeRem;
+                timer = setInterval(countdown, 1000);
+            }
+
+            function countdown() {
+                if (timeRem > 0) {
+                    timeRem--;
+                    document.getElementById('timerText').innerHTML = timeRem;
+                } else {
+                    clearInterval(timer);
+                    document.getElementById('timerText').innerHTML = 'END';
+                    timeRem = 10;
                 }
             }
+
+
+
 
         </script>
     </head>
@@ -64,12 +84,14 @@
                     <option value="hard">Hard</option>
                 </select>
                 <br>
-                <button onclick="startGame();">Start Game</button>
+                <button id="submit" onclick="startGame(); startTimer();">Start Game</button>
 
             </div>
-                <span id="info"></span>
+            <span id="info"></span>
 
         </div>
+
+        <h1>Time Remaining: <span id="timerText">?</span></h1>
 
     </body>
 
