@@ -1,115 +1,70 @@
-/*
-
-Wireframe:
-Background image of room
-Text box : Place for text adventure text to appear/ general game text e.g. (“door locked / “inventory full” and general game output that doesn't provide user interaction.)
-Interaction box : where we build user interaction, e.g. keypad enlarged, interaction with doors, buttons to interact with the text options/ other user interaction
-Item box: for the items to be added to the room, scissors etc
-Footer : Accessibility options / general options that should always exist
-
-*/
-
-.header{grid-area: hd;}
-.textBox {grid-area: textb; }
-.interactionBox {grid-area: ib;}
-.itemBox {grid-area: itemb;}
-.footer {grid-area: ft}
-
-
-.wrapper{
-
-          display: grid;
-          grid-template-columns: 50% 50%;
-
-          grid-template-areas: 
-
-              "hd hd"
-              "textb text b"
-              "ib itemb"
-              "ft ft";
-            
+        * {
+            box-sizing: border-box;
         }
 
-  *{
-          font-size: 15px;
-          color: black;
-          font-family: 'Space Grotesk', 'Arial Narrow', Arial, sans-serif;
-
+        /**this class is used to hide div's**/
+        .hideMe {
+            display: none;
         }
 
-  body{
-
-            background-color: gray;
-             /* background-image: url("room1img.jpg");  */
-            background-size: cover;
-            background-attachment: fixed;
+        /**this class is used to show div's**/
+        .showMe {
+            display: initial;
         }
 
-  .header{
-
-            background-color: rgb(35, 150, 233);
-            border: 20px;
-            padding-top: 2px;
-            padding-bottom: 1px;
-            padding-left: 5px;
-            padding-right: 5px;
-
-            margin-bottom: 5px;
-            
-
-
+        body {
+            font-family: verdana, sans-serif;
+            color: white;
+            background-color: black;
         }
 
-  .textBox{
-
-            opacity: 0.8;
-            background-color: rgb(255, 68, 0);
-            margin: 40px;
-            border: 1px solid black;
-
-            font-weight: 900;
-            font-size: 75%;
+        #wrapper {
+            width: 95%;
+            margin: 50px auto 0px;
+            padding: 50px 0px 50px;
+            ;
+            overflow: auto;
+            background-color: #222629;
         }
 
-          .interactionBox{
+        .centre {
+            display: block;
+            margin: auto;
+        }
 
-            opacity: 0.8;
-            background-color: rgb(255, 68, 0);
-            padding: 1%;
-            margin: 20px;
-            border: 3px solid black;
+        /**This is for the main room images on the right **/
+        #col1 {
+            width: 70%;
+            float: left;
+            text-align: center;
+            border-right: 1px white solid;
+        }
 
-            font-weight: 900;
-            font-size: 75%;
-          }
+        /**This is for the user options on the left **/
+        #col2 {
+            width: 30%;
+            float: left;
+            padding: 5px;
+        }
 
-          .itemBox{
+        /**For general text**/
+        .p {
+            color: white;
+        }
 
-            background-color: rgb(3, 52, 88);
-          }
+        /**This is for game output text, like telling the user a door is currently locked**/
+        .gameText {
+            color: aqua;
+            text-decoration-color: aqua;
+            size: 50%;
+        }
 
-          .footer{
+        /**---------------------------------Room 1 Specific CSS----------------------------------------**/
 
-            background-color: gray;
-          }
+        /**---------------------------------Room 2 Specific CSS----------------------------------------**/
 
-         
+        /**---------------------------------Room 3 Specific CSS----------------------------------------**/
 
-          #spanner{
+        /**---------------------------------Room 4 Specific CSS----------------------------------------**/
 
-
-            /* background-image: url("spanner.png"); */
-            opacity: 0.7;
-            width: 100px;
-            height: 100px;
-
-            font-weight: 900;
-          }
-
-          .showMe { 
-            display:initial; 
-         } 
-                      
-         .hideMe { 
-            display:none; 
-         } 
+        /**---------------------------------Room 5 Specific CSS----------------------------------------**/
