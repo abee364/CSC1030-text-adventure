@@ -8,12 +8,82 @@
     <link rel="stylesheet" href="SpaceStyleSheet.css">
 
     <style>
+
+
+        .header{grid-area: hd;}
+        .textBox {grid-area: tbx;
+        
+            text-align: center;
+            background-color: rgba(245, 163, 11, 0.8);
+           
+            border: thick;
+            border-color: pink;
+
+
+            margin-left: 5%;
+            margin-right: 5%;
+            margin-top: 3%;
+            margin-bottom: 3%;
+        }
+        .interactionBox {grid-area: ibx;
+
+            text-align: center;
+            background-color: rgba(67, 236, 219, 0.8);
+           
+            border: thick;
+            border-color: pink;
+
+
+            margin-left: 5%;
+            margin-right: 5%;
+            margin-top: 3%;
+            margin-bottom: 3%;
+        
+        }
+        .itemBox {grid-area: itbx; }
+        .footer {grid-area: ft;}
+        
+
         .wrapper {
             color: black;
             /*Insert background image here*/
 
+            margin: auto;
+            margin-top: 50px;
+            padding-top: 10px;
+
+            display: grid;
+            grid-template-columns: 50% 50%;
+
+            grid-template-areas: 
+
+                "hd hd"
+                "tbx tbx"
+                "ibx ibx"
+                "itbx itbx"
+                "ft ft";
+
+                gap: 10px;
+
         }
 
+        .txtBxBtn{
+
+            background-color: aquamarine;
+        }
+
+        #start{
+
+            background-color: black;
+            color: white;
+            text-align: center;
+
+        }
+
+        
+
+        
+       
 
 
         /*Use an external style sheet for styling purposes, but
@@ -30,29 +100,55 @@
 
     <div class="header">
 
+        <p>Welcome to the Game</p>
         <p>Menu Bar</p>
         <button id="previousRoom" onclick="previousRoom()">Previous Room</button>
         <button id="nextRoom" onclick="nextRoom()">Next Room</button>
+        <button id="start" onclick="start()">Start</button>
+        <button id="show" onclick="show()">Show</button>
 
     </div>
 
     <div class="textBox">
 
-        <p>This is where the text informing the user of what going on can exist
-            <br>
-            For example, "You have 4 options,<br> pick up the spanner, <br>look at door 1,<br> look at door 2 <br>or
-            jump out the airlock."
-        </p>
+       <div class = "p1"> 
+        <p id = "test">Opening Monolouge</p>
+        <button id="next" class = "txtBxBtn" onclick="next()">Next</button>
+        </div>
+
+
+        <div class = "p2">
+
+            <p>This is where the text informing the user of what going on can exist
+                <br>
+                For example, "You have 4 options,<br> pick up the spanner, <br>look at door 1,<br> look at door 2 <br>or
+                jump out the airlock."
+            </p>
+            <button id="nextP2" class = "txtBxBtn" onclick="next()">Next</button>
+
+        </div>
     </div>
 
     <div class="interactionBox">
 
-        <p>This is the area we can in build user response, buttons, input box, etc</p>
+        <p> Would you like to 'Look Around' or try and 'Turn On' the lights?</p>
 
         <button id="spanner" onclick="spanner()">Examine Spanner</button>
         <button id="door1" onclick="door1()">Look at door 1</button>
         <button id="door2" onclick="door2()">Try door 2</button>
         <button id="airlock" onclick="airlock()">Jump out the Airlock</button>
+        <button id="lookAround" onclick="lookAround()">Look Around</button>
+        <button id="turnOn" onclick="turnOn()">Turn On</button>
+       
+
+
+        <form id = "inputForm" onsubmit = "input()">
+
+            <input type = "text" name = "userInput">
+            <br>
+            <input type = "submit">
+            
+        </form>
     </div>
 
 
@@ -69,7 +165,7 @@
         <p>Inventory</p>
     </div>
 
-    <h1>Common Room</h1>
+    
 
     <div class="wrapper">
 
@@ -85,6 +181,8 @@
 
     <script>
 
+       
+
         function spanner() {
 
             window.alert("You chose the Spanner, You Tool! Try better next time");
@@ -99,6 +197,7 @@
         function door2() {
 
             window.alert("Open, Procede to new room.");
+            nextRoom();
         }
 
 
@@ -116,6 +215,108 @@
         function previousRoom() {
 
             window.alert("You are already at the beginning");
+        }
+
+        function pickUpSiccsors() {
+
+            window.alert("You pick up the Siccsors");
+        }
+
+        function input(){
+
+            let x = document.forms["inputForm"]["userInput"].value;
+
+            if (x == "Look Around"){
+               // window.alert("Call Method to trigger look around method");
+                lookAround();
+            }else if (x == "Turn On"){
+                
+                turnOn();
+            }else{
+                window.alert("Invalid Response, mabey try one of the suggested Prompts");
+            }
+        }
+
+        function lookAround(){
+
+            window.alert("Add method here to trigger text change on screen");
+            
+            var a = document.getElementById("spanner");
+            var b = document.getElementById("door1");
+            var c = document.getElementById("door2");
+            var d = document.getElementById("airlock");
+            var e = document.getElementById("lookAround");
+            var f = document.getElementById("turnOn");
+           
+           
+                a.style.display = "initial";
+                b.style.display = "initial";
+                c.style.display = "initial";
+                d.style.display = "initial";
+                e.style.display = "none";
+                f.style.display = "initial";
+               
+
+        }
+
+        function turnOn(){
+
+          //  window.alert("hey");
+
+            var x = document.getElementById("nextRoom");
+            x.style.display = "initial";
+
+        }
+
+        function start(){
+
+            var x = document.getElementById("nextRoom");
+            var y = document.getElementById("previousRoom");
+            var a = document.getElementById("spanner");
+            var b = document.getElementById("door1");
+            var c = document.getElementById("door2");
+            var d = document.getElementById("airlock");
+            var e = document.getElementById("lookAround");
+            var f = document.getElementById("turnOn");
+           
+
+            
+                x.style.display = "none";
+                y.style.display = "none";
+                a.style.display = "none";
+                b.style.display = "none";
+                c.style.display = "none";
+                d.style.display = "none";
+                e.style.display = "initial";
+                f.style.display = "initial";
+                
+                   
+
+        }
+
+        function show(){
+
+            var x = document.getElementById("nextRoom");
+            var y = document.getElementById("previousRoom");
+            var a = document.getElementById("spanner");
+            var b = document.getElementById("door1");
+            var c = document.getElementById("door2");
+            var d = document.getElementById("airlock");
+            var e = document.getElementById("lookAround");
+            var f = document.getElementById("previousRoom");
+           
+
+            
+                x.style.display = "initial";
+                y.style.display = "initial";
+                a.style.display = "initial";
+                b.style.display = "initial";
+                c.style.display = "initial";
+                d.style.display = "initial";
+                e.style.display = "initial";
+                f.style.display = "initial";
+
+
         }
 
     </script>
