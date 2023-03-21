@@ -1,78 +1,93 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <title>Gallery</title>
-		<link rel="stylesheet" href="SpaceStyleSheet.css">
-    </head>
-	<style>
-		body{
-			background-size: cover;
-            background-attachment: fixed;
-		}
-		#escape-button {
-			background-image: url("images/escape.jpg"); /* https://unsplash.com/photos/7Cz6bWjdlDs */
-            font-weight: 900;
-			background-size: cover;
-			width: 100px;
-            height: 100px;
-			color: white;
-			cursor: pointer;
-		}
-		#save-button {
-			background-image: url("images/save.jpg"); /* https://unsplash.com/photos/nuMOBM0qtv4 */
-			background-size: cover;
-            width: 100px;
-            height: 100px;
-			color: white;
-            font-weight: 900;
-			cursor: pointer;
-		}
-	</style>
-    
-    <body>
-		<div class = "header">
-        	
-			<p>Menu Bar</p>
+<head>
+	<title>Gallery</title>
+	<link rel="stylesheet" href="SpaceStyleSheet.css">
+</head>
+<style>
+	body {
+		background-size: cover;
+		background-attachment: fixed;
+	}
 
-            <button id="previousRoom" onclick="previousRoom()">Previous Room</button>
-            <button id="nextRoom" onclick="nextRoom()">Next Room</button>
-        </div>
-		<div class = "interactionBox">
-			<p>You have reached a critical decision point. Attempt to save everyone or escape?</p>
-			<button id="escape-button" onclick="escape()">Escape</button>
-			<button id="save-button" onclick="save()">Save Everyone</button>
+	#escape-button {
+		background-image: url("images/escape.jpg");
+		/* https://unsplash.com/photos/7Cz6bWjdlDs */
+		font-weight: 900;
+		background-size: cover;
+		width: 100px;
+		height: 100px;
+		color: white;
+		cursor: pointer;
+	}
+
+	#save-button {
+		background-image: url("images/save.jpg");
+		/* https://unsplash.com/photos/nuMOBM0qtv4 */
+		background-size: cover;
+		width: 100px;
+		height: 100px;
+		color: white;
+		font-weight: 900;
+		cursor: pointer;
+	}
+</style>
+
+<body>
+	<div id="wrapper">
+		<!-- Column 1 - Where the photo is  -->
+		<div id="col1">
+			<h1>Escape Pod</h1>
+
+			<!-- The main photo  -->
+			<div id="main" class="showMe">
+				<img class="centre" src="images/Room5.png" style="width:90%;" alt="Escape Pod" />
+			</div>
 		</div>
-		<div class = "footer">
-            <p>Inventory</p>
-        </div>
-		
-		<script>
-			function escape() {
-				// code to execute when Escape button is clicked
-				window.alert("You have chosen to escape! Into Room 5...");
-				window.location.href = "room5.html";
-				}
-			function save() {
-				// code to execute when Save Everyone button is clicked
-				window.alert("You have chosen to attempt to save everyone! Into Room 6...");
-				window.location.href = "room6.html";
-			}
+		<div id="col2" class="showMe">
 
-			
-				function nextRoom() {
-
-				window.location.replace("Room5.html")
-				}
+			<h1>Escape Pod </h1>
 
 
-				function previousRoom() {
+			<div id="Room5Buttons">
 
-					window.location.replace("Room3.html")
-				}
+				<p>You have reached a critical decision point. Attempt to save everyone or escape?</p>
+				<br>
+
+				<button id="escape-button" onclick="escape()">Escape</button>
+				<button id="save-button" onclick="save()">Save Everyone</button>
+
+			</div>
+		</div>
+	</div>
+
+	<script>
+		function escape() {
+			// code to execute when Escape button is clicked
+			window.alert("You have chosen to escape! Into Room 5...");
+			window.location.href = "room5.html";
+		}
+		function save() {
+			// code to execute when Save Everyone button is clicked
+			window.alert("You have chosen to attempt to save everyone! Into Room 6...");
+			window.location.href = "room6.html";
+		}
 
 
-		</script>
-    </body>
+		function nextRoom() {
+
+			window.location.replace("Room5.html")
+		}
+
+
+		function previousRoom() {
+
+			window.location.replace("Room3.html")
+		}
+
+
+	</script>
+</body>
 
 </html>
