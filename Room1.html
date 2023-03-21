@@ -6,99 +6,6 @@
     <title>Common Room</title>
 
     <link rel="stylesheet" href="SpaceStyleSheet.css">
-
-    <style>
-
-        .col1{
-
-            background-image: "images/Room1.png";
-        }
-
-
-        .header{grid-area: hd;}
-        .textBox {grid-area: tbx;
-        
-            text-align: center;
-            background-color: rgba(245, 163, 11, 0.8);
-           
-            border: thick;
-            border-color: pink;
-
-            padding: 3%;
-
-
-            margin-left: 5%;
-            margin-right: 5%;
-            margin-top: 3%;
-            margin-bottom: 3%;
-        }
-        .interactionBox {grid-area: ibx;
-
-            text-align: center;
-            background-color: rgba(67, 236, 219, 0.8);
-           
-            border: thick;
-            border-color: pink;
-
-
-            margin-left: 5%;
-            margin-right: 5%;
-            margin-top: 3%;
-            margin-bottom: 3%;
-        
-        }
-        .itemBox {grid-area: itbx; }
-        .footer {grid-area: ft;}
-        
-
-        .wrapper {
-            color: black;
-            /*Insert background image here*/
-
-            margin: auto;
-            margin-top: 50px;
-            padding-top: 10px;
-
-            display: grid;
-            grid-template-columns: 50% 50%;
-
-            grid-template-areas: 
-
-                "hd hd"
-                "tbx tbx"
-                "ibx ibx"
-                "itbx itbx"
-                "ft ft";
-
-                gap: 10px;
-
-        }
-
-        .txtBxBtn{
-
-            background-color: aquamarine;
-        }
-
-        #start{
-
-            background-color: black;
-            color: white;
-            text-align: center;
-
-        }
-
-        
-
-        
-       
-
-
-        /*Use an external style sheet for styling purposes, but
-        use a style in the head here for defining the objects
-        for each page to begin with. E.g. the tetx box
-        buttons the user can interact with
-        and objcts that will fir over backround they can use, door, torch, sissors etc...*/
-    </style>
 </head>
 
 <body>
@@ -146,9 +53,9 @@
 
         <form id = "inputForm" onsubmit = "input()">
 
-            <input type = "text" name = "userInput">
+            <input id="text" type = "text" name = "userInput">
             <br>
-            <input type = "submit">
+            <input id="submit" type = "submit">
             
         </form>
     </div>
@@ -202,7 +109,7 @@
 
         function textUpdateLookAtDoor1(){
 
-             document.getElementById("textOutput").innerHTML = "Locked... Mabey Try Something else first";
+             document.getElementById("textOutput").innerHTML = "Locked... Maybe Try Something else first";
         }
 
         function textUpdateTryDoor2(){
@@ -394,7 +301,7 @@
                     
                     turnOn();
                 }else{
-                    window.alert("Invalid Response, mabey try one of the suggested Prompts");
+                    window.alert("Invalid Response, maybe try one of the suggested Prompts");
                 }
             }
 
