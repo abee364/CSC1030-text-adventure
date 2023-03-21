@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Basic Layout</title>
+
+    <style type="text/css">
+        * {
+            box-sizing: border-box;
+        }
+
+        /**this class is used to hide div's**/
+        .hideMe {
+            display: none;
+        }
+
+        /**this class is used to show div's**/
+        .showMe {
+            display: initial;
+        }
+
+        body {
+            font-family: verdana, sans-serif;
+            color: white;
+            background-color: black;
+        }
+
+        #wrapper {
+            width: 95%;
+            margin: 50px auto 0px;
+            padding: 50px 0px 50px;
+            ;
+            overflow: auto;
+            background-color: #222629;
+        }
+
+        .centre {
+            display: block;
+            margin: auto;
+        }
+
+        /**This is for the main room images on the right **/
+        #col1 {
+            width: 70%;
+            float: left;
+            text-align: center;
+            border-right: 1px white solid;
+        }
+
+        /**This is for the user options on the left **/
+        #col2 {
+            width: 30%;
+            float: left;
+            padding: 5px;
+        }
+
+        /**For general text**/
+        .p {
+            color: white;
+        }
+
+        /**This is for game output text, like telling the user a door is currently locked**/
+        .gameText {
+            color: aqua;
+            text-decoration-color: aqua;
+            size: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+
+        <div id="col1"><!--Left coloumn of the site (Used for main room images)-->
+
+            <h1>Space Game</h1>
+
+            <!--Create diffrent image divs here = 
+                I.e. a main Room, close up of objects, death screen 
+                Remember to set the classes to 'hideMe' or 'showMe'
+            -->
+            <div id="FullRoom" class="showMe">
+                <img class="centre" src="images/FullRoom2.png" style="width:90%;" alt="Image of the full Room" />
+            </div>
+
+            <div id="WireBoard" class="hideMe">
+                <img class="centre" src="images/Wires.png" style="width:90%;" alt="Close up image of Wires" />
+            </div>
+
+            <div id="DeathDiv" class="hideMe">
+                <img class="centre" src="images/VacumeDeath.png" style="width:90%;" alt="Death screen" />
+            </div>
+
+            <div id="Win" class="hideMe">
+                <img class="centre" src="images/Win.png" style="width:90%;" alt="Death screen" />
+            </div>
+
+        </div>
+
+        <div id="col2"><!--Left coloumn of the site (Used for main room images)-->
+
+            <h1>Room 2 </h1><!--Change this to your Room number-->
+
+            <!--Always should be shown, expet when dead-->
+            <div id="RoomButtons" class="showMe">
+
+                <button onclick="setPreviousRoom();">Previous Room</button>
+                <button onclick="setDoor();">Next Room</button>
+
+            </div>
+
+            <!--This is a place for Room specific buttons-->
+            <div id="Room2Buttons" class="showMe">
+
+                <p>What do you want to look at? </p>
+                <button onclick="setWires();">The wires</button>
+                <button onclick="setDoor();">The Door</button>
+                <button onclick="Plant();">The Plant</button>
+            </div>
+
+
+            <!--Close up of Wire Pannel-->
+            <div id="WireButtons" class="hideMe">
+
+                <p>What wire do you want to cut?</p>
+
+                <br>
+                <button onclick="Death();" class="button">Yellow</button>
+                <button onclick="Death();" class="button">Red</button> <br>
+                <button onclick="Death();" class="button">Blue</button>
+                <button onclick="Win();" class="button">Green</button> <br> <br>
+
+                <!--Go back to main -->
+                <button onclick="Restart();" class="button">Back to Room 2</button>
+
+            </div>
+
+            <!--This should appear is the next Room is locked-->
+            <div id="doorLocked" class="hideMe">
+                <p class="gameText">The door is currently locked, maybe try cutting power to it</p>
+            </div>
+
+            <div id="Col2Death" class="hideMe">
+                <p>
+                    You Died, sorry :(
+                </p>
+                <button onclick="Restart();" class="button">Restart game </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        //This code turns on certain divs and turns off other ones
+        function setWires() {
+            document.getElementById('Room2Buttons').className = "hideMe";   //Hides the general room buttons 
+            document.getElementById('FullRoom').className = "hideMe";       //Hides the full room image
+            document.getElementById('WireButtons').className = "showMe";    //Shows the buttons for the wires
+            document.getElementById('WireBoard').className = "showMe";      //Shows the image for the wire board
+        }
+
+        function Death() {
+            document.getElementById('WireButtons').className = "hideMe";
+            document.getElementById('WireBoard').className = "hideMe";
+            document.getElementById('FullRoom').className = "hideMe";
+            document.getElementById('RoomButtons').className = "hideMe";
+            document.getElementById('Col2Death').className = "showMe";
+        }
+
+        function Win() {
+            document.getElementById('Win').className = "showMe";
+            document.getElementById('WireButtons').className = "hideMe";
+            document.getElementById('WireBoard').className = "hideMe";
+            document.getElementById('FullRoom').className = "hideMe";
+        }
+
+        function Restart() {
+            document.getElementById('FullRoom').className = "showMe";
+            document.getElementById('WireButtons').className = "hideMe";
+            document.getElementById('WireBoard').className = "hideMe";
+            document.getElementById('Col2Death').className = "hideMe";
+            document.getElementById('Room2Buttons').className = "showMe";
+        }
+
+        function setNextRoom() {
+
+
+        }
+
+        function setPreviousRoom() {
+
+
+        }
+
+    </script>
+</body>
+
+</html>
