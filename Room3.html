@@ -65,7 +65,7 @@
         #colours {
             height: 10em;
             width: 10em;
-            display:inline-block;
+            display: inline-block;
             margin: auto
         }
 
@@ -112,14 +112,12 @@
             display: block;
             margin: auto;
         }
-
-       
     </style>
 </head>
 
 <body>
     <div id="wrapper">
-        
+
         <!-- Column 1 - Where the photo is  -->
         <div id="col1">
             <h1>Ship Deck</h1>
@@ -138,7 +136,7 @@
                 <div id="colours" class="colourRed"></div>
                 <div id="colours" class="colourBlue"></div>
                 <div id="colours" class="colourYellow"></div>
-               
+
             </div>
 
         </div>
@@ -216,13 +214,84 @@
             }
         };
 
-        const colour = document.getElementById("colours");
+        const colours = document.getElementById("colours");
         let randomColour = [];
+
 
         function memoryGame() {
             randomColour = [];
+            let pathGeneratorBool = false;
+            let count,
+                clickCount = 0;
             document.getElementById("memory").className = "showMe";
             document.getElementById("room3").className = "hideMe";
+
+            //Function to decide the sequence
+            const pathGenerate = () => {
+                randomColors.push(generateRandomValue(colours));
+                count = randomColors.length;
+                pathGeneratorBool = true;
+                pathDecide(count);
+            };
+            //Function to get a random value from object
+            const generateRandomValue = (obj) => {
+                let arr = Object.keys(obj);
+                return arr[Math.floor(Math.random() * arr.length)];
+            };
+            //Function to play the sequence
+            const pathDecide = async (count) => {
+                countValue.innerText = count;
+                for (let i of randomColors) {
+                    let currentColor = document.querySelector(`.${i}`);
+                    await delay(500);
+                    currentColor.style.backgroundColor = `${colors[i]["new"]}`;
+                    await delay(600);
+                    currentColor.style.backgroundColor = `${colors[i]["current"]}`;
+                    await delay(600);
+                }
+                pathGeneratorBool = false;
+            };
+            //Delay for blink effect
+            async function delay(time) {
+                return await new Promise((resolve) => {
+                    setTimeout(resolve, time);
+                });
+            }
+            //When user click on the colors
+            colorPart.forEach((element) => {
+                element.addEventListener("click", async (e) => {
+                    //if user clicks the same color then next level
+                    if (pathGeneratorBool) {
+                        return false;
+                    }
+                    if (e.target.classList[0] == randomColors[clickCount]) {
+                        //Color blick effect on click
+                        e.target.style.backgroundColor = `${colors[randomColors[clickCount]]["new"]
+                            }`;
+                        await delay(500);
+                        e.target.style.backgroundColor = `${colors[randomColors[clickCount]]["current"]
+                            }`;
+                        //User click
+                        clickCount += 1;
+                        //Next level if number of valid clicks == count
+                        if (clickCount == count) {
+                            clickCount = 0;
+                            pathGenerate();
+                        }
+                    } else {
+                        lose();
+                    }
+                });
+            });
+            //Function when player executes wrong sequence
+            const lose = () => {
+                result.innerHTML = `<span> Your Score: </span> ${count}`;
+                result.classList.remove("hide");
+                container.classList.remove("hide");
+                wrapper.classList.add("hide");
+                startButton.innerText = "Play Again";
+                startButton.classList.remove("hide");
+            };
 
 
 
