@@ -50,16 +50,6 @@
             padding: 5px;
         }
 
-        /*For buttons in general*/
-        button {
-            border-radius: 10px;
-            padding: 5px 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: rgb(226, 226, 226);
-        }
-
         /*For text input boxes*/
         #text {
             padding: 3px 7px 3px 1px;
@@ -99,6 +89,7 @@
             font-size: 16px;
             font-family: verdana, sans-serif;
             transition-duration: 0.5s;
+            cursor: pointer;
         }
 
         .button:hover {
