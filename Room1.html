@@ -19,6 +19,8 @@
             border: thick;
             border-color: pink;
 
+            padding: 3%;
+
 
             margin-left: 5%;
             margin-right: 5%;
@@ -111,20 +113,15 @@
 
     <div class="textBox">
 
-       <div class = "p1"> 
-        <p id = "test">Opening Monolouge</p>
-        <button id="next" class = "txtBxBtn" onclick="next()">Next</button>
-        </div>
-
 
         <div class = "p2">
 
-            <p>This is where the text informing the user of what going on can exist
+            <p id = "textOutput">This is where the text informing the user of what going on can exist
                 <br>
                 For example, "You have 4 options,<br> pick up the spanner, <br>look at door 1,<br> look at door 2 <br>or
                 jump out the airlock."
             </p>
-            <button id="nextP2" class = "txtBxBtn" onclick="next()">Next</button>
+           <!-- <button id="nextP2" class = "txtBxBtn" onclick="next()">Next</button>  -->
 
         </div>
     </div>
@@ -181,32 +178,81 @@
 
     <script>
 
+        //text for screen functions
+
+        function startingText(){
+
+            document.getElementById("textOutput").innerHTML = "Next Text!";
+         }
+
+         function textUpdateLookAround(){
+
+            document.getElementById("textOutput").innerHTML = "Next Text!";
+        }
+
+        function textUpdateExamineSpanner(){
+
+            document.getElementById("textOutput").innerHTML = "You chose the Spanner, You Tool! Try better next time";
+        }
+
+        function textUpdateLookAtDoor1(){
+
+             document.getElementById("textOutput").innerHTML = "Locked... Mabey Try Something else first";
+        }
+
+        function textUpdateTryDoor2(){
+
+            document.getElementById("textOutput").innerHTML = "Open, Procede to new room.";
+        }
+
+        function textUpdateAirlock(){
+
+            document.getElementById("textOutput").innerHTML = "Well done, you chose death, Goodbye!";
+        }
+
+        function textUpdateTurnOn(){
+
+            document.getElementById("textOutput").innerHTML = "Torch On Successfully";
+        }
+
+
+        //
+        //
+        //Functions Connected to Buttons
+        //
+        //
        
 
         function spanner() {
 
-            window.alert("You chose the Spanner, You Tool! Try better next time");
+            textUpdateExamineSpanner();
         }
 
         function door1() {
 
-            window.alert("Locked... Mabey Try Something else first");
+            textUpdateLookAtDoor1
+            jumptToRoom3();
         }
 
 
         function door2() {
 
-            window.alert("Open, Procede to new room.");
-            nextRoom();
+            textUpdateTryDoor2();
+            jumpToRoom2();
         }
 
 
         function airlock() {
 
-            window.alert("Well done, you chose death, Goodbye!");
+            textUpdateAirlock();
         }
 
-        function nextRoom() {
+        function jumptToRoom3(){
+
+            window.location.replace("Room3.html")
+        }
+
+        function jumpToRoom2() {
 
             window.location.replace("Room2.html")
         }
@@ -222,24 +268,10 @@
             window.alert("You pick up the Siccsors");
         }
 
-        function input(){
-
-            let x = document.forms["inputForm"]["userInput"].value;
-
-            if (x == "Look Around"){
-               // window.alert("Call Method to trigger look around method");
-                lookAround();
-            }else if (x == "Turn On"){
-                
-                turnOn();
-            }else{
-                window.alert("Invalid Response, mabey try one of the suggested Prompts");
-            }
-        }
-
+        
         function lookAround(){
 
-            window.alert("Add method here to trigger text change on screen");
+           updateText();
             
             var a = document.getElementById("spanner");
             var b = document.getElementById("door1");
@@ -258,17 +290,38 @@
                
 
         }
+        
 
         function turnOn(){
 
-          //  window.alert("hey");
+          updateTextTurnOn();
+          turnTorchOn();
 
             var x = document.getElementById("nextRoom");
-            x.style.display = "initial";
+            var y = document.getElementById("previousRoom");
+            var a = document.getElementById("spanner");
+            var b = document.getElementById("door1");
+            var c = document.getElementById("door2");
+            var d = document.getElementById("airlock");
+            var e = document.getElementById("lookAround");
+            var f = document.getElementById("turnOn");
+           
+
+            
+                x.style.display = "none";
+                y.style.display = "none";
+                a.style.display = "none";
+                b.style.display = "none";
+                c.style.display = "none";
+                d.style.display = "none";
+                e.style.display = "initial";
+                f.style.display = "none";
 
         }
 
         function start(){
+
+            startingText();
 
             var x = document.getElementById("nextRoom");
             var y = document.getElementById("previousRoom");
@@ -318,6 +371,33 @@
 
 
         }
+
+        //
+        //
+        //Functions to operate gamaplay
+        //
+        //
+
+        function input(){
+
+                let x = document.forms["inputForm"]["userInput"].value;
+
+                if (x == "Look Around"){
+                // window.alert("Call Method to trigger look around method");
+                    lookAround();
+                }else if (x == "Turn On"){
+                    
+                    turnOn();
+                }else{
+                    window.alert("Invalid Response, mabey try one of the suggested Prompts");
+                }
+            }
+
+            function turnTorchOn(){
+
+                window.alert("Torch is On!");
+            }
+
 
     </script>
 
