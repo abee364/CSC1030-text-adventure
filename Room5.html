@@ -1,72 +1,79 @@
 <html>
 
-    <head>
-        <title>Escape Pod</title>
+<head>
+    <title>Escape Pod</title>
 
-        <link rel="stylesheet" href="SpaceStyleSheet.css">
+    <link rel="stylesheet" href="SpaceStyleSheet.css">
 
-        <style>
+    
+</head>
 
-        </style>
-    </head>
+<body>
 
-    <body>
-            
-            <div class = "header">
-
-                <p>Timer</p>
-
-                <p>Menu Bar</p>
-
-                <button id="previousRoom" onclick="previousRoom()">Previous Room</button>
-            <button id="nextRoom" onclick="nextRoom()">Next Room</button>
-            </div>
-
+    <div id="wrapper">
+        <!-- Column 1 - Where the photo is  -->
+        <div id="col1">
             <h1>Escape Pod</h1>
 
-            <div class = "textBox">
-                <p>“You have reached the escape pod, it seems to be fully functional.<br> I assume that you learnt how to fly it during your 
-                training 'name'. Are you sure you want to leave the ship?”</p>
-            </div>
-            
-            <div class = "interactionBox">
-                <button id="leave" onclick="leave()">Let’s get outta here! Push the button/lever to take off</button>
-                <button id="back" onclick="back()">Maybe I should go help the others…Go back</button>
+            <!-- The main photo  -->
+            <div id="main" class="showMe">
+                <img class="centre" src="Room5.png" style="width:90%;" alt="Escape Pod" />
             </div>
 
-            <div class = "footer">
-                
+            <!-- Different endings -->
+            <div id="leave" class="hideMe">
+                <img class="centre" src="images/escape endcard.jpg" style="width:90%;" alt="Escape Endcard" />
             </div>
-	<div class = "wrapper">
         </div>
 
-        <script>
+        <!-- column 2 - where the buttons go -->
+        <div id="col2" class="showMe">
 
-			function leave() {
-				
-				window.alert("You pilot the escape pod away from the ship...");
-                /*Send to survivor end card*/
-				}
+            <h1>Escape Pod </h1>
 
-                function back() {
-				
-				window.alert("The guilt overwhelmes you and you head back to fix the gas leak");
-                /*Send back to room 4*/
-				}
+            <div id="RoomButtons">
 
-                function nextRoom() {
+                <button onclick="previousRoom();">Previous Room</button>
 
-                      window.location.replace("Room6.html")
-                    }
+            </div>
+            <div id="Room5Buttons">
+
+                <p>“You have reached the escape pod, it seems to be fully functional.<br> I assume that you learnt how
+                    to
+                    fly it during your
+                    training 'name'. Are you sure you want to leave the ship?” </p>
+                <br>
+
+                <button id="leave" onclick="leave()">Let’s get outta here! Push the button/lever to take off</button>
+                <button id="back" onclick="back()">Maybe I should go help the others…Go back</button>
+
+            </div>
+        </div>
+    </div>
 
 
-                    function previousRoom() {
+    <script>
 
-                        window.location.replace("Room4.html")
-                    }
+        function leave() {
+            document.getElementById('main').className = "hideMe";
+            document.getElementById('col2').className = "hideMe";
+            document.getElementById('leave').className = "showMe";
+            window.alert("You pilot the escape pod away from the ship...");
+            /*Send to survivor end card*/
+        }
 
-         </script>
-    </body>
+        function back() {
+
+            window.alert("The guilt overwhelmes you and you head back to fix the gas leak");
+            window.location.replace("Room4.html")
+        }
+
+        function previousRoom() {
+
+            window.location.replace("Room4.html")
+        }
+
+    </script>
+</body>
 
 </html>
-
