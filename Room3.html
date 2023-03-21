@@ -61,21 +61,88 @@
         .RoomButtons {
             margin: 3%;
         }
+
+        #colours {
+            height: 10em;
+            width: 10em;
+            display:inline-block;
+            margin: auto
+        }
+
+        .colourGreen {
+            background-color: #1e7021;
+            border-radius: 10em 10em 10em 10em;
+        }
+
+        .colourRed {
+            background-color: #630e0e;
+            border-radius: 10em 10em 10em 10em;
+        }
+
+        .colourBlue {
+            background-color: #202257;
+            border-radius: 10em 10em 10em 10em;
+        }
+
+        .colourYellow {
+            background-color: #7a7a14;
+            border-radius: 10em 10em 10em 10em;
+        }
+
+        /* .memory:before {
+            position: absolute;
+            content: "";
+            background-color: #101010;
+            height: 13.75em;
+            width: 13.75em;
+            z-index: 1;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+            border-radius: 50%;
+        } */
+
+        #count {
+            background-color: #ffffff;
+            font-size: 3em;
+            height: 2em;
+            width: 3em;
+            place-items: center;
+            border-radius: 0.3em;
+            display: block;
+            margin: auto;
+        }
+
+       
     </style>
 </head>
 
 <body>
     <div id="wrapper">
+        
         <!-- Column 1 - Where the photo is  -->
         <div id="col1">
             <h1>Ship Deck</h1>
 
             <!-- The main photo  -->
-            <div id="main" class="showMe">
-                <img onclick="nextRoom()" class="centre" src="room1img.jpg" style="width:90%;" alt="Burger Joint Logo" />
-
+            <div id="room3" class="showMe">
+                <img class="centre" src="room1img.jpg" style="width:90%;" alt="Ship Deck" />
             </div>
+
+            <!-- Memory Game  -->
+            <div id="memory" class="hideMe">
+                <br>
+                <div id="count">00</div>
+                <br><br>
+                <div id="colours" class="colourGreen"></div>
+                <div id="colours" class="colourRed"></div>
+                <div id="colours" class="colourBlue"></div>
+                <div id="colours" class="colourYellow"></div>
+               
+            </div>
+
         </div>
+
 
         <!-- column 2 - where the buttons go -->
         <div id="col2">
@@ -85,22 +152,80 @@
                 <button id="nextRoom" onclick="nextRoom()">Next Room</button>
             </div>
             <h4>What do you want to do?</h4>
+            <br>
+            <button onclick="crowbarDoor();" class="button">Try crowbar on door</button>
+            <button onclick="crowbarPickup();" class="button">Pick up crowbar</button>
+            <button onclick="lever();" class="button">Flick Lever</button>
+            <button onclick="memoryGame();" class="button">Examine podium</button>
+            <button onclick="" class="button">Try crowbar on door</button>
         </div>
     </div>
 
-
-
     <script>
-
+        let crowbar = 0;
         function nextRoom() {
 
             window.location.replace("Room4.html")
         }
 
-
         function previousRoom() {
 
             window.location.replace("Room2.html")
+        }
+
+        function crowbarPickup() {
+            crowbar = 1;
+            window.alert("You picked up the crowbar.");
+
+
+
+        }
+
+        function crowbarDoor() {
+            if (crowbar == 1) {
+                window.alert("You run towards the door at full speed swinging your crowbar and when you get to the door you swing the crowbar as hard as you can and it bounces off… it hits you in your head, you feel dizzy.");
+
+            } else {
+                window.alert("You do not have the crowbar in your inventory.");
+            }
+
+        }
+
+        function lever() {
+            window.alert("Aww a cute little spinglespop appears. You should name it!");
+
+
+        }
+
+        const colors = {
+            colourGreen: {
+                current: "1e7021",
+                new: "#1fbf24",
+            },
+            colourRed: {
+                current: "#630e0e",
+                new: "#d42020",
+            },
+            colorBlue: {
+                current: "#202257",
+                new: "#262bc7",
+            },
+            colorYellow: {
+                current: "#7a7a14",
+                new: "#dbdb39",
+            }
+        };
+
+        const colour = document.getElementById("colours");
+        let randomColour = [];
+
+        function memoryGame() {
+            randomColour = [];
+            document.getElementById("memory").className = "showMe";
+            document.getElementById("room3").className = "hideMe";
+
+
+
         }
 
     </script>
