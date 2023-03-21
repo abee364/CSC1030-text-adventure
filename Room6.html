@@ -1,74 +1,89 @@
 <html>
 
-    <head>
-        <title>Control Room</title>
+<head>
+    <title>Control Room</title>
 
-        <link rel="stylesheet" href="SpaceStyleSheet.css">
+    <link rel="stylesheet" href="SpaceStyleSheet.css">
 
-        <style>
+</head>
 
-        </style>
-    </head>
-
-    <body>
-            
-            <div class = "header">
-
-                <p>Menu Bar</p>
-
-           
-                <p>Timer</p>
-
-                <button id="previousRoom" onclick="previousRoom()">Previous Room</button>
-                <button id="nextRoom" onclick="nextRoom()">Next Room</button>
-            </div>
-
+<body>
+    <div id="wrapper">
+        <!-- Column 1 - Where the photo is  -->
+        <div id="col1">
             <h1>Control Room</h1>
 
-            <div class = "textBox">
-                <p>“You have reached the source of the gas leak! <br>
-                    You must hurry to find a way to stop it before you run out of oxygen and the fire spreads further.”</p>
-            </div>
-            
-            <div class = "interactionBox">
-                <button id="" onclick="screen()">Check out screen</button>
-                <button id="back" onclick="back()">I should find a way to put out this fire...Go back</button>
-                <button id="" onclick="riddle()">Answer riddle</button>
+            <!-- The main photo  -->
+            <div id="main" class="showMe">
+                <img class="centre" src="images/Room5.png" style="width:90%;" alt="Control Room" />
             </div>
 
-            <div class = "footer">
-                
+            <!--Screen close-up-->
+            <div id="screen" class="hideMe">
+                <img class="centre" src="images/escape endcard.jpg" style="width:90%;" alt="Control Room" />
             </div>
-	<div class = "wrapper">
+
+            <!-- Different endings -->
+            <div id="saveShip" class="hideMe">
+                <img class="centre" src="images/escape endcard.jpg" style="width:90%;" alt="Escape Endcard" />
+            </div>
+
+            <div id="runOutOfTime" class="hideMe">
+                <img class="centre" src="images/escape endcard.jpg" style="width:90%;" alt="Escape Endcard" />
+            </div>
         </div>
 
-        <script>
+        <!-- column 2 - where the buttons go -->
+        <div id="col2" class="showMe">
 
-			function screen() {
-                /*Screen with way to turn on*/
-			}
+            <h1>Control Room</h1>
+            <div id="RoomButtons">
+                <button id="previousRoom" onclick="previousRoom()" class="button">Previous Room</button>
+            </div>
 
-            function back() {
-				
-				window.alert("You head back through the ship to find a fire extingusher");
-                /*Send back to room 4*/
-			}
-            function screen() {
-                /*Input for riddle?*/
+            <div id="Room6Buttons">
+
+                <p>“You have reached the source of the gas leak! You must hurry to find a way to stop it before you run
+                    out of oxygen and the fire spreads further.”
+                </p>
+                <br>
+
+                <button id="screen" onclick="screen()" class="button">Check out screen</button>
+                <button id="fire" onclick="fire()" class="button">Put out fire</button>
+                <button id="riddle" onclick="riddle()" class="hideMe" class="button">Answer riddle</button>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        
+        let extingusher = 0;
+
+        function screen() {
+            /*Screen with way to turn on*/
+            document.getElementById('main').className = "hideMe";
+            document.getElementById('screen').className = "showMe";
+            document.getElementById('riddle').className = "showMe";
+        }
+
+        function fire() {
+            if (extingusher == 1) {
+                window.alert("Fire has been succesfully put out");
+                /*Remove fire from graphic*/
+
+            } else {
+                window.alert("You do not have anything to put the fire out with");
             }
+        }
 
-            function nextRoom() {
+        function previousRoom() {
 
-            window.alert("Add end cards here.");
-            }
+            window.location.replace("Room4.html")
+        }
 
-
-            function previousRoom() {
-
-                window.location.replace("Room5.html")
-            }
-
-         </script>
-    </body>
+    </script>
+</body>
 
 </html>
