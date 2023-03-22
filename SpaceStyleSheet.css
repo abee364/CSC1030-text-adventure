@@ -36,7 +36,7 @@
         }
 
         /**This is for the main room images on the right **/
-        #col1 {
+        .col1 {
             width: 70%;
             float: left;
             text-align: center;
@@ -44,7 +44,7 @@
         }
 
         /**This is for the user options on the left **/
-        #col2 {
+        .col2 {
             width: 30%;
             float: left;
             padding: 5px;
@@ -99,7 +99,7 @@
           }
 
         /**---------------------------------Room 1 Specific CSS----------------------------------------**/
-        /*.col1{
+        /*.col2{
 
             background-image: "images/Room1.png";
         }*/
