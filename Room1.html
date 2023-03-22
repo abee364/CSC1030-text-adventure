@@ -95,40 +95,47 @@
 </head>
 
 <body>
-    <div wrapper="wrapper">
+    <div class = "wrapper">
 
-        <div id="col1">
-            <h1>Common Room</h1>
+        <div id = "col1">
 
+           
             <!-- The main photo  -->
-            <div id="main" class="showMe">
-                <img class="centre" src="images/Room1.png" style="width:90%;" alt="Common Room" />
-            </div>
+                <div id = "backgroundImg" class="showMe">
+                    <img class="centre" src="images/Room1.png" style="width:90%;" alt="Common Room" />
+                </div>
 
-            <!-- Different endings -->
-            <div id="jump" class="hideMe">
-                <img class="centre" src="images/Airlock.png" style="width:90%;" alt="Airlock Endcard" />
-            </div>
-        </div>
+                <!-- Different endings -->
+                <div id= "airlockImg" class="hideMe">
+                    <img class="centre" src="images/Airlock.png" style="width:90%;" alt="Airlock Endcard" />
+                </div>
+         </div>
 
-        <!-- column 2 - where the buttons go -->
+       
         <div id="col2" class="showMe">
 
-            <h1>Common Room</h1>
+            <div class = "header">
 
-            <div id="RoomButtons">
+                <h1>Room 1</h1>
+
+            
 
                 <button onclick="nextRoom();">Next Room</button>
+                <button onclick = "previousRoom();">Previous Room</button>
+                <button id="start" onclick="start()">Start</button>
+                <button id="show" onclick="show()">Show</button>
 
             </div>
 
-            <div id="Room1Buttons">
+
+          
+            <div class = "interactionBox">
+            
 
                 <p>Would you like to 'Look Around' or try and 'Turn On' the lights?</p>
                 <br>
 
-                <button id="start" onclick="start()">Start</button>
-                <button id="show" onclick="show()">Show</button>
+                
                 <button id="spanner" onclick="spanner()">Examine Spanner</button>
                 <button id="door1" onclick="door1()">Look at door 1</button>
                 <button id="door2" onclick="door2()">Try door 2</button>
@@ -138,47 +145,29 @@
                 <button id="goDoor1" onclick="goDoor1()">Enter Through Door 1</button>
                 <button id="goDoor2" onclick="goDoor2()">Enter Through Door 2</button>
 
+           
             </div>
+
+
+
+            <div class="textBox">
+
+                <p id="textOutput">Please Press the start buttton to begin the game.
+                    This just manually triggers what will be an onload method for testing purposes.
+                </p>
+         
+            </div>
+
+
+            <div class="footer">
+
+                <p>Inventory</p>
+        
+            </div>
+
+
+
         </div>
-    </div>
-
-
-    <!--<div class="textBox">
-
-
-        <div class="p2">
-
-            <p id="textOutput">Please Press the start buttton to begin the game.
-                This just manually triggers what will be an onload method for testing purposes.
-            </p>
-             <button id="nextP2" class = "txtBxBtn" onclick="next()">Next</button> 
-
-    </div>
-
-    <div class="footer">
-        <p>Inventory</p>
-    </div>
-
-    </div>
-
-    <div class = "col2">
-
-
-
-
-
-
-    <form id="inputForm" onsubmit="input()">
-
-        <input id="text" type="text" name="userInput">
-        <br>
-        <input class="button" id="submit" type="submit">
-
-    </form>
-    </div>
-
-
-
 
 
 
