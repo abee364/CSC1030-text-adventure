@@ -8,14 +8,16 @@
     <link rel="stylesheet" href="SpaceStyleSheet.css">
 
     <style>
+        .header {
+            grid-area: hd;
+        }
 
-        .header{grid-area: hd;}
+        .textBox {
+            grid-area: tbx;
 
-        .textBox {grid-area: tbx;
-        
             text-align: center;
             background-color: rgba(245, 163, 11, 0.8);
-           
+
             border: thick;
             border-color: pink;
 
@@ -27,7 +29,8 @@
             margin-bottom: 3%;
         }
 
-        .interactionBox {grid-area: ibx;
+        .interactionBox {
+            grid-area: ibx;
             text-align: center;
             background-color: rgba(67, 236, 219, 0.8);
             border: thick;
@@ -39,10 +42,15 @@
             padding-top: 5px;
             padding-bottom: 5px;
         }
-        .itemBox {grid-area: itbx; }
+
+        .itemBox {
+            grid-area: itbx;
+        }
 
 
-        .footer {grid-area: ft;}
+        .footer {
+            grid-area: ft;
+        }
 
         .wrapper {
 
@@ -50,28 +58,28 @@
 
             /*Insert background image here*/
 
-             margin: auto;
+            margin: auto;
             margin-top: 50px;
             padding-top: 10px;
 
             display: grid;
             grid-template-columns: 50% 50%;
 
-            grid-template-areas: 
+            grid-template-areas:
                 "hd hd"
                 "tbx tbx"
                 "ibx ibx"
                 "itbx itbx"
                 "ft ft";
-                gap: 10px;
+            gap: 10px;
         }
 
-        .txtBxBtn{
+        .txtBxBtn {
 
             background-color: aquamarine;
         }
 
-        #start{
+        #start {
 
             background-color: black;
             color: white;
@@ -79,99 +87,87 @@
 
         }
 
-        .col2{
+        .col2 {
 
             background-image: "images/Room1.png";
         }
-        
-
-
-
-
     </style>
 </head>
 
 <body>
+    <div wrapper="wrapper">
 
-<div class = "col1">
+        <div id="col1">
+            <h1>Common Room</h1>
 
-    <div class="header">
+            <!-- The main photo  -->
+            <div id="main" class="showMe">
+                <img class="centre" src="images/Room1.png" style="width:90%;" alt="Common Room" />
+            </div>
 
-        <p>Welcome to the Game</p>
-        <p>Menu Bar</p>
-        <button id="previousRoom" onclick="previousRoom()">Previous Room</button>
-        <button id="nextRoom" onclick="nextRoom()">Next Room</button>
-        <button id="start" onclick="start()">Start</button>
-        <button id="show" onclick="show()">Show</button>
+            <!-- Different endings -->
+            <div id="jump" class="hideMe">
+                <img class="centre" src="images/Airlock.png" style="width:90%;" alt="Airlock Endcard" />
+            </div>
+        </div>
 
-    </div>
+        <!-- column 2 - where the buttons go -->
+        <div id="col2" class="showMe">
 
-    <div class="textBox">
+            <h1>Common Room</h1>
 
+            <div id="RoomButtons">
 
-        <div class = "p2">
+                <button onclick="nextRoom();">Next Room</button>
 
-            <p id = "textOutput">Please Press the start buttton to begin the game.
-                This just manually triggers what will be an onload method for testing purposes.
-            </p>
-           <!-- <button id="nextP2" class = "txtBxBtn" onclick="next()">Next</button>  -->
+            </div>
 
+            <div id="Room1Buttons">
+
+                <p>Would you like to 'Look Around' or try and 'Turn On' the lights?</p>
+                <br>
+
+                <button id="start" onclick="start()">Start</button>
+                <button id="show" onclick="show()">Show</button>
+                <button id="spanner" onclick="spanner()">Examine Spanner</button>
+                <button id="door1" onclick="door1()">Look at door 1</button>
+                <button id="door2" onclick="door2()">Try door 2</button>
+                <button id="airlock" onclick="airlock()">Jump out the Airlock</button>
+                <button id="lookAround" onclick="lookAround()">Look Around</button>
+                <button id="turnOn" onclick="turnOn()">Turn On Torch</button>
+                <button id="goDoor1" onclick="goDoor1()">Enter Through Door 1</button>
+                <button id="goDoor2" onclick="goDoor2()">Enter Through Door 2</button>
+
+            </div>
         </div>
     </div>
 
-    <div class="interactionBox">
 
-        <p id = "instructingText"> Would you like to 'Look Around' or try and 'Turn On' the lights?</p>
-
-        <button id="spanner" onclick="spanner()">Examine Spanner</button>
-        <button id="door1" onclick="door1()">Look at door 1</button>
-        <button id="door2" onclick="door2()">Try door 2</button>
-        <button id="airlock" onclick="airlock()">Jump out the Airlock</button>
-        <button id="lookAround" onclick="lookAround()">Look Around</button>
-        <button id="turnOn" onclick="turnOn()">Turn On Torch</button>
-        <button id="goDoor1" onclick="goDoor1()">Enter Through Door 1</button>
-        <button id="goDoor2" onclick="goDoor2()">Enter Through Door 2</button>
-       
+    <!--<div class="textBox">
 
 
-        <form id = "inputForm" onsubmit = "input()">
+        <div class="p2">
 
-            <input id="text" type = "text" name = "userInput">
-            <br>
-            <input class="button" id="submit" type = "submit">
-            
-        </form>
+            <p id="textOutput">Please Press the start buttton to begin the game.
+                This just manually triggers what will be an onload method for testing purposes.
+            </p>
+             <button id="nextP2" class = "txtBxBtn" onclick="next()">Next</button> 
+
+        </div>
+    </div> -->
+
+
+
+
+
+    <form id="inputForm" onsubmit="input()">
+
+        <input id="text" type="text" name="userInput">
+        <br>
+        <input class="button" id="submit" type="submit">
+
+    </form>
     </div>
-
-
-    <div class="itemBox">
-
-        <p>This is where we can add the item images and javascript to make them work</p>
-
-
-
-
-    </div>
-
-    <div class="footer">
-        <p>Inventory</p>
-    </div>
-
-    </div>
-
-    <div class = "col2">
-
-        
-    </div>
-
-    
-
-    <div class="wrapper">
-
-
-    </div>
-
-
 
 
 
@@ -182,43 +178,43 @@
 
         //text for screen functions
 
-        function startingText(){
+        function startingText() {
 
             document.getElementById("textOutput").innerHTML = "Welcome to the Spaceship. For the immediacy, you have 2 options, either look around the 'room?' you seem to be in, or attemp to turn on your torch.";
-         }
+        }
 
-         function textUpdateLookAround(){
+        function textUpdateLookAround() {
 
             document.getElementById("textOutput").innerHTML = "Looking Around You see the outline of 2 doors <br> an airlock <br> and a ...'add other item here'";
         }
 
-        function textUpdateLookAroundPostTorch(){
+        function textUpdateLookAroundPostTorch() {
 
             document.getElementById("textOutput").innerHTML = "Looking Around You see the outline of 2 doors <br> an airlock <br> and a ...'add other item here'";
         }
 
-        function textUpdateExamineSpanner(){
+        function textUpdateExamineSpanner() {
 
             document.getElementById("textOutput").innerHTML = "Add  'item' to Inventory";
         }
 
-        function textUpdateLookAtDoor1(){
+        function textUpdateLookAtDoor1() {
 
-             document.getElementById("textOutput").innerHTML = "You find the door is open.";
-             document.getElementById("instructingText").innerHTML = "You may now progress through the door, or retrun to looking around";
+            document.getElementById("textOutput").innerHTML = "You find the door is open.";
+            document.getElementById("instructingText").innerHTML = "You may now progress through the door, or retrun to looking around";
         }
 
-        function textUpdateTryDoor2(){
+        function textUpdateTryDoor2() {
 
             document.getElementById("textOutput").innerHTML = "Open, Procede to new room.";
         }
 
-        function textUpdateAirlock(){
+        function textUpdateAirlock() {
 
             document.getElementById("textOutput").innerHTML = "Well done, you chose death, Goodbye!";
         }
 
-        function textUpdateTurnOn(){
+        function textUpdateTurnOn() {
 
             document.getElementById("textOutput").innerHTML = "Torch On Successfully";
             document.getElementById("instructingText").innerHTML = "I suggest you begin looking around.";
@@ -230,7 +226,7 @@
         //Functions Connected to Buttons
         //
         //
-       
+
 
         function spanner() {
 
@@ -243,14 +239,14 @@
             var d = document.getElementById("airlock");
             var e = document.getElementById("lookAround");
             var f = document.getElementById("turnOn");
-           
-           
-                a.style.display = "none";
-                b.style.display = "initial";
-                c.style.display = "initial";
-                d.style.display = "initial";
-                e.style.display = "none";
-                f.style.display = "initial";
+
+
+            a.style.display = "none";
+            b.style.display = "initial";
+            c.style.display = "initial";
+            d.style.display = "initial";
+            e.style.display = "none";
+            f.style.display = "initial";
         }
 
         function door1() {
@@ -267,30 +263,30 @@
             var f = document.getElementById("turnOn");
             var g = document.getElementById("goDoor1");
             var h = document.getElementById("goDoor2");
-           
 
-            
-                x.style.display = "none";
-                y.style.display = "none";
-                a.style.display = "none";
-                b.style.display = "none";
-                c.style.display = "none";
-                d.style.display = "none";
-                e.style.display = "initial";
-                f.style.display = "none";
-                g.style.display = "initial";
-                h.style.display = "none";
-                
-          
+
+
+            x.style.display = "none";
+            y.style.display = "none";
+            a.style.display = "none";
+            b.style.display = "none";
+            c.style.display = "none";
+            d.style.display = "none";
+            e.style.display = "initial";
+            f.style.display = "none";
+            g.style.display = "initial";
+            h.style.display = "none";
+
+
         }
 
-        function goDoor1(){
+        function goDoor1() {
 
             jumpToRoom2();
 
         }
 
-       
+
         function door2() {
 
             textUpdateTryDoor2();
@@ -305,27 +301,27 @@
             var f = document.getElementById("turnOn");
             var g = document.getElementById("goDoor1");
             var h = document.getElementById("goDoor2");
-           
 
-            
-                x.style.display = "none";
-                y.style.display = "none";
-                a.style.display = "none";
-                b.style.display = "none";
-                c.style.display = "none";
-                d.style.display = "none";
-                e.style.display = "initial";
-                f.style.display = "none";
-                g.style.display = "none";
-                h.style.display = "initial";
-                
-           
+
+
+            x.style.display = "none";
+            y.style.display = "none";
+            a.style.display = "none";
+            b.style.display = "none";
+            c.style.display = "none";
+            d.style.display = "none";
+            e.style.display = "initial";
+            f.style.display = "none";
+            g.style.display = "none";
+            h.style.display = "initial";
+
+
         }
 
-        function goDoor2(){
+        function goDoor2() {
 
             jumpToRoom3();
-            
+
         }
 
 
@@ -336,7 +332,7 @@
             textUpdateAirlock();
         }
 
-        function jumpToRoom3(){
+        function jumpToRoom3() {
 
             window.location.replace("Room3.html")
         }
@@ -357,41 +353,41 @@
             window.alert("You pick up the Siccsors");
         }
 
-        
-        function lookAround(){
 
-            if(torchState == 0){
+        function lookAround() {
+
+            if (torchState == 0) {
 
 
-           textUpdateLookAround();
-            
-            var a = document.getElementById("spanner");
-            var b = document.getElementById("door1");
-            var c = document.getElementById("door2");
-            var d = document.getElementById("airlock");
-            var e = document.getElementById("lookAround");
-            var f = document.getElementById("turnOn");
-           
-           
+                textUpdateLookAround();
+
+                var a = document.getElementById("spanner");
+                var b = document.getElementById("door1");
+                var c = document.getElementById("door2");
+                var d = document.getElementById("airlock");
+                var e = document.getElementById("lookAround");
+                var f = document.getElementById("turnOn");
+
+
                 a.style.display = "initial";
                 b.style.display = "initial";
                 c.style.display = "initial";
                 d.style.display = "initial";
                 e.style.display = "none";
                 f.style.display = "initial";
-            }else if(torchState == 1){
+            } else if (torchState == 1) {
 
-                
+
                 textUpdateLookAroundPostTorch();
-            
-            var a = document.getElementById("spanner");
-            var b = document.getElementById("door1");
-            var c = document.getElementById("door2");
-            var d = document.getElementById("airlock");
-            var e = document.getElementById("lookAround");
-            var f = document.getElementById("turnOn");
-           
-           
+
+                var a = document.getElementById("spanner");
+                var b = document.getElementById("door1");
+                var c = document.getElementById("door2");
+                var d = document.getElementById("airlock");
+                var e = document.getElementById("lookAround");
+                var f = document.getElementById("turnOn");
+
+
                 a.style.display = "initial";
                 b.style.display = "initial";
                 c.style.display = "initial";
@@ -400,19 +396,19 @@
                 f.style.display = "none";
 
 
-            }else{
+            } else {
 
                 window.alert("The Torch Has Lost Its Batteries, Errors Have Occured")
             }
-               
+
 
         }
-        
 
-        function turnOn(){
 
-          textUpdateTurnOn();
-          turnTorchOn();
+        function turnOn() {
+
+            textUpdateTurnOn();
+            turnTorchOn();
 
             var x = document.getElementById("nextRoom");
             var y = document.getElementById("previousRoom");
@@ -422,21 +418,21 @@
             var d = document.getElementById("airlock");
             var e = document.getElementById("lookAround");
             var f = document.getElementById("turnOn");
-           
 
-            
-                x.style.display = "none";
-                y.style.display = "none";
-                a.style.display = "none";
-                b.style.display = "none";
-                c.style.display = "none";
-                d.style.display = "none";
-                e.style.display = "initial";
-                f.style.display = "none";
+
+
+            x.style.display = "none";
+            y.style.display = "none";
+            a.style.display = "none";
+            b.style.display = "none";
+            c.style.display = "none";
+            d.style.display = "none";
+            e.style.display = "initial";
+            f.style.display = "none";
 
         }
 
-        function start(){
+        function start() {
 
             startingText();
 
@@ -450,25 +446,25 @@
             var f = document.getElementById("turnOn");
             var g = document.getElementById("goDoor1");
             var h = document.getElementById("goDoor2");
-           
 
-            
-                x.style.display = "none";
-                y.style.display = "none";
-                a.style.display = "none";
-                b.style.display = "none";
-                c.style.display = "none";
-                d.style.display = "none";
-                e.style.display = "initial";
-                f.style.display = "initial";
-                g.style.display = "none";
-                h.style.display = "none";
-                
-                   
+
+
+            x.style.display = "none";
+            y.style.display = "none";
+            a.style.display = "none";
+            b.style.display = "none";
+            c.style.display = "none";
+            d.style.display = "none";
+            e.style.display = "initial";
+            f.style.display = "initial";
+            g.style.display = "none";
+            h.style.display = "none";
+
+
 
         }
 
-        function show(){
+        function show() {
 
             var x = document.getElementById("nextRoom");
             var y = document.getElementById("previousRoom");
@@ -480,19 +476,19 @@
             var f = document.getElementById("previousRoom");
             var g = document.getElementById("goDoor1");
             var h = document.getElementById("goDoor2");
-           
 
-            
-                x.style.display = "initial";
-                y.style.display = "initial";
-                a.style.display = "initial";
-                b.style.display = "initial";
-                c.style.display = "initial";
-                d.style.display = "initial";
-                e.style.display = "initial";
-                f.style.display = "initial";
-                g.style.display = "initial";
-                h.style.display = "initial";
+
+
+            x.style.display = "initial";
+            y.style.display = "initial";
+            a.style.display = "initial";
+            b.style.display = "initial";
+            c.style.display = "initial";
+            d.style.display = "initial";
+            e.style.display = "initial";
+            f.style.display = "initial";
+            g.style.display = "initial";
+            h.style.display = "initial";
 
 
         }
@@ -503,32 +499,32 @@
         //
         //
 
-        function input(){
+        function input() {
 
-                let x = document.forms["inputForm"]["userInput"].value;
+            let x = document.forms["inputForm"]["userInput"].value;
 
-                if (x == "Look Around"){
+            if (x == "Look Around") {
                 // window.alert("Call Method to trigger look around method");
-                    lookAround();
-                }else if (x == "Turn On"){
-                    
-                    turnOn();
-                }else{
-                    window.alert("Invalid Response, maybe try one of the suggested Prompts");
-                }
+                lookAround();
+            } else if (x == "Turn On") {
+
+                turnOn();
+            } else {
+                window.alert("Invalid Response, maybe try one of the suggested Prompts");
             }
+        }
 
-            var torchState = 0;
+        var torchState = 0;
 
-            function turnTorchOn(){
+        function turnTorchOn() {
 
-                window.alert("Turn torch on,once torch is made");
-                torchState = torchState + 1;
-            }
+            window.alert("Turn torch on,once torch is made");
+            torchState = torchState + 1;
+        }
 
-            
 
-           
+
+
 
 
     </script>
