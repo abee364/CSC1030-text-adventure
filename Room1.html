@@ -52,13 +52,13 @@
             grid-area: ft;
         }
 
-       /* .wrapper {
+        /* .wrapper {
 
             color: black;
 
             /*Insert background image here*/
 
-            /*
+        /*
 
             margin: auto;
             margin-top: 50px;
@@ -97,85 +97,74 @@
 </head>
 
 <body>
-   <!-- <div class = "wrapper"> -->
+    <div class="wrapper">
 
-        <div id ="col1" class = "showMe">
+        <div id="col1" class="showMe">
 
-           
+
             <!-- The main photo  -->
-                <div id = "backgroundImg" class="showMe">
-                    <img class="centre" src="images/Room1.png" style="width:90%;" alt="Common Room" />
-                </div>
+            <div id="backgroundImg" class="showMe">
+                <img class="centre" src="images/Room1.png" style="width:90%;" alt="Common Room" />
+            </div>
 
-                <!-- Different endings -->
-                <div id= "airlockImg" class="hideMe">
-                    <img class="centre" src="images/Airlock.png" style="width:90%;" alt="Airlock Endcard" />
-                </div>
-         </div>
-
-       
-             <div id="col2" class="showMe">
-
-                    <div class = "header">
-
-                        <h1>Room 1</h1>
-
-                    
-
-                        <button onclick="nextRoom();">Next Room</button>
-                        <button onclick = "previousRoom();">Previous Room</button>
-                        <button id="start" onclick="start()">Start</button>
-                        <button id="show" onclick="show()">Show</button>
-
-                    </div>
-
-                    <div class="textBox">
-
-                            <p id = "textOutput">Please Press the start buttton to begin the game.
-                                This just manually triggers what will be an onload method for testing purposes.
-                            </p>
-                        
-                    </div>
-
-                    <div class="interactionBox">
-
-                        <p id = "instructingText"> Would you like to 'Look Around' or try and 'Turn On' the lights?</p>
-
-                        <button id="spanner" onclick="spanner()">Examine Spanner</button>
-                        <button id="door1" onclick="door1()">Look at door 1</button>
-                        <button id="door2" onclick="door2()">Try door 2</button>
-                        <button id="airlock" onclick="airlock()">Jump out the Airlock</button>
-                        <button id="lookAround" onclick="lookAround()">Look Around</button>
-                        <button id="turnOn" onclick="turnOn()">Turn On Torch</button>
-                        <button id="goDoor1" onclick="goDoor1()">Enter Through Door 1</button>
-                        <button id="goDoor2" onclick="goDoor2()">Enter Through Door 2</button>
-                    
+            <!-- Different endings -->
+            <div id="airlockImg" class="hideMe">
+                <img class="centre" src="images/Airlock.png" style="width:90%;" alt="Airlock Endcard" />
+            </div>
+        </div>
 
 
-                        <form id = "inputForm" onsubmit = "input()">
+        <div id="col2" class="showMe">
 
-                            <input id="text" type = "text" name = "userInput">
-                            <br>
-                            <input class="button" id="submit" type = "submit">
-                            
-                        </form>
-                    </div>
+            <div class="header">
+
+                <h1>Room 1</h1>
 
 
-                    <div class="itemBox">
 
-                        <p>This is where we can add the item images and javascript to make them work</p>
-
-                    </div>
-
-                    <div class="footer">
-                        <p>Inventory</p>
-                    </div>
+                <button onclick="nextRoom();">Next Room</button>
+                <button onclick="previousRoom();">Previous Room</button>
+                <button id="start" onclick="start()">Start</button>
+                <button id="show" onclick="show()">Show</button>
 
             </div>
-    <!-- </div>-->
 
-    
+            <div class="textBox">
+
+                <p id="textOutput">Please Press the start buttton to begin the game.
+                    This just manually triggers what will be an onload method for testing purposes.
+                </p>
+
+            </div>
+
+            <div class="interactionBox">
+
+                <p id="instructingText"> Would you like to 'Look Around' or try and 'Turn On' the lights?</p>
+
+                <button id="spanner" onclick="spanner()">Examine Spanner</button>
+                <button id="door1" onclick="door1()">Look at door 1</button>
+                <button id="door2" onclick="door2()">Try door 2</button>
+                <button id="airlock" onclick="airlock()">Jump out the Airlock</button>
+                <button id="lookAround" onclick="lookAround()">Look Around</button>
+                <button id="turnOn" onclick="turnOn()">Turn On Torch</button>
+                <button id="goDoor1" onclick="goDoor1()">Enter Through Door 1</button>
+                <button id="goDoor2" onclick="goDoor2()">Enter Through Door 2</button>
+
+
+
+                <form id="inputForm" onsubmit="input()">
+
+                    <input id="text" type="text" name="userInput">
+                    <br>
+                    <input class="button" id="submit" type="submit">
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+
 
 
 
