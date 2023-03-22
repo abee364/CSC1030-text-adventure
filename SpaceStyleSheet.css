@@ -30,6 +30,15 @@
             background-color: #222629;
         }
 
+        .wrapper {
+            width: 95%;
+            margin: 50px auto 0px;
+            padding: 50px 0px 50px;
+            ;
+            overflow: auto;
+            background-color: #222629;
+        }
+
         .centre {
             display: block;
             margin: auto;
