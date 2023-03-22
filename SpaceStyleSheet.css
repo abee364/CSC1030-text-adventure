@@ -111,9 +111,75 @@
           }
 
         /**---------------------------------Room 1 Specific CSS----------------------------------------**/
-        /*.col1{
+        .col1{
+
             background-image: "images/Room1.png";
-        }*/
+        }
+
+        .header{grid-area: hd;}
+        .textBox {grid-area: tbx;
+        
+            text-align: center;
+            background-color: rgba(245, 163, 11, 0.8);
+           
+            border: thick;
+            border-color: pink;
+
+            padding: 3%;
+
+            margin-left: 5%;
+            margin-right: 5%;
+            margin-top: 3%;
+            margin-bottom: 3%;
+        }
+        .interactionBox {grid-area: ibx;
+            text-align: center;
+            background-color: rgba(67, 236, 219, 0.8);
+            border: thick;
+            border-color: pink;
+            margin-left: 5%;
+            margin-right: 5%;
+            margin-top: 3%;
+            margin-bottom: 3%;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        .itemBox {grid-area: itbx; }
+        .footer {grid-area: ft;}
+        
+
+        .wrapper {
+            color: black;
+            /*Insert background image here*/
+
+            margin: auto;
+            margin-top: 50px;
+            padding-top: 10px;
+
+            display: grid;
+            grid-template-columns: 50% 50%;
+
+            grid-template-areas: 
+                "hd hd"
+                "tbx tbx"
+                "ibx ibx"
+                "itbx itbx"
+                "ft ft";
+                gap: 10px;
+        }
+
+        .txtBxBtn{
+
+            background-color: aquamarine;
+        }
+
+        #start{
+
+            background-color: black;
+            color: white;
+            text-align: center;
+
+        }
 
         /**---------------------------------Room 2 Specific CSS----------------------------------------**/
         .RoomButtons {
