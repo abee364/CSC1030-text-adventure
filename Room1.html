@@ -112,62 +112,70 @@
          </div>
 
        
-        <div id="col2" class="showMe">
+             <div id="col2" class="showMe">
 
-            <div class = "header">
+                    <div class = "header">
 
-                <h1>Room 1</h1>
+                        <h1>Room 1</h1>
 
-            
+                    
 
-                <button onclick="nextRoom();">Next Room</button>
-                <button onclick = "previousRoom();">Previous Room</button>
-                <button id="start" onclick="start()">Start</button>
-                <button id="show" onclick="show()">Show</button>
+                        <button onclick="nextRoom();">Next Room</button>
+                        <button onclick = "previousRoom();">Previous Room</button>
+                        <button id="start" onclick="start()">Start</button>
+                        <button id="show" onclick="show()">Show</button>
+
+                    </div>
+
+                    <div class="textBox">
+
+                            <p id = "textOutput">Please Press the start buttton to begin the game.
+                                This just manually triggers what will be an onload method for testing purposes.
+                            </p>
+                        
+                    </div>
+
+                    <div class="interactionBox">
+
+                        <p id = "instructingText"> Would you like to 'Look Around' or try and 'Turn On' the lights?</p>
+
+                        <button id="spanner" onclick="spanner()">Examine Spanner</button>
+                        <button id="door1" onclick="door1()">Look at door 1</button>
+                        <button id="door2" onclick="door2()">Try door 2</button>
+                        <button id="airlock" onclick="airlock()">Jump out the Airlock</button>
+                        <button id="lookAround" onclick="lookAround()">Look Around</button>
+                        <button id="turnOn" onclick="turnOn()">Turn On Torch</button>
+                        <button id="goDoor1" onclick="goDoor1()">Enter Through Door 1</button>
+                        <button id="goDoor2" onclick="goDoor2()">Enter Through Door 2</button>
+                    
+
+
+                        <form id = "inputForm" onsubmit = "input()">
+
+                            <input id="text" type = "text" name = "userInput">
+                            <br>
+                            <input class="button" id="submit" type = "submit">
+                            
+                        </form>
+                    </div>
+
+
+                    <div class="itemBox">
+
+                        <p>This is where we can add the item images and javascript to make them work</p>
+
+                    </div>
+
+                    <div class="footer">
+                        <p>Inventory</p>
+                    </div>
 
             </div>
+    </div>
+
+    
 
 
-          
-            <div class = "interactionBox">
-            
-
-                <p>Would you like to 'Look Around' or try and 'Turn On' the lights?</p>
-                <br>
-
-                
-                <button id="spanner" onclick="spanner()">Examine Spanner</button>
-                <button id="door1" onclick="door1()">Look at door 1</button>
-                <button id="door2" onclick="door2()">Try door 2</button>
-                <button id="airlock" onclick="airlock()">Jump out the Airlock</button>
-                <button id="lookAround" onclick="lookAround()">Look Around</button>
-                <button id="turnOn" onclick="turnOn()">Turn On Torch</button>
-                <button id="goDoor1" onclick="goDoor1()">Enter Through Door 1</button>
-                <button id="goDoor2" onclick="goDoor2()">Enter Through Door 2</button>
-
-           
-            </div>
-
-
-
-            <div class="textBox">
-
-                <p id="textOutput">Please Press the start buttton to begin the game.
-                    This just manually triggers what will be an onload method for testing purposes.
-                </p>
-         
-            </div>
-
-
-            <div class="footer">
-
-                <p>Inventory</p>
-        
-            </div>
-
-
-
-        </div>
 
 
 
@@ -245,6 +253,8 @@
             e.style.display = "none";
             f.style.display = "initial";
         }
+
+        var locked;
 
         function door1() {
 
