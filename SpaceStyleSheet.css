@@ -170,6 +170,36 @@
         }
 
         /**---------------------------------Room 2 Specific CSS----------------------------------------**/
+        .RoomButtons {
+            margin: 3%;
+        }
+
+        #colours {
+            height: 10em;
+            width: 10em;
+            display: inline-block;
+            margin: auto
+        }
+
+        .colourGreen {
+            background-color: #1e7021;
+            border-radius: 10em 10em 10em 10em;
+        }
+
+        .colourRed {
+            background-color: #630e0e;
+            border-radius: 10em 10em 10em 10em;
+        }
+
+        .colourBlue {
+            background-color: #202257;
+            border-radius: 10em 10em 10em 10em;
+        }
+
+        .colourYellow {
+            background-color: #7a7a14;
+            border-radius: 10em 10em 10em 10em;
+        }
 
         /**---------------------------------Room 3 Specific CSS----------------------------------------**/
 
