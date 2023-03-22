@@ -8,60 +8,7 @@
         <link rel="stylesheet" href="SpaceStyleSheet.css">
 
 
-        <script type="text/javascript">
-            //setting values
-            var difficulty;
-            const submit = document.getElementById('submit');
-            let timeRem = 300;
-            let timer;
 
-            function startGame() {
-                //Collecting the name value
-                var name = document.getElementById('name').value;
-                var output =
-                    '<h2>' +
-                    'Welcome ' + name + '! To the game.' +
-                    '<h2>'
-                    ;
-                document.getElementById('welcome').innerHTML = output;
-
-                //Making the start menu dissapear (although if we are switching to different page we may not need this)
-                document.getElementById('start').style.display = 'none';
-
-                //Setting the difficulty and changing the timer per difficulty
-                var difficultySelect = document.getElementById('difficulty');
-                var difficultyStr = "";
-                for (var i = 0; i < difficultySelect.length; i++) {
-                    if (difficultySelect[i].selected) {
-                        difficultyStr = difficultySelect[i].value;
-                        break;
-                    }
-                }
-                switch (difficultyStr) {
-                    case 'easy': timeRem = 300; break;
-                    case 'medium': timeRem = 250; break;
-                    case 'hard': timeRem = 200; break;
-
-                }
-            }
-
-            //Starts the timer
-            function startTimer() {
-                document.getElementById('timerText').innerHTML = timeRem;
-                timer = setInterval(countdown, 1000);
-            }
-            //Manages the countdown of the timer
-            function countdown() {
-                if (timeRem > 0) {
-                    timeRem--;
-                    document.getElementById('timerText').innerHTML = timeRem;
-                } else {
-                    clearInterval(timer);
-                    document.getElementById('timerText').innerHTML = 'END';
-                    timeRem = 10;
-                }
-            }
-        </script>
     </head>
 
     <body>
@@ -90,6 +37,61 @@
             <!-- Printing characters name -->
             <span id="welcome"></span>
             <h1>Time Remaining: <span id="timerText">?</span></h1>
+
+            <script type="text/javascript">
+                //setting values
+                var difficulty;
+                const submit = document.getElementById('submit');
+                let timeRem = 300;
+                let timer;
+
+                function startGame() {
+                    //Collecting the name value
+                    var name = document.getElementById('name').value;
+                    var output =
+                        '<h2>' +
+                        'Welcome ' + name + '! To the game.' +
+                        '<h2>'
+                        ;
+                    document.getElementById('welcome').innerHTML = output;
+
+                    //Making the start menu dissapear (although if we are switching to different page we may not need this)
+                    document.getElementById('start').style.display = 'none';
+
+                    //Setting the difficulty and changing the timer per difficulty
+                    var difficultySelect = document.getElementById('difficulty');
+                    var difficultyStr = "";
+                    for (var i = 0; i < difficultySelect.length; i++) {
+                        if (difficultySelect[i].selected) {
+                            difficultyStr = difficultySelect[i].value;
+                            break;
+                        }
+                    }
+                    switch (difficultyStr) {
+                        case 'easy': timeRem = 300; break;
+                        case 'medium': timeRem = 250; break;
+                        case 'hard': timeRem = 200; break;
+
+                    }
+                }
+
+                //Starts the timer
+                function startTimer() {
+                    document.getElementById('timerText').innerHTML = timeRem;
+                    timer = setInterval(countdown, 1000);
+                }
+                //Manages the countdown of the timer
+                function countdown() {
+                    if (timeRem > 0) {
+                        timeRem--;
+                        document.getElementById('timerText').innerHTML = timeRem;
+                    } else {
+                        clearInterval(timer);
+                        document.getElementById('timerText').innerHTML = 'END';
+                        timeRem = 10;
+                    }
+                }
+            </script>
 
         </div>
 
