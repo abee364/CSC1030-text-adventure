@@ -36,7 +36,7 @@
         }
 
         /**This is for the main room images on the right **/
-        .col1 {
+        #col1 {
             width: 70%;
             float: left;
             text-align: center;
@@ -44,7 +44,7 @@
         }
 
         /**This is for the user options on the left **/
-        .col2 {
+        #col2 {
             width: 30%;
             float: left;
             padding: 5px;
@@ -78,14 +78,7 @@
         }
 
         /**For buttons**/
-        button {
-            /*border-radius: 10px;*/
-            /*padding: 5px 5px;*/
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: rgb(226, 226, 226);
-        }
+               
         .button {
             background-color: orange;
             border: black 2px solid;
