@@ -78,6 +78,18 @@
         }
 
         /**For buttons**/
+
+        button {
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            transition-duration: 0.5s;
+            background-color: rgb(202, 201, 201);
+          }
                
         .button {
             background-color: orange;
@@ -89,26 +101,17 @@
             display: inline-block;
             font-size: 16px;
             font-family: verdana, sans-serif;
-            transition-duration: 0.5s;
             cursor: pointer;
         }
 
         .button:hover {
             background-color: rgb(253, 197, 92);
+            transition-duration: 0.5s;
             color: black;
           }
 
         /**---------------------------------Room 1 Specific CSS----------------------------------------**/
-        /*.col2{
 
-            background-image: "images/Room1.png";
-        }*/
-
-       
-      
-
-
-       
 
         /**---------------------------------Room 2 Specific CSS----------------------------------------**/
         .RoomButtons {
