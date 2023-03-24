@@ -9,29 +9,6 @@
 
     <style>
 
-        /* .memory:before {
-            position: absolute;
-            content: "";
-            background-color: #101010;
-            height: 13.75em;
-            width: 13.75em;
-            z-index: 1;
-            transform: translate(-50%, -50%);
-            top: 50%;
-            left: 50%;
-            border-radius: 50%;
-        } */
-
-        #count {
-            background-color: #ffffff;
-            font-size: 3em;
-            height: 2em;
-            width: 3em;
-            place-items: center;
-            border-radius: 0.3em;
-            display: block;
-            margin: auto;
-        }
     </style>
 </head>
 
@@ -48,17 +25,14 @@
             </div>
 
             <!-- Memory Game  -->
-            <div id="memory" class="hideMe">
-                <br>
-                <div id="count">00</div>
+            <div class="memoryGame hideMe">
+                <div id="score">0</div>
                 <br><br>
-                <div id="colours" class="colourGreen"></div>
-                <div id="colours" class="colourRed"></div>
-                <div id="colours" class="colourBlue"></div>
-                <div id="colours" class="colourYellow"></div>
-
+                <div class="colourGreen AllColours"></div>
+                <div class="colourRed AllColours"></div>
+                <div class="colourBlue AllColours"></div>
+                <div class="colourYellow AllColours"></div>
             </div>
-
         </div>
 
 
@@ -71,32 +45,34 @@
             </div>
             <h4>What do you want to do?</h4>
             <br>
-            <button onclick="crowbarDoor();" class="button">Try crowbar on door</button>
-            <button onclick="crowbarPickup();" class="button">Pick up crowbar</button>
-            <button onclick="lever();" class="button">Flick Lever</button>
-            <button onclick="memoryGame();" class="button">Examine podium</button>
-            <button onclick="" class="button">Try crowbar on door</button>
+            <div id="options">
+                <p id="output" class="hideMe">Probably dont need</p>
+                <button onclick="crowbarDoor();" class="button">Try crowbar on door</button>
+                <button onclick="crowbarPickup();" class="button">Pick up crowbar</button>
+                <button onclick="lever();" class="button">Flick Lever</button>
+                <button onclick="setupGame();" id="podium" class="button">Examine podium</button>
+                <button onclick="" class="button">Try crowbar on door</button>
+            </div>
         </div>
     </div>
 
     <script>
         let crowbar = 0;
         function nextRoom() {
-
-            window.location.replace("Room4.html")
+            if (score >= 7) {
+                window.location.replace("Room4.html")
+            } else {
+                alert("You need to do the memory game first.")
+            }
         }
 
         function previousRoom() {
-
-            window.location.replace("Room2.html")
+            window.location.replace("Room1.html")
         }
 
         function crowbarPickup() {
             crowbar = 1;
             window.alert("You picked up the crowbar.");
-
-
-
         }
 
         function crowbarDoor() {
@@ -115,108 +91,123 @@
 
         }
 
-        const colors = {
+        const scoreValue = document.getElementById("score");
+        const AllColours = document.querySelectorAll(".AllColours");
+        const options = document.getElementById("options");
+        const PodiumButton = document.querySelector("#podium");
+        const output = document.querySelector("#output");
+        const memoryGame = document.querySelector(".memoryGame");
+        const room3Pic = document.getElementById("room3")
+        const colours = {
             colourGreen: {
-                current: "1e7021",
+                currentColour: "#19581b",
                 new: "#1fbf24",
             },
             colourRed: {
-                current: "#630e0e",
+                currentColour: "#630e0e",
                 new: "#d42020",
             },
-            colorBlue: {
-                current: "#202257",
+            colourBlue: {
+                currentColour: "#202257",
                 new: "#262bc7",
             },
-            colorYellow: {
-                current: "#7a7a14",
+            colourYellow: {
+                currentColour: "#7a7a14",
                 new: "#dbdb39",
-            }
+            },
+        };
+        let randomColours = [];
+        let randomizer = false;
+        let ClickNum, score = 0;
+
+        //
+        function setupGame() {
+            score = 0;
+            ClickNum = 0;
+            randomColours = [];
+            randomizer = false;
+            memoryGame.classList.remove("hideMe");
+            options.className ="hideMe";
+            room3Pic.className = "hideMe";
+            randomizerGenerate();
+        };
+        //Function to decide the sequence
+        function randomizerGenerate() {
+            randomColours.push(generateRandomValue(colours));
+            score = randomColours.length;
+            randomizer = true;
+            randomizerSequence(score);
         };
 
-        const colours = document.getElementById("colours");
-        let randomColour = [];
+        //Function to get a random value from object
+        function generateRandomValue(obj) {
+            let arr = Object.keys(obj);
+            return arr[Math.floor(Math.random() * arr.length)];
+        };
 
-
-        function memoryGame() {
-            randomColour = [];
-            let pathGeneratorBool = false;
-            let count,
-                clickCount = 0;
-            document.getElementById("memory").className = "showMe";
-            document.getElementById("room3").className = "hideMe";
-
-            //Function to decide the sequence
-            const pathGenerate = () => {
-                randomColors.push(generateRandomValue(colours));
-                count = randomColors.length;
-                pathGeneratorBool = true;
-                pathDecide(count);
-            };
-            //Function to get a random value from object
-            const generateRandomValue = (obj) => {
-                let arr = Object.keys(obj);
-                return arr[Math.floor(Math.random() * arr.length)];
-            };
-            //Function to play the sequence
-            const pathDecide = async (count) => {
-                countValue.innerText = count;
-                for (let i of randomColors) {
-                    let currentColor = document.querySelector(`.${i}`);
-                    await delay(500);
-                    currentColor.style.backgroundColor = `${colors[i]["new"]}`;
-                    await delay(600);
-                    currentColor.style.backgroundColor = `${colors[i]["current"]}`;
-                    await delay(600);
-                }
-                pathGeneratorBool = false;
-            };
-            //Delay for blink effect
-            async function delay(time) {
-                return await new Promise((resolve) => {
-                    setTimeout(resolve, time);
-                });
+        //Function to play the sequence
+        async function randomizerSequence(score) {
+            scoreValue.innerText = score;
+            for (let i of randomColours) {
+                let currentColours = document.querySelector(`.${i}`);
+                await delay(500);
+                currentColours.style.backgroundColor = `${colours[i]["new"]}`;
+                await delay(600);
+                currentColours.style.backgroundColor = `${colours[i]["currentColour"]}`;
+                await delay(400);
             }
-            //When user click on the colors
-            colorPart.forEach((element) => {
-                element.addEventListener("click", async (e) => {
-                    //if user clicks the same color then next level
-                    if (pathGeneratorBool) {
-                        return false;
-                    }
-                    if (e.target.classList[0] == randomColors[clickCount]) {
-                        //Color blick effect on click
-                        e.target.style.backgroundColor = `${colors[randomColors[clickCount]]["new"]
-                            }`;
-                        await delay(500);
-                        e.target.style.backgroundColor = `${colors[randomColors[clickCount]]["current"]
-                            }`;
-                        //User click
-                        clickCount += 1;
-                        //Next level if number of valid clicks == count
-                        if (clickCount == count) {
-                            clickCount = 0;
-                            pathGenerate();
-                        }
-                    } else {
-                        lose();
-                    }
-                });
+            randomizer = false;
+        };
+
+
+        //Delay for blink effect
+        async function delay(time) {
+            return await new Promise((resolve) => {
+                setTimeout(resolve, time);
             });
-            //Function when player executes wrong sequence
-            const lose = () => {
-                result.innerHTML = `<span> Your Score: </span> ${count}`;
-                result.classList.remove("hide");
-                container.classList.remove("hide");
-                wrapper.classList.add("hide");
-                startButton.innerText = "Play Again";
-                startButton.classList.remove("hide");
-            };
-
-
-
         }
+        //When user click on the colours
+        AllColours.forEach((element) => {
+            element.addEventListener("click", async (e) => {
+                //if user clicks the same colour then next level
+                if (randomizer) {
+                    return false;
+                }
+                if (e.target.classList[0] == randomColours[ClickNum]) {
+                    //colour blick effect on click
+                    e.target.style.backgroundColor = `${colours[randomColours[ClickNum]]["new"]
+                        }`;
+                    await delay(500);
+                    e.target.style.backgroundColor = `${colours[randomColours[ClickNum]]["currentColour"]
+                        }`;
+                    //User click
+                    ClickNum += 1;
+                    //Next level if number of valid clicks == score
+                    if (ClickNum == score && score != 7) {
+                        ClickNum = 0;
+                        randomizerGenerate();
+                    }
+                    if (score == 7) {
+                        alert("Woo you won")
+                        memoryGame.className = "hideMe";
+                    }
 
+                } else {
+                    lose();
+                }
+            });
+        });
+        // Function when player executes wrong sequence
+        const lose = () => {
+            output.innerHTML = `<span> Your Score: </span> ${score}`;
+            output.classList.remove("hideMe");
+            options.className = "showMe";
+            room3Pic.className = "showMe";
+            memoryGame.classList.add("hideMe");
+            // podiumButton.innerText = "Play Again";
+            podiumButton.classList.remove("hideMe");
+            
+        };
     </script>
 </body>
 
