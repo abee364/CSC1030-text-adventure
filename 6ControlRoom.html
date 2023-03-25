@@ -48,9 +48,10 @@
                 </p>
                 <br>
 
-                <button id="screen" onclick="screen()" class="button">Check out screen</button>
+                <button id="screenbutton" onclick="screen()" class="button">Check out screen</button>
                 <button id="fire" onclick="fire()" class="button">Put out fire</button>
                 <button id="riddle" onclick="riddle()" class="hideMe">Answer riddle</button>
+                <button id="back" onclick="back()" class="hideMe">Back</button>
 
             </div>
         </div>
@@ -62,11 +63,16 @@
         let extingusher = 0;
 
         function screen() {
-            /*Screen with way to turn on*/
+            /*Screen with way to turn on?*/
             document.getElementById('main').className = "hideMe";
             document.getElementById('screen').className = "showMe";
+            document.getElementById('screenbutton').className = "hideMe";
+            document.getElementById('fire').className = "hideMe";
             document.getElementById('riddle').className = "showMe";
             document.getElementById('riddle').className = "button";
+            document.getElementById('back').className = "showMe";
+            document.getElementById('back').className = "button";
+
         }
 
         function fire() {
@@ -77,6 +83,17 @@
             } else {
                 window.alert("You do not have anything to put the fire out with");
             }
+        }
+
+
+        function back() {
+            document.getElementById('main').className = "showMe";
+            document.getElementById('screen').className = "hideMe";
+            document.getElementById('screenbutton').className = "showMe button";
+            document.getElementById('fire').className = "showMe button";
+            document.getElementById('riddle').className = "hideMe";
+            
+
         }
 
         function previousRoom() {
