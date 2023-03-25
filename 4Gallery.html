@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Gallery</title>
+	<link rel="stylesheet" href="SpaceStyleSheet.css">
+</head>
+<style>
+	body {
+		background-size: cover;
+		background-attachment: fixed;
+	}
+
+	
+</style>
+
+<body>
+	<div id="wrapper">
+		<!-- Column 1 - Where the photo is  -->
+		<div id="col1">
+			<h1>Gallery</h1>
+
+			<!-- The main photo  -->
+			<div id="main" class="showMe">
+				<img class="centre" src="images/Room4.png" style="width:90%;" alt="Gallery" />
+			</div>
+		</div>
+		<div id="col2" class="showMe">
+
+			<h1>Gallery</h1>
+
+
+			<div id="Room5Buttons">
+
+				<p>You have reached a critical decision point. Attempt to save everyone or escape?</p>
+				<br>
+
+				<button id="escape-button" onclick="escape()">Escape</button>
+				<button id="save-button" onclick="save()">Save Everyone</button>
+
+			</div>
+		</div>
+	</div>
+
+	<script>
+		
+		function escape() {
+			// code to execute when Escape button is clicked
+			window.alert("You have chosen to escape! Into Room 5...");
+			window.location.href = "room5.html";
+		}
+		function save() {
+			// code to execute when Save Everyone button is clicked
+			window.alert("You have chosen to attempt to save everyone! Into Room 6...");
+			window.location.href = "room6.html";
+		}
+
+
+		function nextRoom() {
+
+			window.location.replace("Room5.html")
+		}
+
+
+		function previousRoom() {
+
+			window.location.replace("Room3.html")
+		}
+
+
+	</script>
+</body>
+
+</html>
