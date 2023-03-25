@@ -5,7 +5,7 @@
 
     <link rel="stylesheet" href="SpaceStyleSheet.css">
 
-    
+
 </head>
 
 <body>
@@ -31,16 +31,17 @@
 
             <h1>Escape Pod </h1>
 
-            
+
             <div id="Room5Buttons">
 
-                <p>“You have reached the escape pod, it seems to be fully functional.<br> I assume that you learnt how
+                <p id="presentOptions">“You have reached the escape pod, it seems to be fully functional.<br> I assume that you learnt how
                     to
                     fly it during your
                     training 'name'. Are you sure you want to leave the ship?” </p>
                 <br>
 
-                <button id="leave" class="button" onclick="leave()">Let’s get outta here! Push the button to take off</button>
+                <button id="leave" class="button" onclick="leave()">Let’s get outta here! Push the button to take
+                    off</button>
                 <button id="back" class="button" onclick="back()">Maybe I should go help the others…Go back</button>
 
             </div>
@@ -59,6 +60,7 @@
         }
 
         function back() {
+            document.getElementById("presentOptions").innerHTML = "The guilt overwhelmes you and you head back to fix the gas leak";
 
             window.alert("The guilt overwhelmes you and you head back to fix the gas leak");
             window.location.replace("4Gallery.html")
