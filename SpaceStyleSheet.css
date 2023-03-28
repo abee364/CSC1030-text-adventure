@@ -39,6 +39,7 @@
             padding-top: 5px;
             padding-bottom: 5px;
         }
+        
 
         /**this class is used to hide div's**/
         .hideMe {
@@ -178,26 +179,6 @@
             margin: 3%;
         }
 
-        /**---------------------------------Room 3 Specific CSS----------------------------------------**/
-
-
-        .memoryGame {
-            position: relative;
-            /* background  */
-            padding: 50px 50px 50px;
-            overflow: auto;
-            background-color: #505050;
-            border-radius: 10em;
-            margin: auto;
-        }
-
-        .AllColours {
-            height: 10em;
-            width: 10em;
-            display: inline-block;
-            margin: auto
-        }
-
         .colourGreen {
             background-color: #19581b;
             border-radius: 10em 10em 10em 10em;
@@ -216,6 +197,26 @@
         .colourYellow {
             background-color: #6c6c1a;
             border-radius: 10em 10em 10em 10em;
+        }
+
+        /**---------------------------------Room 3 Specific CSS----------------------------------------**/
+
+
+        .memoryGame {
+            position: relative;
+            /* background  */
+            padding: 50px 50px 50px;
+            overflow: auto;
+            background-color: #505050;
+            border-radius: 10em;
+            margin: auto;
+        }
+
+        .AllColours {
+            height: 10em;
+            width: 10em;
+            display: inline-block;
+            margin: auto
         }
 
         #score {
