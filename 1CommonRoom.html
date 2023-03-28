@@ -8,82 +8,18 @@
     <link rel="stylesheet" href="SpaceStyleSheet.css">
 
     <style>
-        .header {
-            grid-area: hd;
-        }
-
-        .textBox {
-            grid-area: tbx;
-
-            text-align: center;
-            background-color: rgba(245, 163, 11, 0.8);
-
-            border: thick;
-            border-color: pink;
-
-            padding: 3%;
-
-            margin-left: 5%;
-            margin-right: 5%;
-            margin-top: 3%;
-            margin-bottom: 3%;
-        }
-
-        .interactionBox {
-            grid-area: ibx;
-            text-align: center;
-            background-color: rgba(67, 236, 219, 0.8);
-            border: thick;
-            border-color: pink;
-            margin-left: 5%;
-            margin-right: 5%;
-            margin-top: 3%;
-            margin-bottom: 3%;
-            padding-top: 5px;
-            padding-bottom: 5px;
-        }
-
-        /* .wrapper {
-
-            color: black;
-
-            /*Insert background image here*/
-
         /*
-
-            margin: auto;
-            margin-top: 50px;
-            padding-top: 10px;
-
-            display: grid;
-            grid-template-columns: 50% 50%;
-
-            grid-template-areas:
-                "hd hd"
-                "tbx tbx"
-                "ibx ibx"
-                "itbx itbx"
-                "ft ft";
-            gap: 10px;
-        }*/
-
+        
         .txtBxBtn {
 
             background-color: aquamarine;
-        }
-
-        #start {
-
-            background-color: black;
-            color: white;
-            text-align: center;
-
         }
 
         .col2 {
 
             background-image: "images/Room1.png";
         }
+        */
     </style>
 </head>
 
@@ -109,14 +45,16 @@
 
             <div class="header">
 
-                <h1>Room 1</h1>
+                <h1 id="pagetitle">Room 1</h1>
 
-                    
+                    <div class="buttons_rm1">
 
                         <button onclick = "nextRoom();">Next Room</button>
                         <button onclick = "previousRoom();">Previous Room</button>
                         <button id="start" onclick="start()">Start</button>
                         <button id="show" onclick="show()">Show</button>
+                    
+                    </div>
 
             </div>
 
