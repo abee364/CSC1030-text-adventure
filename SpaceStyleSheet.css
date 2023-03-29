@@ -111,6 +111,8 @@
         /**For general text**/
         .p {
             color: white;
+            font-family: 'Courier New', Courier, monospace;
+            size: 20px;
         }
 
         /**This is for game output text, like telling the user a door is currently locked**/

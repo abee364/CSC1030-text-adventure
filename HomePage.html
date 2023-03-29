@@ -46,33 +46,37 @@
                 let timer;
 
                 function startGame() {
-                    //Collecting the name value
+                    // Collecting the name value
                     var name = document.getElementById('name').value;
-                    var output =
-                        '<h2>' +
-                        'Welcome ' + name + '! To the game.' +
-                        '<h2>'
-                        ;
+    
+                    // Validation check if any character is present in the name
+                    if (name.trim() === "") {
+                        // If the name is blank, display an error message and return without starting the game
+                        alert("Please enter your name");
+                        return;
+                    }
+
+                    // Display welcome message
+                    var output = '<h2>Welcome ' + name + '! To the game.<h2>';
                     document.getElementById('welcome').innerHTML = output;
 
-                    //Making the start menu dissapear (although if we are switching to different page we may not need this)
+                    // Make the start menu disappear
                     document.getElementById('start').style.display = 'none';
 
-                    //Setting the difficulty and changing the timer per difficulty
+                    // Set the difficulty and change the timer per difficulty
                     var difficultySelect = document.getElementById('difficulty');
                     var difficultyStr = "";
                     for (var i = 0; i < difficultySelect.length; i++) {
                         if (difficultySelect[i].selected) {
                             difficultyStr = difficultySelect[i].value;
-                            break;
+                        break;
                         }
                     }
                     switch (difficultyStr) {
                         case 'easy': timeRem = 300; break;
                         case 'medium': timeRem = 250; break;
                         case 'hard': timeRem = 200; break;
-
-                    }
+                    }   
                 }
 
                 //Starts the timer
@@ -91,6 +95,7 @@
                         timeRem = 10;
                     }
                 }
+                
             </script>
 
         </div>
