@@ -27,6 +27,7 @@
                     <option value="easy">Easy</option>
                     <option value="medium">Medium</option>
                     <option value="hard">Hard</option>
+                    <option value="---">---</option>
                 </select>
                 <br>
 
@@ -42,7 +43,7 @@
                 //setting values
                 var difficulty;
                 const submit = document.getElementById('submit');
-                let timeRem = 300;
+                let timeRem;
                 let timer;
 
                 function startGame() {
@@ -76,7 +77,8 @@
                         case 'easy': timeRem = 300; break;
                         case 'medium': timeRem = 250; break;
                         case 'hard': timeRem = 200; break;
-                    }   
+                        default: alert("Select difficulty");
+                    }
                 }
 
                 //Starts the timer
