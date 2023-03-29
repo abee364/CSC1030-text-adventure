@@ -276,9 +276,10 @@
 
         function door2() {
 
-            textUpdateTryDoor2();
+            if(locked == 0){
 
-            var x = document.getElementById("nextRoom");
+                textUpdateTryDoor2();
+
             var y = document.getElementById("previousRoom");
             var a = document.getElementById("spanner");
             var b = document.getElementById("door1");
@@ -291,7 +292,6 @@
 
 
 
-            x.style.display = "none";
             y.style.display = "none";
             a.style.display = "none";
             b.style.display = "none";
@@ -301,6 +301,40 @@
             f.style.display = "none";
             g.style.display = "none";
             h.style.display = "initial";
+
+
+
+
+            }else if(locked == 1){
+
+            var y = document.getElementById("previousRoom");
+            var a = document.getElementById("spanner");
+            var b = document.getElementById("door1");
+            var c = document.getElementById("door2");
+            var d = document.getElementById("airlock");
+            var e = document.getElementById("lookAround");
+            var f = document.getElementById("turnOn");
+            var g = document.getElementById("goDoor1");
+            var h = document.getElementById("goDoor2");
+
+
+
+            y.style.display = "none";
+            a.style.display = "none";
+            b.style.display = "none";
+            c.style.display = "none";
+            d.style.display = "none";
+            e.style.display = "initial";
+            f.style.display = "none";
+            g.style.display = "none";
+            h.style.display = "initial";
+
+
+            }
+
+            
+
+            
 
 
         }
@@ -513,19 +547,31 @@
 
         function unlockDoor(){
 
-            var pin
+            let pin = document.forms["inputForm"]["userInput"].value;
 
             if(pin == "1234"){
+                
+                textUpdateCorrectPin();
+                locked = locked + 1;
+                door2();
+                
 
 
             }else{
 
                 textUpdateIncorrectPin();
+                door2();
             }
 
             function textUpdateIncorrectPin(){
 
                 document.getElementById("textOutput").innerHTML = "Incorrect Pin, Please Try Again!";
+
+            }
+
+            function textUpdateCorrectPin(){
+
+                document.getElementById("textOutput").innerHTML = "Correct Pin, Door Now Open";
 
             }
             
