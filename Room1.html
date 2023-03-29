@@ -112,7 +112,7 @@
                 <h1>Room 1</h1>
 
                     
-                        <button onclick = "previousRoom();">Previous Room</button>
+                        <button id = "previousRoom" onclick = "previousRoom();">Previous Room</button>
                         <button id="start" onclick="start()">Start</button>
                         <button id="show" onclick="show()">Show</button>
 
@@ -131,8 +131,8 @@
                 <p id="instructingText"> Would you like to 'Look Around' or try and 'Turn On' the lights?</p>
 
                 <button id="spanner" onclick="spanner()">Examine Spanner</button>
-                <button id="door1" onclick="door1()">Look at door 1</button>
-                <button id="door2" onclick="door2()">Try door 2</button>
+                <button id="door1" onclick="door1()">Try Opening Door 1</button>
+                <button id="door2" onclick="door2()">Try Opening Door 2</button>
                 <button id="airlock" onclick="airlock()">Jump out the Airlock</button>
                 <button id="lookAround" onclick="lookAround()">Look Around</button>
                 <button id="turnOn" onclick="turnOn()">Turn On Torch</button>
@@ -191,7 +191,7 @@
 
         function textUpdateTryDoor2() {
 
-            document.getElementById("textOutput").innerHTML = "Open, Procede to new room.";
+            document.getElementById("textOutput").innerHTML = "Locked - Connect to method to open with pin";
         }
 
         function textUpdateAirlock() {
@@ -234,7 +234,7 @@
             f.style.display = "initial";
         }
 
-        var locked;
+        
 
         function door1() {
 
@@ -356,13 +356,14 @@
                 var f = document.getElementById("turnOn");
 
 
-                a.style.display = "initial";
-                b.style.display = "initial";
-                c.style.display = "initial";
-                d.style.display = "initial";
-                e.style.display = "none";
+                a.style.display = "none";
+                b.style.display = "none";
+                c.style.display = "none";
+                d.style.display = "none";
+                e.style.display = "initial";
                 f.style.display = "initial";
             } else if (torchState == 1) {
+                //window.alert(torchState);
 
 
                 textUpdateLookAroundPostTorch();
@@ -379,7 +380,7 @@
                 b.style.display = "initial";
                 c.style.display = "initial";
                 d.style.display = "initial";
-                e.style.display = "none";
+                e.style.display = "initial";
                 f.style.display = "none";
 
 
@@ -423,7 +424,6 @@
 
             startingText();
 
-            var x = document.getElementById("nextRoom");
             var y = document.getElementById("previousRoom");
             var a = document.getElementById("spanner");
             var b = document.getElementById("door1");
@@ -435,8 +435,6 @@
             var h = document.getElementById("goDoor2");
 
 
-
-            x.style.display = "none";
             y.style.display = "none";
             a.style.display = "none";
             b.style.display = "none";
@@ -446,6 +444,7 @@
             f.style.display = "initial";
             g.style.display = "none";
             h.style.display = "none";
+            
 
 
 
@@ -507,6 +506,29 @@
 
             window.alert("Turn torch on,once torch is made");
             torchState = torchState + 1;
+            //window.alert(torchState);
+        }
+
+        var locked = 0;
+
+        function unlockDoor(){
+
+            var pin
+
+            if(pin == "1234"){
+
+
+            }else{
+
+                textUpdateIncorrectPin();
+            }
+
+            function textUpdateIncorrectPin(){
+
+                document.getElementById("textOutput").innerHTML = "Incorrect Pin, Please Try Again!";
+
+            }
+            
         }
 
 
