@@ -13,28 +13,27 @@
 
             <h1>Space Game</h1>
 
-            <div id ="fullRoom" class="showMe">
+            <div id="fullRoom" class="showMe">
                 <img class="centre" src="images/Room2.png" style="width:90%;" alt="Full Room" />
             </div>
-            <div id ="WireBoard" class="hideMe">
+            <div id="WireBoard" class="hideMe">
                 <img class="centre" src="images/Wires.png" style="width:90%;" alt="Wires" />
             </div>
-            <div id = "explosion" class="hideMe">
+            <div id="explosion" class="hideMe">
                 <img class="centre" src="images/VacumeDeath.png" style="width:90%;" alt="Explosion" />
             </div>
-            <div id = "vacume" class="hideMe">
+            <div id="vacume" class="hideMe">
                 <img class="centre" src="images/VacumeDeath.png" style="width:90%;" alt="vacume" />
             </div>
-            <div id = "plant" class="hideMe">
+            <div id="plant" class="hideMe">
                 <img class="centre" src="images/VacumeDeath.png" style="width:90%;" alt="Plant" />
             </div>
-            <div id = "win" class="hideMe">
+            <div id="win" class="hideMe">
                 <img class="centre" src="images/Room2.png" style="width:90%;" alt="Win" />
-            </div>   
-            <div id = "freindlyPlant" class="hideMe">
+            </div>
+            <div id="freindlyPlant" class="hideMe">
                 <img class="centre" src="images/VacumeDeath.png " style="width:90%;" alt="5050" />
-            </div>         
-
+            </div>
         </div>
 
         <div id="col2" class="showMe">
@@ -43,20 +42,18 @@
 
             <div id="RoomButtons">
 
-                <button onclick="setPreviousRoom();">Back to Room 1</button>
+                <button onclick="setPreviousRoom();">Previus Room</button>
 
             </div>
 
             <div id="Room2Buttons">
 
                 <p>What do you want to look at? </p>
-                <button onclick="setWires();">The wires</button>
+                <button onclick="setWires();">The Wires</button>
                 <button onclick="setDoor();">The Door</button>
                 <button onclick="Plant();">The Plant</button>
 
             </div>
-            
-            <div id="doorLocked" class="hideMe"><p class="gameText">The door is currently locked, maybe try cutting power to it</p></div>
 
             <div id="wireButtons" class="hideMe">
 
@@ -71,17 +68,15 @@
 
                 <button onclick="Restart();" class="button">Back to Room 2</button>
 
-
             </div>
 
             <div id="plantButtons" class="hideMe">
-
-                <p>Looks like the plant is angry, better try not to upset it </p>
-
-
-
+                <p class="gameText">Looks like the plant is angry, better try not to upset it </p>
             </div>
 
+            <div id="doorLocked" class="hideMe">
+                <p class="gameText">This door brings you back to the previus room. But it's still dark, try and find a way to restor power</p>
+            </div>
 
 
         </div>
@@ -92,78 +87,83 @@
             </p>
             <button onclick="Restart();" class="button">Restart game </button>
         </div>
-
     </div>
 
     <script>
-        function Plant(){
-            Restart();
-            //document.getElementById('freindlyPlant').className = "showMe";
+        function Plant() {
             document.getElementById('plantButtons').className = "showMe";
+            document.getElementById('doorLocked').className = "hideMe";
         }
 
-        function setWires(){
+        function setDoor() {    
+            document.getElementById('doorLocked').className = "showMe";
+            document.getElementById('plantButtons').className = "hideMe";
+        }
+
+        function setWires() {
             document.getElementById('Room2Buttons').className = "hideMe";
             document.getElementById('fullRoom').className = "hideMe";
             document.getElementById('wireButtons').className = "showMe";
             document.getElementById('WireBoard').className = "showMe";
             document.getElementById('doorLocked').className = "hideMe";
+            document.getElementById('plantButtons').className = "hideMe";
         }
 
-        function Loss(){
+        function Loss() {
             document.getElementById('WireBoard').className = "hideMe";
             document.getElementById('col2').className = "hideMe";
             document.getElementById('fullRoom').className = "hideMe";
             document.getElementById('col2Loss').className = "showMe";
-            document.getElementById('plantButtons').className = "hideMe";
         }
-        function Yellow(){
+        function Yellow() {
             document.getElementById('explosion').className = "showMe";
             Loss();
         }
-        function Blue(){
+        function Blue() {
             document.getElementById('vacume').className = "showMe";
             Loss();
         }
-        function Red(){
+        function Red() {
             document.getElementById('plant').className = "showMe";
             Loss();
         }
-        function Green(){
+        function Green() {
             document.getElementById('win').className = "showMe";
             document.getElementById('WireBoard').className = "hideMe";
             document.getElementById('wireButtons').className = "hideMe";
             document.getElementById('doorLocked').className = "hideMe";
         }
-        function Restart(){
-            document.getElementById('fullRoom').className = "showMe"; Room2Buttons
-            document.getElementById('WireBoard').className = "hideMe"; 
-            document.getElementById('Room2Buttons').className = "showMe"; 
-            document.getElementById('col2').className = "showMe";
-            document.getElementById('col2Loss').className = "hideMe"; 
-            document.getElementById('win').className = "hideMe"; 
-            document.getElementById('plant').className = "hideMe";  
-            document.getElementById('explosion').className = "hideMe";
-            document.getElementById('vacume').className = "hideMe";    
-            document.getElementById('wireButtons').className = "hideMe";
-            document.getElementById('freindlyPlant').className = "hideMe";
-            document.getElementById('doorLocked').className = "hideMe";
+
+        // function Restart() {
+        //     document.getElementById('fullRoom').className = "showMe"; Room2Buttons
+        //     document.getElementById('WireBoard').className = "hideMe";
+        //     document.getElementById('Room2Buttons').className = "showMe";
+        //     document.getElementById('col2').className = "showMe";
+        //     document.getElementById('col2Loss').className = "hideMe";
+        //     document.getElementById('win').className = "hideMe";
+        //     document.getElementById('plant').className = "hideMe";
+        //     document.getElementById('explosion').className = "hideMe";
+        //     document.getElementById('vacume').className = "hideMe";
+        //     document.getElementById('wireButtons').className = "hideMe";
+        //     document.getElementById('freindlyPlant').className = "hideMe";
+        //     document.getElementById('doorLocked').className = "hideMe";
+        // }
+
+        function nextRoom() {
+
+            window.location.replace("3ShipDeck.html")
         }
 
-            function nextRoom() {
+        function setPreviousRoom() {
 
-                window.location.replace("3ShipDeck.html")
-            }
+            window.location.replace("1CommonRoom.html")
+        }
 
-            function setPreviousRoom() {
 
-                window.location.replace("1CommonRoom.html")
-            }
 
-            function setDoor(){
+        function Restart(){
             
-            document.getElementById('doorLocked').className = "showMe";
-            //
+            window.location.replace("HomePage.html")
         }
 
     </script>
