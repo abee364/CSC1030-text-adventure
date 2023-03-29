@@ -54,6 +54,33 @@
                 <p id="output" class="hideMe">Displays score</p>
             </div>
 
+
+
+            <!-- info needed for memory game  -->
+            <div id="gameInfo" class="hideMe">
+                <h4>You need to get 6 points to move on to the next room.</h4>
+                <p>A colour will flash and you just need to repeat the order, you get a point per round.
+                    You need to click on the colours that have flashed in the correct order.
+                </p>
+            </div>
+
+            <div id="nextRoomStop" class="hideMe">
+                <p>You need to do the memory game first before you move onto the next room.</p>
+            </div>
+            <div id="pickupCrowbar" class="hideMe">
+                <p>You picked up the crowbar.</p>
+            </div>
+            <div id="crowbarDoorTry" class="hideMe">
+                <p>You run towards the door at full speed swinging your crowbar and when you get to the door you swing
+                    the crowbar as hard as you can and it bounces off… it hits you in your head, you feel dizzy.</p>
+            </div>
+            <div id="crowbarDoorFail" class="hideMe">
+                <p>You do not have the crowbar in your inventory.</p>
+            </div>
+            <div id="spinglespop" class="hideMe">
+                <p>Aww a cute little spinglespop appears. You should name it!</p>
+            </div>
+
             <!-- naming a pet  -->
             <div id="namePet" class="hideMe">
                 <h2>Enter Name Below: </h2>
@@ -62,202 +89,209 @@
                 <button onclick="submit();">Enter</button>
             </div>
 
-            <!-- info needed for memory game  -->
-            <div id="gameInfo" class="hideMe">
-                <h4>You need to get 7 points to move on to the next room.</h4>
-                <p>A colour will flash and you just need to repeat the order, you get a point per round.
-                    You need to click on the colours that have flashed in the correct order.
-                </p>
+            <div id="complete" class="hideMe">
+                <p>Well done, You have completed the game!</p>
             </div>
-        </div>
-    </div>
 
-    <script>
-        // setting values 
-        let crowbar = 0;
-        let pet = 0;
-        const scoreValue = document.getElementById("score");
-        const AllColours = document.querySelectorAll(".AllColours");
-        const options = document.getElementById("options");
-        const podiumButton = document.querySelector("#podium");
-        const output = document.querySelector("#output");
-        const memoryGame = document.querySelector(".memoryGame");
-        const room3Pic = document.getElementById("room3");
-        const colours = {
-            colourGreen: {
-                currentColour: "#19581b",
-                new: "#1fbf24",
-            },
-            colourRed: {
-                currentColour: "#630e0e",
-                new: "#d42020",
-            },
-            colourBlue: {
-                currentColour: "#202257",
-                new: "#262bc7",
-            },
-            colourYellow: {
-                currentColour: "#7a7a14",
-                new: "#dbdb39",
-            },
-        };
-        let randomColours = [];
-        let randomizer = false;
-        let ClickNum, score = 0;
+            <script>
+                // setting values 
+                let crowbar = 0;
+                let pet = 0;
+                const scoreValue = document.getElementById("score");
+                const AllColours = document.querySelectorAll(".AllColours");
+                const options = document.getElementById("options");
+                const podiumButton = document.querySelector("#podium");
+                const output = document.querySelector("#output");
+                const memoryGame = document.querySelector(".memoryGame");
+                const room3Pic = document.getElementById("room3");
+                const colours = {
+                    colourGreen: {
+                        currentColour: "#19581b",
+                        new: "#1fbf24",
+                    },
+                    colourRed: {
+                        currentColour: "#630e0e",
+                        new: "#d42020",
+                    },
+                    colourBlue: {
+                        currentColour: "#202257",
+                        new: "#262bc7",
+                    },
+                    colourYellow: {
+                        currentColour: "#7a7a14",
+                        new: "#dbdb39",
+                    },
+                };
+                let randomColours = [];
+                let randomizer = false;
+                let ClickNum, score = 0;
 
-        //function that lets you get to the next room
-        function nextRoom() {
-            if (score >= 7) {
-                window.location.replace("4Gallery.html")
-            } else {
-                alert("You need to do the memory game first before you move onto the next room.")
-            }
-        }
-        //function that lets you get to previous room
-        function previousRoom() {
-            window.location.replace("1CommonRoom.html")
-        }
-
-        //function that lets you pick up a crowbar
-        function crowbarPickup() {
-            crowbar = 1;
-            window.alert("You picked up the crowbar.");
-            document.getElementById("crowbarPickup").className = ("hideMe");
-        }
-
-        //function that lets you try to open door with a crowbar
-        function crowbarDoor() {
-            if (crowbar == 1) {
-                window.alert("You run towards the door at full speed swinging your crowbar and when you get to the door you swing the crowbar as hard as you can and it bounces off… it hits you in your head, you feel dizzy.");
-            } else {
-                window.alert("You do not have the crowbar in your inventory.");
-            }
-        }
-
-        //function for when the lever is pulled
-        function lever() {
-            window.alert("Aww a cute little spinglespop appears. You should name it!");
-            document.getElementById("namePet").className = "showMe"
-        }
-
-        //function to submit input value
-        function submit() {
-            var name = document.getElementById('name').value;
-            if (name == "") {
-                window.alert("Please name your spinglespop");
-            } else {
-                document.getElementById("namePet").className = "hideMe"
-                pet = 1;
-            }
-        }
-
-        // fucntion that sets up the memory game
-        function setupGame() {
-            score = 0;
-            ClickNum = 0;
-            randomColours = [];
-            randomizer = false;
-            memoryGame.classList.remove("hideMe");
-            options.className = "hideMe";
-            room3Pic.className = "hideMe";
-            document.getElementById("gameInfo").className = "showMe"
-            document.getElementById("question").className = "hideMe";
-            randomizerGenerate();
-        };
-        // function that generates the path
-        function randomizerGenerate() {
-            randomColours.push(generateRandomValue(colours));
-            score = randomColours.length;
-            randomizer = true;
-            randomizerSequence(score);
-        };
-
-        // function to randomize the object number
-        function generateRandomValue(obj) {
-            let arr = Object.keys(obj);
-            return arr[Math.floor(Math.random() * arr.length)];
-        };
-
-        // function to play the sequence
-        async function randomizerSequence(score) {
-            scoreValue.innerText = score;
-            for (let i of randomColours) {
-                let currentColours = document.querySelector(`.${i}`);
-                await delay(500);
-                currentColours.style.backgroundColor = `${colours[i]["new"]}`;
-                await delay(600);
-                currentColours.style.backgroundColor = `${colours[i]["currentColour"]}`;
-                await delay(300);
-            }
-            randomizer = false;
-        };
-        //Function that delays the blinking of the colours
-        async function delay(time) {
-            return await new Promise((resolve) => {
-                setTimeout(resolve, time);
-            });
-        }
-
-        //Function that detects the input of the player when they press a colour
-        AllColours.forEach((element) => {
-            element.addEventListener("click", async (e) => {
-                //if the user selects the correct colour it goes onto the next level
-                if (randomizer) {
-                    return false;
-                }
-                if (e.target.classList[0] == randomColours[ClickNum]) {
-                    //tells it to blink when clicked
-                    e.target.style.backgroundColor = `${colours[randomColours[ClickNum]]["new"]
-                        }`;
-                    await delay(500);
-                    e.target.style.backgroundColor = `${colours[randomColours[ClickNum]]["currentColour"]
-                        }`;
-                    //Ucounts clicks
-                    ClickNum += 1;
-                    //if score and clicks are same they go to next level if score is also not 7
-                    if (ClickNum == score && score != 7) {
-                        ClickNum = 0;
-                        randomizerGenerate();
+                //function that lets you get to the next room
+                async function nextRoom() {
+                    if (score >= 7) {
+                        window.location.replace("4Gallery.html")
+                    } else {
+                        document.getElementById("nextRoomStop").className = ("showMe")
+                        await delay(5000);
+                        document.getElementById("nextRoomStop").className = ("hideMe")
                     }
-
-                    // Should be 7 but for testing purposes is changes to lower numbers
-                    if (score == 7) {
-                        alert("You cracked the game!")
-                        win()
-                    }
-                } else {
-                    lose();
                 }
-            });
-        });
+                //function that lets you get to previous room
+                function previousRoom() {
+                    window.location.replace("1CommonRoom.html")
+                }
 
-        //function for when the player loses
-        function lose() {
-            output.innerHTML = `<span> Your only got: </span> ${score} <br><span>You need 7 to get to the next room. </span> `;
-            document.getElementById("gameInfo").className = "hideMe";
-            document.getElementById("question").className = "showMe";
-            output.classList.remove("hideMe");
-            options.className = "showMe";
-            room3Pic.className = "showMe";
-            memoryGame.classList.add("hideMe");
-            podiumButton.innerText = "Play memory Game again";
-            podiumButton.classList.remove("hideMe");
+                //function that lets you pick up a crowbar
+                async function crowbarPickup() {
+                    crowbar = 1;
+                    document.getElementById("pickupCrowbar").className = ("showMe")
+                    document.getElementById("crowbarPickup").className = ("hideMe");
+                    await delay(4000);
+                    document.getElementById("pickupCrowbar").className = ("hideMe")
 
-        };
+                }
 
-        //function for when the player wins
-        function win() {
-            memoryGame.className = "hideMe";
-            document.getElementById("gameInfo").className = "hideMe";
-            document.getElementById("question").className = "showMe";
-            options.className = "showMe";
-            room3Pic.className = "showMe";
-            podiumButton.className = "hideMe";
-            document.getElementById("crowbarDoor").className = ("hideMe")
-            output.innerHTML = `<span> You got: </span> ${score} <span><br>You can move on to the next room now! </span>`;
-            output.classList.remove("hideMe");
-        }
-    </script>
+                //function that lets you try to open door with a crowbar
+                async function crowbarDoor() {
+                    if (crowbar == 1) {
+                        document.getElementById("crowbarDoorTry").className = ("showMe")
+                        await delay(4000);
+                        document.getElementById("crowbarDoorTry").className = ("hideMe")
+                    } else {
+                        document.getElementById("crowbarDoorFail").className = ("showMe")
+                        await delay(4000);
+                        document.getElementById("crowbarDoorFail").className = ("hideMe")
+                    }
+                }
+
+                //function for when the lever is pulled
+                async function lever() {
+                    document.getElementById("spinglespop").className = ("showMe")
+                    await delay(1000)
+                    document.getElementById("namePet").className = "showMe"
+                    await delay(4000);
+                    document.getElementById("spinglespop").className = ("hideMe")
+
+                }
+
+                //function to submit input value
+                function submit() {
+                    var name = document.getElementById('name').value;
+                    if (name == "") {
+                        window.alert("Please name your spinglespop");
+                    } else {
+                        document.getElementById("namePet").className = "hideMe"
+                        pet = 1;
+                    }
+                }
+
+                // fucntion that sets up the memory game
+                function setupGame() {
+                    score = 0;
+                    ClickNum = 0;
+                    randomColours = [];
+                    randomizer = false;
+                    memoryGame.classList.remove("hideMe");
+                    options.className = "hideMe";
+                    room3Pic.className = "hideMe";
+                    document.getElementById("gameInfo").className = "showMe"
+                    document.getElementById("question").className = "hideMe";
+                    randomizerGenerate();
+                };
+                // function that generates the path
+                function randomizerGenerate() {
+                    randomColours.push(generateRandomValue(colours));
+                    score = randomColours.length;
+                    randomizer = true;
+                    randomizerSequence(score);
+                };
+
+                // function to randomize the object number
+                function generateRandomValue(obj) {
+                    let arr = Object.keys(obj);
+                    return arr[Math.floor(Math.random() * arr.length)];
+                };
+
+                // function to play the sequence
+                async function randomizerSequence(score) {
+                    scoreValue.innerText = score;
+                    for (let i of randomColours) {
+                        let currentColours = document.querySelector(`.${i}`);
+                        await delay(500);
+                        currentColours.style.backgroundColor = `${colours[i]["new"]}`;
+                        await delay(600);
+                        currentColours.style.backgroundColor = `${colours[i]["currentColour"]}`;
+                        await delay(300);
+                    }
+                    randomizer = false;
+                };
+                //Function that delays the blinking of the colours
+                async function delay(time) {
+                    return await new Promise((resolve) => {
+                        setTimeout(resolve, time);
+                    });
+                }
+
+                //Function that detects the input of the player when they press a colour
+                AllColours.forEach((element) => {
+                    element.addEventListener("click", async (e) => {
+                        //if the user selects the correct colour it goes onto the next level
+                        if (randomizer) {
+                            return false;
+                        }
+                        if (e.target.classList[0] == randomColours[ClickNum]) {
+                            //tells it to blink when clicked
+                            e.target.style.backgroundColor = `${colours[randomColours[ClickNum]]["new"]
+                                }`;
+                            await delay(500);
+                            e.target.style.backgroundColor = `${colours[randomColours[ClickNum]]["currentColour"]
+                                }`;
+                            //Ucounts clicks
+                            ClickNum += 1;
+                            //if score and clicks are same they go to next level if score is also not 7
+                            if (ClickNum == score && score != 7) {
+                                ClickNum = 0;
+                                randomizerGenerate();
+                            }
+
+                            // Should be 7 but for testing purposes is changes to lower numbers
+                            if (score == 6) {
+                                document.getElementById("complete").className = "showMe"
+                                win()
+                            }
+                        } else {
+                            lose();
+                        }
+                    });
+                });
+
+                //function for when the player loses
+                function lose() {
+                    output.innerHTML = `<span> Your only got: </span> ${score} <br><span>You need 6 to get to the next room. </span> `;
+                    document.getElementById("gameInfo").className = "hideMe";
+                    document.getElementById("question").className = "showMe";
+                    output.classList.remove("hideMe");
+                    options.className = "showMe";
+                    room3Pic.className = "showMe";
+                    memoryGame.classList.add("hideMe");
+                    podiumButton.innerText = "Play memory Game again";
+                    podiumButton.classList.remove("hideMe");
+
+                };
+
+                //function for when the player wins
+                function win() {
+                    memoryGame.className = "hideMe";
+                    document.getElementById("gameInfo").className = "hideMe";
+                    document.getElementById("question").className = "showMe";
+                    options.className = "showMe";
+                    room3Pic.className = "showMe";
+                    podiumButton.className = "hideMe";
+                    document.getElementById("crowbarDoor").className = ("hideMe")
+                    output.innerHTML = `<span> You got: </span> ${score} <span><br>You can move on to the next room now! </span>`;
+                    output.classList.remove("hideMe");
+                }
+            </script>
 </body>
 
 </html>
