@@ -21,6 +21,11 @@
                 <img class="centre" src="images/Room3.png" style="width:90%;" alt="Photo of the Ship Deck" />
             </div>
 
+            <div id="room3_no_crowbar" class="hideMe">
+                <img class="centre" src="images/room3_no_crowbar.png" style="width:90%;"
+                    alt="Photo of the Ship Deck but without a crowbar" />
+            </div>
+
             <!-- Memory Game  -->
             <div class="memoryGame hideMe">
                 <div id="score">0</div>
@@ -93,7 +98,7 @@
                 <button onclick="submit();">Enter</button>
             </div>
 
-            
+
 
             <script>
                 // setting values 
@@ -146,6 +151,8 @@
                 //function that lets you pick up a crowbar
                 async function crowbarPickup() {
                     crowbar = 1;
+                    document.getElementById("room3").className = ("hideMe")
+                    document.getElementById("room3_no_crowbar").className = ("showMe")
                     document.getElementById("pickupCrowbar").className = ("showMe")
                     document.getElementById("crowbarPickup").className = ("hideMe");
                     await delay(4000);
@@ -169,14 +176,14 @@
                 //function for when the lever is pulled
                 async function lever() {
                     document.getElementById("pullLever").className = ("hideMe");
-                    
+
                     document.getElementById("spinglespop").className = ("showMe")
                     await delay(1000)
                     document.getElementById("namePet").className = "showMe"
                     await delay(4000);
                     document.getElementById("spinglespop").className = ("hideMe")
-                    
-                    
+
+
 
                 }
 
@@ -200,6 +207,7 @@
                     memoryGame.classList.remove("hideMe");
                     options.className = "hideMe";
                     room3Pic.className = "hideMe";
+                    document.getElementById("room3_no_crowbar").className = ("hideMe")
                     document.getElementById("gameInfo").className = "showMe"
                     document.getElementById("question").className = "hideMe";
                     randomizerGenerate();
@@ -278,10 +286,14 @@
                     document.getElementById("question").className = "showMe";
                     output.classList.remove("hideMe");
                     options.className = "showMe";
-                    room3Pic.className = "showMe";
                     memoryGame.classList.add("hideMe");
                     podiumButton.innerText = "Play memory Game again";
                     podiumButton.classList.remove("hideMe");
+                    if (crowbar == 1) {
+                        document.getElementById("room3_no_crowbar").className = ("showMe")
+                    } else {
+                        room3Pic.className = "showMe";
+                    }
 
                 };
 

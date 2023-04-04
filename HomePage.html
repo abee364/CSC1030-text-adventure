@@ -11,16 +11,16 @@
 
     </head>
 
-    <body>
+    <body id="body">
         <h1>Starbound Quest</h1>
 
         <div id="wrapper">
-            <div id="start">
+            <div>
                 <!-- Asking for the characters name -->
                 <h2>Enter Details Below: </h2>
                 <label for="name">Character Name: </label>
                 <input type="text" id="name"><br><br>
-        
+
                 <!-- Selecting the difficulty  -->
                 <label for="difficulty">Select Your Difficulty: </label>
                 <select id="difficulty">
@@ -30,92 +30,145 @@
                     <option value="hard">Hard</option>
                 </select>
                 <br>
-        
+
                 <!-- Button for starting game  -->
                 <button id="submit" onclick="handleStartButtonClick();" disabled>Begin</button>
-        
+
             </div>
             <!-- Printing characters name -->
             <span id="welcome"></span>
             <h1>Time Remaining: <span id="timerText">?</span></h1>
-        
-            <script type="text/javascript">
-                //setting values
-                var difficulty;
-                const submit = document.getElementById('submit');
-                let timeRem;
-                let timer;
-            
-                const difficultySelect = document.getElementById('difficulty');
-                difficultySelect.addEventListener('change', function() {
-                    if (this.value !== 'easy' && this.value !== 'medium' && this.value !== 'hard') {
-                        submit.disabled = true;
-                    } else {
-                        submit.disabled = false;
-                    }
-                });
 
-                function handleStartButtonClick() {
-                    const nameInput = document.getElementById('name').value;
-                    // Validation check if any character is present in the name
-                    if (nameInput.trim() === "") {
-                        alert("Please enter your name");
-                        return
-                    } else {
-                        startGame();
-                        startTimer();
-                    }
-                }
-            
-                function startGame() {
-                    // Collecting the name value
-                    var name = document.getElementById('name').value;
-            
-                    // Display welcome message
-                    var output = '<h2>Welcome ' + name + '! To the game.<h2>';
-                    document.getElementById('welcome').innerHTML = output;
-            
-                    // Make the start menu disappear
-                    document.getElementById('start').style.display = 'none';
-            
-                    // Set the difficulty and change the timer per difficulty
-                    var difficultyStr = "";
-                    for (var i = 0; i < difficultySelect.length; i++) {
-                        if (difficultySelect[i].selected) {
-                            difficultyStr = difficultySelect[i].value;
-                            break;
-                        }
-                    }
-                    switch (difficultyStr) {
-                        case 'easy': timeRem = 300; break;
-                        case 'medium': timeRem = 250; break;
-                        case 'hard': timeRem = 200; break;
-                        default: alert("Select difficulty");
-                    }
-                    window.location.replace("Monologue.html");
-                }
-            
-                //Starts the timer
-                function startTimer() {
-                    document.getElementById('timerText').innerHTML = timeRem;
-                    timer = setInterval(countdown, 1000);
-                }
-            
-                //Manages the countdown of the timer
-                function countdown() {
-                    if (timeRem > 0) {
-                        timeRem--;
-                        document.getElementById('timerText').innerHTML = timeRem;
-                    } else {
-                        clearInterval(timer);
-                        document.getElementById('timerText').innerHTML = 'END';
-                        timeRem = 10;
-                    }
-                }
-            </script>
-        
         </div>
-        
+        <div id="accessibility">
+            <h5>Text Size: </h5>
+            <button onclick="smallText()">small</button>
+            <button onclick="mediumText()">medium</button>
+            <button onclick="largeText()">large</button>
+            <button onclick="x_largeText()">x-large</button>
+            <br>
+            <hr>
+            <br>
+            <button  onclick="lightMode()">Light Mode</button>
+            <button  onclick="darkMode()">Dark Mode</button>
+            </select>
+            <br>
+
+        </div>
+
+        <script type="text/javascript">
+            //setting values
+            var difficulty;
+            const submit = document.getElementById('submit');
+            let timeRem;
+            let timer;
+
+            const difficultySelect = document.getElementById('difficulty');
+            difficultySelect.addEventListener('change', function () {
+                if (this.value !== 'easy' && this.value !== 'medium' && this.value !== 'hard') {
+                    submit.disabled = true;
+                } else {
+                    submit.disabled = false;
+                }
+            });
+
+            function handleStartButtonClick() {
+                const nameInput = document.getElementById('name').value;
+                // Validation check if any character is present in the name
+                if (nameInput.trim() === "") {
+                    alert("Please enter your name");
+                    return
+                } else {
+                    startGame();
+                    startTimer();
+                }
+            }
+
+            function startGame() {
+                // Collecting the name value
+                var name = document.getElementById('name').value;
+
+                // Display welcome message
+                var output = '<h2>Welcome ' + name + '! To the game.<h2>';
+                document.getElementById('welcome').innerHTML = output;
+
+                // Make the start menu disappear
+                document.getElementById('start').style.display = 'none';
+
+                // Set the difficulty and change the timer per difficulty
+                var difficultyStr = "";
+                for (var i = 0; i < difficultySelect.length; i++) {
+                    if (difficultySelect[i].selected) {
+                        difficultyStr = difficultySelect[i].value;
+                        break;
+                    }
+                }
+                switch (difficultyStr) {
+                    case 'easy': timeRem = 300; break;
+                    case 'medium': timeRem = 250; break;
+                    case 'hard': timeRem = 200; break;
+                    default: alert("Select difficulty");
+                }
+                window.location.replace("Monologue.html");
+            }
+
+            //Starts the timer
+            function startTimer() {
+                document.getElementById('timerText').innerHTML = timeRem;
+                timer = setInterval(countdown, 1000);
+            }
+
+            //Manages the countdown of the timer
+            function countdown() {
+                if (timeRem > 0) {
+                    timeRem--;
+                    document.getElementById('timerText').innerHTML = timeRem;
+                } else {
+                    clearInterval(timer);
+                    document.getElementById('timerText').innerHTML = 'END';
+                    timeRem = 10;
+                }
+            }
+
+            function smallText() {
+                document.getElementById("wrapper").style.fontSize = "small"
+
+
+
+
+            }
+
+            function mediumText() {
+                document.getElementById("wrapper").style.fontSize = "medium"
+
+            }
+
+            function largeText() {
+                document.getElementById("wrapper").style.fontSize = "large"
+            }
+
+            function x_largeText() {
+                document.getElementById("wrapper").style.fontSize = "x-large"
+
+            }
+
+            function lightMode() {
+                document.getElementById("body").style.backgroundColor ="ivory"
+                document.getElementById("wrapper").style.backgroundColor ="rgb(216, 216, 216)"
+                document.getElementById("body").style.color = "black"
+            }
+
+            function darkMode() {
+                document.getElementById("body").style.backgroundColor ="black"
+                document.getElementById("wrapper").style.backgroundColor ="#222629"
+                document.getElementById("body").style.color = "white"
+
+            }
+
+        </script>
+
+
+
 
 
     </body>
