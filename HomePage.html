@@ -15,7 +15,7 @@
         <h1>Starbound Quest</h1>
 
         <div id="wrapper">
-            <div>
+            <div id="start">
                 <!-- Asking for the characters name -->
                 <h2>Enter Details Below: </h2>
                 <label for="name">Character Name: </label>
@@ -48,7 +48,6 @@
             <button onclick="x_largeText()">x-large</button>
             <br>
             <hr>
-            <br>
             <button  onclick="lightMode()">Light Mode</button>
             <button  onclick="darkMode()">Dark Mode</button>
             </select>
@@ -109,7 +108,7 @@
                     case 'hard': timeRem = 200; break;
                     default: alert("Select difficulty");
                 }
-                window.location.replace("Monologue.html");
+                //window.location.replace("Monologue.html");
             }
 
             //Starts the timer
@@ -132,9 +131,6 @@
 
             function smallText() {
                 document.getElementById("wrapper").style.fontSize = "small"
-
-
-
 
             }
 
