@@ -108,7 +108,9 @@
                     case 'hard': timeRem = 200; break;
                     default: alert("Select difficulty");
                 }
-                //window.location.replace("Monologue.html");
+                // Takes the player to the monologue page
+                // window.location.replace("Monologue.html");
+                //window.location.href = "Monologue.html";
             }
 
             //Starts the timer
@@ -126,6 +128,8 @@
                     clearInterval(timer);
                     document.getElementById('timerText').innerHTML = 'END';
                     timeRem = 10;
+                    // Redirect to stats.html page
+                    window.location.href = 'stats.html';
                 }
             }
 
