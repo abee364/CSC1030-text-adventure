@@ -37,9 +37,8 @@
         <img src="images/Room1.png" alt="Room1" style="width:90%;">
         <div class="text-block">
             <h1>Time Remaining: <span id="timerText">?</span></h1>
-            <p>Computer: Hello there ’insert name’ we have a problem, the ship seems to have malfunctioned and as
+            <p>Computer: Hello there 'insert name' we have a problem, the ship seems to have malfunctioned and as
                 such our systems have begun rapidly failing and…”
-
             </p>
             <p>“WARNING LIGHTS FAILING IN 3, 2, 1. Switching to back-up generator”</p>
             <!-- Room Becomes Mildly Darker But Not Pitch Black -->
@@ -55,8 +54,28 @@
     </div>
 
     <script>
-        function Start() {
+        var timeRem = sessionStorage.getItem('timeRem');
 
+        // Display the remaining time in the timer element
+        document.getElementById('timerText').innerHTML = timeRem;
+
+        // Start the countdown timer
+        var timer = setInterval(countdown, 1000);
+
+        function countdown() {
+            if (timeRem > 0) {
+                timeRem--;
+                document.getElementById('timerText').innerHTML = timeRem;
+            } else {
+                clearInterval(timer);
+                document.getElementById('timerText').innerHTML = 'END';
+                timeRem = 10;
+                // Redirect to statistics page
+                window.location.href = 'stats.html';
+            }
+        }
+
+        function Start() {
             window.location.replace("1CommonRoom.html")
         }
 

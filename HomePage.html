@@ -53,8 +53,8 @@
             //setting values
             var difficulty;
             const submit = document.getElementById('submit');
-            let timeRem;
             let timer;
+
 
             const difficultySelect = document.getElementById('difficulty');
             difficultySelect.addEventListener('change', function () {
@@ -72,6 +72,7 @@
                     alert("Please enter your name");
                     return
                 } else {
+                    sessionStorage.setItem('playerName', name);
                     startGame();
                     startTimer();
                 }
@@ -79,10 +80,10 @@
 
             function startGame() {
                 // Collecting the name value
-                var name = document.getElementById('name').value;
+                var nameInput = document.getElementById('name').value;
 
                 // Display welcome message
-                var output = '<h2>Welcome ' + name + '! To the game.<h2>';
+                var output = '<h2>Welcome ' + nameInput + '! To the game.<h2>';
                 document.getElementById('welcome').innerHTML = output;
 
                 // Make the start menu disappear
@@ -97,27 +98,36 @@
                     }
                 }
                 switch (difficultyStr) {
-                    case 'easy': timeRem = 300; break;
-                    case 'medium': timeRem = 250; break;
-                    case 'hard': timeRem = 200; break;
-                    default: alert("Select difficulty");
+                    case 'easy':
+                        sessionStorage.setItem('timeRem', '300');
+                        break;
+                    case 'medium':
+                        sessionStorage.setItem('timeRem', '250');
+                        break;
+                    case 'hard':
+                        sessionStorage.setItem('timeRem', '200');
+                        break;
+                    default:
+                        alert("Select difficulty");
                 }
                 // Takes the player to the monologue page
                 window.location.replace("Monologue.html");
-                //window.location.href = "Monologue.html";
             }
 
             //Starts the timer
             function startTimer() {
+                var timeRem = sessionStorage.getItem('timeRem');
                 document.getElementById('timerText').innerHTML = timeRem;
                 timer = setInterval(countdown, 1000);
             }
 
             //Manages the countdown of the timer
             function countdown() {
+                var timeRem = sessionStorage.getItem('timeRem');
                 if (timeRem > 0) {
                     timeRem--;
                     document.getElementById('timerText').innerHTML = timeRem;
+                    sessionStorage.setItem('timeRem', timeRem);
                 } else {
                     clearInterval(timer);
                     document.getElementById('timerText').innerHTML = 'END';
@@ -160,7 +170,7 @@
             }
 
         </script>
-=
+
     </body>
 
     </html>
