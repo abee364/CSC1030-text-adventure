@@ -55,7 +55,9 @@
     <script>
         // Name from home page
         var playerName = sessionStorage.getItem('playerName');
-        document.getElementById('name').textContent = playerName;
+
+        // Display the user's name
+        document.getElementById('name').innerHTML = playerName;
 
         // Timer running
         var timeRem = sessionStorage.getItem('timeRem');

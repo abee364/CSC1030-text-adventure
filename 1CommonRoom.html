@@ -115,6 +115,7 @@
                         <button id = "previousRoom" onclick = "previousRoom();">Previous Room</button>
                         <button id="start" onclick="start()">Start</button>
                         <button id="show" onclick="show()">Show</button>
+                        <h1>Time Remaining: <span id="timerText">?</span></h1>
 
             </div>
 
@@ -127,7 +128,7 @@
             </div>
 
             <div class="interactionBox">
-
+                
                 <p id="instructingText"> Would you like to 'Look Around' or try and 'Turn On' the lights?</p>
 
                 <button id="spanner" onclick="spanner()">Examine Spanner</button>
@@ -575,6 +576,29 @@
 
             }
             
+        }
+
+        //Session scripts
+        // Timer running
+        var timeRem = sessionStorage.getItem('timeRem');
+
+        // Display the remaining time in the timer element
+        document.getElementById('timerText').innerHTML = timeRem;
+
+        // Start the countdown timer
+        var timer = setInterval(countdown, 1000);
+
+        function countdown() {
+            if (timeRem > 0) {
+                timeRem--;
+                document.getElementById('timerText').innerHTML = timeRem;
+            } else {
+                clearInterval(timer);
+                document.getElementById('timerText').innerHTML = 'END';
+                timeRem = 10;
+                // Redirect to statistics page
+                window.location.href = 'stats.html';
+            }
         }
 
 
