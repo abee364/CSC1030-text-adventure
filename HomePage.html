@@ -72,6 +72,7 @@
                     alert("Please enter your name");
                     return
                 } else {
+                    // Set the player's name in session storage
                     sessionStorage.setItem('playerName', name);
                     startGame();
                     startTimer();
@@ -110,8 +111,6 @@
                     default:
                         alert("Select difficulty");
                 }
-                // Set the player's name in session storage
-                sessionStorage.setItem('playerName', nameInput);
                 // Takes the player to the monologue page
                 window.location.replace("Monologue.html");
             }
