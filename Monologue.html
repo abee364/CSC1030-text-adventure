@@ -37,9 +37,8 @@
         <img src="images/Room1.png" alt="Room1" style="width:90%;">
         <div class="text-block">
             <h1>Time Remaining: <span id="timerText">?</span></h1>
-            <p>Computer: Hello there 'insert name' we have a problem, the ship seems to have malfunctioned and as
-                such our systems have begun rapidly failing and…”
-            </p>
+            <p id="greeting">Computer: Hello there <span id="name"></span> we have a problem, the ship seems to have malfunctioned 
+                and as such our systems have begun rapidly failing and…”</p>
             <p>“WARNING LIGHTS FAILING IN 3, 2, 1. Switching to back-up generator”</p>
             <!-- Room Becomes Mildly Darker But Not Pitch Black -->
             <p>“Well as I was saying our systems are failing, including all vital systems and a gas leak has broken
@@ -54,6 +53,11 @@
     </div>
 
     <script>
+        // Name from home page
+        var playerName = sessionStorage.getItem('playerName');
+        document.getElementById('name').textContent = playerName;
+
+        // Timer running
         var timeRem = sessionStorage.getItem('timeRem');
 
         // Display the remaining time in the timer element

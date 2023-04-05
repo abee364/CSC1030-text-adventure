@@ -54,7 +54,7 @@
             var difficulty;
             const submit = document.getElementById('submit');
             let timer;
-
+            var name = document.getElementById('name').value;
 
             const difficultySelect = document.getElementById('difficulty');
             difficultySelect.addEventListener('change', function () {
@@ -110,6 +110,8 @@
                     default:
                         alert("Select difficulty");
                 }
+                // Set the player's name in session storage
+                sessionStorage.setItem('playerName', nameInput);
                 // Takes the player to the monologue page
                 window.location.replace("Monologue.html");
             }
