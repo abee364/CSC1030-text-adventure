@@ -54,7 +54,6 @@
             var difficulty;
             const submit = document.getElementById('submit');
             let timer;
-            var name = document.getElementById('name').value;
 
             const difficultySelect = document.getElementById('difficulty');
             difficultySelect.addEventListener('change', function () {
@@ -73,7 +72,7 @@
                     return
                 } else {
                     // Set the player's name in session storage
-                    sessionStorage.setItem('playerName', name);
+                    sessionStorage.setItem('name', nameInput);
                     startGame();
                     startTimer();
                 }
