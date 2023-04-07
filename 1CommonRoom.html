@@ -518,12 +518,12 @@
         }
 
         //Session scripts
-        // Set the initial timer value if it doesn't exist in the session storage
+        // Initial timer (default vaulue is 1000 seconds)
         if (!sessionStorage.getItem('timeRem')) {
             sessionStorage.setItem('timeRem', '1000');
         }
 
-        // Start the timer with the remaining time
+        // Timer with the remaining time
         function startTimer() {
             var timeRem = sessionStorage.getItem('timeRem');
             document.getElementById('timerText').innerHTML = timeRem;

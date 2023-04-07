@@ -29,9 +29,8 @@
         <!-- column 2 - where the buttons go -->
         <div id="col2" class="showMe">
 
-            <h1>Escape Pod </h1>
-
-
+            <h1>Escape Pod</h1>
+            <h1>Time Remaining: <span id="timerText">?</span></h1>
             <div id="Room5Buttons">
                 <!--Narration-->
                 <p>“You have reached the escape pod, it seems to be fully functional.<br> I assume that you learnt how
@@ -66,6 +65,54 @@
             window.alert("The guilt overwhelmes you and you head back to fix the gas leak");
             window.location.replace("4Gallery.html")
         }
+
+        //Session scripts
+        // Initial timer (default vaulue is 1000 seconds)
+        if (!sessionStorage.getItem('timeRem')) {
+            sessionStorage.setItem('timeRem', '1000');
+        }
+
+        // Timer with the remaining time
+        function startTimer() {
+            var timeRem = sessionStorage.getItem('timeRem');
+            document.getElementById('timerText').innerHTML = timeRem;
+            timer = setInterval(countdown, 1000);
+        }
+
+        // Save the remaining time in the session storage before navigating to another page
+        function saveTimeRem() {
+            var timeRem = document.getElementById('timerText').innerHTML;
+            sessionStorage.setItem('timeRem', timeRem);
+        }
+
+        // Load the remaining time from the session storage and start the timer with it
+        function loadTimeRem() {
+            var timeRem = sessionStorage.getItem('timeRem');
+            document.getElementById('timerText').innerHTML = timeRem;
+            timer = setInterval(countdown, 1000);
+        }
+
+        // Update the timer display and store the remaining time in the session storage every second
+        function countdown() {
+            var timeRem = document.getElementById('timerText').innerHTML;
+            if (timeRem > 0) {
+                timeRem--;
+                document.getElementById('timerText').innerHTML = timeRem;
+                sessionStorage.setItem('timeRem', timeRem);
+            } else {
+                clearInterval(timer);
+                document.getElementById('timerText').innerHTML = 'END';
+                timeRem = 10;
+                // Redirect to statistics page
+                window.location.href = 'stats.html';
+            }
+        }
+
+        // Register a beforeunload event listener to save the remaining time before navigating away from the page
+        window.addEventListener('beforeunload', saveTimeRem);
+
+        // Load the remaining time and start the timer when the page loads
+        window.addEventListener('load', loadTimeRem);
 
 
     </script>
