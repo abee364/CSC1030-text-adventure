@@ -36,7 +36,7 @@
                 <p>“You have reached the escape pod, it seems to be fully functional.<br> I assume that you learnt how
                     to
                     fly it during your
-                    training 'name'. Are you sure you want to leave the ship?” </p>
+                    training <span id="name"></span>. Are you sure you want to leave the ship?” </p>
                 <br>
 
                 <!--Options-->
@@ -67,6 +67,11 @@
         }
 
         //Session scripts
+        // Name from home page
+        var name = sessionStorage.getItem('name');
+
+        // Display the user's name
+        document.getElementById('name').innerHTML = name;
         // Initial timer (default vaulue is 1000 seconds)
         if (!sessionStorage.getItem('timeRem')) {
             sessionStorage.setItem('timeRem', '1000');

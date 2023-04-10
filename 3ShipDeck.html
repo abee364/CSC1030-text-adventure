@@ -96,7 +96,7 @@
             <div id="namePet" class="hideMe">
                 <h2>Enter Name Below: </h2>
                 <label for="name">Spinglespop Name: </label>
-                <input type="text" id="name"><br><br>
+                <input type="text" id="petName"><br><br>
                 <button onclick="submit();">Enter</button>
             </div>
 
@@ -191,12 +191,13 @@
 
                 //function to submit input value
                 function submit() {
-                    var name = document.getElementById('name').value;
+                    var name = document.getElementById('petName').value;
                     if (name == "") {
                         window.alert("Please name your spinglespop");
                     } else {
                         document.getElementById("namePet").className = "hideMe"
                         pet = 1;
+                        console.log(name);
                     }
                 }
 
