@@ -257,3 +257,15 @@
         /**---------------------------------Room 4 Specific CSS----------------------------------------**/
 
         /**---------------------------------Room 5 Specific CSS----------------------------------------**/
+
+         /**---------------------------------Endcard Specific CSS----------------------------------------**/
+
+         .end-summary {
+            position: fixed;
+            margin: auto;
+            top: 10%;
+            background-color: black;
+            color: white;
+            width: 85%;
+            text-align: center;
+        }
