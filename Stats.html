@@ -8,12 +8,22 @@
     
     <body>
         <h1>Statistics</h1>
-        <div>
-            <p>Mission status: <span id="status"></span></p>
+        <div id="wrapper">
+            <div id="statusDisplay">
+                <!-- States whether the player passed or failed the game -->
+                <p>Mission status: <span id="status"></span></p>
+            </div>
+            <!-- If the player failed the game, it will outline the reason why -->
+            <div>
+                <p>Failure reason: </p>
+            </div>
         </div>
-        <div class="hideMe">
-            <p>Failure reason: </p>
-        </div>
+
+        <script type="text/javascript">
+            const statusElement = document.getElementById('status');
+            statusElement.innerHTML = "SUCCESS";
+            statusElement.innerHTML = "FAILED";
+        </script>
     </body>
 
 </html>
