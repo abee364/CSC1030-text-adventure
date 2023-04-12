@@ -7,16 +7,26 @@
     </head>
     
     <body>
-        <h1>Statistics</h1>
-        <div id="wrapper">
-            <div id="statusDisplay">
-                <!-- States whether the player passed or failed the game -->
-                <p>Mission status: <span id="status"></span></p>
-            </div>
-            <!-- If the player failed the game, it will outline the reason why -->
-            <div>
-                <p>Failure reason: </p>
-            </div>
+        <div id="statsWrapper">
+            <h1>Statistics</h1>
+            <table>
+              <tr>
+                <th>Mission Status</th>
+                <td class="statusDisplay"><span id="status">?</span></td>
+              </tr>
+              <tr>
+                <th>Mission Failure Reason</th>
+                <td class="failureReason">N/A</td>
+              </tr>
+              <tr>
+                <th>Score</th>
+                <td class="score">95</td>
+              </tr>
+              <tr>
+                <th>Time Remained</th>
+                <td class="time"><span id="timerText">?</span></td>
+              </tr>
+            </table>
         </div>
 
         <script type="text/javascript">
