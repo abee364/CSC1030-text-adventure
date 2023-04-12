@@ -38,14 +38,12 @@
 
         <div id="col2" class="showMe">
 
-            <h1>Room 2 </h1>
+            <h1>Electricity Room</h1>
 
             <h1>Time Remaining: <span id="timerText">?</span></h1>
 
             <div id="RoomButtons">
-
-                <button onclick="setPreviousRoom();">Previus Room</button>
-
+                <button onclick="setPreviousRoom();"> Previous Room</button>
             </div>
 
             <div id="Room2Buttons">
@@ -56,20 +54,21 @@
                 <button onclick="Plant();">The Plant</button>
 
             </div>
-
             <div id="wireButtons" class="hideMe">
 
-                <p>What wire do you want to fix? </p>
+                <p>What wire do you want to cut? </p>
                 <br>
-                <!--<input type="text" id="r" size="35" value="Enter Text..." /> <br><br> -->
 
-                <button onclick="Yellow();" class="button colourYellow">Yellow</button>
-                <button onclick="Red();" class="button colourRed">Red</button> <br>
-                <button onclick="Blue();" class="button colourBlue">Blue</button>
-                <button onclick="Green();" class="button colourGreen">Green</button><br><br>
+                <label for="word-input">Enter a wire to fix:</label>
+                <input type="text" id="word-input">
+                <button onclick="checkWord()">Cut wire</button>
+                <p id="result"></p>
+                <br>
+                <button onclick="Room2();" class="button">Back to Room 2</button>
+            </div>
 
-                <button onclick="Restart();" class="button">Back to Room 2</button>
-
+            <div id="WrongText" class="hideMe">
+                <p class="gameText">Sorry, That is not a wire that can be cut</p>
             </div>
 
             <div id="plantButtons" class="hideMe">
@@ -77,11 +76,15 @@
             </div>
 
             <div id="doorLocked" class="hideMe">
-                <p class="gameText">This door brings you back to the previus room. But it's still dark, try and find a way to restor power</p>
+                <p class="gameText">This door brings you back to the previus room. But it's still dark, try and find a
+                    way to restor power</p>
             </div>
+            <br>
 
+            <!--<button onclick="Restart();" class="button">Back to Room 2</button>-->
 
         </div>
+
         <div id="col2Loss" class="hideMe">
             <h1>Room 2 </h1>
             <p>
@@ -97,7 +100,7 @@
             document.getElementById('doorLocked').className = "hideMe";
         }
 
-        function setDoor() {    
+        function setDoor() {
             document.getElementById('doorLocked').className = "showMe";
             document.getElementById('plantButtons').className = "hideMe";
         }
@@ -158,13 +161,16 @@
 
         function setPreviousRoom() {
 
-            window.location.replace("1CommonRoom.html")
+            window.location.replace("Room1.html")
         }
 
+        function Room2() {
 
+            window.location.replace("2ElectricityRoom.html")
+        }
 
-        function Restart(){
-            
+        function Restart() {
+
             window.location.replace("HomePage.html")
         }
 
@@ -207,6 +213,27 @@
                 timeRem = 10;
                 // Redirect to statistics page
                 window.location.href = 'stats.html';
+            }
+        }
+
+        //This tests the word inserted 
+        function checkWord() {
+            const word = document.getElementById("word-input").value;
+
+            if (word.toLowerCase() === "green") {
+                document.getElementById('WrongText').className = "hideMe";
+                Green();
+            } else if (word.toLowerCase() === "red") {
+                document.getElementById('WrongText').className = "hideMe";
+                Red();
+            } else if (word.toLowerCase() === "blue") {
+                document.getElementById('WrongText').className = "hideMe";
+                Blue();
+            } else if (word.toLowerCase() === "yellow") {
+                document.getElementById('WrongText').className = "hideMe";
+                Yellow();
+            } else {
+                document.getElementById('WrongText').className = "showMe";
             }
         }
 
