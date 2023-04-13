@@ -51,24 +51,24 @@
                 <p>What do you want to look at? </p>
                 <button onclick="setWires();">The Wires</button>
                 <button onclick="setDoor();">The Door</button>
-                <button onclick="Plant();">The Plant</button>
+                <button onclick=" generateNumber();">The Plant</button>
 
             </div>
             <div id="wireButtons" class="hideMe">
 
-                <p>What wire do you want to cut? </p>
+                <p>What wire do you want tofix? </p>
                 <br>
 
                 <label for="word-input">Enter a wire to fix:</label>
                 <input type="text" id="word-input">
-                <button onclick="checkWord()">Cut wire</button>
+                <button onclick="checkWord()">Fix wire</button>
                 <p id="result"></p>
                 <br>
                 <button onclick="Room2();" class="button">Back to Room 2</button>
             </div>
 
             <div id="WrongText" class="hideMe">
-                <p class="gameText">Sorry, That is not a wire that can be cut</p>
+                <p class="gameText">Sorry, That is not a wire that can be fixed</p>
             </div>
 
             <div id="plantButtons" class="hideMe">
@@ -121,16 +121,13 @@
             document.getElementById('col2Loss').className = "showMe";
         }
         function Yellow() {
-            document.getElementById('explosion').className = "showMe";
-            Loss();
+            window.location.replace("Electric_ending.html")
         }
         function Blue() {
-            document.getElementById('vacume').className = "showMe";
-            Loss();
+            window.location.replace("Electric_ending.html")
         }
         function Red() {
-            document.getElementById('plant').className = "showMe";
-            Loss();
+            window.location.replace("Electric_ending.html")
         }
         function Green() {
             document.getElementById('win').className = "showMe";
@@ -234,6 +231,18 @@
                 Yellow();
             } else {
                 document.getElementById('WrongText').className = "showMe";
+            }
+        }
+
+        //There is a 25% chance that the plant will kill you when looking at it
+        function generateNumber() {
+            var randomNumber = Math.floor(Math.random() * 4) + 1;
+            document.getElementById("result").innerHTML = randomNumber;
+
+            if(randomNumber == 1){
+                window.location.replace("Plant-ending.html")
+            } else{
+                Plant()
             }
         }
 
