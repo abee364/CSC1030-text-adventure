@@ -10,7 +10,6 @@
     <div class="container">
         <img src="images/Room1.png" alt="Room1" style="width:90%;">
         <div class="text-block">
-            <h1>Time Remaining: <span id="timerText">?</span></h1>
             <p id="greeting">Computer: Hello there <span id="name"></span> we have a problem, the ship seems to have malfunctioned 
                 and as such our systems have begun rapidly failing and…”</p>
             <p>“WARNING LIGHTS FAILING IN 3, 2, 1. Switching to back-up generator”</p>
@@ -36,57 +35,6 @@
 
         // Display the user's name
         document.getElementById('name').innerHTML = name;
-
-        // Initial timer (default vaulue is 1000 seconds)
-        if (!sessionStorage.getItem('timeRem')) {
-            sessionStorage.setItem('timeRem', '1000');
-        }
-
-        // Timer with the remaining time
-        function startTimer() {
-            var timeRem = sessionStorage.getItem('timeRem');
-            document.getElementById('timerText').innerHTML = timeRem;
-            timer = setInterval(countdown, 1000);
-        }
-
-        // Save the remaining time in the session storage before navigating to another page
-        function saveTimeRem() {
-            var timeRem = document.getElementById('timerText').innerHTML;
-            sessionStorage.setItem('timeRem', timeRem);
-        }
-
-        // Load the remaining time from the session storage and start the timer with it
-        function loadTimeRem() {
-            var timeRem = sessionStorage.getItem('timeRem');
-            document.getElementById('timerText').innerHTML = timeRem;
-            timer = setInterval(countdown, 1000);
-        }
-
-        // Update the timer display and store the remaining time in the session storage every second
-        function countdown() {
-            var timeRem = document.getElementById('timerText').innerHTML;
-            if (timeRem > 0) {
-                timeRem--;
-                document.getElementById('timerText').innerHTML = timeRem;
-                sessionStorage.setItem('timeRem', timeRem);
-            } else {
-                clearInterval(timer);
-                document.getElementById('timerText').innerHTML = 'END';
-                timeRem = 10;
-                // Redirect to statistics page
-                window.location.href = 'stats.html';
-            }
-        }
-
-        // Register a beforeunload event listener to save the remaining time before navigating away from the page
-        window.addEventListener('beforeunload', saveTimeRem);
-
-        // Load the remaining time and start the timer when the page loads
-        window.addEventListener('load', loadTimeRem);
-
-        function Start() {
-            window.location.replace("Room1.html")
-        }
 
     </script>
 </body>
