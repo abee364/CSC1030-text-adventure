@@ -19,20 +19,20 @@
                 <td class="failureReason">N/A</td>
               </tr>
               <tr>
-                <th>Score</th>
-                <td class="score">95</td>
-              </tr>
-              <tr>
                 <th>Time Remained</th>
                 <td class="time"><span id="timerText">?</span></td>
               </tr>
             </table>
+            <button onclick="Restart();" class="button">Play again</button>
         </div>
 
         <script type="text/javascript">
             const statusElement = document.getElementById('status');
             statusElement.innerHTML = "SUCCESS";
             statusElement.innerHTML = "FAILED";
+            function Restart() {
+              window.location.replace("HomePage.html")
+            }
         </script>
     </body>
 

@@ -309,3 +309,8 @@
         th {
             background-color: #46586e;
         }
+
+        #statsWrapper > button {
+            display: block;
+            margin: 0 auto;
+        }
