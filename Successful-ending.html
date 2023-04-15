@@ -14,7 +14,7 @@
         <img src="images/Successful.png" alt="Successful Endcard" style="width:90%;">
 
         <div class="end-summary">
-            <h1>GAME OVER</h1>
+            <h1>CONGRATULATIONS</h1>
 
             <p>You successfully stopped the ship from exploding! Now you and your crew can begin repairs and put
                 protocols in place to ensure this never happens again...hopefully</p>
@@ -25,6 +25,8 @@
     </div>
     <script>
         function Next() {
+            // Save the mission status to local storage
+            localStorage.setItem("missionStatus", "SUCCESS");
             window.location.replace("Stats.html")
         }
     </script>

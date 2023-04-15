@@ -12,7 +12,7 @@
             <table>
               <tr>
                 <th>Mission Status</th>
-                <td class="statusDisplay"><span id="status">?</span></td>
+                <td class="statusDisplay"><span id="status">STATUS</span></td>
               </tr>
               <tr>
                 <th>Mission Failure Reason</th>
@@ -27,12 +27,20 @@
         </div>
 
         <script type="text/javascript">
-            const statusElement = document.getElementById('status');
+          // Retrieve the mission status from local storage
+          const missionStatus = localStorage.getItem("missionStatus");
+          // Update the HTML element with an ID of "status" to display the correct status
+          const statusElement = document.getElementById("status");
+          if (missionStatus === "SUCCESS") {
             statusElement.innerHTML = "SUCCESS";
+          } else {
             statusElement.innerHTML = "FAILED";
-            function Restart() {
-              window.location.replace("HomePage.html")
-            }
+          }
+
+          function Restart() {
+            localStorage.removeItem("missionStatus");
+            window.location.replace("HomePage.html")
+          }
         </script>
     </body>
 
