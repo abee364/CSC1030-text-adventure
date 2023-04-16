@@ -24,6 +24,9 @@
 			<div id="main" class="showMe">
 				<img class="centre" src="images/Room4.png" style="width:90%;" alt="Gallery" />
 			</div>
+			<div id="fire" class="hideMe">
+				<img class="centre" src="images/room4_no_fireextingisher.png" style="width:90%;" alt="Gallery" />
+			</div>
 		</div>
 		<div id="col2" class="showMe">
 
@@ -36,7 +39,8 @@
 
 				<p>You have reached a critical decision point. Attempt to save everyone or escape?</p>
 				<br>
-
+				
+				<button id="extinguisher" class="button" onclick="grabExtinguisher()">Grab fire extinguisher</button>
 				<button id="escape-button" class="button" onclick="escape()">Escape</button>
 				<button id="save-button" class="button" onclick="save()">Save Everyone</button>
 
@@ -70,7 +74,17 @@
 		}
 
 		//Session scripts
-        // Initial timer (default vaulue is 1000 seconds)
+		let extinguisher = 0;
+		function grabExtinguisher() {
+    		if (extinguisher == 0) {
+        		extinguisher = 1;
+        		sessionStorage.setItem('extinguisher', extinguisher);
+        		document.getElementById('main').innerHTML = '<img class="centre" src="images/room4_no_fireextingisher.png" style="width:90%;" alt="Gallery" />';
+    		}	
+		}
+
+        
+		// Initial timer (default vaulue is 1000 seconds)
         if (!sessionStorage.getItem('timeRem')) {
             sessionStorage.setItem('timeRem', '1000');
         }
