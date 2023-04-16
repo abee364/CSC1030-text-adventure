@@ -12,15 +12,11 @@
             <table>
               <tr>
                 <th>Mission Status</th>
-                <td class="statusDisplay"><span id="status">STATUS</span></td>
-              </tr>
-              <tr>
-                <th>Mission Failure Reason</th>
-                <td class="failureReason">N/A</td>
+                <td><span id="status">STATUS PENDING</span></td>
               </tr>
               <tr>
                 <th>Time Remained</th>
-                <td class="time"><span id="timerText">?</span></td>
+                <td><span id="timerText">?</span></td>
               </tr>
             </table>
             <button onclick="Restart();" class="button">Play again</button>
@@ -28,7 +24,7 @@
 
         <script type="text/javascript">
           // Retrieve the mission status from local storage
-          const missionStatus = localStorage.getItem("missionStatus");
+          const missionStatus = sessionStorage.getItem("missionStatus");
           // Update the HTML element with an ID of "status" to display the correct status
           const statusElement = document.getElementById("status");
           if (missionStatus === "SUCCESS") {
@@ -37,9 +33,19 @@
             statusElement.innerHTML = "FAILED";
           }
 
+          // Load the remaining time from the session storage and display it in the "Time Remained" table cell
+          const timeRemElement = document.getElementById("timerText");
+          const timeRem = sessionStorage.getItem("timeRem");
+          if (timeRem === null) {
+            timeRemElement.innerHTML = "?";
+          } else {
+            timeRemElement.innerHTML = timeRem;
+          }
+
           function Restart() {
             localStorage.removeItem("missionStatus");
-            window.location.replace("HomePage.html")
+            sessionStorage.removeItem("timeRem");
+            window.location.replace("HomePage.html");
           }
         </script>
     </body>
