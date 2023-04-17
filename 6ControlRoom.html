@@ -73,7 +73,11 @@
                 </div>
 
                 <div id="riddleInstruction" class="hideMe">
-                    <p>Here's your password hint. Remember all lowercase letters</p>
+                    <p>Here's your password hint.</p>
+                </div>
+
+                <div id="gasOffText" class="hideMe">
+                    <p>You managed to turn off the gas and start up the filtration program to remove the gas from the ship.</p>
                 </div>
 
                 <div id="Riddle" class="hideMe">
@@ -184,6 +188,7 @@
                 document.getElementById('previousRoom').className = "hideMe";
                 document.getElementById('Riddle').className = "hideMe";
                 document.getElementById('turnOff').className = "showMe button";
+                document.getElementById('riddleInstruction').className = "hideMe";
 
 
             } else {
@@ -220,6 +225,7 @@
             document.getElementById('unlocked_screen').className = "hideMe";
             document.getElementById('normal').className = "showMe";
             document.getElementById('turnOff').className = "hideMe";
+            document.getElementById('gasOffText').className = "showMe";
             document.getElementById('end').className = "showMe button";
         }
 
