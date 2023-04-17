@@ -58,23 +58,33 @@
 
             <div id="Room6Buttons">
 
-                <p id="arrival">“You have reached the source of the gas leak! You must hurry to find a way to stop it before you run
-                    out of oxygen and the fire spreads further.”
-                </p>
+                <div id="arrival">
+                    <p>“You have reached the source of the gas leak! You must hurry to find a way to stop it
+                        before you run
+                        out of oxygen and the fire spreads further.”</p>
+                </div>
+
+                <div id="screenInstruction" class="hideMe">
+                    <p>You must log in to manage the ship's systems</p>
+                </div>
+
+                <div id="riddleInstruction" class="hideMe">
+                    <p>Here's your password hint</p>
+                </div>
                 <br>
 
                 <div id="Riddle" class="hideMe">
-                <p id="riddle-question"></p>
-                <input type="text" id="guess" placeholder="Password">
-                <button onclick="checkAnswer()">Enter</button>
-                <p id="result" style="display: none;"></p>
-                <p id="riddle-answer" style="display: none;"></p>
-                <p></p>
+                    <p id="riddle-question"></p>
+                    <input type="text" id="guess" placeholder="Password">
+                    <button onclick="checkAnswer()">Enter</button>
+                    <p id="result" style="display: none;"></p>
+                    <p id="riddle-answer" style="display: none;"></p>
+                    <p></p>
                 </div>
 
                 <button id="screenbutton" onclick="screen()" class="button">Check out screen</button>
                 <button id="fire" onclick="fire()" class="button">Put out fire</button>
-                <button id="riddle" onclick="riddle()" class="hideMe">Answer riddle</button>
+                <button id="riddle" onclick="riddle()" class="hideMe">Enter Password</button>
                 <button id="back" onclick="back()" class="hideMe">Back</button>
                 <button id="turnOff" onclick="turnOff()" class="hideMe">Turn off gas</button>
                 <button id="end" onclick="end()" class="hideMe">Next</button>
@@ -92,6 +102,7 @@
             if (extinguisher == 1) {
                 window.alert("Fire has been succesfully put out");
                 document.getElementById('main').innerHTML = '<img class="centre" src="images/room6_gas.png" style="width:90%;" alt="Control Room" />';
+                document.getElementById('fire').className = "hideMe";
             } else {
                 window.alert("You do not have anything to put the fire out with");
             }
@@ -107,7 +118,8 @@
             document.getElementById('riddle').className = "button";
             document.getElementById('back').className = "showMe";
             document.getElementById('back').className = "button";
-
+            document.getElementById('arrival').className = "hideMe";
+            document.getElementById('screenInstruction').className = "showMe";
         }
 
 
@@ -119,6 +131,9 @@
             document.getElementById('riddle').className = "hideMe";
             document.getElementById('back').className = "hideMe";
             document.getElementById('Riddle').className = "hideMe";
+            document.getElementById('arrival').className = "showMe";
+            document.getElementById('screenInstruction').className = "hideMe";
+            document.getElementById('riddleInstruction').className = "hideMe";
 
         }
 
@@ -183,6 +198,8 @@
 
         function riddle() {
             document.getElementById('arrival').className = "hideMe";
+            document.getElementById('screenInstruction').className = "hideMe";
+            document.getElementById('riddleInstruction').className = "showMe";
             document.getElementById('Riddle').className = "showMe";
             document.getElementById('riddle').className = "hideMe";
         }
