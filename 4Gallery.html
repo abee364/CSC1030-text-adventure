@@ -79,6 +79,7 @@
     		if (extinguisher == 0) {
         		extinguisher = 1;
         		sessionStorage.setItem('extinguisher', extinguisher);
+				document.getElementById('extinguisher').className = "hideMe";
         		document.getElementById('main').innerHTML = '<img class="centre" src="images/room4_no_fireextingisher.png" style="width:90%;" alt="Gallery" />';
     		}	
 		}
