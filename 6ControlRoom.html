@@ -86,7 +86,16 @@
 
     <script>
 
-        let extingusher = 0;
+        let extinguisher = sessionStorage.getItem('extinguisher');
+
+        function fire() {
+            if (extinguisher == 1) {
+                window.alert("Fire has been succesfully put out");
+                document.getElementById('main').innerHTML = '<img class="centre" src="images/room6_gas.png" style="width:90%;" alt="Control Room" />';
+            } else {
+                window.alert("You do not have anything to put the fire out with");
+            }
+        }
 
         function screen() {
             /*Screen with way to turn on?*/
@@ -99,16 +108,6 @@
             document.getElementById('back').className = "showMe";
             document.getElementById('back').className = "button";
 
-        }
-
-        function fire() {
-            if (extingusher == 1) {
-                window.alert("Fire has been succesfully put out");
-                /*Remove fire from graphic*/
-
-            } else {
-                window.alert("You do not have anything to put the fire out with");
-            }
         }
 
 
