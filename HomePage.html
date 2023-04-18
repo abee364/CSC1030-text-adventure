@@ -158,24 +158,30 @@
 
             }
 
+            var bodyBgColor, wrapperBgColor, startBgColor, startColor, wrapperColor, bodyColor;
+
             function lightMode() {
-                document.getElementById("body").style.backgroundColor ="ivory"
-                document.getElementById("wrapper").style.backgroundColor ="ivory"
-                
-                document.getElementById("start").style.backgroundColor="rgb(216, 216, 216)"
-                // Colour changes
-                document.getElementById("start").style.Color="black"
-                document.getElementById("wrapper").style.Color ="black"
-                document.getElementById("body").style.color = "grey"
+                bodyBgColor = document.getElementById("body").style.backgroundColor;
+                wrapperBgColor = document.getElementById("wrapper").style.backgroundColor;
+                startBgColor = document.getElementById("start").style.backgroundColor;
+                startColor = document.getElementById("start").style.color;
+                wrapperColor = document.getElementById("wrapper").style.color;
+
+                document.getElementById("body").style.backgroundColor = "ivory";
+                document.getElementById("wrapper").style.backgroundColor = "ivory";
+                document.getElementById("start").style.backgroundColor = "rgb(216, 216, 216)";
+                document.getElementById("start").style.color = "black";
+                document.getElementById("wrapper").style.color = "black";
             }
 
             function darkMode() {
-                document.getElementById("body").style.backgroundColor ="black"
-                document.getElementById("wrapper").style.backgroundColor ="#222629"
-                document.getElementById("body").style.color = "white"
-
+                document.getElementById("body").style.backgroundColor = bodyBgColor;
+                document.getElementById("wrapper").style.backgroundColor = wrapperBgColor;
+                document.getElementById("start").style.backgroundColor = startBgColor;
+                document.getElementById("start").style.color = startColor;
+                document.getElementById("wrapper").style.color = wrapperColor;
+                document.getElementById("body").style.color = "white";
             }
-
         </script>
 
     </body>
