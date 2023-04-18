@@ -206,10 +206,7 @@
             document.getElementById("textOutput").innerHTML = "Looking Around You see the outline of 2 doors <br> an airlock <br> and a ...'add other item here'";
         }
 
-        function textUpdateExamineWire() {
-
-            document.getElementById("textOutput").innerHTML = "Add Wire to Inventory";
-        }
+        
 
         function textUpdateDoor1Locked() {
 
@@ -254,10 +251,8 @@
 
             sessionStorage.setItem("WireCoil", 1);
 
-            textUpdateExamineWire();
-            addWireToInventory();
-
-
+            document.getElementById("textOutput").innerHTML = "Add Wire to Inventory";
+            
             document.getElementById('Wire').className = "showMe";
      
         }
@@ -331,10 +326,13 @@
             
 
             a.style.display = "initial";
-            b.style.display = "none";
-            c.style.display = "none";
-            d.style.display = "none";
-            e.style.display = "none";
+
+            document.getElementById('Wire').className = "hideMe";
+            document.getElementById('door1').className = "hideMe";
+            document.getElementById('door2').className = "hideMe";
+            document.getElementById('airlock').className = "hideMe";
+
+           
             
 
             unlockDoor2();
