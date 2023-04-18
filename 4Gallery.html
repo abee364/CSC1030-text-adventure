@@ -144,6 +144,21 @@
             }
         }
 
+		//Session storage - Accessibility
+        var textSize = sessionStorage.getItem('text');
+        document.getElementById("wrapper").style.fontSize = textSize
+
+        var modeColor = sessionStorage.getItem('mode');
+        if (modeColor == 'light') {
+            lightMode();
+        }
+
+        function lightMode() {
+            document.getElementById("wrapper").style.backgroundColor = "rgb(216, 216, 216)";
+            document.getElementById("col1").style.color = "black";
+            document.getElementById("col2").style.color = "black";
+        }
+
 
 	</script>
 </body>

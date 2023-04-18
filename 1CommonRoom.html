@@ -85,7 +85,7 @@
             <!--This is the div that controls the light-->
             <div id="light"></div>
 
-            <h1>Room 1 - Common Room</h1>
+            <h1 id="title">Room 1 - Common Room</h1>
 
 
             <!-- The main photo  -->
@@ -156,12 +156,6 @@
 
         </div>
     </div>
-
-
-
-
-
-
 
     <script>
         let Permission = 0;
@@ -452,7 +446,7 @@
         }
 
 
-//Session storage - Accessibility
+        //Session storage - Accessibility
         var textSize = sessionStorage.getItem('text');
         document.getElementById("wrapper").style.fontSize = textSize
 
@@ -462,12 +456,9 @@
         }
 
         function lightMode() {
-            document.getElementById("wrapper").style.backgroundColor = "ivory";
-            document.getElementById("greeting").style.backgroundColor = "rgb(216, 216, 216)";
-            document.getElementById("greeting").style.color = "black";
-            document.getElementById("secondSlide").style.backgroundColor = "rgb(216, 216, 216)";
-            document.getElementById("secondSlide").style.color = "black";
-                document.getElementById("wrapper").style.color = "black";
+            document.getElementById("wrapper").style.backgroundColor = "rgb(216, 216, 216)";
+            document.getElementById("col1").style.color = "black";
+            document.getElementById("col2").style.color = "black";
         }
 
 
