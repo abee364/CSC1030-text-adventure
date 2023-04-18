@@ -67,10 +67,13 @@
             function handleStartButtonClick() {
                 console.log("Button clicked");
                 const nameInput = document.getElementById('name').value;
+                const difficultyInput = document.getElementById('difficulty').value;
                 // Validation check if any character is present in the name
                 if (nameInput.trim() === "") {
                     alert("Please enter your name");
-                    console.log("Name Error");
+                    return
+                } else if (difficultyInput !== 'easy' && difficultyInput !== 'medium' && difficultyInput !== 'hard') {
+                    alert("Please select diffculty");
                     return
                 } else {
                     // Set the player's name in session storage
@@ -106,8 +109,6 @@
                     case 'hard':
                         sessionStorage.setItem('timeRem', '240');
                         break;
-                    default:
-                        alert("Select difficulty");
                 }
                 // Takes the player to the monologue page
                 window.location.replace("Monologue.html");
