@@ -42,6 +42,9 @@
 				<button id="escape-button" class="button" onclick="escape()">Escape</button>
 				<button id="save-button" class="button" onclick="save()">Save Everyone</button>
 				<button id="extinguisher" class="button" onclick="grabExtinguisher()">Grab fire extinguisher</button>
+				<div id="pickupExtinguisher" class="hideMe">
+					<p>You have picked up the fire extinguisher.</p>
+				</div>
 
 			</div>
 		</div>
@@ -50,18 +53,13 @@
 	<script>
 		
 		function escape() {
-			// code to execute when Escape button is clicked
-			window.alert("You have chosen to escape! Head to the escape pod...");
 			window.location.href = "5EscapePod.html";
 		}
 		function save() {
-			// code to execute when Save Everyone button is clicked
-			window.alert("You have chosen to attempt to save everyone! Onto the control room...");
 			window.location.href = "6ControlRoom.html";
 		}
 
 		function previousRoom() {
-
 			window.location.replace("3ShipDeck.html")
 		}
 
@@ -72,7 +70,9 @@
         		extinguisher = 1;
         		sessionStorage.setItem('extinguisher', extinguisher);
 				document.getElementById('extinguisher').className = "hideMe";
-        		document.getElementById('main').innerHTML = '<img class="centre" src="images/room4_no_fireextingisher.png" style="width:90%;" alt="Gallery" />';
+				document.getElementById('main').className = "hideMe";
+        		document.getElementById('fire').className = "showMe";
+				document.getElementById("pickupExtinguisher").className = "showMe";
     		}	
 		}
 

@@ -68,6 +68,10 @@
                     <p>You should put the fire out first</p>
                 </div>
 
+                <div id="fireStopped" class="hideMe">
+                    <p>Fire has been succesfully put out</p>
+                </div>
+
                 <div id="screenInstruction" class="hideMe">
                     <p>You must log in to gain access to manage the ship's systems</p>
                 </div>
@@ -107,9 +111,9 @@
 
         function fire() {
             if (extinguisher == 1) {
-                window.alert("Fire has been succesfully put out");
-                document.getElementById('main').innerHTML = '<img class="centre" src="images/room6_gas.png" style="width:90%;" alt="Control Room" />';
-                document.getElementById('fire').className = "hideMe";
+                document.getElementById('fireStopped').className = "showMe";
+                document.getElementById('gas').className = "showMe";
+                document.getElementById('main').className = "hideMe";
                 enableButton();
             } else {
                 window.alert("You do not have anything to put the fire out with");
