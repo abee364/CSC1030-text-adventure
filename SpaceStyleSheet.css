@@ -183,6 +183,12 @@
             background-image: url("images/andy-holmes-rCbdp8VCYhQ-unsplash.jpg");
             background-color: #cccccc;
         }
+        
+        #gameTitle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
 
         /**---------------------------------Monologue Specific CSS----------------------------------------**/
         .container {
