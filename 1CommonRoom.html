@@ -3,41 +3,22 @@
 
 <head>
 
-    <title>Common Room</title>
-
     <link rel="stylesheet" href="SpaceStyleSheet.css">
 
+    <title>Common Room</title>
+
     <style>
-
-         .wrapper {
-
-            color: black;
-
-            /*Insert background image here*/
-
-        
-
-            margin: auto;
-            margin-top: 50px;
-            padding-top: 10px;
-
-            display: grid;
-            grid-template-columns: 50% 50%;
-
-            grid-template-areas:
-                "hd hd"
-                "tbx tbx"
-                "ibx ibx"
-                "itbx itbx"
-                "ft ft";
-            gap: 10px;
+        .header {
+            grid-area: hd;
         }
 
-        .textBox {
+        .timerBox {
             grid-area: tbx;
 
+            font-size: 10px;
+
             text-align: center;
-            background-color: rgba(245, 163, 11, 0.8);
+            background-color: rgba(211, 211, 211, 0.1);
 
             border: thick;
             border-color: pink;
@@ -53,7 +34,7 @@
         .interactionBox {
             grid-area: ibx;
             text-align: center;
-            background-color: rgba(67, 236, 219, 0.8);
+            background-color: rgba(211, 211, 211, 0.1);
             border: thick;
             border-color: pink;
             margin-left: 5%;
@@ -64,21 +45,60 @@
             padding-bottom: 5px;
         }
 
+        .wrapper {
+
+            color: white;
+
+
+            margin: auto;
+            margin-top: 50px;
+            padding-top: 10px;
+
+            gap: 10px;
+        }
+
+        .txtBxBtn {
+
+            background-color: lightgray;
+        }
+
+        #start {
+
+            background-color: black;
+            color: white;
+            text-align: center;
+
+        }
+
         .col2 {
+
             background-image: "images/Room1.png";
         }
+
+      
     </style>
 </head>
 
 <body>
     <div class="wrapper">
 
-        <div id="col1" class="showMe">
+        <div id="col1">
+
+            <!--This is the div that controls the light-->
+            <div id="light"></div>
+
+            <h1>Room 1 - Common Room</h1>
 
 
             <!-- The main photo  -->
             <div id="backgroundImg" class="showMe">
                 <img class="centre" src="images/Room1.png" style="width:90%;" alt="Common Room" />
+            </div>
+
+            <div id = "postIt" class = "hideMe">
+
+                <p id = PCode></p>
+    
             </div>
 
             <!-- Different endings -->
@@ -94,39 +114,34 @@
 
                 <h1>Room 1</h1>
 
-                    
-                        <button id = "previousRoom" onclick = "previousRoom();">Previous Room</button>
-                        <button id="start" onclick="start()">Start</button>
-                        <button id="show" onclick="show()">Show</button>
-                        <h1>Time Remaining: <span id="timerText">?</span></h1>
+              
+                <button id="goToRoom2" onclick="goToRoom2()">Ship Deck</button>
+                <button id="goToRoom3" onclick="goToRoom3()">Electric Storage Room</button>
 
             </div>
 
-            <div class="textBox">
+            <div class="timerBox">
 
-                <p id="textOutput">Please Press the start buttton to begin the game.
-                    This just manually triggers what will be an onload method for testing purposes.
-                </p>
+                <h1>Time Remaining: <span id="timerText">?</span></h1>
+                
 
             </div>
 
             <div class="interactionBox">
+
+                <p id="textOutput"> Would you like to 'Look Around' or try and 'Turn On' the lights?</p>
+
+                <button id="Wire" class="showMe" onclick="Wire()">Examine Wire</button>
+                <button id="door1" class="showMe" onclick="door1()">Try Opening Door 1</button>
+                <button id="door2" class="showMe" onclick="door2()">Try Opening Door 2</button>
+                <button id="airlock" class="showMe" onclick="airlock()">Jump out the Airlock</button>
+                <button id="stickyNote" class="showMe" onclick="getRandNo()">Look At Sticky Note</button>
+                <button id = "back" class = "hideMe" onclick = "back()">Back</button>
                 
-                <p id="instructingText"> Would you like to 'Look Around' or try and 'Turn On' the lights?</p>
-
-                <!--This used to be called 'spanner', i changed to to coil, hope this is right - Daniel-->
-                <button id="wire" onclick="spanner()">Pick up coil of wire</button>
-                <button id="door1" onclick="door1()">Try Opening Door 1</button>
-                <button id="door2" onclick="door2()">Try Opening Door 2</button>
-                <button id="airlock" onclick="airlock()">Jump out the Airlock</button>
-                <button id="lookAround" onclick="lookAround()">Look Around</button>
-                <button id="turnOn" onclick="turnOn()">Turn On Torch</button>
-                <button id="goDoor1" onclick="goDoor1()">Enter Through Door 1</button>
-                <button id="goDoor2" onclick="goDoor2()">Enter Through Door 2</button>
 
 
 
-                <form id="inputForm" onsubmit="input()">
+                <form id="inputForm" class="hideMe" onsubmit="input()">
 
                     <input id="text" type="text" name="userInput">
                     <br>
@@ -139,28 +154,49 @@
     </div>
 
 
+
+
+
+
+
     <script>
+
         //0 means not picked up yet
         //sessionStorage.setItem("WireCoil", 0);
 
         //0 means the torch is on
-        //sessionStorage.setItem("Torch", 0);
 
-        // let myNum = sessionStorage.getItem("Torch")
-        // myNum = Number(myNum);
-        // if(myNum === 1){
-        //     //turn off torch 
-        // }
+        let myNum = sessionStorage.getItem("Torch")
+        myNum = Number(myNum);
+        console.log("Torch is " + myNum);
+        if (myNum == 1) {
+            //turns off the light
+            var div = document.getElementById("light");  
+            div.setAttribute("id", "newDivID");
+        } 
+
+        //torch
+        var pos = document.documentElement;
+        pos.addEventListener('mousemove', e => {
+            pos.style.setProperty('--x', e.clientX + 'px')
+            pos.style.setProperty('--y', e.clientY + 'px')
+        })
 
         //text for screen functions
+
         function startingText() {
 
             document.getElementById("textOutput").innerHTML = "Welcome to the Spaceship. For the immediacy, you have 2 options, either look around the 'room?' you seem to be in, or attemp to turn on your torch.";
         }
 
-        function textUpdateLookAround() {
+        function textUpdateLookAroundLight() {
 
-            document.getElementById("textOutput").innerHTML = "Looking Around You see the outline of 2 doors <br> an airlock <br> and a ...'add other item here'";
+            document.getElementById("textOutput").innerHTML = "Looking Around You see the outline of 2 doors <br> an airlock <br> and a Coil of Wire";
+        }
+
+        function textUpdateLookAroundDark() {
+
+            document.getElementById("textOutput").innerHTML = "You Attempt to Look Around but cannot due to the dark. Perhaps try turning on your torch?";
         }
 
         function textUpdateLookAroundPostTorch() {
@@ -168,20 +204,29 @@
             document.getElementById("textOutput").innerHTML = "Looking Around You see the outline of 2 doors <br> an airlock <br> and a ...'add other item here'";
         }
 
-        function textUpdateExamineSpanner() {
+        function textUpdateExamineWire() {
 
-            document.getElementById("textOutput").innerHTML = "Add  'item' to Inventory";
+            document.getElementById("textOutput").innerHTML = "Add Wire to Inventory";
         }
 
-        function textUpdateLookAtDoor1() {
+        function textUpdateDoor1Locked() {
 
-            document.getElementById("textOutput").innerHTML = "You find the door is open.";
-            document.getElementById("instructingText").innerHTML = "You may now progress through the door, or retrun to looking around";
+            document.getElementById("textOutput").innerHTML = "Door is Locked! You may need to override the locking mechanism with an overdose of electricity if you can find any?";
         }
 
-        function textUpdateTryDoor2() {
+        function textUpdateDoor2Locked() {
 
-            document.getElementById("textOutput").innerHTML = "Locked - Connect to method to open with pin";
+            document.getElementById("textOutput").innerHTML = "Locked - Pin is Required to Open Door";
+        }
+
+        function textUpdateDoor2Unlocking() {
+
+            document.getElementById('textOutput').innerHTML = "Please Enter Pin";
+        }
+
+        function textUpdateDoor2Unlocked() {
+
+            document.getElementById('textOutPut').innerHTML = "Door 2 Unlocked";
         }
 
         function textUpdateAirlock() {
@@ -192,7 +237,7 @@
         function textUpdateTurnOn() {
 
             document.getElementById("textOutput").innerHTML = "Torch On Successfully";
-            document.getElementById("instructingText").innerHTML = "I suggest you begin looking around.";
+            document.getElementById("textOutput").innerHTML = "I suggest you begin looking around.";
         }
 
 
@@ -203,301 +248,126 @@
         //
 
 
-        function spanner() {
-
-            textUpdateExamineSpanner();
-
-
-            var a = document.getElementById("spanner");
-            var b = document.getElementById("door1");
-            var c = document.getElementById("door2");
-            var d = document.getElementById("airlock");
-            var e = document.getElementById("lookAround");
-            var f = document.getElementById("turnOn");
-
-
-            a.style.display = "none";
-            b.style.display = "initial";
-            c.style.display = "initial";
-            d.style.display = "initial";
-            e.style.display = "none";
-            f.style.display = "initial";
-
+        function Wire() {
 
             sessionStorage.setItem("WireCoil", 1);
 
+            textUpdateExamineWire();
+            addWireToInventory();
+
+
+            document.getElementById('Wire').className = "hideMe";
+     
         }
 
-        
+        var door1Status = 0;// closed = 0, open = 1
+
+        function goToRoom2() {
+
+
+            if (door1Status == 0) {
+
+                textUpdateDoor1Locked();
+
+            } else if (door1Status == 1) {
+
+                window.location.replace("3ShipDeck.html")
+
+
+            } else {
+                window.alert('Error');
+            }
+
+
+
+        }
+
+        var door2Status = 0;// closed = 0, open = 1
+
+        function goToRoom3() {
+
+
+            if (door2Status == 0) {
+
+                textUpdateDoor2Locked();
+
+            } else if (door2Status == 1) {
+
+                window.location.replace("2ElectricityRoom.html")
+
+            } else {
+                //Add Error Service Here
+            }
+
+
+
+        }
 
         function door1() {
 
-            textUpdateLookAtDoor1();
+            textUpdateDoor1Locked();
+           if(sessionStorage.getItem('door1') == 1){
 
-            var x = document.getElementById("nextRoom");
-            var y = document.getElementById("previousRoom");
-            var a = document.getElementById("spanner");
-            var b = document.getElementById("door1");
-            var c = document.getElementById("door2");
-            var d = document.getElementById("airlock");
-            var e = document.getElementById("lookAround");
-            var f = document.getElementById("turnOn");
-            var g = document.getElementById("goDoor1");
-            var h = document.getElementById("goDoor2");
+            door1Status = 1;
+           }else{
 
-
-
-            x.style.display = "none";
-            y.style.display = "none";
-            a.style.display = "none";
-            b.style.display = "none";
-            c.style.display = "none";
-            d.style.display = "none";
-            e.style.display = "initial";
-            f.style.display = "none";
-            g.style.display = "initial";
-            h.style.display = "none";
-
-
+            door1Status = 0;
+           }
         }
 
-        function goDoor1() {
-
-            jumpToRoom2();
-
-        }
 
 
         function door2() {
 
-            if(locked == 0){
+            textUpdateDoor2Unlocking();
 
-                textUpdateTryDoor2();
+            var a = document.getElementById("inputForm");
+            var b = document.getElementById("wire");
+            var c = document.getElementById("door1");
+            var d = document.getElementById("door2");
+            var e = document.getElementById("airlock");
+            
 
-            var y = document.getElementById("previousRoom");
-            var a = document.getElementById("spanner");
-            var b = document.getElementById("door1");
-            var c = document.getElementById("door2");
-            var d = document.getElementById("airlock");
-            var e = document.getElementById("lookAround");
-            var f = document.getElementById("turnOn");
-            var g = document.getElementById("goDoor1");
-            var h = document.getElementById("goDoor2");
-
-
-
-            y.style.display = "none";
-            a.style.display = "none";
+            a.style.display = "initial";
             b.style.display = "none";
             c.style.display = "none";
             d.style.display = "none";
-            e.style.display = "initial";
-            f.style.display = "none";
-            g.style.display = "none";
-            h.style.display = "initial";
+            e.style.display = "none";
+            
 
+            unlockDoor2();
+        }
 
+        var doorCode;
 
+        function unlockDoor2() {
 
-            }else if(locked == 1){
+            let pin = document.forms["inputForm"]["userInput"].value;
 
-            var y = document.getElementById("previousRoom");
-            var a = document.getElementById("spanner");
-            var b = document.getElementById("door1");
-            var c = document.getElementById("door2");
-            var d = document.getElementById("airlock");
-            var e = document.getElementById("lookAround");
-            var f = document.getElementById("turnOn");
-            var g = document.getElementById("goDoor1");
-            var h = document.getElementById("goDoor2");
+            if (pin == "doorCode") {
 
+                textUpdateDoor2Unlocked();
+                door2Status = 1;
 
+            } else {
 
-            y.style.display = "none";
-            a.style.display = "none";
-            b.style.display = "none";
-            c.style.display = "none";
-            d.style.display = "none";
-            e.style.display = "initial";
-            f.style.display = "none";
-            g.style.display = "none";
-            h.style.display = "initial";
-
-
+                window.alert("Error");
             }
 
-        }
-
-        function goDoor2() {
-
-            jumpToRoom3();
 
         }
-
-
 
 
         function airlock() {
 
             textUpdateAirlock();
-        }
+            window.location.replace("Airlock_ending.html")
 
-        function jumpToRoom3() {
-
-            window.location.replace("3ShipDeck.html")
-        }
-
-        function jumpToRoom2() {
-
-            window.location.replace("2ElectricityRoom.html")
+            var e = document.getElementById("airlock");
+            e.style.display = "none";
         }
 
 
-        function previousRoom() {
-
-            window.alert("You are already at the beginning");
-        }
-
-        function pickUpSiccsors() {
-
-            window.alert("You pick up the Siccsors");
-        }
-
-
-        function lookAround() {
-
-            if (torchState == 0) {
-
-
-                textUpdateLookAround();
-
-                var a = document.getElementById("spanner");
-                var b = document.getElementById("door1");
-                var c = document.getElementById("door2");
-                var d = document.getElementById("airlock");
-                var e = document.getElementById("lookAround");
-                var f = document.getElementById("turnOn");
-
-
-                a.style.display = "none";
-                b.style.display = "none";
-                c.style.display = "none";
-                d.style.display = "none";
-                e.style.display = "initial";
-                f.style.display = "initial";
-            } else if (torchState == 1) {
-                //window.alert(torchState);
-
-
-                textUpdateLookAroundPostTorch();
-
-                var a = document.getElementById("spanner");
-                var b = document.getElementById("door1");
-                var c = document.getElementById("door2");
-                var d = document.getElementById("airlock");
-                var e = document.getElementById("lookAround");
-                var f = document.getElementById("turnOn");
-
-
-                a.style.display = "initial";
-                b.style.display = "initial";
-                c.style.display = "initial";
-                d.style.display = "initial";
-                e.style.display = "initial";
-                f.style.display = "none";
-
-
-            } else {
-
-                window.alert("The Torch Has Lost Its Batteries, Errors Have Occured")
-            }
-
-
-        }
-
-
-        function turnOn() {
-
-            textUpdateTurnOn();
-            turnTorchOn();
-
-            var x = document.getElementById("nextRoom");
-            var y = document.getElementById("previousRoom");
-            var a = document.getElementById("spanner");
-            var b = document.getElementById("door1");
-            var c = document.getElementById("door2");
-            var d = document.getElementById("airlock");
-            var e = document.getElementById("lookAround");
-            var f = document.getElementById("turnOn");
-
-
-
-            x.style.display = "none";
-            y.style.display = "none";
-            a.style.display = "none";
-            b.style.display = "none";
-            c.style.display = "none";
-            d.style.display = "none";
-            e.style.display = "initial";
-            f.style.display = "none";
-
-        }
-
-        function start() {
-
-            startingText();
-
-            var y = document.getElementById("previousRoom");
-            var a = document.getElementById("spanner");
-            var b = document.getElementById("door1");
-            var c = document.getElementById("door2");
-            var d = document.getElementById("airlock");
-            var e = document.getElementById("lookAround");
-            var f = document.getElementById("turnOn");
-            var g = document.getElementById("goDoor1");
-            var h = document.getElementById("goDoor2");
-
-
-            y.style.display = "none";
-            a.style.display = "none";
-            b.style.display = "none";
-            c.style.display = "none";
-            d.style.display = "none";
-            e.style.display = "initial";
-            f.style.display = "initial";
-            g.style.display = "none";
-            h.style.display = "none";
-            
-        }
-
-        function show() {
-
-            var x = document.getElementById("nextRoom");
-            var y = document.getElementById("previousRoom");
-            var a = document.getElementById("spanner");
-            var b = document.getElementById("door1");
-            var c = document.getElementById("door2");
-            var d = document.getElementById("airlock");
-            var e = document.getElementById("lookAround");
-            var f = document.getElementById("previousRoom");
-            var g = document.getElementById("goDoor1");
-            var h = document.getElementById("goDoor2");
-
-
-
-            x.style.display = "initial";
-            y.style.display = "initial";
-            a.style.display = "initial";
-            b.style.display = "initial";
-            c.style.display = "initial";
-            d.style.display = "initial";
-            e.style.display = "initial";
-            f.style.display = "initial";
-            g.style.display = "initial";
-            h.style.display = "initial";
-
-
-        }
 
         //
         //
@@ -505,7 +375,41 @@
         //
         //
 
-        function input() {
+        
+
+        function getRandNo(){
+            document.getElementById('backgroundImg').className = "hideMe";
+            document.getElementById('postIt').className = "showMe";
+
+            document.getElementById('back').className = "showMe";
+            
+            
+
+
+            let url = 'http://andymcdowell.hosting.hal.davecutting.uk/1030_APIs/randomCode.php?length=4';
+
+            fetch(url)
+            .then(function(response){
+
+                return response.json();
+            })
+
+            .then(function(data){
+
+                let myRand = data.secretCode;
+                doorcode = myRand;
+                document.getElementById("PCode").innerHTML = myRand;
+            })
+            .catch(function(error){
+                console.error('ERROR: ' + error);
+
+            });
+            }
+
+
+
+
+        /*function input() {
 
             let x = document.forms["inputForm"]["userInput"].value;
 
@@ -518,77 +422,44 @@
             } else {
                 window.alert("Invalid Response, maybe try one of the suggested Prompts");
             }
-        }
+        }*/
 
-        var torchState = 0;
 
-        function turnTorchOn() {
 
-            window.alert("Turn torch on,once torch is made");
-            torchState = torchState + 1;
-            //window.alert(torchState);
-        }
 
         var locked = 0;
 
-        function unlockDoor(){
-
-            let pin = document.forms["inputForm"]["userInput"].value;
-
-            if(pin == "1234"){
-                
-                textUpdateCorrectPin();
-                locked = locked + 1;
-                door2();
-                
+        function unlockDoor() {
 
 
-            }else{
 
-                textUpdateIncorrectPin();
-                door2();
-            }
-
-            function textUpdateIncorrectPin(){
+            function textUpdateIncorrectPin() {
 
                 document.getElementById("textOutput").innerHTML = "Incorrect Pin, Please Try Again!";
 
             }
 
-            function textUpdateCorrectPin(){
+            function textUpdateCorrectPin() {
 
                 document.getElementById("textOutput").innerHTML = "Correct Pin, Door Now Open";
 
             }
-            
+
         }
 
+        ////Methods Yet to Be Written
+        ///
+        /*addWireToInventory(){
+            implement session Storage for Room 2
+
+
+        }
+            */
+        //
+        ////
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
 
         //Session scripts
         // Initial timer (default vaulue is 1000 seconds)
@@ -639,7 +510,17 @@
         // Load the remaining time and start the timer when the page loads
         window.addEventListener('load', loadTimeRem);
 
+
+
+
+
+
+
     </script>
 
+
+
+
 </body>
+
 </html>
