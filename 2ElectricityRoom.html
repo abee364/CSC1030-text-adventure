@@ -311,6 +311,14 @@
             lightMode();
         }
 
+        window.onload = function() {
+            var stickyNoteValue = sessionStorage.getItem("stickyNoteValue");
+            if (stickyNoteValue) {
+                document.getElementById("PCode").innerHTML = stickyNoteValue;
+            }
+        }
+
+
         function lightMode() {
             document.getElementById("wrapper").style.backgroundColor = "rgb(216, 216, 216)";
             document.getElementById("col1").style.color = "black";
