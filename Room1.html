@@ -7,8 +7,6 @@
 
     <title>Common Room</title>
 
-    <link rel="stylesheet" href="SpaceStyleSheet.css">
-
     <style>
         .header {
             grid-area: hd;
@@ -97,6 +95,12 @@
                 <img class="centre" src="images/Room1.png" style="width:90%;" alt="Common Room" />
             </div>
 
+            <div id = "postIt" class = "hideMe">
+
+                <p id = PCode></p>
+    
+            </div>
+
             <!-- Different endings -->
             <div id="airlockImg" class="hideMe">
                 <img class="centre" src="images/Airlock.png" style="width:90%;" alt="Airlock Endcard" />
@@ -110,10 +114,7 @@
 
                 <h1>Room 1</h1>
 
-                <h1>Time Remaining: <span id="timerText">?</span></h1>
-
-
-
+              
                 <button id="goToRoom2" onclick="goToRoom2()">Ship Deck</button>
                 <button id="goToRoom3" onclick="goToRoom3()">Electric Storage Room</button>
 
@@ -130,13 +131,13 @@
 
                 <p id="textOutput"> Would you like to 'Look Around' or try and 'Turn On' the lights?</p>
 
-                <button id="Wire" class="hideMe" onclick="Wire()">Examine Wire</button>
-                <button id="door1" class="hideMe" onclick="door1()">Try Opening Door 1</button>
-                <button id="door2" class="hideMe" onclick="door2()">Try Opening Door 2</button>
-                <button id="airlock" class="hideMe" onclick="airlock()">Jump out the Airlock</button>
-                <button id="lookAround" class="showMe" onclick="lookAround()">Look Around</button>
-                <button id="turnOn" class="showMe" onclick="turnOn()">Turn On Torch</button>
-                <button id="stickyNote" class="hideMe" onclick="stickyNote()">Look At Sticky Note</button>
+                <button id="Wire" class="showMe" onclick="Wire()">Examine Wire</button>
+                <button id="door1" class="showMe" onclick="door1()">Try Opening Door 1</button>
+                <button id="door2" class="showMe" onclick="door2()">Try Opening Door 2</button>
+                <button id="airlock" class="showMe" onclick="airlock()">Jump out the Airlock</button>
+                <button id="stickyNote" class="showMe" onclick="getRandNo()">Look At Sticky Note</button>
+                <button id = "back" class = "hideMe" onclick = "back()">Back</button>
+                
 
 
 
@@ -255,25 +256,11 @@
             addWireToInventory();
 
 
-            var a = document.getElementById("Wire");
-            var b = document.getElementById("door1");
-            var c = document.getElementById("door2");
-            var d = document.getElementById("airlock");
-            var e = document.getElementById("lookAround");
-            var f = document.getElementById("turnOn");
-
-
-            a.style.display = "none";
-            b.style.display = "initial";
-            c.style.display = "initial";
-            d.style.display = "initial";
-            e.style.display = "none";
-            f.style.display = "none";
-
-
+            document.getElementById('Wire').className = "hideMe";
+     
         }
 
-        var door1Status = 1;// closed = 0, open = 1
+        var door1Status = 0;// closed = 0, open = 1
 
         function goToRoom2() {
 
@@ -295,7 +282,7 @@
 
         }
 
-        var door2Status = 1;// closed = 0, open = 1
+        var door2Status = 0;// closed = 0, open = 1
 
         function goToRoom3() {
 
@@ -319,7 +306,13 @@
         function door1() {
 
             textUpdateDoor1Locked();
-            //deal with session storage to open door
+           if(sessionStorage.getItem('door1') == 1){
+
+            door1Status = 1;
+           }else{
+
+            door1Status = 0;
+           }
         }
 
 
@@ -329,16 +322,29 @@
             textUpdateDoor2Unlocking();
 
             var a = document.getElementById("inputForm");
+            var b = document.getElementById("wire");
+            var c = document.getElementById("door1");
+            var d = document.getElementById("door2");
+            var e = document.getElementById("airlock");
+            
+
             a.style.display = "initial";
+            b.style.display = "none";
+            c.style.display = "none";
+            d.style.display = "none";
+            e.style.display = "none";
+            
 
             unlockDoor2();
         }
+
+        var doorCode;
 
         function unlockDoor2() {
 
             let pin = document.forms["inputForm"]["userInput"].value;
 
-            if (pin == "1234") {
+            if (pin == "doorCode") {
 
                 textUpdateDoor2Unlocked();
                 door2Status = 1;
@@ -363,75 +369,45 @@
 
 
 
-        function lookAround() {
-
-            if (torchState == 0) {
-
-                textUpdateLookAroundDark();
-
-            } else if (torchState == 1) {
-
-                textUpdateLookAroundLight();
-
-                var a = document.getElementById("Wire");
-                var b = document.getElementById("door1");
-                var c = document.getElementById("door2");
-                var d = document.getElementById("airlock");
-                var e = document.getElementById("lookAround");
-                var f = document.getElementById("stickyNote");
-
-
-
-                a.style.display = "initial";
-                b.style.display = "initial";
-                c.style.display = "initial";
-                d.style.display = "initial";
-                e.style.display = "none";
-                f.style.display = "initial";
-
-
-            } else {
-
-                window.alert("The Torch Has Lost Its Batteries, Errors Have Occured")
-            }
-        }
-
-
-        var torchState = 0;
-
-        function turnOn() {
-
-            //Add method for torch here!
-            window.alert("Current Output to inform torch is on");
-
-            torchState = torchState + 1;
-
-
-            var a = document.getElementById("lookAround");
-            var b = document.getElementById("turnOn");
-
-            a.style.display = "initial";
-            b.style.display = "none";
-
-
-
-
-        }
-
-        function stickyNote() {
-
-            //add link to random number on sitcky note here
-        }
-
-
-
-
-
         //
         //
         //Functions to operate gamaplay
         //
         //
+
+        
+
+        function getRandNo(){
+            document.getElementById('backgroundImg').className = "hideMe";
+            document.getElementById('postIt').className = "showMe";
+
+            document.getElementById('back').className = "showMe";
+            
+            
+
+
+            let url = 'http://andymcdowell.hosting.hal.davecutting.uk/1030_APIs/randomCode.php?length=4';
+
+            fetch(url)
+            .then(function(response){
+
+                return response.json();
+            })
+
+            .then(function(data){
+
+                let myRand = data.secretCode;
+                doorcode = myRand;
+                document.getElementById("PCode").innerHTML = myRand;
+            })
+            .catch(function(error){
+                console.error('ERROR: ' + error);
+
+            });
+            }
+
+
+
 
         /*function input() {
 

@@ -1,5 +1,7 @@
+  
        * {
             box-sizing: border-box;
+            
         }
 
         .header {
@@ -339,4 +341,22 @@
         #statsWrapper > button {
             display: block;
             margin: 0 auto;
+        }
+
+        @media screen and (max-width: 480) and (orientation: portrait){
+            .wrapper{
+
+                margin: auto;
+             margin-top: 25px;
+            padding-top: 5px;
+
+                grid-template-columns: 50% 50%;
+
+                grid-template-areas: 
+        
+        "col1 col1"
+        "col2 col2"
+
+            }
+
         }
