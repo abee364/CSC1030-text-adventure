@@ -163,18 +163,26 @@
             var bodyBgColor, wrapperBgColor, startBgColor, startColor, wrapperColor, bodyColor;
 
             function lightMode() {
-                bodyBgColor = document.getElementById("body").style.backgroundColor;
+                bodyBgColor = document.body.style.backgroundColor;
                 wrapperBgColor = document.getElementById("wrapper").style.backgroundColor;
                 startBgColor = document.getElementById("start").style.backgroundColor;
                 startColor = document.getElementById("start").style.color;
                 wrapperColor = document.getElementById("wrapper").style.color;
 
-                document.getElementById("body").style.backgroundColor = "ivory";
+                document.body.style.backgroundColor = "ivory";
                 document.getElementById("wrapper").style.backgroundColor = "ivory";
                 document.getElementById("start").style.backgroundColor = "rgb(216, 216, 216)";
                 document.getElementById("start").style.color = "black";
                 document.getElementById("wrapper").style.color = "black";
+
+                sessionStorage.setItem("bodyBgColor", bodyBgColor);
+                sessionStorage.setItem("wrapperBgColor", wrapperBgColor);
+                sessionStorage.setItem("startBgColor", startBgColor);
+                sessionStorage.setItem("startColor", startColor);
+                sessionStorage.setItem("wrapperColor", wrapperColor);
+                sessionStorage.setItem("mode", "light");
             }
+
 
             function darkMode() {
                 document.getElementById("body").style.backgroundColor = bodyBgColor;
