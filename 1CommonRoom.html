@@ -133,7 +133,7 @@
 
                 <p id="textOutput"> Would you like to 'Look Around' or try and 'Turn On' the lights?</p>
 
-                <button id="Wire" class="showMe" onclick="Wire()">Examine Wire</button>
+                <div id = "wireDiv"><button id="Wire" class="showMe" onclick="Wire()">Examine Wire</button></div>
                 <button id="door1" class="showMe" onclick="door1()">Try Opening Door 1</button>
                 <button id="door2" class="showMe" onclick="door2()">Try Opening Door 2</button>
                 <button id="airlock" class="showMe" onclick="airlock()">Jump out the Airlock</button>
@@ -253,7 +253,7 @@
 
             document.getElementById("textOutput").innerHTML = "Add Wire to Inventory";
             
-            document.getElementById('Wire').className = "showMe";
+            document.getElementById('wireDiv').className = "hideMe";
      
         }
 
