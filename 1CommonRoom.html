@@ -97,7 +97,9 @@
 
             <div id = "postIt" class = "hideMe">
 
+                <div class = "ptNote">
                 <p id = PCode></p>
+                </div>
     
             </div>
 
@@ -131,7 +133,7 @@
 
                 <p id="textOutput"> Would you like to 'Look Around' or try and 'Turn On' the lights?</p>
 
-                <button id="Wire" class="showMe" onclick="Wire()">Examine Wire</button>
+                <div id = "wireDiv"><button id="Wire" class="showMe" onclick="Wire()">Examine Wire</button></div>
                 <button id="door1" class="showMe" onclick="door1()">Try Opening Door 1</button>
                 <button id="door2" class="showMe" onclick="door2()">Try Opening Door 2</button>
                 <button id="airlock" class="showMe" onclick="airlock()">Jump out the Airlock</button>
@@ -204,10 +206,7 @@
             document.getElementById("textOutput").innerHTML = "Looking Around You see the outline of 2 doors <br> an airlock <br> and a ...'add other item here'";
         }
 
-        function textUpdateExamineWire() {
-
-            document.getElementById("textOutput").innerHTML = "Add Wire to Inventory";
-        }
+        
 
         function textUpdateDoor1Locked() {
 
@@ -252,11 +251,9 @@
 
             sessionStorage.setItem("WireCoil", 1);
 
-            textUpdateExamineWire();
-            addWireToInventory();
-
-
-            document.getElementById('Wire').className = "hideMe";
+            document.getElementById("textOutput").innerHTML = "Add Wire to Inventory";
+            
+            document.getElementById('wireDiv').className = "hideMe";
      
         }
 
@@ -329,10 +326,13 @@
             
 
             a.style.display = "initial";
-            b.style.display = "none";
-            c.style.display = "none";
-            d.style.display = "none";
-            e.style.display = "none";
+
+            document.getElementById('Wire').className = "hideMe";
+            document.getElementById('door1').className = "hideMe";
+            document.getElementById('door2').className = "hideMe";
+            document.getElementById('airlock').className = "hideMe";
+
+           
             
 
             unlockDoor2();
@@ -374,6 +374,14 @@
         //Functions to operate gamaplay
         //
         //
+
+        function back(){
+
+            document.getElementById('backgroundImg').className = "showMe";
+            document.getElementById('postIt').className = "hideMe";
+
+            document.getElementById('back').className = "hideMe";
+        }
 
         
 
