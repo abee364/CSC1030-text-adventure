@@ -1,6 +1,26 @@
 <!DOCTYPE html>
 <html>
 
+
+
+<!--
+    This
+    can
+    be 
+    binned
+    tommorow
+    once
+    we 
+    know
+    room 
+    1
+    acually 
+    works 
+    :)
+    
+-->
+
+
 <head>
 
     <link rel="stylesheet" href="SpaceStyleSheet.css">
@@ -130,9 +150,7 @@
 
             <div class="interactionBox">
 
-                <label for="word-input">Enter a wire to fix:</label>
-                <input type="text" id="word-input">
-                
+
                 <p id="textOutput"> Would you like to 'Look Around' or try and 'Turn On' the lights?</p>
 
                 <div id="wireDiv"><button id="Wire" class="showMe" onclick="Wire()">Pick Up Wire</button></div>
@@ -146,8 +164,10 @@
 
 
                 <form id="inputForm" class="hideMe" onsubmit="unlockDoor2()">
-
-                    <input id="text" type="text" name="userInput">
+                    <!------------------------------------------------THIS IS NEWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW-->
+                    
+                    <input type="text" id="word-input">
+                    <!--input id="text" type="text" name="userInput"-->
                     <br>
                     <!-- <input class="button" id="submit" type="submit">-->
 
@@ -165,6 +185,22 @@
 
     <script>
         let Permission = 0;
+
+        let myNum = sessionStorage.getItem("Torch")
+        myNum = Number(myNum);
+        console.log("Torch is " + myNum);
+        if (myNum == 1) {
+            //turns off the light
+            var div = document.getElementById("light");
+            div.setAttribute("id", "newDivID");
+        }
+
+        //torch
+        var pos = document.documentElement;
+        pos.addEventListener('mousemove', e => {
+            pos.style.setProperty('--x', e.clientX + 'px')
+            pos.style.setProperty('--y', e.clientY + 'px')
+        })
 
         function startingText() {
 
@@ -220,13 +256,23 @@
         //===========================================================================================================
         //===========================================================================================================
 
+        function Wire() {
+
+            sessionStorage.setItem("WireCoil", 1);
+
+            document.getElementById("textOutput").innerHTML = "Add Wire to Inventory";
+
+            document.getElementById('wireDiv').className = "hideMe";
+
+        }
+
         function goToRoom3() {
 
             if (Permission == 0) {
                 console.log("CAN'T ENTERER")
             } else {
                 window.location.replace("2ElectricityRoom.html")
-            } 
+            }
         }
 
         function door2() {
@@ -253,9 +299,6 @@
 
         var doorCode;
 
-        //  <label for="word-input">Enter a wire to fix:</label>
-        //        <input type="text" id="word-input">                     
-        //        <button onclick="checkWord()">Fix wire</button>
         function unlockDoor2() {
             console.log("HAS BEEN CALLELD")
             //this is the ------------------------------------------------------------------------
@@ -286,6 +329,15 @@
             // }
         }
 
+        function airlock() {
+
+            textUpdateAirlock();
+            window.location.replace("Airlock_ending.html")
+
+            var e = document.getElementById("airlock");
+            e.style.display = "none";
+        }
+
         function back() {
 
             document.getElementById('backgroundImg').className = "showMe";
@@ -297,8 +349,8 @@
 
         let myRand;
         let x;
-
         sessionStorage.setItem("NewCode", 0);
+
         function getRandNo() {
             document.getElementById('backgroundImg').className = "hideMe";
             document.getElementById('postIt').className = "showMe";
