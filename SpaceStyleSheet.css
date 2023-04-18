@@ -1,5 +1,7 @@
+  
        * {
             box-sizing: border-box;
+            
         }
 
         .header {
@@ -165,6 +167,12 @@
             box-shadow: 0 5px #666;
             transform: translateY(4px);
           }
+
+          /**---------------------------------Home Page Specific CSS----------------------------------------**/
+          .homeBg {
+            background-image: url("images/andy-holmes-rCbdp8VCYhQ-unsplash.jpg");
+            background-color: #cccccc;
+        }
 
         /**---------------------------------Monologue Specific CSS----------------------------------------**/
         .container {
@@ -333,4 +341,22 @@
         #statsWrapper > button {
             display: block;
             margin: 0 auto;
+        }
+
+        @media screen and (max-width: 480) and (orientation: portrait){
+            .wrapper{
+
+                margin: auto;
+             margin-top: 25px;
+            padding-top: 5px;
+
+                grid-template-columns: 50% 50%;
+
+                grid-template-areas: 
+        
+        "col1 col1"
+        "col2 col2"
+
+            }
+
         }

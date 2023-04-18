@@ -101,7 +101,7 @@
     </div>
 
     <script>
-        //ceck if the torch should be on or not? 
+        //check if the torch should be on or not? 
         let myNum = sessionStorage.getItem("Torch")
         myNum = Number(myNum);
         if (myNum === 1) {
@@ -109,7 +109,7 @@
             div.setAttribute("id", "newDivID");
         }
 
-        function chechWire() {
+        function checkWire() {
 
             sessionStorage.getItem("WireCoil");
             myNum = Number(myNum);
@@ -166,6 +166,7 @@
             document.getElementById('wireButtons').className = "hideMe";
             document.getElementById('doorLocked').className = "hideMe";
 
+            sessionStorage.setItem("Door1", 1)
             sessionStorage.setItem("Torch", 1);
             var div = document.getElementById("light");             //-----------------------------------------
             div.setAttribute("id", "newDivID");

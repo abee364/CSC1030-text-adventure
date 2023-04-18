@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+     <title>API Test</title>
+
+     <style>
+
+
+
+        #postIt{
+
+            color: black;
+            background-color: rgb(243, 243, 75, 0.8);
+            padding: 40%;
+            margin: 10%;
+            border: 5px;
+        }
+
+        #bg{
+
+            background-color: black;
+        }
+     </style>
+
+
+    </head>
+    <body>
+
+
+        <!--<img class="centre" src="C:\Users\benmd\OneDrive\Documents\GitHub\CSC1030-text-adventure\images\post-it_background.png" style="width:90%;" alt="Background of Post It Note"/>
+        -->
+
+<div id = "bg">
+        <div id = postIt>
+
+            <p id = PCode></p>
+
+        </div>
+
+        </div>
+
+
+        
+    </body>
+     <script>
+
+        window.addEventListener('load', getRandNo);
+
+        function getRandNo(){
+
+            let url = 'http://andymcdowell.hosting.hal.davecutting.uk/1030_APIs/randomCode.php?length=4';
+
+            fetch(url)
+            .then(function(response){
+
+                return response.json();
+            })
+
+            .then(function(data){
+
+                let myRand = data.secretCode;
+                document.getElementById("PCode").innerHTML = myRand;
+            })
+            .catch(function(error){
+                console.error('ERROR: ' + error);
+
+            });
+        }
+
+
+    </script>
+</html>
