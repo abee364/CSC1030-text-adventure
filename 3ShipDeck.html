@@ -47,6 +47,7 @@
             <div id="RoomButtons">
                 <button id="previousRoom" onclick="previousRoom()">Previous Room</button>
                 <button id="nextRoom" onclick="nextRoom()">Next Room</button>
+                <button id="leaveGame" class="hideMe" onclick="leaveGame()">Leave Memory Game</button>
             </div>
 
             <div id="question" class="showMe">
@@ -199,6 +200,19 @@
                     }
                 }
 
+                function leaveGame() {
+                    if(crowbar==1){
+                        document.getElementById("room3_no_crowbar").className = ("showMe")
+                    } else {
+                        document.getElementById("room").className = ("showMe")
+                    }
+                    
+                    document.getElementById("gameInfo").className = "hideMe"
+                    document.getElementById("question").className = "showMe";
+                    document.getElementById("leaveGame").className = "hideMe";
+
+                }
+
                 // fucntion that sets up the memory game
                 function setupGame() {
                     score = 0;
@@ -211,8 +225,11 @@
                     document.getElementById("room3_no_crowbar").className = ("hideMe")
                     document.getElementById("gameInfo").className = "showMe"
                     document.getElementById("question").className = "hideMe";
+                    document.getElementById("leaveGame").className = "showMe";
                     randomizerGenerate();
                 };
+
+            
                 // function that generates the path
                 function randomizerGenerate() {
                     randomColours.push(generateRandomValue(colours));
