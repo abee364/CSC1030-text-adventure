@@ -9,25 +9,39 @@
 <body>
     <div class="container">
         <img src="images/Room1.png" alt="Room1" style="width:90%;">
-        <div class="text-block">
-            <p id="greeting">Computer: Hello there <span id="name"></span> we have a problem, the ship seems to have malfunctioned 
-                and as such our systems have begun rapidly failing and…”</p>
-            <p>“WARNING LIGHTS FAILING IN 3, 2, 1. Switching to back-up generator”</p>
+        <div class="text-block" id="greeting">
+            <p>Computer: Hello there <span id="name"></span> we have a problem, the ship seems to have
+                malfunctioned
+                and as such our systems have begun rapidly failing and…”<br>
+                “WARNING LIGHTS FAILING IN 3, 2, 1. Switching to back-up generator”</p>
             <!-- Room Becomes Mildly Darker But Not Pitch Black -->
-            <p>“Well as I was saying our systems are failing, including all vital systems and a gas leak has broken
+            <button id="next" onclick="continueText()" class="button">Next</button>
+        </div>
+        <div class="text-block">
+            <p id="finishIntro" class="hideMe">“Well as I was saying our systems are failing, including all vital
+                systems
+                and a gas leak has broken
                 out in the control room which is also on fire.
                 I suggest you hurry before the fire ignites the gas and explodes the ship.
                 You also should know that you only have 5 minutes before the gas leaks into the filteration system.
                 So get going!
                 And good luck!” </p>
-            <button onclick="Start();">Start</button>
+
+            <button id="continue" onclick="Start()" class="hideMe">Start</button>
 
         </div>
     </div>
 
     <script>
-         function Start() {
+        function Start() {
             window.location.replace("1CommonRoom.html")
+        }
+
+        function continueText() {
+            document.getElementById('greeting').className = "hideMe";
+            document.getElementById('next').className = "hideMe";
+            document.getElementById('finishIntro').className = "showMe";
+            document.getElementById('continue').className = "showMe button";
         }
 
         // Name from home page
