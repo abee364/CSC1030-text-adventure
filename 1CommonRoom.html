@@ -145,7 +145,7 @@
 
                 <form id="inputForm" class="hideMe" onsubmit="unlockDoor2()">
                     <!------------------------------------------------THIS IS NEWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW-->
-                    
+
                     <input type="text" id="word-input">
                     <!--input id="text" type="text" name="userInput"-->
                     <br>
@@ -444,7 +444,7 @@
         // Load the remaining time and start the timer when the page loads
         window.addEventListener('load', loadTimeRem);
 
-        window.onload = function() {
+        window.onload = function () {
             var fontSize = sessionStorage.getItem("fontSize");
             if (fontSize) {
                 document.getElementById("wrapper").style.fontSize = fontSize;
@@ -452,8 +452,23 @@
         }
 
 
+//Session storage - Accessibility
+        var textSize = sessionStorage.getItem('text');
+        document.getElementById("wrapper").style.fontSize = textSize
 
+        var modeColor = sessionStorage.getItem('mode');
+        if (modeColor == 'light') {
+            lightMode();
+        }
 
+        function lightMode() {
+            document.getElementById("wrapper").style.backgroundColor = "ivory";
+            document.getElementById("greeting").style.backgroundColor = "rgb(216, 216, 216)";
+            document.getElementById("greeting").style.color = "black";
+            document.getElementById("secondSlide").style.backgroundColor = "rgb(216, 216, 216)";
+            document.getElementById("secondSlide").style.color = "black";
+                document.getElementById("wrapper").style.color = "black";
+        }
 
 
 
