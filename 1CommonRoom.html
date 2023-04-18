@@ -133,21 +133,21 @@
 
                 <p id="textOutput"> Would you like to 'Look Around' or try and 'Turn On' the lights?</p>
 
-                <div id = "wireDiv"><button id="Wire" class="showMe" onclick="Wire()">Examine Wire</button></div>
-                <button id="door1" class="showMe" onclick="door1()">Try Opening Door 1</button>
-                <button id="door2" class="showMe" onclick="door2()">Try Opening Door 2</button>
+                <div id = "wireDiv"></div><button id="Wire" class="showMe" onclick="Wire()">Pick Up Wire</button></div>
+                <button id="door2" class="showMe" onclick="door2()">Examine Pin Pad</button>
                 <button id="airlock" class="showMe" onclick="airlock()">Jump out the Airlock</button>
                 <button id="stickyNote" class="showMe" onclick="getRandNo()">Look At Sticky Note</button>
                 <button id = "back" class = "hideMe" onclick = "back()">Back</button>
+                <button id = "submit" class = "hideMe" onclick = "unlockDoor2()">Submit</button>
                 
 
 
 
-                <form id="inputForm" class="hideMe" onsubmit="input()">
+                <form id="inputForm" class="hideMe" onsubmit="unlockDoor2()">
 
                     <input id="text" type="text" name="userInput">
                     <br>
-                    <input class="button" id="submit" type="submit">
+                   <!-- <input class="button" id="submit" type="submit">-->
 
                 </form>
             </div>
@@ -257,27 +257,24 @@
      
         }
 
-        var door1Status = 0;// closed = 0, open = 1
-
+        
         function goToRoom2() {
 
 
-            if (door1Status == 0) {
-
-                textUpdateDoor1Locked();
-
-            } else if (door1Status == 1) {
+            if(sessionStorage.getItem('door1') == 1){
 
                 window.location.replace("3ShipDeck.html")
-
-
+        
             } else {
-                window.alert('Error');
+                textUpdateDoor1Locked();
             }
 
 
 
         }
+
+        
+
 
         var door2Status = 0;// closed = 0, open = 1
 
@@ -300,18 +297,7 @@
 
         }
 
-        function door1() {
-
-            textUpdateDoor1Locked();
-           if(sessionStorage.getItem('door1') == 1){
-
-            door1Status = 1;
-           }else{
-
-            door1Status = 0;
-           }
-        }
-
+        
 
 
         function door2() {
@@ -331,11 +317,12 @@
             document.getElementById('door1').className = "hideMe";
             document.getElementById('door2').className = "hideMe";
             document.getElementById('airlock').className = "hideMe";
+            document.getElementById('submit').className = "showMe";
 
            
             
 
-            unlockDoor2();
+           // unlockDoor2();
         }
 
         var doorCode;
@@ -344,14 +331,17 @@
 
             let pin = document.forms["inputForm"]["userInput"].value;
 
-            if (pin == "doorCode") {
+            let password = sessionStorage.getItem(pWord);
+
+            if (pin == password) {
 
                 textUpdateDoor2Unlocked();
                 door2Status = 1;
 
             } else {
 
-                window.alert("Error");
+                window.alert(password);
+                
             }
 
 
@@ -406,6 +396,7 @@
 
                 let myRand = data.secretCode;
                 doorcode = myRand;
+                sessionStorage.setItem("pWord", myRand);
                 document.getElementById("PCode").innerHTML = myRand;
             })
             .catch(function(error){
