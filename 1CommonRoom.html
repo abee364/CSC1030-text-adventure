@@ -74,8 +74,6 @@
 
             background-image: "images/Room1.png";
         }
-
-      
     </style>
 </head>
 
@@ -95,12 +93,12 @@
                 <img class="centre" src="images/Room1.png" style="width:90%;" alt="Common Room" />
             </div>
 
-            <div id = "postIt" class = "hideMe">
+            <div id="postIt" class="hideMe">
 
-                <div class = "ptNote">
-                <p id = PCode></p>
+                <div class="ptNote">
+                    <p id=PCode></p>
                 </div>
-    
+
             </div>
 
             <!-- Different endings -->
@@ -116,7 +114,7 @@
 
                 <h1>Room 1</h1>
 
-              
+
                 <button id="goToRoom2" onclick="goToRoom2()">Ship Deck</button>
                 <button id="goToRoom3" onclick="goToRoom3()">Electric Storage Room</button>
 
@@ -125,7 +123,7 @@
             <div class="timerBox">
 
                 <h1>Time Remaining: <span id="timerText">?</span></h1>
-                
+
 
             </div>
 
@@ -133,13 +131,13 @@
 
                 <p id="textOutput"> Would you like to 'Look Around' or try and 'Turn On' the lights?</p>
 
-                <div id = "wireDiv"><button id="Wire" class="showMe" onclick="Wire()">Pick Up Wire</button></div>
+                <div id="wireDiv"><button id="Wire" class="showMe" onclick="Wire()">Pick Up Wire</button></div>
                 <button id="door2" class="showMe" onclick="door2()">Examine Pin Pad</button>
                 <button id="airlock" class="showMe" onclick="airlock()">Jump out the Airlock</button>
                 <button id="stickyNote" class="showMe" onclick="getRandNo()">Look At Sticky Note</button>
-                <button id = "back" class = "hideMe" onclick = "back()">Back</button>
-                <button id = "submit" class = "hideMe" onclick = "unlockDoor2()">Submit</button>
-                
+                <button id="back" class="hideMe" onclick="back()">Back</button>
+                <button id="submit" class="hideMe" onclick="unlockDoor2()">Submit</button>
+
 
 
 
@@ -147,7 +145,7 @@
 
                     <input id="text" type="text" name="userInput">
                     <br>
-                   <!-- <input class="button" id="submit" type="submit">-->
+                    <!-- <input class="button" id="submit" type="submit">-->
 
                 </form>
             </div>
@@ -173,9 +171,9 @@
         console.log("Torch is " + myNum);
         if (myNum == 1) {
             //turns off the light
-            var div = document.getElementById("light");  
+            var div = document.getElementById("light");
             div.setAttribute("id", "newDivID");
-        } 
+        }
 
         //torch
         var pos = document.documentElement;
@@ -206,7 +204,7 @@
             document.getElementById("textOutput").innerHTML = "Looking Around You see the outline of 2 doors <br> an airlock <br> and a ...'add other item here'";
         }
 
-        
+
 
         function textUpdateDoor1Locked() {
 
@@ -252,19 +250,19 @@
             sessionStorage.setItem("WireCoil", 1);
 
             document.getElementById("textOutput").innerHTML = "Add Wire to Inventory";
-            
+
             document.getElementById('wireDiv').className = "hideMe";
-     
+
         }
 
-        
+
         function goToRoom2() {
 
 
-            if(sessionStorage.getItem('door1') == 1){
+            if (sessionStorage.getItem('door1') == 1) {
 
                 window.location.replace("3ShipDeck.html")
-        
+
             } else {
                 textUpdateDoor1Locked();
             }
@@ -273,7 +271,7 @@
 
         }
 
-        
+
 
 
         var door2Status = 0;// closed = 0, open = 1
@@ -297,7 +295,7 @@
 
         }
 
-        
+
 
 
         function door2() {
@@ -309,7 +307,7 @@
             var c = document.getElementById("door1");
             var d = document.getElementById("door2");
             var e = document.getElementById("airlock");
-            
+
 
             a.style.display = "initial";
 
@@ -319,20 +317,21 @@
             document.getElementById('airlock').className = "hideMe";
             document.getElementById('submit').className = "showMe";
 
-           
-            
 
-           // unlockDoor2();
+
+
+            // unlockDoor2();
         }
 
         var doorCode;
 
-        function unlockDoor2() {
+        function unlockDoor2() {                                                    //------------------------------
 
             let pin = document.forms["inputForm"]["userInput"].value;
 
             let password = sessionStorage.getItem(pWord);
-
+            console.log("pin " + pin);
+            console.log("Password " + password);
             if (pin == password) {
 
                 textUpdateDoor2Unlocked();
@@ -341,7 +340,7 @@
             } else {
 
                 window.alert(password);
-                
+
             }
 
 
@@ -365,7 +364,7 @@
         //
         //
 
-        function back(){
+        function back() {
 
             document.getElementById('backgroundImg').className = "showMe";
             document.getElementById('postIt').className = "hideMe";
@@ -373,38 +372,38 @@
             document.getElementById('back').className = "hideMe";
         }
 
-        
 
-        function getRandNo(){
+
+        function getRandNo() {
             document.getElementById('backgroundImg').className = "hideMe";
             document.getElementById('postIt').className = "showMe";
 
             document.getElementById('back').className = "showMe";
             document.getElementById('submit').className = "showMe";
-            
-            
+
+
 
 
             let url = 'http://andymcdowell.hosting.hal.davecutting.uk/1030_APIs/randomCode.php?length=4';
 
             fetch(url)
-            .then(function(response){
+                .then(function (response) {
 
-                return response.json();
-            })
+                    return response.json();
+                })
 
-            .then(function(data){
+                .then(function (data) {
 
-                let myRand = data.secretCode;
-                doorcode = myRand;
-                sessionStorage.setItem("pWord", myRand);
-                document.getElementById("PCode").innerHTML = myRand;
-            })
-            .catch(function(error){
-                console.error('ERROR: ' + error);
+                    let myRand = data.secretCode;
+                    doorcode = myRand;
+                    //sessionStorage.setItem("pWord", myRand);
+                    document.getElementById("PCode").innerHTML = myRand;
+                })
+                .catch(function (error) {
+                    console.error('ERROR: ' + error);
 
-            });
-            }
+                });
+        }
 
 
 
