@@ -20,7 +20,7 @@
             <div id="room3" class="showMe">
                 <img class="centre" src="images/Room3.png" style="width:90%;" alt="Photo of the Ship Deck" />
             </div>
-
+            <!-- Photo without the crowbar  -->
             <div id="room3_no_crowbar" class="hideMe">
                 <img class="centre" src="images/room3_no_crowbar.png" style="width:90%;"
                     alt="Photo of the Ship Deck but without a crowbar" />
@@ -44,11 +44,12 @@
             <!-- Timer -->
             <h1>Time Remaining: <span id="timerText">?</span></h1>
             <!-- Buttons to get from previous room to next room  -->
-            <div id="RoomButtons">
+            <div id="roomButtons" class="showMe">
                 <button id="previousRoom" onclick="previousRoom()">Previous Room</button>
                 <button id="nextRoom" onclick="nextRoom()">Next Room</button>
-                <button id="leaveGame" class="hideMe" onclick="leaveGame()">Leave Memory Game</button>
             </div>
+            <!-- Button to leave memory game  -->
+            <button id="leaveGame" class="hideMe" onclick="leaveGame()">Leave Memory Game</button>
 
             <div id="question" class="showMe">
                 <p>What do you want to do?</p>
@@ -71,10 +72,11 @@
                 </p>
             </div>
 
+
+            <!-- Text in order to explain to the user what is happening -->
             <div id="complete" class="hideMe">
                 <p>Well done, you have completed the game!</p>
             </div>
-
             <div id="nextRoomStop" class="hideMe">
                 <p>You need to do the memory game first before you move onto the next room.</p>
             </div>
@@ -82,7 +84,8 @@
                 <p>You have picked up the crowbar.</p>
             </div>
             <div id="crowbarDoorTry" class="hideMe">
-                <p>You run towards the door at full speed swinging your crowbar as hard as you can and... it bounces off, hitting you on the head. You feel dizzy.</p>
+                <p>You run towards the door at full speed swinging your crowbar as hard as you can and... it bounces
+                    off, hitting you on the head. You feel dizzy.</p>
             </div>
             <div id="crowbarDoorFail" class="hideMe">
                 <p>You do not have a crowbar in your inventory.</p>
@@ -200,22 +203,24 @@
                     }
                 }
 
+                //Function if player wants to leave the memory game
                 function leaveGame() {
-                    if(crowbar==1){
+                    document.getElementById("gameInfo").className = "hideMe";
+                    document.getElementById("leaveGame").className = "hideMe";
+                    document.getElementById("roomButtons").className = "showMe";
+                    document.getElementById("question").className = "showMe";
+                    options.className = "showMe";
+                    memoryGame.classList.add("hideMe");
+                    podiumButton.innerText = "Play memory Game again";
+                    podiumButton.classList.remove("hideMe");
+                    if (crowbar == 1) {
                         document.getElementById("room3_no_crowbar").className = ("showMe")
                     } else {
-                        document.getElementById("room").className = ("showMe")
+                        room3Pic.className = "showMe";
                     }
-                    
-                    document.getElementById("gameInfo").className = "hideMe"
-                    document.getElementById("question").className = "showMe";
-                    document.getElementById("leaveGame").className = "hideMe";
-                    memoryGame.classList.add("hideMe");
-                    options.className = "showMe";
-
                 }
 
-                // fucntion that sets up the memory game
+                // function that sets up the memory game
                 function setupGame() {
                     score = 0;
                     ClickNum = 0;
@@ -227,12 +232,13 @@
                     document.getElementById("room3_no_crowbar").className = ("hideMe")
                     document.getElementById("gameInfo").className = "showMe"
                     document.getElementById("question").className = "hideMe";
+                    document.getElementById("roomButtons").className = "hideMe"
                     document.getElementById("leaveGame").className = "showMe";
                     randomizerGenerate();
                 };
 
-            
-                // function that generates the path
+
+                // function that generates the path the memory game will take
                 function randomizerGenerate() {
                     randomColours.push(generateRandomValue(colours));
                     score = randomColours.length;
@@ -259,6 +265,7 @@
                     }
                     randomizer = false;
                 };
+
                 //Function that delays the blinking of the colours
                 async function delay(time) {
                     return await new Promise((resolve) => {
@@ -280,7 +287,7 @@
                             await delay(500);
                             e.target.style.backgroundColor = `${colours[randomColours[ClickNum]]["currentColour"]
                                 }`;
-                            //Ucounts clicks
+                            //Counts clicks
                             ClickNum += 1;
                             //if score and clicks are same they go to next level if score is also not 7
                             if (ClickNum == score && score != 7) {
@@ -288,7 +295,7 @@
                                 randomizerGenerate();
                             }
 
-                            // Should be 7 but for testing purposes is changes to lower numbers
+                            // Should be 6 but for testing purposes may be changed to a lower number
                             if (score == 6) {
                                 document.getElementById("complete").className = "showMe"
                                 win()
@@ -304,6 +311,7 @@
                     output.innerHTML = `<span> Your only got: </span> ${score} <br><span>You need 6 to get to the next room. </span> `;
                     document.getElementById("gameInfo").className = "hideMe";
                     document.getElementById("question").className = "showMe";
+                    document.getElementById("roomButtons").className = "showMe";
                     output.classList.remove("hideMe");
                     options.className = "showMe";
                     memoryGame.classList.add("hideMe");
@@ -321,6 +329,7 @@
                 function win() {
                     memoryGame.className = "hideMe";
                     document.getElementById("gameInfo").className = "hideMe";
+                    document.getElementById("roomButtons").className = "showMe";
                     document.getElementById("question").className = "showMe";
                     options.className = "showMe";
                     room3Pic.className = "showMe";
@@ -371,7 +380,6 @@
                         window.location.href = 'stats.html';
                     }
                 }
-
                 // Register a beforeunload event listener to save the remaining time before navigating away from the page
                 window.addEventListener('beforeunload', saveTimeRem);
 
