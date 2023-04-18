@@ -97,7 +97,9 @@
 
             <div id = "postIt" class = "hideMe">
 
+                <div class = "ptNote">
                 <p id = PCode></p>
+                </div>
     
             </div>
 
@@ -256,7 +258,7 @@
             addWireToInventory();
 
 
-            document.getElementById('Wire').className = "hideMe";
+            document.getElementById('Wire').className = "showMe";
      
         }
 
@@ -374,6 +376,14 @@
         //Functions to operate gamaplay
         //
         //
+
+        function back(){
+
+            document.getElementById('backgroundImg').className = "showMe";
+            document.getElementById('postIt').className = "hideMe";
+
+            document.getElementById('back').className = "hideMe";
+        }
 
         
 
