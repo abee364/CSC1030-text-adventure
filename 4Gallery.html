@@ -65,15 +65,28 @@
 
 		//Session scripts
 		let extinguisher = 0;
+
+		window.addEventListener('load', function() {
+    		if (sessionStorage.getItem('extinguisher') !== null) {
+        		extinguisher = parseInt(sessionStorage.getItem('extinguisher'));
+        		if (extinguisher === 1) {
+            		document.getElementById('extinguisher').className = "hideMe";
+            		document.getElementById('main').className = "hideMe";
+            		document.getElementById('fire').className = "showMe";
+         			document.getElementById("pickupExtinguisher").className = "showMe";
+        		}
+    		}
+		});
+
 		function grabExtinguisher() {
-    		if (extinguisher == 0) {
+    		if (extinguisher === 0) {
         		extinguisher = 1;
         		sessionStorage.setItem('extinguisher', extinguisher);
-				document.getElementById('extinguisher').className = "hideMe";
-				document.getElementById('main').className = "hideMe";
+        		document.getElementById('extinguisher').className = "hideMe";
+        		document.getElementById('main').className = "hideMe";
         		document.getElementById('fire').className = "showMe";
-				document.getElementById("pickupExtinguisher").className = "showMe";
-    		}	
+        		document.getElementById("pickupExtinguisher").className = "showMe";
+    		}   
 		}
 
         
