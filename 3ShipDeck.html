@@ -66,8 +66,8 @@
             <!-- info needed for memory game  -->
             <div id="gameInfo" class="hideMe">
                 <h4>You need to get 6 points in order to move on through the ship.</h4>
-                <p>A colour will flash and you just need to repeat the order, you get a point per round.
-                    You need to click on the colours that have flashed in the correct order.
+                <p>A circle will flash and you just need to repeat the order, you get a point per round.
+                    You need to click on the circle that have flashed in the correct order.
                 </p>
             </div>
 
@@ -210,6 +210,8 @@
                     document.getElementById("gameInfo").className = "hideMe"
                     document.getElementById("question").className = "showMe";
                     document.getElementById("leaveGame").className = "hideMe";
+                    memoryGame.classList.add("hideMe");
+                    options.className = "showMe";
 
                 }
 
