@@ -11,7 +11,7 @@
     <div id="wrapper">
         <!-- Column 1 - Where the photo is  -->
         <div id="col1">
-            <h1>Control Room</h1>
+            <h1>Starbound Quest</h1>
 
             <!-- The main photo  -->
             <div id="main" class="showMe">
@@ -61,17 +61,24 @@
                 <div id="arrival">
                     <p>“You have reached the source of the gas leak! You must hurry to find a way to stop it
                         before you run
-                        out of oxygen and the fire spreads further.”</p>
+                        out of oxygen and the fire spreads further causing an explosion!”</p>
+                </div>
+
+                <div id="orderInstruction" class="hideMe">
+                    <p>You should put the fire out first</p>
                 </div>
 
                 <div id="screenInstruction" class="hideMe">
-                    <p>You must log in to manage the ship's systems</p>
+                    <p>You must log in to gain access to manage the ship's systems</p>
                 </div>
 
                 <div id="riddleInstruction" class="hideMe">
-                    <p>Here's your password hint</p>
+                    <p>Here's your password hint.</p>
                 </div>
-                <br>
+
+                <div id="gasOffText" class="hideMe">
+                    <p>You managed to turn off the gas and start up the filtration program to remove the gas from the ship.</p>
+                </div>
 
                 <div id="Riddle" class="hideMe">
                     <p id="riddle-question"></p>
@@ -82,7 +89,8 @@
                     <p></p>
                 </div>
 
-                <button id="screenbutton" onclick="screen()" class="button">Check out screen</button>
+                <button id="screenbutton" onclick="screen()" disabled class="button">Check
+                    out screen</button>
                 <button id="fire" onclick="fire()" class="button">Put out fire</button>
                 <button id="riddle" onclick="riddle()" class="hideMe">Enter Password</button>
                 <button id="back" onclick="back()" class="hideMe">Back</button>
@@ -95,7 +103,6 @@
 
 
     <script>
-
         let extinguisher = sessionStorage.getItem('extinguisher');
 
         function fire() {
@@ -103,13 +110,22 @@
                 window.alert("Fire has been succesfully put out");
                 document.getElementById('main').innerHTML = '<img class="centre" src="images/room6_gas.png" style="width:90%;" alt="Control Room" />';
                 document.getElementById('fire').className = "hideMe";
+                enableButton();
             } else {
                 window.alert("You do not have anything to put the fire out with");
             }
         }
 
+        function enableButton() {
+            const screenOrderButton = document.getElementById("screenbutton");
+            screenOrderButton.disabled = false;
+        }
+
         function screen() {
-            /*Screen with way to turn on?*/
+            if (document.getElementById("screenbutton").disabled) {
+                window.alert("Button is disabled!");
+                return;
+            }
             document.getElementById('main').className = "hideMe";
             document.getElementById('screen').className = "showMe";
             document.getElementById('screenbutton').className = "hideMe";
@@ -172,6 +188,7 @@
                 document.getElementById('previousRoom').className = "hideMe";
                 document.getElementById('Riddle').className = "hideMe";
                 document.getElementById('turnOff').className = "showMe button";
+                document.getElementById('riddleInstruction').className = "hideMe";
 
 
             } else {
@@ -208,6 +225,7 @@
             document.getElementById('unlocked_screen').className = "hideMe";
             document.getElementById('normal').className = "showMe";
             document.getElementById('turnOff').className = "hideMe";
+            document.getElementById('gasOffText').className = "showMe";
             document.getElementById('end').className = "showMe button";
         }
 

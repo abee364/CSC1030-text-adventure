@@ -10,7 +10,6 @@
 		background-size: cover;
 		background-attachment: fixed;
 	}
-
 	
 </style>
 
@@ -18,7 +17,7 @@
 	<div id="wrapper">
 		<!-- Column 1 - Where the photo is  -->
 		<div id="col1">
-			<h1>Gallery</h1>
+			<h1>Starbound Quest</h1>
 
 			<!-- The main photo  -->
 			<div id="main" class="showMe">
@@ -40,9 +39,9 @@
 				<p>You have reached a critical decision point. Attempt to save everyone or escape?</p>
 				<br>
 				
-				<button id="extinguisher" class="button" onclick="grabExtinguisher()">Grab fire extinguisher</button>
 				<button id="escape-button" class="button" onclick="escape()">Escape</button>
 				<button id="save-button" class="button" onclick="save()">Save Everyone</button>
+				<button id="extinguisher" class="button" onclick="grabExtinguisher()">Grab fire extinguisher</button>
 
 			</div>
 		</div>
@@ -61,13 +60,6 @@
 			window.location.href = "6ControlRoom.html";
 		}
 
-
-		function nextRoom() {
-
-			window.location.replace("5EscapePod.html")
-		}
-
-
 		function previousRoom() {
 
 			window.location.replace("3ShipDeck.html")
@@ -79,6 +71,7 @@
     		if (extinguisher == 0) {
         		extinguisher = 1;
         		sessionStorage.setItem('extinguisher', extinguisher);
+				document.getElementById('extinguisher').className = "hideMe";
         		document.getElementById('main').innerHTML = '<img class="centre" src="images/room4_no_fireextingisher.png" style="width:90%;" alt="Gallery" />';
     		}	
 		}

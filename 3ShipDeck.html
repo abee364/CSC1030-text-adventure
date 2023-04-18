@@ -14,7 +14,7 @@
 
         <!-- Column 1 - Where the photo is  -->
         <div id="col1">
-            <h1>Ship Deck</h1>
+            <h1>Starbound Quest</h1>
 
             <!-- The main photo  -->
             <div id="room3" class="showMe">
@@ -40,7 +40,7 @@
 
         <!-- column 2 - where the buttons go -->
         <div id="col2">
-            <h1>Room 3</h1>
+            <h1>Ship Deck</h1>
             <!-- Timer -->
             <h1>Time Remaining: <span id="timerText">?</span></h1>
             <!-- Buttons to get from previous room to next room  -->
@@ -49,8 +49,9 @@
                 <button id="nextRoom" onclick="nextRoom()">Next Room</button>
             </div>
 
-            <h4 id="question" class="showMe">What do you want to do?</h4>
-            <br>
+            <div id="question" class="showMe">
+                <p>What do you want to do?</p>
+            </div>
 
             <!-- options the player can do  -->
             <div id="options">
@@ -61,32 +62,29 @@
                 <p id="output" class="hideMe">Displays score</p>
             </div>
 
-
-
             <!-- info needed for memory game  -->
             <div id="gameInfo" class="hideMe">
-                <h4>You need to get 6 points to move on to the next room.</h4>
+                <h4>You need to get 6 points in order to move on through the ship.</h4>
                 <p>A colour will flash and you just need to repeat the order, you get a point per round.
                     You need to click on the colours that have flashed in the correct order.
                 </p>
             </div>
 
             <div id="complete" class="hideMe">
-                <p>Well done, You have completed the game!</p>
+                <p>Well done, you have completed the game!</p>
             </div>
 
             <div id="nextRoomStop" class="hideMe">
                 <p>You need to do the memory game first before you move onto the next room.</p>
             </div>
             <div id="pickupCrowbar" class="hideMe">
-                <p>You picked up the crowbar.</p>
+                <p>You have picked up the crowbar.</p>
             </div>
             <div id="crowbarDoorTry" class="hideMe">
-                <p>You run towards the door at full speed swinging your crowbar and when you get to the door you swing
-                    the crowbar as hard as you can and it bounces off… it hits you in your head, you feel dizzy.</p>
+                <p>You run towards the door at full speed swinging your crowbar as hard as you can and... it bounces off, hitting you on the head. You feel dizzy.</p>
             </div>
             <div id="crowbarDoorFail" class="hideMe">
-                <p>You do not have the crowbar in your inventory.</p>
+                <p>You do not have a crowbar in your inventory.</p>
             </div>
             <div id="spinglespop" class="hideMe">
                 <p>Aww a cute little spinglespop appears. You should name it!</p>
@@ -314,52 +312,52 @@
                 }
 
                 //Session scripts
-        // Initial timer (default vaulue is 1000 seconds)
-        if (!sessionStorage.getItem('timeRem')) {
-            sessionStorage.setItem('timeRem', '1000');
-        }
+                // Initial timer (default vaulue is 1000 seconds)
+                if (!sessionStorage.getItem('timeRem')) {
+                    sessionStorage.setItem('timeRem', '1000');
+                }
 
-        // Timer with the remaining time
-        function startTimer() {
-            var timeRem = sessionStorage.getItem('timeRem');
-            document.getElementById('timerText').innerHTML = timeRem;
-            timer = setInterval(countdown, 1000);
-        }
+                // Timer with the remaining time
+                function startTimer() {
+                    var timeRem = sessionStorage.getItem('timeRem');
+                    document.getElementById('timerText').innerHTML = timeRem;
+                    timer = setInterval(countdown, 1000);
+                }
 
-        // Save the remaining time in the session storage before navigating to another page
-        function saveTimeRem() {
-            var timeRem = document.getElementById('timerText').innerHTML;
-            sessionStorage.setItem('timeRem', timeRem);
-        }
+                // Save the remaining time in the session storage before navigating to another page
+                function saveTimeRem() {
+                    var timeRem = document.getElementById('timerText').innerHTML;
+                    sessionStorage.setItem('timeRem', timeRem);
+                }
 
-        // Load the remaining time from the session storage and start the timer with it
-        function loadTimeRem() {
-            var timeRem = sessionStorage.getItem('timeRem');
-            document.getElementById('timerText').innerHTML = timeRem;
-            timer = setInterval(countdown, 1000);
-        }
+                // Load the remaining time from the session storage and start the timer with it
+                function loadTimeRem() {
+                    var timeRem = sessionStorage.getItem('timeRem');
+                    document.getElementById('timerText').innerHTML = timeRem;
+                    timer = setInterval(countdown, 1000);
+                }
 
-        // Update the timer display and store the remaining time in the session storage every second
-        function countdown() {
-            var timeRem = document.getElementById('timerText').innerHTML;
-            if (timeRem > 0) {
-                timeRem--;
-                document.getElementById('timerText').innerHTML = timeRem;
-                sessionStorage.setItem('timeRem', timeRem);
-            } else {
-                clearInterval(timer);
-                document.getElementById('timerText').innerHTML = 'END';
-                timeRem = 10;
-                // Redirect to statistics page
-                window.location.href = 'stats.html';
-            }
-        }
+                // Update the timer display and store the remaining time in the session storage every second
+                function countdown() {
+                    var timeRem = document.getElementById('timerText').innerHTML;
+                    if (timeRem > 0) {
+                        timeRem--;
+                        document.getElementById('timerText').innerHTML = timeRem;
+                        sessionStorage.setItem('timeRem', timeRem);
+                    } else {
+                        clearInterval(timer);
+                        document.getElementById('timerText').innerHTML = 'END';
+                        timeRem = 10;
+                        // Redirect to statistics page
+                        window.location.href = 'stats.html';
+                    }
+                }
 
-        // Register a beforeunload event listener to save the remaining time before navigating away from the page
-        window.addEventListener('beforeunload', saveTimeRem);
+                // Register a beforeunload event listener to save the remaining time before navigating away from the page
+                window.addEventListener('beforeunload', saveTimeRem);
 
-        // Load the remaining time and start the timer when the page loads
-        window.addEventListener('load', loadTimeRem);
+                // Load the remaining time and start the timer when the page loads
+                window.addEventListener('load', loadTimeRem);
             </script>
 </body>
 
