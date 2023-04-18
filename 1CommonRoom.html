@@ -114,7 +114,8 @@
                 
                 <p id="instructingText"> Would you like to 'Look Around' or try and 'Turn On' the lights?</p>
 
-                <button id="spanner" onclick="spanner()">Examine Spanner</button>
+                <!--This used to be called 'spanner', i changed to to coil, hope this is right - Daniel-->
+                <button id="wire" onclick="spanner()">Pick up coil of wire</button>
                 <button id="door1" onclick="door1()">Try Opening Door 1</button>
                 <button id="door2" onclick="door2()">Try Opening Door 2</button>
                 <button id="airlock" onclick="airlock()">Jump out the Airlock</button>
@@ -139,9 +140,19 @@
 
 
     <script>
+        //0 means not picked up yet
+        //sessionStorage.setItem("WireCoil", 0);
+
+        //0 means the torch is on
+        //sessionStorage.setItem("Torch", 0);
+
+        // let myNum = sessionStorage.getItem("Torch")
+        // myNum = Number(myNum);
+        // if(myNum === 1){
+        //     //turn off torch 
+        // }
 
         //text for screen functions
-
         function startingText() {
 
             document.getElementById("textOutput").innerHTML = "Welcome to the Spaceship. For the immediacy, you have 2 options, either look around the 'room?' you seem to be in, or attemp to turn on your torch.";
@@ -211,6 +222,10 @@
             d.style.display = "initial";
             e.style.display = "none";
             f.style.display = "initial";
+
+
+            sessionStorage.setItem("WireCoil", 1);
+
         }
 
         

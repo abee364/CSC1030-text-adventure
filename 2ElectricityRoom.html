@@ -5,8 +5,8 @@
     <link rel="stylesheet" href="SpaceStyleSheet.css">
     <style type="text/css"></style>
     <style>
-            /*This is the CSS for the torch*/
-            section {
+        /*This is the CSS for the torch*/
+        section {
             position: relative;
             min-height: 100vh;
             background: #000;
@@ -118,6 +118,23 @@
     </div>
 
     <script>
+        //ceck if the torch should be on or not? 
+        let myNum = sessionStorage.getItem("Torch")
+        myNum = Number(myNum);
+        if (myNum === 1) {
+            var div = document.getElementById("light");             //-----------------------------------------
+            div.setAttribute("id", "newDivID");
+        }
+
+        function chechWire() {
+
+            sessionStorage.getItem("WireCoil");
+            myNum = Number(myNum);
+            if (myNum === 1) {
+                true;
+            }
+        }
+
         function Plant() {
             document.getElementById('plantButtons').className = "showMe";
             document.getElementById('doorLocked').className = "hideMe";
@@ -129,12 +146,20 @@
         }
 
         function setWires() {
-            document.getElementById('Room2Buttons').className = "hideMe";
-            document.getElementById('fullRoom').className = "hideMe";
-            document.getElementById('wireButtons').className = "showMe";
-            document.getElementById('WireBoard').className = "showMe";
-            document.getElementById('doorLocked').className = "hideMe";
-            document.getElementById('plantButtons').className = "hideMe";
+            sessionStorage.getItem("WireCoil");
+            myNum = Number(myNum);
+            if (myNum != 1) {
+
+                document.getElementById('Room2Buttons').className = "hideMe";
+                document.getElementById('fullRoom').className = "hideMe";
+                document.getElementById('wireButtons').className = "showMe";
+                document.getElementById('WireBoard').className = "showMe";
+                document.getElementById('doorLocked').className = "hideMe";
+                document.getElementById('plantButtons').className = "hideMe";
+            } else {
+                //Error 
+            }
+
         }
 
         function Loss() {
@@ -157,6 +182,8 @@
             document.getElementById('WireBoard').className = "hideMe";
             document.getElementById('wireButtons').className = "hideMe";
             document.getElementById('doorLocked').className = "hideMe";
+
+            sessionStorage.setItem("Torch", 1);
             var div = document.getElementById("light");             //-----------------------------------------
             div.setAttribute("id", "newDivID");
         }
@@ -263,7 +290,7 @@
                 Yellow();
             } else {
                 document.getElementById('WrongText').className = "showMe";
-             }       
+            }
         }
 
         //There is a 25% chance that the plant will kill you when looking at it
@@ -271,9 +298,9 @@
             var randomNumber = Math.floor(Math.random() * 4) + 1;
             document.getElementById("result").innerHTML = randomNumber;
 
-            if(randomNumber == 1){
+            if (randomNumber == 1) {
                 window.location.replace("Plant-ending.html")
-            } else{
+            } else {
                 Plant()
             }
         }
