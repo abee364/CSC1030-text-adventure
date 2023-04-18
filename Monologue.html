@@ -50,6 +50,14 @@
         // Display the user's name
         document.getElementById('name').innerHTML = name;
 
+        window.onload = function() {
+            var fontSize = sessionStorage.getItem("fontSize");
+            if (fontSize) {
+                document.body.style.fontSize = fontSize;
+            }
+        }
+
+
     </script>
 </body>
 

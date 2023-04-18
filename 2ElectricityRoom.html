@@ -240,6 +240,13 @@
             timer = setInterval(countdown, 1000);
         }
 
+        window.onload = function() {
+            var fontSize = sessionStorage.getItem("fontSize");
+            if (fontSize) {
+                document.body.style.fontSize = fontSize;
+            }
+        }
+
         // Update the timer display and store the remaining time in the session storage every second
         function countdown() {
             var timeRem = document.getElementById('timerText').innerHTML;

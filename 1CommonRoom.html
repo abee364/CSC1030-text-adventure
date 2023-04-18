@@ -78,7 +78,7 @@
 </head>
 
 <body>
-    <div class="wrapper">
+    <div id="wrapper">
 
         <div id="col1">
 
@@ -443,6 +443,13 @@
 
         // Load the remaining time and start the timer when the page loads
         window.addEventListener('load', loadTimeRem);
+
+        window.onload = function() {
+            var fontSize = sessionStorage.getItem("fontSize");
+            if (fontSize) {
+                document.getElementById("wrapper").style.fontSize = fontSize;
+            }
+        }
 
 
 

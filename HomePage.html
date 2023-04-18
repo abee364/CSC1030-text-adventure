@@ -140,23 +140,25 @@
             }
 
             function smallText() {
-                document.getElementById("wrapper").style.fontSize = "small"
-
+                document.body.style.fontSize = "small";
+                sessionStorage.setItem("fontSize", "small");
             }
 
             function mediumText() {
-                document.getElementById("wrapper").style.fontSize = "medium"
-
+                document.body.style.fontSize = "medium";
+                sessionStorage.setItem("fontSize", "medium");
             }
 
             function largeText() {
-                document.getElementById("wrapper").style.fontSize = "large"
+                document.body.style.fontSize = "large";
+                sessionStorage.setItem("fontSize", "large");
             }
 
             function x_largeText() {
-                document.getElementById("wrapper").style.fontSize = "x-large"
-
+                document.body.style.fontSize = "x-large";
+                sessionStorage.setItem("fontSize", "x-large");
             }
+
 
             var bodyBgColor, wrapperBgColor, startBgColor, startColor, wrapperColor, bodyColor;
 

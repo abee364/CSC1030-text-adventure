@@ -348,6 +348,13 @@
         // Load the remaining time and start the timer when the page loads
         window.addEventListener('load', loadTimeRem);
 
+        window.onload = function() {
+            var fontSize = sessionStorage.getItem("fontSize");
+            if (fontSize) {
+                document.body.style.fontSize = fontSize;
+            }
+        }
+
     </script>
 </body>
 

@@ -47,6 +47,13 @@
             sessionStorage.removeItem("timeRem");
             window.location.replace("HomePage.html");
           }
+          
+          window.onload = function() {
+            var fontSize = sessionStorage.getItem("fontSize");
+            if (fontSize) {
+                document.body.style.fontSize = fontSize;
+            }
+        }
         </script>
     </body>
 
