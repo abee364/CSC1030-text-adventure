@@ -132,8 +132,7 @@
 
                 <label for="word-input">Enter a wire to fix:</label>
                 <input type="text" id="word-input">
-                //<button onclick="checkWord()">Fix wire</button>
-
+                
                 <p id="textOutput"> Would you like to 'Look Around' or try and 'Turn On' the lights?</p>
 
                 <div id="wireDiv"><button id="Wire" class="showMe" onclick="Wire()">Pick Up Wire</button></div>
@@ -223,19 +222,11 @@
 
         function goToRoom3() {
 
-
             if (Permission == 0) {
-
-                console.log("CAN:T ENTERER")
-
+                console.log("CAN'T ENTERER")
             } else {
-
                 window.location.replace("2ElectricityRoom.html")
-
             } 
-
-
-
         }
 
         function door2() {
