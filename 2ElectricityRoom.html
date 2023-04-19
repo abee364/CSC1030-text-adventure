@@ -2,7 +2,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to The Burger Joint</title>
+    <title>Starbound Quest</title>
     <link rel="stylesheet" href="SpaceStyleSheet.css">
     <style type="text/css"></style>
     <style>
@@ -64,7 +64,7 @@
                 <p>What wire do you want to fix? </p>
                 <br>
 
-                <label for="word-input">Enter a wire to fix:</label>
+                <label for="word-input">Enter a wire colour to fix:</label>
                 <input type="text" id="word-input">
                 <button onclick="checkWord()">Fix wire</button>
                 <p id="result" class="hideMe"></p>
@@ -72,7 +72,7 @@
                 <div id="WrongText" class="hideMe">
                     <p class="gameText">Sorry, That is not a wire that can be fixed</p>
                 </div>
-                <button onclick="Room2();" class="button">Back to Room 2</button>
+                <button onclick="Room2();" class="button">Back to the room</button>
             </div>
 
             <!--==================================================-->
@@ -85,7 +85,7 @@
 
             <div id="doorLocked" class="hideMe">
                 <p class="gameText">This door brings you back to the previous room. But it's still dark, try and find a
-                    way to restor power</p>
+                    way to restore power</p>
             </div>
 
             <div id="wireUnavalible" class="hideMe">
@@ -95,14 +95,14 @@
 
 
         </div>
-
+<!-- 
         <div id="col2Loss" class="hideMe">
             <h1>Room 2 </h1>
             <p>
                 You Died, sorry :(
             </p>
             <button onclick="Restart();" class="button">Restart game </button>
-        </div>
+        </div> -->
     </div>
 
     <script>
