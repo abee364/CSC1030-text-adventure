@@ -411,24 +411,26 @@
                         crowbarSS = parseInt(sessionStorage.getItem('crowbarSS'));
                         if (crowbarSS === 1) {
                             document.getElementById("crowbarPickup").className = ("hideMe");
-                           
+                            document.getElementById("room3_no_crowbar").className = ("showMe")
                         }
-                        if (sessionStorage.getItem('leverSS') !== null) {
-                            leverSS = parseInt(sessionStorage.getItem('leverSS'));
-                            if (leverSS === 1) {
-                                document.getElementById("pullLever").className = ("hideMe");
-                            }
-                        }
-                        if (sessionStorage.getItem('gameSS') !== null) {
-                            gameSS = parseInt(sessionStorage.getItem('gameSS'));
-                            if (gameSS === 1) {
-                                document.getElementById("podium").className = ("hideMe");
-                                document.getElementById("crowbarDoor").className = ("hideMe");
-                                score = 6;
-                            }
+
+                    }
+                    if (sessionStorage.getItem('leverSS') !== null) {
+                        leverSS = parseInt(sessionStorage.getItem('leverSS'));
+                        if (leverSS === 1) {
+                            document.getElementById("pullLever").className = ("hideMe");
                         }
                     }
-                });
+                    if (sessionStorage.getItem('gameSS') !== null) {
+                        gameSS = parseInt(sessionStorage.getItem('gameSS'));
+                        if (gameSS === 1) {
+                            document.getElementById("podium").className = ("hideMe");
+                            document.getElementById("crowbarDoor").className = ("hideMe");
+                            score = 6;
+                        }
+                    }
+                }
+                );
 
 
                 //Session storage - Accessibility
