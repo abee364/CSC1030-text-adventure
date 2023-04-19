@@ -147,7 +147,7 @@
                 //function that lets you get to the next room
                 async function nextRoom() {
                     // Usually at 6 but may be lowered for testing purposes
-                    if (score >= 2) {
+                    if (score >= 6) {
                         window.location.replace("4Gallery.html")
                     } else {
                         document.getElementById("nextRoomStop").className = ("showMe")
@@ -304,7 +304,7 @@
                             }
 
                             // Should be 6 but for testing purposes may be changed to a lower number
-                            if (score == 2) {
+                            if (score == 6) {
                                 document.getElementById("complete").className = "showMe"
                                 win()
                             }
@@ -416,7 +416,6 @@
                             document.getElementById("crowbarPickup").className = ("hideMe");
                             room3Pic.className = ("hideMe")
                             document.getElementById("room3_no_crowbar").className = ("showMe")
-                            
                         }
 
                     }
