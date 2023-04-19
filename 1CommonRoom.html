@@ -86,12 +86,16 @@
             <!--This is the div that controls the light-->
             <div id="light"></div>
 
-            <h1 id="title">Starbound Quest - 1 Common Room</h1>
+            <h1 id="title">Starbound Quest</h1>
 
 
             <!-- The main photo  -->
             <div id="backgroundImg" class="showMe">
                 <img class="centre" src="images/Room1.png" style="width:90%;" alt="Common Room" />
+            </div>
+
+            <div id="backgroundImgPostWire" class="showMe">
+                <img class="centre" src="images/room1_no_coil.png" style="width:90%;" alt="Common Room" />
             </div>
 
             <div id="postIt" class="hideMe">
@@ -241,6 +245,10 @@
             document.getElementById("textOutput").innerHTML = "Add Wire to Inventory";
 
             document.getElementById('wireDiv').className = "hideMe";
+
+            document.getElementById('backgroundImg').className = "hideMe";
+            document.getElementById('backgroundImgPostWire').className = "showMe";
+
 
         }
 
