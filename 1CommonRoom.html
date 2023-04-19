@@ -86,7 +86,7 @@
             <!--This is the div that controls the light-->
             <div id="light"></div>
 
-            <h1 id="title">Room 1 - Common Room</h1>
+            <h1 id="title">Starbound Quest - 1 Common Room</h1>
 
 
             <!-- The main photo  -->
@@ -335,24 +335,16 @@
             document.getElementById('back').className = "showMe";
             document.getElementById('submit').className = "showMe";
 
-            let url = 'http://andymcdowell.hosting.hal.davecutting.uk/1030_APIs/randomCode.php?length=4';
-
-            fetch(url)
-                .then(function (response) {
-                return response.json();
-                })
-                .then(function (data) {
+           
+                
                 console.log("P CODE");
-                myRand = data.secretCode;
+                myRand = sessionStorage.getItem(stickyNoteValue);
                 doorcode = myRand;
                 console.log("MyRand " + myRand);
 
-                sessionStorage.setItem("stickyNoteValue", myRand);
-                document.getElementById("PCode").innerHTML = myRand;
-                })
-                .catch(function (error) {
-                console.error('ERROR: ' + error);
-                });
+                
+                document.getElementById("PCode").innerHTML = sessionStorage.getItem(stickyNoteValue);
+              
         }
 
 

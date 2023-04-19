@@ -66,6 +66,11 @@
 
         }
 
+        #PCode{
+
+            text-size-adjust: 50px;
+        }
+
         .col2 {
 
             background-image: "images/Room1.png";
