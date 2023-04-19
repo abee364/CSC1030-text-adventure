@@ -31,14 +31,14 @@
 
                 <hr>
             <div id="accessibility">
-                <h5>Choose Settings for the Game: </h5>
-                <h5>Text Size - </h5>
+                <h4>Choose Settings for the Game: </h4>
+                <h4>Text Size - </h4>
                 <button onclick="smallText()">small</button>
                 <button onclick="mediumText()">medium</button>
                 <button onclick="largeText()">large</button>
                 <button onclick="x_largeText()">x-large</button>
                 <br>
-                <h5>Page Setup: </h5>
+                <h4>Page Setup: </h4>
                 <button  onclick="lightMode()">Light Mode</button>
                 <button  onclick="darkMode()">Dark Mode</button>
                 </select>
@@ -143,13 +143,11 @@
             function smallText() {
             
             document.getElementById("wrapper").style.fontSize = "small"
-
             sessionStorage.setItem('text', 'small');
         }
 
         function mediumText() {
             document.getElementById("wrapper").style.fontSize = "medium"
-
             sessionStorage.setItem('text', 'medium');
         }
 
@@ -203,6 +201,9 @@
                 document.getElementById("wrapper").style.color = "white";
                 sessionStorage.setItem("mode", "black");
             }
+
+            //This is Storage for scertain items. 0 Means it has not been picked up yet 
+            sessionStorage.setItem("WireCoil", 0);
         </script>
 
     </body>
