@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>Document</title>
+
+</head>
+<body>
+    
+
+
+    <script>
+
+        function getCoinFlip(){
+
+            let url = 'http://andymcdowell.hosting.hal.davecutting.uk/1030_APIs/coinFlip.php';
+
+fetch(url)
+    .then(function (response) {
+    return response.json();
+    })
+    .then(function (data) {
+    
+    flip = data.result;
+   
+
+    
+    })
+    .catch(function (error) {
+    console.error('ERROR: ' + error);
+    });
+
+        }
+        </script>
+</body>
+</html>
