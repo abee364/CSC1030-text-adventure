@@ -1,7 +1,7 @@
-  
+       
        * {
             box-sizing: border-box;
-            
+            font-family: monospace , sans-serif;
         }
 
         .header {
@@ -53,7 +53,7 @@
         }
 
         body {
-            font-family: verdana, sans-serif;
+            font-family:monospace , sans-serif;
             color: white;
             background-color: black;
         }
@@ -120,8 +120,8 @@
         /**For general text**/
         .p {
             color: white;
-            font-family: 'Courier New', Courier, monospace;
-            size: 20px;
+            font-family: monospace , sans-serif;
+            size: 25px;
         }
 
         /**This is for game output text, like telling the user a door is currently locked**/
@@ -142,8 +142,8 @@
             padding: 10px 25px;
             text-align: center;
             display: inline-block;
-            font-size: 12px;
-            font-family: verdana, sans-serif;
+            font-size: 14px;
+            font-family: monospace , sans-serif;
             cursor: pointer;
 
         }
@@ -161,8 +161,8 @@
             padding: 10px 25px;
             text-align: center;
             display: inline-block;
-            font-size: 12px;
-            font-family: verdana, sans-serif;
+            font-size: 14px;
+            font-family: monospace , sans-serif;
             cursor: pointer;
         }
 
@@ -208,6 +208,7 @@
             color: white;
             width: 85%;
             text-align: center;
+            font-size: 25px;
         }
 
         /**---------------------------------Home Page Specific CSS----------------------------------------**/
