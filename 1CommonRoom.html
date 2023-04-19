@@ -138,6 +138,7 @@
 
 
                 <p id="textOutput"> Would you like to 'Look Around' or try and 'Turn On' the lights?</p>
+                <div id = "unlcoked" class = "hideMe">Electricity Room Unlocked</div>
 
                 <div id="wireDiv"><button id="Wire" class="showMe" onclick="Wire()">Pick Up Wire</button></div>
                 <button id="door2" class="showMe" onclick="door2()">Examine Pin Pad</button>
@@ -298,7 +299,8 @@
             console.log(myRand);
 
             if (num == myRand) {
-                document.getElementById('output').innerHTML = "Electricity Room Unlocked";
+                //document.getElementById('output').innerHTML = "Electricity Room Unlocked";
+            document.getElementById('unlcoked').className = "showMe";
                 console.log("YES ITS THE SAME")
                 door2Status = 1;
                 textUpdateDoor2Unlocked();
