@@ -94,7 +94,7 @@
                 <img class="centre" src="images/Room1.png" style="width:90%;" alt="Common Room" />
             </div>
 
-            <div id="backgroundImgPostWire" class="showMe">
+            <div id="backgroundImgPostWire" class="hideMe">
                 <img class="centre" src="images/room1_no_coil.png" style="width:90%;" alt="Common Room" />
             </div>
 
@@ -345,14 +345,24 @@
 
            
                 
-                console.log("P CODE");
-                myRand = sessionStorage.getItem(stickyNoteValue);
-                doorcode = myRand;
-                console.log("MyRand " + myRand);
+            let url = 'http://andymcdowell.hosting.hal.davecutting.uk/1030_APIs/randomCode.php?length=4';
 
-                
-                document.getElementById("PCode").innerHTML = sessionStorage.getItem(stickyNoteValue);
-              
+                fetch(url)
+                    .then(function (response) {
+                    return response.json();
+                    })
+                    .then(function (data) {
+                    console.log("P CODE");
+                    myRand = data.secretCode;
+                    doorcode = myRand;
+                    console.log("MyRand " + myRand);
+
+                    sessionStorage.setItem("stickyNoteValue", myRand);
+                    document.getElementById("PCode").innerHTML = myRand;
+                    })
+                    .catch(function (error) {
+                    console.error('ERROR: ' + error);
+                    });
         }
 
 

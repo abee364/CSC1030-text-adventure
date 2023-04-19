@@ -88,7 +88,6 @@
 
             function startGame() {
                 // Collecting the name value
-                produceCode();
                 var nameInput = document.getElementById('name').value;
 
 
@@ -208,24 +207,7 @@
 
             function produceCode(){
 
-                let url = 'http://andymcdowell.hosting.hal.davecutting.uk/1030_APIs/randomCode.php?length=4';
-
-                    fetch(url)
-                        .then(function (response) {
-                        return response.json();
-                        })
-                        .then(function (data) {
-                        console.log("P CODE");
-                        myRand = data.secretCode;
-                        doorcode = myRand;
-                        console.log("MyRand " + myRand);
-
-                        sessionStorage.setItem("stickyNoteValue", myRand);
-                        
-                        })
-                        .catch(function (error) {
-                        console.error('ERROR: ' + error);
-                        });
+               
                                 }
         </script>
 

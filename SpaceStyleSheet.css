@@ -66,10 +66,7 @@
 
         }
 
-        #PCode{
-
-            text-size-adjust: 50px;
-        }
+       
 
         .col2 {
 
@@ -125,6 +122,7 @@
 
             background-color: rgba(244, 244, 10, 0.8);
             color: black;
+            font-size: 100%;
 
             padding: 40%;
         }
