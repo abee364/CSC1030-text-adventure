@@ -56,7 +56,7 @@
                 <p>Computer: "This is the electricity room, you should be able to find a way to restore power."</p>
                 <button onclick="setWires();">The Wires</button>
                 <button onclick="setDoor();">The Door</button>
-                <button onclick=" generateNumber();">The Plant</button>
+                <button onclick="API();">The Plant</button>
 
             </div>
             <div id="wireButtons" class="hideMe">
@@ -84,7 +84,8 @@
             </div>
 
             <div id="doorLocked" class="hideMe">
-                <p class="gameText">Computer: "This door brings you back to the previous room. But it's still dark, try and find a
+                <p class="gameText">Computer: "This door brings you back to the previous room. But it's still dark, try
+                    and find a
                     way to restore power"</p>
             </div>
 
@@ -95,7 +96,7 @@
 
 
         </div>
-<!-- 
+        <!-- 
         <div id="col2Loss" class="hideMe">
             <h1>Room 2 </h1>
             <p>
@@ -168,7 +169,7 @@
             document.getElementById('wireButtons').className = "hideMe";
             document.getElementById('doorLocked').className = "hideMe";
 
-            sessionStorage.setItem("shipDeck",1);
+            sessionStorage.setItem("shipDeck", 1);
 
             sessionStorage.setItem("Door1", 1);
             sessionStorage.setItem("Torch", 1);
@@ -273,17 +274,7 @@
             }
         }
 
-        //There is a 25% chance that the plant will kill you when looking at it
-        function generateNumber() {
-            var randomNumber = Math.floor(Math.random() * 4) + 1;
-            document.getElementById("result").innerHTML = randomNumber;
 
-            if (randomNumber == 1) {
-                window.location.replace("Plant-ending.html")
-            } else {
-                Plant()
-            }
-        }
 
         // Register a beforeunload event listener to save the remaining time before navigating away from the page
         window.addEventListener('beforeunload', saveTimeRem);
@@ -312,6 +303,34 @@
             document.getElementById("wrapper").style.backgroundColor = "rgb(216, 216, 216)";
             document.getElementById("col1").style.color = "black";
             document.getElementById("col2").style.color = "black";
+        }
+
+        //Api ----------------
+
+        
+        //There is a 25% chance that the plant will kill you when looking at it
+        function API() {
+
+            let url = 'http://andymcdowell.hosting.hal.davecutting.uk/1030_APIs/diceroll.php';
+
+            fetch(url)
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (data) {
+                    console.log("Data = " + data);
+                    if (data == 1 || data == 2) {
+                        console.log("DEATH")
+                        window.location.replace("Plant-ending.html")
+                    } else {
+                        Plant()
+                        console.log("ALL GOOD!")
+                    }
+
+                })
+                .catch(function (error) {
+                    console.error('ERROR: ' + error);
+                });
         }
 
     </script>
