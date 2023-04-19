@@ -298,10 +298,16 @@
             console.log(myRand);
 
             if (num == myRand) {
+                document.getElementById('output').innerHTML = "Electricity Room Unlocked";
                 console.log("YES ITS THE SAME")
                 door2Status = 1;
                 textUpdateDoor2Unlocked();
                 Permission = 1;
+            }else{
+                document.getElementById('output').innerHTML = "Invalid Pin";
+               
+
+
             }
 
             // let password = sessionStorage.getItem(pWord);
@@ -353,6 +359,7 @@
 
         function getRandNo() {
             document.getElementById('backgroundImg').className = "hideMe";
+            document.getElementById('backgroundImgPostWire').className = "hideMe";
             document.getElementById('postIt').className = "showMe";
             document.getElementById('back').className = "showMe";
             document.getElementById('submit').className = "hideMe";
