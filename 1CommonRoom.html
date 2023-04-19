@@ -86,12 +86,16 @@
             <!--This is the div that controls the light-->
             <div id="light"></div>
 
-            <h1 id="title">Room 1 - Common Room</h1>
+            <h1 id="title">Starbound Quest</h1>
 
 
             <!-- The main photo  -->
             <div id="backgroundImg" class="showMe">
                 <img class="centre" src="images/Room1.png" style="width:90%;" alt="Common Room" />
+            </div>
+
+            <div id="backgroundImgPostWire" class="hideMe">
+                <img class="centre" src="images/room1_no_coil.png" style="width:90%;" alt="Common Room" />
             </div>
 
             <div id="postIt" class="hideMe">
@@ -118,8 +122,8 @@
                 <h1>Room 1</h1>
 
 
+                <button id="goToRoom3" onclick="goToRoom3()">Electricity Room</button>
                 <button id="goToRoom2" onclick="goToRoom2()">Ship Deck</button>
-                <button id="goToRoom3" onclick="goToRoom3()">Electric Storage Room</button>
 
             </div>
 
@@ -242,6 +246,10 @@
 
             document.getElementById('wireDiv').className = "hideMe";
 
+            document.getElementById('backgroundImg').className = "hideMe";
+            document.getElementById('backgroundImgPostWire').className = "showMe";
+
+
         }
 
         function goToRoom3() {
@@ -335,24 +343,26 @@
             document.getElementById('back').className = "showMe";
             document.getElementById('submit').className = "showMe";
 
+           
+                
             let url = 'http://andymcdowell.hosting.hal.davecutting.uk/1030_APIs/randomCode.php?length=4';
 
-            fetch(url)
-                .then(function (response) {
-                return response.json();
-                })
-                .then(function (data) {
-                console.log("P CODE");
-                myRand = data.secretCode;
-                doorcode = myRand;
-                console.log("MyRand " + myRand);
+                fetch(url)
+                    .then(function (response) {
+                    return response.json();
+                    })
+                    .then(function (data) {
+                    console.log("P CODE");
+                    myRand = data.secretCode;
+                    doorcode = myRand;
+                    console.log("MyRand " + myRand);
 
-                sessionStorage.setItem("stickyNoteValue", myRand);
-                document.getElementById("PCode").innerHTML = myRand;
-                })
-                .catch(function (error) {
-                console.error('ERROR: ' + error);
-                });
+                    sessionStorage.setItem("stickyNoteValue", myRand);
+                    document.getElementById("PCode").innerHTML = myRand;
+                    })
+                    .catch(function (error) {
+                    console.error('ERROR: ' + error);
+                    });
         }
 
 
