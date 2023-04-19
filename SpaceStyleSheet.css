@@ -11,8 +11,10 @@
         .timerBox {
             grid-area: tbx;
 
+            font-size: 10px;
+
             text-align: center;
-            background-color: rgba(245, 163, 11, 0.8);
+            background-color: rgba(211, 211, 211, 0.1);
 
             border: thick;
             border-color: pink;
@@ -25,12 +27,10 @@
             margin-bottom: 3%;
         }
 
-
-
         .interactionBox {
             grid-area: ibx;
             text-align: center;
-            background-color: rgba(67, 236, 219, 0.8);
+            background-color: rgba(211, 211, 211, 0.1);
             border: thick;
             border-color: pink;
             margin-left: 5%;
@@ -40,7 +40,36 @@
             padding-top: 5px;
             padding-bottom: 5px;
         }
-        
+
+        .wrapper {
+
+            color: white;
+
+
+            margin: auto;
+            margin-top: 50px;
+            padding-top: 10px;
+
+            gap: 10px;
+        }
+
+        .txtBxBtn {
+
+            background-color: lightgray;
+        }
+
+        #start {
+
+            background-color: black;
+            color: white;
+            text-align: center;
+
+        }
+
+        .col2 {
+
+            background-image: "images/Room1.png";
+        }
 
         /**this class is used to hide div's**/
         .hideMe {
