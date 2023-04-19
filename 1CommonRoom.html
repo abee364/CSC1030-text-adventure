@@ -262,7 +262,7 @@
 
         function goToRoom3() {
 
-            if (Permission == 0) {
+            if (Permission == 0 || sessionStorage.get("permission") != 1) {
                 document.getElementById("textOutput").innerHTML = "Locked, Pin Required";
             } else {
                 window.location.replace("2ElectricityRoom.html")
@@ -314,6 +314,7 @@
 
                 document.getElementById('submit').className = "hideMe";
                 document.getElementById('inputForm').className = "hideMe";
+                sessionStorage.set("permission", 1);
                 Permission = 1;
             }
 
