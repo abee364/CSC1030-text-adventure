@@ -55,7 +55,9 @@
 
         //Session storage - Accessibility
         var textSize = sessionStorage.getItem('text');
-        document.getElementById("wrapper").style.fontSize = textSize
+        document.getElementById("wrapper").style.fontSize = textSize;
+        document.getElementById("greeting").style.fontSize = textSize;
+        document.getElementById("secondSlide").style.fontSize = textSize;
 
         var modeColor = sessionStorage.getItem('mode');
         if (modeColor == 'light') {
