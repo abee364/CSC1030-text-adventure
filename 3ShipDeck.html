@@ -188,8 +188,8 @@
 
                 //function for when the lever is pulled
                 async function lever() {
+                    options.className = "hideMe";
                     document.getElementById("pullLever").className = ("hideMe");
-
                     document.getElementById("spinglespop").className = ("showMe")
                     await delay(1000)
                     document.getElementById("namePet").className = "showMe"
@@ -209,6 +209,7 @@
                     } else {
                         document.getElementById("namePet").className = "hideMe"
                         pet = 1;
+                        options.className = "showMe";
                         console.log(name);
                     }
                 }
@@ -344,12 +345,17 @@
                     document.getElementById("roomButtons").className = "showMe";
                     document.getElementById("question").className = "showMe";
                     options.className = "showMe";
-                    room3Pic.className = "showMe";
+                    // room3Pic.className = "showMe";
                     podiumButton.className = "hideMe";
                     document.getElementById("crowbarDoor").className = ("hideMe")
                     output.innerHTML = `<span> You got: </span> ${score} <span><br>You can move on to the next room now! </span>`;
                     output.classList.remove("hideMe");
                     sessionStorage.setItem('gameSS', '1')
+                    if (crowbar == 1) {
+                        document.getElementById("room3_no_crowbar").className = ("showMe")
+                    } else {
+                        room3Pic.className = "showMe";
+                    }
                 }
 
                 //Session scripts
