@@ -116,6 +116,10 @@
                 const output = document.querySelector("#output");
                 const memoryGame = document.querySelector(".memoryGame");
                 const room3Pic = document.getElementById("room3");
+                var crowbarSS = sessionStorage.getItem("crowbarSS")
+                var leverSS = sessionStorage.getItem("leverSS")
+                var gameSS = sessionStorage.getItem("gameSS")
+
                 const colours = {
                     colourGreen: {
                         currentColour: "#19581b",
@@ -138,9 +142,12 @@
                 let randomizer = false;
                 let ClickNum, score = 0;
 
+
+
                 //function that lets you get to the next room
                 async function nextRoom() {
-                    if (score >= 6) {
+                    // Usually at 6 but may be lowered for testing purposes
+                    if (score >= 2) {
                         window.location.replace("4Gallery.html")
                     } else {
                         document.getElementById("nextRoomStop").className = ("showMe")
@@ -162,6 +169,7 @@
                     document.getElementById("crowbarPickup").className = ("hideMe");
                     await delay(4000);
                     document.getElementById("pickupCrowbar").className = ("hideMe")
+                    sessionStorage.setItem('crowbarSS', '1')
 
                 }
 
@@ -187,6 +195,7 @@
                     document.getElementById("namePet").className = "showMe"
                     await delay(4000);
                     document.getElementById("spinglespop").className = ("hideMe")
+                    sessionStorage.setItem('leverSS', '1')
 
 
 
@@ -297,7 +306,7 @@
                             }
 
                             // Should be 6 but for testing purposes may be changed to a lower number
-                            if (score == 6) {
+                            if (score == 2) {
                                 document.getElementById("complete").className = "showMe"
                                 win()
                             }
@@ -313,6 +322,7 @@
                     document.getElementById("gameInfo").className = "hideMe";
                     document.getElementById("question").className = "showMe";
                     document.getElementById("roomButtons").className = "showMe";
+                    document.getElementById("leaveGame").className = "hideMe";
                     output.classList.remove("hideMe");
                     options.className = "showMe";
                     memoryGame.classList.add("hideMe");
@@ -329,6 +339,7 @@
                 //function for when the player wins
                 function win() {
                     memoryGame.className = "hideMe";
+                    document.getElementById("leaveGame").className = "hideMe";
                     document.getElementById("gameInfo").className = "hideMe";
                     document.getElementById("roomButtons").className = "showMe";
                     document.getElementById("question").className = "showMe";
@@ -338,6 +349,7 @@
                     document.getElementById("crowbarDoor").className = ("hideMe")
                     output.innerHTML = `<span> You got: </span> ${score} <span><br>You can move on to the next room now! </span>`;
                     output.classList.remove("hideMe");
+                    sessionStorage.setItem('gameSS', '1')
                 }
 
                 //Session scripts
@@ -385,7 +397,7 @@
                 window.addEventListener('beforeunload', saveTimeRem);
 
                 // Load the remaining time and start the timer when the page loads
-                window.addEventListener('load', loadTimeRem);
+                window.addEventListener('load', loadTimeRem)
 
                 window.onload = function () {
                     var fontSize = sessionStorage.getItem("fontSize");
@@ -393,6 +405,31 @@
                         document.body.style.fontSize = fontSize;
                     }
                 }
+
+                window.addEventListener('load', function () {
+                    if (sessionStorage.getItem('crowbarSS') !== null) {
+                        crowbarSS = parseInt(sessionStorage.getItem('crowbarSS'));
+                        if (crowbarSS === 1) {
+                            document.getElementById("crowbarPickup").className = ("hideMe");
+                           
+                        }
+                        if (sessionStorage.getItem('leverSS') !== null) {
+                            leverSS = parseInt(sessionStorage.getItem('leverSS'));
+                            if (leverSS === 1) {
+                                document.getElementById("pullLever").className = ("hideMe");
+                            }
+                        }
+                        if (sessionStorage.getItem('gameSS') !== null) {
+                            gameSS = parseInt(sessionStorage.getItem('gameSS'));
+                            if (gameSS === 1) {
+                                document.getElementById("podium").className = ("hideMe");
+                                document.getElementById("crowbarDoor").className = ("hideMe");
+                                score = 6;
+                            }
+                        }
+                    }
+                });
+
 
                 //Session storage - Accessibility
                 var textSize = sessionStorage.getItem('text');
@@ -409,7 +446,7 @@
                     document.getElementById("col2").style.color = "black";
                 }
 
-                window.onload = function() {
+                window.onload = function () {
                     var stickyNoteValue = sessionStorage.getItem("stickyNoteValue");
                     if (stickyNoteValue) {
                         document.getElementById("PCode").innerHTML = stickyNoteValue;
