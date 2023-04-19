@@ -96,8 +96,9 @@
             <div id="postIt" class="hideMe">
 
                 <div class="ptNote">
-                    <!------------------------------------------------------------------------------------>
+
                     <p id=PCode></p>
+
                 </div>
 
             </div>
@@ -135,7 +136,7 @@
 
                 <div id="wireDiv"><button id="Wire" class="showMe" onclick="Wire()">Pick Up Wire</button></div>
                 <button id="door2" class="showMe" onclick="door2()">Examine Pin Pad</button>
-                <button id="airlock" class="showMe" onclick="airlock()">Jump out the Airlock</button>
+                <button id="airlock" class="showMe" onclick="airlock()">Try Airlock</button>
                 <button id="stickyNote" class="showMe" onclick="getRandNo()">Look At Sticky Note</button>
                 <button id="back" class="hideMe" onclick="back()">Back</button>
                 <button id="submit" class="hideMe" onclick="unlockDoor2()">Submit</button>
@@ -178,7 +179,7 @@
 
         function startingText() {
 
-            document.getElementById("textOutput").innerHTML = "Welcome to the Spaceship. For the immediacy, you have 2 options, either look around the 'room?' you seem to be in, or attemp to turn on your torch.";
+            document.getElementById("textOutput").innerHTML = "What would you like to 'pick up' the stray peice of wire, 'Examine the Pin Pad' or even try the 'Airlock'.";
         }
 
         function textUpdateLookAroundLight() {
@@ -243,7 +244,7 @@
         function goToRoom3() {
 
             if (Permission == 0) {
-                console.log("CAN'T ENTERER")
+                document.getElementById("textOutput").innerHTML = "Locked, Pin Required";
             } else {
                 window.location.replace("2ElectricityRoom.html")
             }
