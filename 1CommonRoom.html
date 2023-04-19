@@ -235,6 +235,8 @@
         function Wire() {
 
             sessionStorage.setItem("WireCoil", 1);
+            let wirenum = sessionStorage.getItem("WireCoil");
+            console.log("(Should be 1) Wire number = "+ wirenum);
 
             document.getElementById("textOutput").innerHTML = "Add Wire to Inventory";
 
