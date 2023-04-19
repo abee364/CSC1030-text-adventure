@@ -195,10 +195,7 @@
                     document.getElementById("namePet").className = "showMe"
                     await delay(4000);
                     document.getElementById("spinglespop").className = ("hideMe")
-                    sessionStorage.setItem('leverSS', '1')
-
-
-
+                    sessionStorage.setItem('leverSS', '1');
                 }
 
                 //function to submit input value
@@ -417,7 +414,9 @@
                         crowbarSS = parseInt(sessionStorage.getItem('crowbarSS'));
                         if (crowbarSS === 1) {
                             document.getElementById("crowbarPickup").className = ("hideMe");
+                            room3Pic.className = ("hideMe")
                             document.getElementById("room3_no_crowbar").className = ("showMe")
+                            
                         }
 
                     }
