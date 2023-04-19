@@ -9,7 +9,7 @@
 <body>
     <div id="wrapper">
         <div class="container">
-            <img src="images/Room1.png" alt="Room1" style="width:90%;">
+            <div id = "Image"><img src="images/Room1.png" alt="Room1" style="width:90%;"></div>
             <div class="text-block" id="greeting">
                 <p>Computer: Hello there <span id="name"></span> we have a problem, the ship seems to have
                     malfunctioned
@@ -19,17 +19,9 @@
                 <button id="next" onclick="continueText()" class="button">Next</button>
             </div>
             <div class="text-block" id="secondSlide">
-                <p id="finishIntro" class="hideMe"><br>“Well as I was saying our systems are failing, including all
-                    vital
-                    systems
-                    and a gas leak has broken
-                    out in the control room which is also on fire.
-                    I suggest you hurry before the fire ignites the gas and explodes the ship.
-                    You also should know that you only have 5 minutes before the gas leaks into the filteration system.
-                    So get going!
-                    And good luck!” </p>
-
-                <button id="continue" onclick="Start()" class="hideMe">Start</button>
+                <p id="finishIntro" class="hideMe"><br>Looks light the lights have turned off, turn on your torch to see</p>
+                <br>
+                <button id="continue" onclick="Start()" class="hideMe">Turn on Torch</button>
 
             </div>
         </div>
@@ -37,12 +29,13 @@
 
     <script>
         function Start() {
-            window.location.replace("1CommonRoom.html")
+                window.location.replace("Monologue2.html");
         }
 
         function continueText() {
             document.getElementById('greeting').className = "hideMe";
             document.getElementById('next').className = "hideMe";
+            document.getElementById('Image').className = "hideMe";
             document.getElementById('finishIntro').className = "showMe";
             document.getElementById('continue').className = "showMe button";
         }
