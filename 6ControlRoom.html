@@ -84,9 +84,10 @@
                 <div id="riddleInstruction" class="hideMe">
                     <p>Here's your password hint (1 Word).</p>
                 </div>
-                
+
                 <div id="gasOffText" class="hideMe">
-                    <p>Computer: "You managed to turn off the gas and start up the filtration program to remove the gas from the
+                    <p>Computer: "You managed to turn off the gas and start up the filtration program to remove the gas
+                        from the
                         ship."</p>
                 </div>
                 <div id="needToPutOutFire" class="hideMe">
@@ -101,7 +102,7 @@
                     <p id="riddle-answer" style="display: none;"></p>
                     <p></p>
                 </div>
-<!-- 
+                <!-- 
                 <button id="screenbutton" onclick="screen()" disabled class="button">Check
                     out screen</button> -->
                 <button id="screenbutton" onclick="screen()" class="button">Check
@@ -121,7 +122,7 @@
         let extinguisher = sessionStorage.getItem('extinguisher');
 
         function fire() {
-            
+
             if (extinguisher == 1) {
                 document.getElementById('fireStopped').className = "showMe";
                 document.getElementById('gas').className = "showMe";
@@ -129,6 +130,7 @@
                 document.getElementById('arrival').className = "hideMe";
                 document.getElementById('fire').className = "hideMe";
                 enableButton();
+                sessionStorage.setItem('fireOut', '1');
             } else {
                 document.getElementById('arrival').className = "hideMe";
                 document.getElementById('needExtingusher').className = "showMe";
@@ -136,19 +138,45 @@
             }
         }
 
-        
+        window.addEventListener('load', loadTimeRem)
+
+        window.onload = function () {
+            var fontSize = sessionStorage.getItem("fontSize");
+            if (fontSize) {
+                document.body.style.fontSize = fontSize;
+            }
+        }
+
+        window.addEventListener('load', function () {
+            if (sessionStorage.getItem('fireOut') !== null) {
+                fireOut = parseInt(sessionStorage.getItem('fireOut'));
+                if (fireOut === 1) {
+                    document.getElementById('fireStopped').className = "showMe";
+                    document.getElementById('gas').className = "showMe";
+                    document.getElementById('main').className = "hideMe";
+                    document.getElementById('arrival').className = "hideMe";
+                    document.getElementById('fire').className = "hideMe";
+                    enableButton();
+
+                }
+
+            }
+        }
+        );
+
+
         function enableButton() {
             const screenOrderButton = document.getElementById("screenbutton");
             screenOrderButton.disabled = false;
             sessionStorage.setItem("FireChecker", 1);
-            
+
         }
 
         function screen() {
-            
+
             let checker = 0;
             let temp = sessionStorage.getItem("FireChecker");
-            if(temp ==1){
+            if (temp == 1) {
                 checker = temp;
             }
             console.log(checker);
@@ -163,33 +191,34 @@
             } else {
                 console.log("ERRORROROROOR")
 
-            document.getElementById('main').className = "hideMe";
-            document.getElementById('gas').className = "hideMe";
-            document.getElementById('screen').className = "showMe";
-            document.getElementById('screenbutton').className = "hideMe";
-            document.getElementById('fire').className = "hideMe";
-            document.getElementById('fireStopped').className = "hideMe";
-            document.getElementById('riddle').className = "showMe";
-            document.getElementById('riddle').className = "button";
-            document.getElementById('back').className = "showMe";
-            document.getElementById('back').className = "button";
-            document.getElementById('arrival').className = "hideMe";
-            document.getElementById('screenInstruction').className = "showMe";
+                document.getElementById('main').className = "hideMe";
+                document.getElementById('gas').className = "hideMe";
+                document.getElementById('screen').className = "showMe";
+                document.getElementById('screenbutton').className = "hideMe";
+                document.getElementById('fire').className = "hideMe";
+                document.getElementById('fireStopped').className = "hideMe";
+                document.getElementById('riddle').className = "showMe";
+                document.getElementById('riddle').className = "button";
+                document.getElementById('back').className = "showMe";
+                document.getElementById('back').className = "button";
+                document.getElementById('arrival').className = "hideMe";
+                document.getElementById('screenInstruction').className = "showMe";
             }
         }
 
 
         function back() {
-            document.getElementById('main').className = "showMe";
+            document.getElementById('gas').className = "showMe";
             document.getElementById('screen').className = "hideMe";
             document.getElementById('screenbutton').className = "showMe button";
-            document.getElementById('fire').className = "showMe button";
+            document.getElementById('fire').className = "hideMe";
             document.getElementById('riddle').className = "hideMe";
             document.getElementById('back').className = "hideMe";
             document.getElementById('Riddle').className = "hideMe";
-            document.getElementById('arrival').className = "showMe";
+            document.getElementById('arrival').className = "hideMe";
             document.getElementById('screenInstruction').className = "hideMe";
             document.getElementById('riddleInstruction').className = "hideMe";
+            
 
         }
 
@@ -373,7 +402,7 @@
         // Load the remaining time and start the timer when the page loads
         window.addEventListener('load', loadTimeRem);
 
-        window.onload = function() {
+        window.onload = function () {
             var fontSize = sessionStorage.getItem("fontSize");
             if (fontSize) {
                 document.body.style.fontSize = fontSize;
@@ -395,7 +424,7 @@
             document.getElementById("col2").style.color = "black";
         }
 
-        window.onload = function() {
+        window.onload = function () {
             var stickyNoteValue = sessionStorage.getItem("stickyNoteValue");
             if (stickyNoteValue) {
                 document.getElementById("PCode").innerHTML = stickyNoteValue;
