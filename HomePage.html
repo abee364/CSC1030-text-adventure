@@ -1,17 +1,12 @@
 <DOCTYPE! HTML>
     <html>
-
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Home page</title>
+        <title>Starbound Quest - Home Page</title>
         <link rel="stylesheet" href="SpaceStyleSheet.css">
-
     </head>
 
-    <body id="body" class="homeBg">
-        <div id="gameTitle">
-            <h1>Starbound Quest</h1>
-        </div>
+    <body id="body">
+        <h1>Starbound Quest</h1>
 
         <div id="wrapper">
             <div id="start">
@@ -24,193 +19,156 @@
                 <label for="difficulty">Select Your Difficulty: </label>
                 <select id="difficulty">
                     <option value="---">---</option>
-                    <option value="easy">Easy (4min 30s)</option>
-                    <option value="medium">Medium (4min 15s)</option>
-                    <option value="hard">Hard (4min 0s)</option>
+                    <option value="easy">Easy (5 minutes)</option>
+                    <option value="medium">Medium (4 minutes 40 seconds)</option>
+                    <option value="hard">Hard (4 minutes 20 seconds)</option>
                 </select>
                 <br>
 
-                <hr>
-                <div id="accessibility">
-                    <h4>Choose Settings for the Game: </h4>
-                    <h4>Text Size - </h4>
-                    <button onclick="smallText()">small</button>
-                    <button onclick="mediumText()">medium</button>
-                    <button onclick="largeText()">large</button>
-                    <button onclick="x_largeText()">x-large</button>
-                    <br>
-                    <h4>Page Setup: </h4>
-                    <button onclick="lightMode()">Light Mode</button>
-                    <button onclick="darkMode()">Dark Mode</button>
-                    </select>
-                    <br>
-                    <br>
-
-                    <!-- Button for starting game  -->
-                    <button onclick="handleStartButtonClick();">Begin</button>
-
-                </div>
+                <!-- Button for starting game  -->
+                <button id="submit" onclick="handleStartButtonClick();" disabled>Begin</button>
 
             </div>
+            <!-- Printing characters name -->
+            <span id="welcome"></span>
 
-            <script type="text/javascript">
-                //setting values
-                var difficulty;
-                const submit = document.getElementById('submit');
-                let timer;
+        </div>
+        <div id="accessibility">
+            <h5>Text Size: </h5>
+            <button onclick="smallText()">small</button>
+            <button onclick="mediumText()">medium</button>
+            <button onclick="largeText()">large</button>
+            <button onclick="x_largeText()">x-large</button>
+            <br>
+            <hr>
+            <button  onclick="lightMode()">Light Mode</button>
+            <button  onclick="darkMode()">Dark Mode</button>
+            </select>
+            <br>
 
-                const difficultySelect = document.getElementById('difficulty');
-                difficultySelect.addEventListener('change', function () {
-                    if (this.value !== 'easy' && this.value !== 'medium' && this.value !== 'hard') {
-                        submit.disabled = true;
-                    } else {
-                        submit.disabled = false;
-                    }
-                });
+        </div>
 
-                function handleStartButtonClick() {
-                    console.log("Button clicked");
-                    const nameInput = document.getElementById('name').value;
-                    const difficultyInput = document.getElementById('difficulty').value;
-                    // Validation check if any character is present in the name
-                    if (nameInput.trim() === "") {
-                        alert("Please enter your name");
-                        return
-                    } else if (difficultyInput !== 'easy' && difficultyInput !== 'medium' && difficultyInput !== 'hard') {
-                        alert("Please select diffculty");
-                        return
-                    } else {
-                        // Set the player's name in session storage
-                        sessionStorage.setItem('name', nameInput);
-                        startGame();
-                        startTimer();
+        <script type="text/javascript">
+            //setting values
+            var difficulty;
+            const submit = document.getElementById('submit');
+            let timer;
+
+            const difficultySelect = document.getElementById('difficulty');
+            difficultySelect.addEventListener('change', function () {
+                if (this.value !== 'easy' && this.value !== 'medium' && this.value !== 'hard') {
+                    submit.disabled = true;
+                } else {
+                    submit.disabled = false;
+                }
+            });
+
+            function handleStartButtonClick() {
+                const nameInput = document.getElementById('name').value;
+                // Validation check if any character is present in the name
+                if (nameInput.trim() === "") {
+                    alert("Please enter your name");
+                    return
+                } else {
+                    // Set the player's name in session storage
+                    sessionStorage.setItem('name', nameInput);
+                    startGame();
+                    startTimer();
+                }
+            }
+
+            function startGame() {
+                // Collecting the name value
+                var nameInput = document.getElementById('name').value;
+
+                // Display welcome message
+                var output = '<h2>Welcome ' + nameInput + '! To the game.<h2>';
+                document.getElementById('welcome').innerHTML = output;
+
+                // Make the start menu disappear
+                document.getElementById('start').style.display = 'none';
+
+                // Set the difficulty and change the timer per difficulty
+                var difficultyStr = "";
+                for (var i = 0; i < difficultySelect.length; i++) {
+                    if (difficultySelect[i].selected) {
+                        difficultyStr = difficultySelect[i].value;
+                        break;
                     }
                 }
-
-                function startGame() {
-                    // Collecting the name value
-                    var nameInput = document.getElementById('name').value;
-
-
-                    // Make the start menu disappear
-                    document.getElementById('start').style.display = 'none';
-
-                    // Set the difficulty and change the timer per difficulty
-                    var difficultyStr = "";
-                    for (var i = 0; i < difficultySelect.length; i++) {
-                        if (difficultySelect[i].selected) {
-                            difficultyStr = difficultySelect[i].value;
-                            break;
-                        }
-                    }
-                    switch (difficultyStr) {
-                        case 'easy':
-                            sessionStorage.setItem('timeRem', '270');
-                            break;
-                        case 'medium':
-                            sessionStorage.setItem('timeRem', '255');
-                            break;
-                        case 'hard':
-                            sessionStorage.setItem('timeRem', '240');
-                            break;
-                    }
-                    // Takes the player to the monologue page
-                    window.location.replace("Monologue.html");
+                switch (difficultyStr) {
+                    case 'easy':
+                        sessionStorage.setItem('timeRem', '300');
+                        break;
+                    case 'medium':
+                        sessionStorage.setItem('timeRem', '250');
+                        break;
+                    case 'hard':
+                        sessionStorage.setItem('timeRem', '200');
+                        break;
+                    default:
+                        alert("Select difficulty");
                 }
+                // Takes the player to the monologue page
+                window.location.replace("Monologue.html");
+            }
 
-                //Starts the timer
-                function startTimer() {
-                    var timeRem = sessionStorage.getItem('timeRem');
+            //Starts the timer
+            function startTimer() {
+                var timeRem = sessionStorage.getItem('timeRem');
+                document.getElementById('timerText').innerHTML = timeRem;
+                timer = setInterval(countdown, 1000);
+            }
+
+            //Manages the countdown of the timer
+            function countdown() {
+                var timeRem = sessionStorage.getItem('timeRem');
+                if (timeRem > 0) {
+                    timeRem--;
                     document.getElementById('timerText').innerHTML = timeRem;
-                    timer = setInterval(countdown, 1000);
+                    sessionStorage.setItem('timeRem', timeRem);
+                } else {
+                    clearInterval(timer);
+                    document.getElementById('timerText').innerHTML = 'END';
+                    timeRem = 10;
+                    // Redirect to statistics page
+                    window.location.href = 'stats.html';
                 }
+            }
 
-                //Manages the countdown of the timer
-                function countdown() {
-                    var timeRem = sessionStorage.getItem('timeRem');
-                    if (timeRem > 0) {
-                        timeRem--;
-                        document.getElementById('timerText').innerHTML = timeRem;
-                        sessionStorage.setItem('timeRem', timeRem);
-                    } else {
-                        clearInterval(timer);
-                        document.getElementById('timerText').innerHTML = 'END';
-                        timeRem = 10;
-                        // Redirect to statistics page
-                        window.location.href = 'stats.html';
-                    }
-                }
+            function smallText() {
+                document.getElementById("wrapper").style.fontSize = "small"
 
-                function smallText() {
+            }
 
-                    document.getElementById("wrapper").style.fontSize = "small"
-                    sessionStorage.setItem('text', 'small');
-                }
+            function mediumText() {
+                document.getElementById("wrapper").style.fontSize = "medium"
 
-                function mediumText() {
-                    document.getElementById("wrapper").style.fontSize = "medium"
-                    sessionStorage.setItem('text', 'medium');
-                }
+            }
 
-                function largeText() {
-                    document.getElementById("wrapper").style.fontSize = "large"
-                    sessionStorage.setItem('text', 'large');
-                }
+            function largeText() {
+                document.getElementById("wrapper").style.fontSize = "large"
+            }
 
-                function x_largeText() {
-                    document.getElementById("wrapper").style.fontSize = "x-large"
-                    sessionStorage.setItem('text', 'x-large');
+            function x_largeText() {
+                document.getElementById("wrapper").style.fontSize = "x-large"
 
-                }
+            }
 
+            function lightMode() {
+                document.getElementById("body").style.backgroundColor ="ivory"
+                document.getElementById("wrapper").style.backgroundColor ="rgb(216, 216, 216)"
+                document.getElementById("body").style.color = "black"
+            }
 
-                var bodyBgColor, wrapperBgColor, startBgColor, startColor, wrapperColor, bodyColor;
+            function darkMode() {
+                document.getElementById("body").style.backgroundColor ="black"
+                document.getElementById("wrapper").style.backgroundColor ="#222629"
+                document.getElementById("body").style.color = "white"
 
-                function lightMode() {
-                    // bodyBgColor = document.body.style.backgroundColor;
-                    // wrapperBgColor = document.getElementById("wrapper").style.backgroundColor;
-                    // startBgColor = document.getElementById("start").style.backgroundColor;
-                    // startColor = document.getElementById("start").style.color;
-                    // wrapperColor = document.getElementById("wrapper").style.color;
+            }
 
-                    // sessionStorage.setItem("bodyBgColor", bodyBgColor);
-                    // sessionStorage.setItem("wrapperBgColor", wrapperBgColor);
-                    // sessionStorage.setItem("startBgColor", startBgColor);
-                    // sessionStorage.setItem("startColor", startColor);
-                    // sessionStorage.setItem("wrapperColor", wrapperColor);
-
-                    document.getElementById("wrapper").style.backgroundColor = "ivory";
-                    document.getElementById("start").style.backgroundColor = "rgb(216, 216, 216)";
-                    document.getElementById("start").style.color = "black";
-                    document.getElementById("wrapper").style.color = "black";
-
-
-                    sessionStorage.setItem("mode", "light");
-                }
-
-                function darkMode() {
-                    // document.getElementById("body").style.backgroundColor = bodyBgColor;
-                    // document.getElementById("wrapper").style.backgroundColor = wrapperBgColor;
-                    // document.getElementById("start").style.backgroundColor = startBgColor;
-                    // document.getElementById("start").style.color = startColor;
-                    // document.getElementById("wrapper").style.color = wrapperColor;
-                    // document.getElementById("body").style.color = "white";
-
-                    document.getElementById("wrapper").style.backgroundColor = "#222629";
-                    document.getElementById("start").style.backgroundColor = "black";
-                    document.getElementById("start").style.color = "white";
-                    document.getElementById("wrapper").style.color = "white";
-                    sessionStorage.setItem("mode", "black");
-                }
-
-                //This is Storage for scertain items. 0 Means it has not been picked up yet 
-                sessionStorage.setItem("WireCoil", 0);
-
-                function produceCode() {
-
-
-                }
-            </script>
+        </script>
 
     </body>
 
