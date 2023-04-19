@@ -119,7 +119,7 @@
 
             <div class="header">
 
-                <h1>Room 1</h1>
+                <h1>Common Room</h1>
 
 
                 <button id="goToRoom3" onclick="goToRoom3()">Electricity Room</button>
@@ -279,6 +279,8 @@
             document.getElementById('door2').className = "hideMe";
             document.getElementById('airlock').className = "hideMe";
             document.getElementById('submit').className = "showMe";
+            document.getElementById('back').className = "showMe";
+            document.getElementById('stickyNote').className = "hideMe";
 
 
         }
@@ -296,10 +298,16 @@
             console.log(myRand);
 
             if (num == myRand) {
+                document.getElementById('output').innerHTML = "Electricity Room Unlocked";
                 console.log("YES ITS THE SAME")
                 door2Status = 1;
                 textUpdateDoor2Unlocked();
                 Permission = 1;
+            }else{
+                document.getElementById('output').innerHTML = "Invalid Pin";
+               
+
+
             }
 
             // let password = sessionStorage.getItem(pWord);
@@ -330,6 +338,18 @@
             document.getElementById('postIt').className = "hideMe";
 
             document.getElementById('back').className = "hideMe";
+
+            
+            document.getElementById('submit').className = "hideMe";
+            document.getElementById('airlock').className = "showMe";
+            document.getElementById('door2').className = "showMe";
+            document.getElementById('Wire').className = "showMe";
+            document.getElementById('stickyNote').className = "showMe";
+            document.getElementById('inputForm').classname = "hideMe";
+
+            var a = document.getElementById("inputForm");
+            a.style.display = "none";
+
         }
 
 
@@ -339,9 +359,14 @@
 
         function getRandNo() {
             document.getElementById('backgroundImg').className = "hideMe";
+            document.getElementById('backgroundImgPostWire').className = "hideMe";
             document.getElementById('postIt').className = "showMe";
             document.getElementById('back').className = "showMe";
-            document.getElementById('submit').className = "showMe";
+            document.getElementById('submit').className = "hideMe";
+            document.getElementById('airlock').className = "hideMe";
+            document.getElementById('door2').className = "hideMe";
+            document.getElementById('Wire').className = "hideMe";
+            document.getElementById('stickyNote').className = "hideMe";
 
            
                 
