@@ -2,6 +2,7 @@
 <html>
 
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Gallery</title>
 	<link rel="stylesheet" href="SpaceStyleSheet.css">
 </head>
@@ -136,6 +137,35 @@
 
         // Load the remaining time and start the timer when the page loads
         window.addEventListener('load', loadTimeRem);
+
+		window.onload = function() {
+            var fontSize = sessionStorage.getItem("fontSize");
+            if (fontSize) {
+                document.body.style.fontSize = fontSize;
+            }
+        }
+
+		//Session storage - Accessibility
+        var textSize = sessionStorage.getItem('text');
+        document.getElementById("wrapper").style.fontSize = textSize
+
+        var modeColor = sessionStorage.getItem('mode');
+        if (modeColor == 'light') {
+            lightMode();
+        }
+
+		window.onload = function() {
+            var stickyNoteValue = sessionStorage.getItem("stickyNoteValue");
+            if (stickyNoteValue) {
+                document.getElementById("PCode").innerHTML = stickyNoteValue;
+            }
+        }
+
+        function lightMode() {
+            document.getElementById("wrapper").style.backgroundColor = "rgb(216, 216, 216)";
+            document.getElementById("col1").style.color = "black";
+            document.getElementById("col2").style.color = "black";
+        }
 
 
 	</script>

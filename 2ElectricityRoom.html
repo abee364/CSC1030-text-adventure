@@ -1,11 +1,11 @@
 <html>
 
 <head>
-    <title>Welcome to The Burger Joint</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starbound Quest</title>
     <link rel="stylesheet" href="SpaceStyleSheet.css">
     <style type="text/css"></style>
     <style>
-        /*This is the CSS for the torch*/
 
     </style>
 </head>
@@ -64,18 +64,20 @@
                 <p>What wire do you want to fix? </p>
                 <br>
 
-                <label for="word-input">Enter a wire to fix:</label>
+                <label for="word-input">Enter a wire colour to fix:</label>
                 <input type="text" id="word-input">
                 <button onclick="checkWord()">Fix wire</button>
-                <p id="result" class = "hideMe"></p>
+                <p id="result" class="hideMe"></p>
                 <br>
                 <div id="WrongText" class="hideMe">
                     <p class="gameText">Sorry, That is not a wire that can be fixed</p>
                 </div>
-                <button onclick="Room2();" class="button">Back to Room 2</button>
+                <button onclick="Room2();" class="button">Back to the room</button>
             </div>
 
-
+            <!--==================================================-->
+            <!--This code is used to display messages to the user -->
+            <!--==================================================-->
 
             <div id="plantButtons" class="hideMe">
                 <p class="gameText">Looks like the plant is angry, better try not to upset it </p>
@@ -83,21 +85,24 @@
 
             <div id="doorLocked" class="hideMe">
                 <p class="gameText">This door brings you back to the previous room. But it's still dark, try and find a
-                    way to restor power</p>
+                    way to restore power</p>
+            </div>
+
+            <div id="wireUnavalible" class="hideMe">
+                <p class="gameText">You don't have any wire to fix this, maybe go back and look for some</p>
             </div>
             <br>
 
-            <!--<button onclick="Restart();" class="button">Back to Room 2</button>-->
 
         </div>
-
+<!-- 
         <div id="col2Loss" class="hideMe">
             <h1>Room 2 </h1>
             <p>
                 You Died, sorry :(
             </p>
             <button onclick="Restart();" class="button">Restart game </button>
-        </div>
+        </div> -->
     </div>
 
     <script>
@@ -105,18 +110,10 @@
         let myNum = sessionStorage.getItem("Torch")
         myNum = Number(myNum);
         if (myNum === 1) {
-            var div = document.getElementById("light");             //-----------------------------------------
+            var div = document.getElementById("light");
             div.setAttribute("id", "newDivID");
         }
 
-        function checkWire() {
-
-            sessionStorage.getItem("WireCoil");
-            myNum = Number(myNum);
-            if (myNum === 1) {
-                true;
-            }
-        }
 
         function Plant() {
             document.getElementById('plantButtons').className = "showMe";
@@ -128,10 +125,11 @@
             document.getElementById('plantButtons').className = "hideMe";
         }
 
-        function setWires() {
-            sessionStorage.getItem("WireCoil");
+        function setWires() {   //============================================================WIREEEEEEEEEEEEEEEEEEEEEEE
+            let myNum = sessionStorage.getItem("WireCoil");
             myNum = Number(myNum);
-            if (myNum != 1) {
+            console.log("MyNum = " + myNum)
+            if (myNum === 1) {
 
                 document.getElementById('Room2Buttons').className = "hideMe";
                 document.getElementById('fullRoom').className = "hideMe";
@@ -140,7 +138,11 @@
                 document.getElementById('doorLocked').className = "hideMe";
                 document.getElementById('plantButtons').className = "hideMe";
             } else {
-                //Error 
+                document.getElementById('wireUnavalible').className = "showMe";
+                document.getElementById('doorLocked').className = "hideMe";
+                document.getElementById('plantButtons').className = "hideMe";
+                console.log("NO WIRE DETECTED")
+                wireUnavalible
             }
 
         }
@@ -178,21 +180,6 @@
             pos.style.setProperty('--x', e.clientX + 'px')
             pos.style.setProperty('--y', e.clientY + 'px')
         })
-
-        // function Restart() {
-        //     document.getElementById('fullRoom').className = "showMe"; Room2Buttons
-        //     document.getElementById('WireBoard').className = "hideMe";
-        //     document.getElementById('Room2Buttons').className = "showMe";
-        //     document.getElementById('col2').className = "showMe";
-        //     document.getElementById('col2Loss').className = "hideMe";
-        //     document.getElementById('win').className = "hideMe";
-        //     document.getElementById('plant').className = "hideMe";
-        //     document.getElementById('explosion').className = "hideMe";
-        //     document.getElementById('vacume').className = "hideMe";
-        //     document.getElementById('wireButtons').className = "hideMe";
-        //     document.getElementById('freindlyPlant').className = "hideMe";
-        //     document.getElementById('doorLocked').className = "hideMe";
-        // }
 
         function nextRoom() {
 
@@ -238,6 +225,13 @@
             var timeRem = sessionStorage.getItem('timeRem');
             document.getElementById('timerText').innerHTML = timeRem;
             timer = setInterval(countdown, 1000);
+        }
+
+        window.onload = function () {
+            var fontSize = sessionStorage.getItem("fontSize");
+            if (fontSize) {
+                document.body.style.fontSize = fontSize;
+            }
         }
 
         // Update the timer display and store the remaining time in the session storage every second
@@ -294,6 +288,29 @@
 
         // Load the remaining time and start the timer when the page loads
         window.addEventListener('load', loadTimeRem);
+
+        //Session storage - Accessibility
+        var textSize = sessionStorage.getItem('text');
+        document.getElementById("wrapper").style.fontSize = textSize
+
+        var modeColor = sessionStorage.getItem('mode');
+        if (modeColor == 'light') {
+            lightMode();
+        }
+
+        window.onload = function () {
+            var stickyNoteValue = sessionStorage.getItem("stickyNoteValue");
+            if (stickyNoteValue) {
+                document.getElementById("PCode").innerHTML = stickyNoteValue;
+            }
+        }
+
+
+        function lightMode() {
+            document.getElementById("wrapper").style.backgroundColor = "rgb(216, 216, 216)";
+            document.getElementById("col1").style.color = "black";
+            document.getElementById("col2").style.color = "black";
+        }
 
     </script>
 </body>

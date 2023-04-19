@@ -1,6 +1,7 @@
 <html>
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Control Room</title>
 
     <link rel="stylesheet" href="SpaceStyleSheet.css">
@@ -59,29 +60,34 @@
             <div id="Room6Buttons">
 
                 <div id="arrival">
-                    <p>“You have reached the source of the gas leak! You must hurry to find a way to stop it
+                    <p>Computer: “You have reached the source of the gas leak! You must hurry to find a way to stop it
                         before you run
                         out of oxygen and the fire spreads further causing an explosion!”</p>
                 </div>
 
                 <div id="orderInstruction" class="hideMe">
-                    <p>You should put the fire out first</p>
+                    <p>Computer: "You should put the fire out first"</p>
+                </div>
+
+                <div id="needExtingusher" class="hideMe">
+                    <p>Computer: "You do not have anything to put the fire out with"</p>
                 </div>
 
                 <div id="fireStopped" class="hideMe">
-                    <p>Fire has been succesfully put out</p>
+                    <p>Computer: "Fire has been successfully put out"</p>
                 </div>
 
                 <div id="screenInstruction" class="hideMe">
-                    <p>You must log in to gain access to manage the ship's systems</p>
+                    <p>Computer: "You must log in to gain access to manage the ship's systems"</p>
                 </div>
 
                 <div id="riddleInstruction" class="hideMe">
-                    <p>Here's your password hint.</p>
+                    <p>Here's your password hint (1 Word).</p>
                 </div>
 
                 <div id="gasOffText" class="hideMe">
-                    <p>You managed to turn off the gas and start up the filtration program to remove the gas from the ship.</p>
+                    <p>Computer: "You managed to turn off the gas and start up the filtration program to remove the gas from the
+                        ship."</p>
                 </div>
 
                 <div id="Riddle" class="hideMe">
@@ -110,13 +116,17 @@
         let extinguisher = sessionStorage.getItem('extinguisher');
 
         function fire() {
+            
             if (extinguisher == 1) {
                 document.getElementById('fireStopped').className = "showMe";
                 document.getElementById('gas').className = "showMe";
                 document.getElementById('main').className = "hideMe";
+                document.getElementById('arrival').className = "hideMe";
+                document.getElementById('fire').className = "hideMe";
                 enableButton();
             } else {
-                window.alert("You do not have anything to put the fire out with");
+                document.getElementById('arrival').className = "hideMe";
+                document.getElementById('needExtingusher').className = "showMe";
             }
         }
 
@@ -127,7 +137,7 @@
 
         function screen() {
             if (document.getElementById("screenbutton").disabled) {
-                window.alert("Button is disabled!");
+                document.getElementById('orderInstruction').className = "showMe";
                 return;
             }
             document.getElementById('main').className = "hideMe";
@@ -135,6 +145,7 @@
             document.getElementById('screen').className = "showMe";
             document.getElementById('screenbutton').className = "hideMe";
             document.getElementById('fire').className = "hideMe";
+            document.getElementById('fireStopped').className = "hideMe";
             document.getElementById('riddle').className = "showMe";
             document.getElementById('riddle').className = "button";
             document.getElementById('back').className = "showMe";
@@ -177,19 +188,47 @@
             },
             {
                 question: "I have branches but no fruit, trunk, or leaves. What am I?",
-                answer: "Bank"
+                answer: "Bank",
             },
             {
                 question: "What word contains all of the twenty-six letters?",
-                answer: "Alphabet"
+                answer: "Alphabet",
             },
             {
                 question: "What travels around the world, but stays in the corner?",
-                answer: "Stamp"
+                answer: "Stamp",
             },
             {
                 question: "What is always spelt wrong?",
-                answer: "Wrong"
+                answer: "Wrong",
+            },
+            {
+                question: "What has many words but never speaks?",
+                answer: "Book",
+            },
+            {
+                question: "What color can you eat?",
+                answer: "Orange",
+            },
+            {
+                question: "They come at night without being called and are lost in the day without being stolen. What are they?",
+                answer: "Stars",
+            },
+            {
+                question: "I touch the earth and I touch the sky, but if I touch you, you’ll likely die. What am I?",
+                answer: "Lightning",
+            },
+            {
+                question: "I’m tall when I’m young, and I’m short when I’m old. What am I?",
+                answer: "Candle",
+            },
+            {
+                question: "What is always in front of you but can’t be seen?",
+                answer: "Future",
+            },
+            {
+                question: " I shave every day, but my beard stays the same. What am I?",
+                answer: "Barber",
             }
             // Add more riddles here...
         ];
@@ -309,6 +348,35 @@
 
         // Load the remaining time and start the timer when the page loads
         window.addEventListener('load', loadTimeRem);
+
+        window.onload = function() {
+            var fontSize = sessionStorage.getItem("fontSize");
+            if (fontSize) {
+                document.body.style.fontSize = fontSize;
+            }
+        }
+
+        //Session storage - Accessibility
+        var textSize = sessionStorage.getItem('text');
+        document.getElementById("wrapper").style.fontSize = textSize
+
+        var modeColor = sessionStorage.getItem('mode');
+        if (modeColor == 'light') {
+            lightMode();
+        }
+
+        function lightMode() {
+            document.getElementById("wrapper").style.backgroundColor = "rgb(216, 216, 216)";
+            document.getElementById("col1").style.color = "black";
+            document.getElementById("col2").style.color = "black";
+        }
+
+        window.onload = function() {
+            var stickyNoteValue = sessionStorage.getItem("stickyNoteValue");
+            if (stickyNoteValue) {
+                document.getElementById("PCode").innerHTML = stickyNoteValue;
+            }
+        }
 
     </script>
 </body>

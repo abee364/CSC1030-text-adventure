@@ -1,13 +1,16 @@
 <DOCTYPE! HTML>
     <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Home page</title>
         <link rel="stylesheet" href="SpaceStyleSheet.css">
     
     </head>
 
     <body id="body" class="homeBg">
-        <h1>Starbound Quest</h1>
+        <div id="gameTitle">
+            <h1>Starbound Quest</h1>
+        </div>
 
         <div id="wrapper">
             <div id="start">
@@ -43,7 +46,7 @@
                 <br>
 
                 <!-- Button for starting game  -->
-                <button id="submit" onclick="handleStartButtonClick();">Begin</button>
+                <button onclick="handleStartButtonClick();">Begin</button>
     
             </div>
 
@@ -138,42 +141,69 @@
             }
 
             function smallText() {
-                document.getElementById("wrapper").style.fontSize = "small"
+            
+            document.getElementById("wrapper").style.fontSize = "small"
+            sessionStorage.setItem('text', 'small');
+        }
 
-            }
+        function mediumText() {
+            document.getElementById("wrapper").style.fontSize = "medium"
+            sessionStorage.setItem('text', 'medium');
+        }
 
-            function mediumText() {
-                document.getElementById("wrapper").style.fontSize = "medium"
+        function largeText() {
+            document.getElementById("wrapper").style.fontSize = "large"
+            sessionStorage.setItem('text', 'large');
+        }
 
-            }
+        function x_largeText() {
+            document.getElementById("wrapper").style.fontSize = "x-large"
+            sessionStorage.setItem('text', 'x-large');
 
-            function largeText() {
-                document.getElementById("wrapper").style.fontSize = "large"
-            }
+        }
 
-            function x_largeText() {
-                document.getElementById("wrapper").style.fontSize = "x-large"
 
-            }
+            var bodyBgColor, wrapperBgColor, startBgColor, startColor, wrapperColor, bodyColor;
 
             function lightMode() {
-                document.getElementById("body").style.backgroundColor ="ivory"
-                document.getElementById("wrapper").style.backgroundColor ="ivory"
-                
-                document.getElementById("start").style.backgroundColor="rgb(216, 216, 216)"
-                // Colour changes
-                document.getElementById("start").style.Color="black"
-                document.getElementById("wrapper").style.Color ="black"
-                document.getElementById("body").style.color = "grey"
+                // bodyBgColor = document.body.style.backgroundColor;
+                // wrapperBgColor = document.getElementById("wrapper").style.backgroundColor;
+                // startBgColor = document.getElementById("start").style.backgroundColor;
+                // startColor = document.getElementById("start").style.color;
+                // wrapperColor = document.getElementById("wrapper").style.color;
+
+                // sessionStorage.setItem("bodyBgColor", bodyBgColor);
+                // sessionStorage.setItem("wrapperBgColor", wrapperBgColor);
+                // sessionStorage.setItem("startBgColor", startBgColor);
+                // sessionStorage.setItem("startColor", startColor);
+                // sessionStorage.setItem("wrapperColor", wrapperColor);
+
+                document.getElementById("wrapper").style.backgroundColor = "ivory";
+                document.getElementById("start").style.backgroundColor = "rgb(216, 216, 216)";
+                document.getElementById("start").style.color = "black";
+                document.getElementById("wrapper").style.color = "black";
+
+             
+                sessionStorage.setItem("mode", "light");
             }
 
             function darkMode() {
-                document.getElementById("body").style.backgroundColor ="black"
-                document.getElementById("wrapper").style.backgroundColor ="#222629"
-                document.getElementById("body").style.color = "white"
+                // document.getElementById("body").style.backgroundColor = bodyBgColor;
+                // document.getElementById("wrapper").style.backgroundColor = wrapperBgColor;
+                // document.getElementById("start").style.backgroundColor = startBgColor;
+                // document.getElementById("start").style.color = startColor;
+                // document.getElementById("wrapper").style.color = wrapperColor;
+                // document.getElementById("body").style.color = "white";
 
+                document.getElementById("wrapper").style.backgroundColor = "#222629";
+                document.getElementById("start").style.backgroundColor = "black";
+                document.getElementById("start").style.color = "white";
+                document.getElementById("wrapper").style.color = "white";
+                sessionStorage.setItem("mode", "black");
             }
 
+            //This is Storage for scertain items. 0 Means it has not been picked up yet 
+            sessionStorage.setItem("WireCoil", 0);
         </script>
 
     </body>
