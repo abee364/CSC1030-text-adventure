@@ -84,10 +84,13 @@
                 <div id="riddleInstruction" class="hideMe">
                     <p>Here's your password hint (1 Word).</p>
                 </div>
-
+                
                 <div id="gasOffText" class="hideMe">
                     <p>Computer: "You managed to turn off the gas and start up the filtration program to remove the gas from the
                         ship."</p>
+                </div>
+                <div id="needToPutOutFire" class="hideMe">
+                    <p>Computer: "You need to put out the fire before you can reach the screen."</p>
                 </div>
 
                 <div id="Riddle" class="hideMe">
@@ -98,8 +101,10 @@
                     <p id="riddle-answer" style="display: none;"></p>
                     <p></p>
                 </div>
-
+<!-- 
                 <button id="screenbutton" onclick="screen()" disabled class="button">Check
+                    out screen</button> -->
+                <button id="screenbutton" onclick="screen()" class="button">Check
                     out screen</button>
                 <button id="fire" onclick="fire()" class="button">Put out fire</button>
                 <button id="riddle" onclick="riddle()" class="hideMe">Enter Password</button>
@@ -127,19 +132,37 @@
             } else {
                 document.getElementById('arrival').className = "hideMe";
                 document.getElementById('needExtingusher').className = "showMe";
+                document.getElementById('needToPutOutFire').className = "hideMe";
             }
         }
 
+        
         function enableButton() {
             const screenOrderButton = document.getElementById("screenbutton");
             screenOrderButton.disabled = false;
+            sessionStorage.setItem("FireChecker", 1);
+            
         }
 
         function screen() {
-            if (document.getElementById("screenbutton").disabled) {
-                document.getElementById('orderInstruction').className = "showMe";
-                return;
+            
+            let checker = 0;
+            let temp = sessionStorage.getItem("FireChecker");
+            if(temp ==1){
+                checker = temp;
             }
+            console.log(checker);
+            if (checker === 0) {
+                console.log("Echecking")
+                //document.getElementById('orderInstruction').className = "showMe";
+                document.getElementById('needToPutOutFire').className = "showMe";
+                document.getElementById('orderInstruction').className = "hideMe";
+                document.getElementById('needExtingusher').className = "hideMe";
+                document.getElementById('arrival').className = "hideMe";
+                return;
+            } else {
+                console.log("ERRORROROROOR")
+
             document.getElementById('main').className = "hideMe";
             document.getElementById('gas').className = "hideMe";
             document.getElementById('screen').className = "showMe";
@@ -152,6 +175,7 @@
             document.getElementById('back').className = "button";
             document.getElementById('arrival').className = "hideMe";
             document.getElementById('screenInstruction').className = "showMe";
+            }
         }
 
 
