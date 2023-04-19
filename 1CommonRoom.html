@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="SpaceStyleSheet.css">
 
@@ -96,8 +97,9 @@
             <div id="postIt" class="hideMe">
 
                 <div class="ptNote">
-                    <!------------------------------------------------------------------------------------>
+
                     <p id=PCode></p>
+
                 </div>
 
             </div>
@@ -135,7 +137,7 @@
 
                 <div id="wireDiv"><button id="Wire" class="showMe" onclick="Wire()">Pick Up Wire</button></div>
                 <button id="door2" class="showMe" onclick="door2()">Examine Pin Pad</button>
-                <button id="airlock" class="showMe" onclick="airlock()">Jump out the Airlock</button>
+                <button id="airlock" class="showMe" onclick="airlock()">Try Airlock</button>
                 <button id="stickyNote" class="showMe" onclick="getRandNo()">Look At Sticky Note</button>
                 <button id="back" class="hideMe" onclick="back()">Back</button>
                 <button id="submit" class="hideMe" onclick="unlockDoor2()">Submit</button>
@@ -178,7 +180,7 @@
 
         function startingText() {
 
-            document.getElementById("textOutput").innerHTML = "Welcome to the Spaceship. For the immediacy, you have 2 options, either look around the 'room?' you seem to be in, or attemp to turn on your torch.";
+            document.getElementById("textOutput").innerHTML = "What would you like to 'pick up' the stray peice of wire, 'Examine the Pin Pad' or even try the 'Airlock'.";
         }
 
         function textUpdateLookAroundLight() {
@@ -233,6 +235,8 @@
         function Wire() {
 
             sessionStorage.setItem("WireCoil", 1);
+            let wirenum = sessionStorage.getItem("WireCoil");
+            console.log("(Should be 1) Wire number = "+ wirenum);
 
             document.getElementById("textOutput").innerHTML = "Add Wire to Inventory";
 
@@ -243,7 +247,7 @@
         function goToRoom3() {
 
             if (Permission == 0) {
-                console.log("CAN'T ENTERER")
+                document.getElementById("textOutput").innerHTML = "Locked, Pin Required";
             } else {
                 window.location.replace("2ElectricityRoom.html")
             }
@@ -328,7 +332,6 @@
         function getRandNo() {
             document.getElementById('backgroundImg').className = "hideMe";
             document.getElementById('postIt').className = "showMe";
-
             document.getElementById('back').className = "showMe";
             document.getElementById('submit').className = "showMe";
 
@@ -336,26 +339,22 @@
 
             fetch(url)
                 .then(function (response) {
-
-                    return response.json();
+                return response.json();
                 })
-
                 .then(function (data) {
-                    console.log("P CODE");
-                    myRand = data.secretCode;
-                    doorcode = myRand;
-                    console.log("MyRand " + myRand);
+                console.log("P CODE");
+                myRand = data.secretCode;
+                doorcode = myRand;
+                console.log("MyRand " + myRand);
 
-                    //sessionStorage.setItem("pWord", myRand);
-                    document.getElementById("PCode").innerHTML = myRand;
-                    //sessionStorage.setItem("NewCode", myRand);
-                    //console.log(NewCode);
+                sessionStorage.setItem("stickyNoteValue", myRand);
+                document.getElementById("PCode").innerHTML = myRand;
                 })
                 .catch(function (error) {
-                    console.error('ERROR: ' + error);
-
+                console.error('ERROR: ' + error);
                 });
         }
+
 
         var locked = 0;
 

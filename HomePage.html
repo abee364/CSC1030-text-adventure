@@ -1,6 +1,7 @@
 <DOCTYPE! HTML>
     <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Home page</title>
         <link rel="stylesheet" href="SpaceStyleSheet.css">
     
@@ -200,6 +201,9 @@
                 document.getElementById("wrapper").style.color = "white";
                 sessionStorage.setItem("mode", "black");
             }
+
+            //This is Storage for scertain items. 0 Means it has not been picked up yet 
+            sessionStorage.setItem("WireCoil", 0);
         </script>
 
     </body>

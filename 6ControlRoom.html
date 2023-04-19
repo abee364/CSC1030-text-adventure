@@ -1,6 +1,7 @@
 <html>
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Control Room</title>
 
     <link rel="stylesheet" href="SpaceStyleSheet.css">
@@ -368,6 +369,13 @@
             document.getElementById("wrapper").style.backgroundColor = "rgb(216, 216, 216)";
             document.getElementById("col1").style.color = "black";
             document.getElementById("col2").style.color = "black";
+        }
+
+        window.onload = function() {
+            var stickyNoteValue = sessionStorage.getItem("stickyNoteValue");
+            if (stickyNoteValue) {
+                document.getElementById("PCode").innerHTML = stickyNoteValue;
+            }
         }
 
     </script>
