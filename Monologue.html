@@ -25,7 +25,7 @@
                     and a gas leak has broken
                     out in the control room which is also on fire.
                     I suggest you hurry before the fire ignites the gas and explodes the ship.
-                    You also should know that you only have 5 minutes before the gas leaks into the filteration system.
+                    You also should know that you don't have much time before the gas leaks into the filteration system.
                     So get going!
                     And good luck!” </p>
 
@@ -62,7 +62,9 @@
 
         //Session storage - Accessibility
         var textSize = sessionStorage.getItem('text');
-        document.getElementById("wrapper").style.fontSize = textSize
+        document.getElementById("wrapper").style.fontSize = textSize;
+        document.getElementById("greeting").style.fontSize = textSize;
+        document.getElementById("secondSlide").style.fontSize = textSize;
 
         var modeColor = sessionStorage.getItem('mode');
         if (modeColor == 'light') {
