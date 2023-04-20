@@ -24,7 +24,7 @@
               </tr>
               <tr>
                 <th>Time Remained</th>
-                <td><span id="timerText">?</span></td>
+                <td><span id="timerText">?</span> seconds</td>
               </tr>
             </table>
             <button onclick="Restart();" class="button">Play again</button>
@@ -45,7 +45,12 @@
           }
 
           var spinglespop = sessionStorage.getItem('petName');
-          document.getElementById('spinglespop').innerHTML = spinglespop;
+          var spinglesname = document.getElementById('spinglespop');
+          if (spinglespop === null) {
+            spinglesname.innerHTML = "Not found"
+          } else {
+            spinglesname.innerHTML = spinglespop;
+          }
 
           // Load the remaining time from the session storage and display it in the "Time Remained" table cell
           const timeRemElement = document.getElementById("timerText");
@@ -57,7 +62,9 @@
           }
 
           function Restart() {
+            sessionStorage.removeItem("name");
             sessionStorage.removeItem("timeRem");
+            sessionStorage.removeItem("petName");
             window.location.replace("HomePage.html");
           }
           
