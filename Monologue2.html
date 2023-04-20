@@ -41,13 +41,13 @@
                     vital
                     systems
                     and a gas leak has broken
-                    out in the control room which is also on fire.
+                    out in the control room which is also on fire.<br><br>
                     I suggest you hurry before the fire ignites the gas and explodes the ship.
-                    You also should know that you don't have much time before the gas leaks into the filteration system.
+                    You also should know that you don't have much time before the gas leaks into the filteration system.<br><br>
                     So get going!
-                    And good luck!” 
-                    <br>
-                    <button id="continue" onclick="Start()" >Start</button>
+                    And good luck!”
+                    <br><br>
+                    <button id="continue" onclick="Start()">Start</button>
                 </p>
 
 
@@ -90,24 +90,15 @@
 
         //Session storage - Accessibility
         var textSize = sessionStorage.getItem('text');
-        document.getElementById("wrapper").style.fontSize = textSize
+        document.getElementById("wrapper").style.fontSize = textSize;
         document.getElementById("greeting").style.fontSize = textSize;
+        document.getElementById("finishIntro").style.fontSize = textSize;
         document.getElementById("secondSlide").style.fontSize = textSize;
 
         var modeColor = sessionStorage.getItem('mode');
         if (modeColor == 'light') {
             lightMode();
         }
-
-        function lightMode() {
-            document.getElementById("wrapper").style.backgroundColor = "ivory";
-            document.getElementById("greeting").style.backgroundColor = "rgb(216, 216, 216)";
-            document.getElementById("greeting").style.color = "black";
-            document.getElementById("secondSlide").style.backgroundColor = "rgb(216, 216, 216)";
-            document.getElementById("secondSlide").style.color = "black";
-            document.getElementById("wrapper").style.color = "black";
-        }
-
 
 
     </script>
