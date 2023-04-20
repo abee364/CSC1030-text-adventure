@@ -215,6 +215,10 @@
             background-image: url("images/andy-holmes-rCbdp8VCYhQ-unsplash.jpg");
             background-color: #cccccc;
         }
+
+        #homepgTitle {
+            text-align: center;
+        }
         
         #gameTitle {
             display: flex;
@@ -240,13 +244,12 @@
     
         .text-block {
             position: fixed;
-            /* margin: auto; */
             top: 30%;
             background-color: black;
             color: white;
             width: 85%;
             text-align: center;
-            font-size: 25px;
+            /* font-size: 25px; */
         }
 
         /**---------------------------------Home Page Specific CSS----------------------------------------**/

@@ -11,8 +11,16 @@
             <h1>Statistics</h1>
             <table>
               <tr>
+                <th>Name</th>
+                <td><span id="name"></span></td>
+              </tr>
+              <tr>
                 <th>Mission Status</th>
                 <td><span id="status">STATUS PENDING</span></td>
+              </tr>
+              <tr>
+                <th>Spinglespop name</th>
+                <td><span id="spinglespop"></span></td>
               </tr>
               <tr>
                 <th>Time Remained</th>
@@ -23,6 +31,11 @@
         </div>
 
         <script type="text/javascript">
+          // Name from home page
+          var name = sessionStorage.getItem('name');
+
+          // Display the user's name
+          document.getElementById('name').innerHTML = name;
           const missionStatus = sessionStorage.getItem("missionStatus");
           const statusElement = document.getElementById("status");
           if (missionStatus === "SUCCESS") {

@@ -127,6 +127,14 @@
 
             </div>
 
+            <audio id="myAudio">
+                <source src="Audio/space-atmospheric-background-124841.mp3" type="audio/mpeg">
+            </audio>
+            <div id="audio">
+                <button onclick="playAudio()" type="button">Play Audio</button>
+                <button onclick="pauseAudio()" type="button">Pause Audio</button>
+            </div>
+
             <div class="timerBox">
 
                 <h1>Time Remaining: <span id="timerText">?</span></h1>
@@ -508,9 +516,15 @@
             document.getElementById("col2").style.color = "black";
         }
 
+        var audio = document.getElementById("myAudio");
 
+        function playAudio() {
+            audio.play();
+        }
 
-
+        function pauseAudio() {
+            audio.pause();
+        }
 
     </script>
 

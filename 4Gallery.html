@@ -11,7 +11,6 @@
 		background-size: cover;
 		background-attachment: fixed;
 	}
-	
 </style>
 
 <body>
@@ -33,13 +32,23 @@
 			<h1>Gallery</h1>
 			<h1>Time Remaining: <span id="timerText">?</span></h1>
 			<div id="RoomButtons">
-                <button id="previousRoom" onclick="previousRoom()" class="button">Previous Room</button>
+				<button id="previousRoom" onclick="previousRoom()" class="button">Previous Room</button>
+			</div>
+
+			<audio id="myAudio">
+                <source src="Audio/space-atmospheric-background-124841.mp3" type="audio/mpeg">
+            </audio>
+            <div id="audio">
+                <button onclick="playAudio()" type="button">Play Audio</button>
+                <button onclick="pauseAudio()" type="button">Pause Audio</button>
             </div>
+			
 			<div id="Room5Buttons">
 
-				<p>Computer: "You have reached a critical decision point. Would you like to attempt to save everyone or escape?"</p>
+				<p>Computer: "You have reached a critical decision point. Would you like to attempt to save everyone or
+					escape?"</p>
 				<br>
-				
+
 				<button id="escape-button" class="button" onclick="escape()">Escape</button>
 				<button id="save-button" class="button" onclick="save()">Save Everyone</button>
 				<button id="extinguisher" class="button" onclick="grabExtinguisher()">Grab fire extinguisher</button>
@@ -52,7 +61,7 @@
 	</div>
 
 	<script>
-		
+
 		function escape() {
 			window.location.href = "5EscapePod.html";
 		}
@@ -67,107 +76,115 @@
 		//Session scripts
 		let extinguisher = 0;
 
-		window.addEventListener('load', function() {
-    		if (sessionStorage.getItem('extinguisher') !== null) {
-        		extinguisher = parseInt(sessionStorage.getItem('extinguisher'));
-        		if (extinguisher === 1) {
-            		document.getElementById('extinguisher').className = "hideMe";
-            		document.getElementById('main').className = "hideMe";
-            		document.getElementById('fire').className = "showMe";
-         			document.getElementById("pickupExtinguisher").className = "showMe";
-        		}
-    		}
+		window.addEventListener('load', function () {
+			if (sessionStorage.getItem('extinguisher') !== null) {
+				extinguisher = parseInt(sessionStorage.getItem('extinguisher'));
+				if (extinguisher === 1) {
+					document.getElementById('extinguisher').className = "hideMe";
+					document.getElementById('main').className = "hideMe";
+					document.getElementById('fire').className = "showMe";
+					document.getElementById("pickupExtinguisher").className = "showMe";
+				}
+			}
 		});
 
 		function grabExtinguisher() {
-    		if (extinguisher === 0) {
-        		extinguisher = 1;
-        		sessionStorage.setItem('extinguisher', extinguisher);
-        		document.getElementById('extinguisher').className = "hideMe";
-        		document.getElementById('main').className = "hideMe";
-        		document.getElementById('fire').className = "showMe";
-        		document.getElementById("pickupExtinguisher").className = "showMe";
-    		}   
+			if (extinguisher === 0) {
+				extinguisher = 1;
+				sessionStorage.setItem('extinguisher', extinguisher);
+				document.getElementById('extinguisher').className = "hideMe";
+				document.getElementById('main').className = "hideMe";
+				document.getElementById('fire').className = "showMe";
+				document.getElementById("pickupExtinguisher").className = "showMe";
+			}
 		}
 
-        
+
 		// Initial timer (default vaulue is 1000 seconds)
-        if (!sessionStorage.getItem('timeRem')) {
-            sessionStorage.setItem('timeRem', '1000');
-        }
+		if (!sessionStorage.getItem('timeRem')) {
+			sessionStorage.setItem('timeRem', '1000');
+		}
 
-        // Timer with the remaining time
-        function startTimer() {
-            var timeRem = sessionStorage.getItem('timeRem');
-            document.getElementById('timerText').innerHTML = timeRem;
-            timer = setInterval(countdown, 1000);
-        }
+		// Timer with the remaining time
+		function startTimer() {
+			var timeRem = sessionStorage.getItem('timeRem');
+			document.getElementById('timerText').innerHTML = timeRem;
+			timer = setInterval(countdown, 1000);
+		}
 
-        // Save the remaining time in the session storage before navigating to another page
-        function saveTimeRem() {
-            var timeRem = document.getElementById('timerText').innerHTML;
-            sessionStorage.setItem('timeRem', timeRem);
-        }
+		// Save the remaining time in the session storage before navigating to another page
+		function saveTimeRem() {
+			var timeRem = document.getElementById('timerText').innerHTML;
+			sessionStorage.setItem('timeRem', timeRem);
+		}
 
-        // Load the remaining time from the session storage and start the timer with it
-        function loadTimeRem() {
-            var timeRem = sessionStorage.getItem('timeRem');
-            document.getElementById('timerText').innerHTML = timeRem;
-            timer = setInterval(countdown, 1000);
-        }
+		// Load the remaining time from the session storage and start the timer with it
+		function loadTimeRem() {
+			var timeRem = sessionStorage.getItem('timeRem');
+			document.getElementById('timerText').innerHTML = timeRem;
+			timer = setInterval(countdown, 1000);
+		}
 
-        // Update the timer display and store the remaining time in the session storage every second
-        function countdown() {
-            var timeRem = document.getElementById('timerText').innerHTML;
-            if (timeRem > 0) {
-                timeRem--;
-                document.getElementById('timerText').innerHTML = timeRem;
-                sessionStorage.setItem('timeRem', timeRem);
-            } else {
-                clearInterval(timer);
-                document.getElementById('timerText').innerHTML = 'END';
-                timeRem = 10;
-                // Redirect to statistics page
-                window.location.href = 'stats.html';
-            }
-        }
+		// Update the timer display and store the remaining time in the session storage every second
+		function countdown() {
+			var timeRem = document.getElementById('timerText').innerHTML;
+			if (timeRem > 0) {
+				timeRem--;
+				document.getElementById('timerText').innerHTML = timeRem;
+				sessionStorage.setItem('timeRem', timeRem);
+			} else {
+				clearInterval(timer);
+				document.getElementById('timerText').innerHTML = 'END';
+				timeRem = 10;
+				// Redirect to statistics page
+				window.location.href = 'stats.html';
+			}
+		}
 
-        // Register a beforeunload event listener to save the remaining time before navigating away from the page
-        window.addEventListener('beforeunload', saveTimeRem);
+		// Register a beforeunload event listener to save the remaining time before navigating away from the page
+		window.addEventListener('beforeunload', saveTimeRem);
 
-        // Load the remaining time and start the timer when the page loads
-        window.addEventListener('load', loadTimeRem);
+		// Load the remaining time and start the timer when the page loads
+		window.addEventListener('load', loadTimeRem);
 
-		window.onload = function() {
-            var fontSize = sessionStorage.getItem("fontSize");
-            if (fontSize) {
-                document.body.style.fontSize = fontSize;
-            }
-        }
+		window.onload = function () {
+			var fontSize = sessionStorage.getItem("fontSize");
+			if (fontSize) {
+				document.body.style.fontSize = fontSize;
+			}
+		}
 
 		//Session storage - Accessibility
-        var textSize = sessionStorage.getItem('text');
-        document.getElementById("wrapper").style.fontSize = textSize
+		var textSize = sessionStorage.getItem('text');
+		document.getElementById("wrapper").style.fontSize = textSize
 
-        var modeColor = sessionStorage.getItem('mode');
-        if (modeColor == 'light') {
-            lightMode();
-        }
+		var modeColor = sessionStorage.getItem('mode');
+		if (modeColor == 'light') {
+			lightMode();
+		}
 
-		window.onload = function() {
-            var stickyNoteValue = sessionStorage.getItem("stickyNoteValue");
-            if (stickyNoteValue) {
-                document.getElementById("PCode").innerHTML = stickyNoteValue;
-            }
-        }
+		window.onload = function () {
+			var stickyNoteValue = sessionStorage.getItem("stickyNoteValue");
+			if (stickyNoteValue) {
+				document.getElementById("PCode").innerHTML = stickyNoteValue;
+			}
+		}
 
-        function lightMode() {
-            document.getElementById("wrapper").style.backgroundColor = "rgb(216, 216, 216)";
-            document.getElementById("col1").style.color = "black";
-            document.getElementById("col2").style.color = "black";
-        }
+		function lightMode() {
+			document.getElementById("wrapper").style.backgroundColor = "rgb(216, 216, 216)";
+			document.getElementById("col1").style.color = "black";
+			document.getElementById("col2").style.color = "black";
+		}
 
+		var audio = document.getElementById("myAudio");
 
+		function playAudio() {
+			audio.play();
+		}
+
+		function pauseAudio() {
+			audio.pause();
+		}
 	</script>
 </body>
 
