@@ -78,7 +78,7 @@
     </style>
 </head>
 
-<body onload = "prePlay()" >
+<body>
     <div id="wrapper">
 
         <div id="col1">
@@ -121,7 +121,7 @@
 
                 <h1>Common Room</h1>
 
-
+                <!--These methods are the wrong way round -->
                 <button id="goToRoom3" onclick="goToRoom3()">Electricity Room</button>
                 <button id="goToRoom2" onclick="goToRoom2()">Ship Deck</button>
 
@@ -138,27 +138,24 @@
 
 
                 <p id="textOutput"> Would you like to 'Look Around' or try and 'Turn On' the lights?</p>
-                <div id = "unlcoked" class = "hideMe">Electricity Room Unlocked</div>
+                <div id="unlcoked" class="hideMe">Electricity Room Unlocked</div>
 
                 <div id="wireDiv"><button id="Wire" class="showMe" onclick="Wire()">Pick Up Wire</button></div>
                 <button id="door2" class="showMe" onclick="door2()">Examine Pin Pad</button>
                 <button id="airlock" class="showMe" onclick="airlock()">Try Airlock</button>
                 <button id="stickyNote" class="showMe" onclick="getRandNo()">Look At Sticky Note</button>
-                <button id="back" class="hideMe" onclick="back()">Back</button>
-                <button id="submit" class="hideMe" onclick="unlockDoor2()">Submit</button>
-
-
-
-
+               
                 <form id="inputForm" class="hideMe" onsubmit="unlockDoor2()">
                     <!------------------------------------------------THIS IS NEWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW-->
 
                     <input type="text" id="word-input">
                     <!--input id="text" type="text" name="userInput"-->
-                    <br>
+                    
                     <!-- <input class="button" id="submit" type="submit">-->
 
-                </form>
+                </form> 
+                <button id="submit" class="hideMe" onclick="unlockDoor2()">Submit</button><br>
+                <button id="back" class="hideMe" onclick="back()">Back</button>
             </div>
 
         </div>
@@ -238,10 +235,9 @@
         //===========================================================================================================
 
         function Wire() {
-
             sessionStorage.setItem("WireCoil", 1);
             let wirenum = sessionStorage.getItem("WireCoil");
-            console.log("(Should be 1) Wire number = "+ wirenum);
+            console.log("(Should be 1) Wire number = " + wirenum);
 
             document.getElementById("textOutput").innerHTML = "Add Wire to Inventory";
 
@@ -252,20 +248,25 @@
 
 
         }
+        //Go to Room 3, not room 2 (The method is named wrong )
+        function goToRoom2() {
 
-        function goToRoom2(){
-
-            if (sessionStorage.getItem("shipDeck") == 1){
+            if (sessionStorage.getItem("shipDeck") == 1) {
                 window.location.replace("3ShipDeck.html")
             }
         }
 
+        //Go to Room 2, not room 3 (The method is named wrong )
         function goToRoom3() {
-
-            if (Permission == 0) {
-                document.getElementById("textOutput").innerHTML = "Locked, Pin Required";
+ 
+            let ElectricPerm = sessionStorage.getItem("Rom2permission");
+            console.log("Electric Perm = " + ElectricPerm);
+            if (ElectricPerm == 1) {
+                console.log("Successs")
+                window.location.replace("2ElectricityRoom.html");
             } else {
-                window.location.replace("2ElectricityRoom.html")
+                console.log("Fail")
+                document.getElementById("textOutput").innerHTML = "Locked, Pin Required";
             }
         }
 
@@ -297,54 +298,22 @@
 
         function unlockDoor2() {
             console.log("HAS BEEN CALLELD")
-            //this is the ------------------------------------------------------------------------
-            //const word = document.getElementById("word-input").value;
-            //let pin = document.forms["inputForm"]["userInput"].value;
             let num = document.getElementById("word-input").value;
             console.log("num = myRand");
             console.log(num);
             console.log(myRand);
 
             if (num == myRand) {
-                //document.getElementById('output').innerHTML = "Electricity Room Unlocked";
-            document.getElementById('unlcoked').className = "showMe";
+                document.getElementById('unlcoked').className = "showMe";
                 console.log("YES ITS THE SAME")
                 door2Status = 1;
                 textUpdateDoor2Unlocked();
 
                 document.getElementById('submit').className = "hideMe";
                 document.getElementById('inputForm').className = "hideMe";
-                sessionStorage.set("permission", 1);
+                sessionStorage.setItem("Rom2permission", '1');
                 Permission = 1;
-                sessionStorage.set("r1",1);
             }
-
-            // let password = sessionStorage.getItem(pWord);
-            // console.log("pin " + pin);
-            // console.log("Password " + password);
-            // if (pin == password) {
-
-            //     textUpdateDoor2Unlocked();
-            //     door2Status = 1;
-
-            // } else {
-            //     window.alert(password);
-            // }
-        }
-
-        function prePlay(){
-
-            let check = sessionStorage.getItem("r1");
-
-            if(check == 1){
-
-                Permission = 1;
-                document.getElementById('stickyNote').className = "hideMe";
-                document.getElementById('door2').className = "hideMe";
-
-
-            }
-
         }
 
         function airlock() {
@@ -363,7 +332,7 @@
 
             document.getElementById('back').className = "hideMe";
 
-            
+
             document.getElementById('submit').className = "hideMe";
             document.getElementById('airlock').className = "showMe";
             document.getElementById('door2').className = "showMe";
@@ -392,15 +361,15 @@
             document.getElementById('Wire').className = "hideMe";
             document.getElementById('stickyNote').className = "hideMe";
 
-           
-                
+
+
             let url = 'http://andymcdowell.hosting.hal.davecutting.uk/1030_APIs/randomCode.php?length=4';
 
-                fetch(url)
-                    .then(function (response) {
+            fetch(url)
+                .then(function (response) {
                     return response.json();
-                    })
-                    .then(function (data) {
+                })
+                .then(function (data) {
                     console.log("P CODE");
                     myRand = data.secretCode;
                     doorcode = myRand;
@@ -408,10 +377,10 @@
 
                     sessionStorage.setItem("stickyNoteValue", myRand);
                     document.getElementById("PCode").innerHTML = myRand;
-                    })
-                    .catch(function (error) {
+                })
+                .catch(function (error) {
                     console.error('ERROR: ' + error);
-                    });
+                });
         }
 
 
