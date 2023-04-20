@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="SpaceStyleSheet.css">
     </head>
 
-    <body id="body">
+    <body id="body" class="homeBg">
         <h1>Starbound Quest</h1>
 
         <div id="wrapper">
@@ -20,32 +20,30 @@
                 <label for="difficulty">Select Your Difficulty: </label>
                 <select id="difficulty">
                     <option value="---">---</option>
-                    <option value="easy">Easy (5 minutes)</option>
-                    <option value="medium">Medium (4 minutes 40 seconds)</option>
-                    <option value="hard">Hard (4 minutes 20 seconds)</option>
+                    <option value="easy">Easy (4min 30s)</option>
+                    <option value="medium">Medium (4min)</option>
+                    <option value="hard">Hard (3min 30s)</option>
                 </select>
                 <br>
+                
+                <hr>
+                <div id="accessibility">
+                    <h5>Text Size: </h5>
+                    <button onclick="smallText()">small</button>
+                    <button onclick="mediumText()">medium</button>
+                    <button onclick="largeText()">large</button>
+                    <button onclick="x_largeText()">x-large</button>
+                    <br>
+                    <button onclick="lightMode()">Light Mode</button>
+                    <button onclick="darkMode()">Dark Mode</button>
+                    </select>
+                    <br>
+                    <hr>
+        
+                </div>
 
                 <!-- Button for starting game  -->
                 <button id="submit" onclick="handleStartButtonClick();" disabled>Begin</button>
-
-            </div>
-            <!-- Printing characters name -->
-            <span id="welcome"></span>
-
-        </div>
-        <div id="accessibility">
-            <h5>Text Size: </h5>
-            <button onclick="smallText()">small</button>
-            <button onclick="mediumText()">medium</button>
-            <button onclick="largeText()">large</button>
-            <button onclick="x_largeText()">x-large</button>
-            <br>
-            <hr>
-            <button onclick="lightMode()">Light Mode</button>
-            <button onclick="darkMode()">Dark Mode</button>
-            </select>
-            <br>
 
         </div>
 
@@ -99,13 +97,13 @@
                 }
                 switch (difficultyStr) {
                     case 'easy':
-                        sessionStorage.setItem('timeRem', '300');
+                        sessionStorage.setItem('timeRem', '270');
                         break;
                     case 'medium':
-                        sessionStorage.setItem('timeRem', '250');
+                        sessionStorage.setItem('timeRem', '240');
                         break;
                     case 'hard':
-                        sessionStorage.setItem('timeRem', '200');
+                        sessionStorage.setItem('timeRem', '210');
                         break;
                     default:
                         alert("Select difficulty");
@@ -165,7 +163,6 @@
                 document.getElementById("start").style.backgroundColor = "rgb(216, 216, 216)";
                 document.getElementById("start").style.color = "black";
                 document.getElementById("wrapper").style.color = "black";
-
                 sessionStorage.setItem("mode", "light")
             }
 
