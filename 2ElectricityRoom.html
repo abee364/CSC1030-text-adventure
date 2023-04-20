@@ -50,6 +50,13 @@
             <div id="RoomButtons">
                 <button onclick="setPreviousRoom();"> Previous Room</button>
             </div>
+            <audio id="myAudio">
+                <source src="Audio/space-atmospheric-background-124841.mp3" type="audio/mpeg">
+            </audio>
+            <div id="audio">
+                <button onclick="playAudio()" type="button">Play Audio</button>
+                <button onclick="pauseAudio()" type="button">Pause Audio</button>
+            </div>
 
             <div id="Room2Buttons">
 
@@ -89,7 +96,7 @@
 
 
         </div>
-        
+
     </div>
 
     <script>
@@ -288,7 +295,7 @@
 
         //Api ----------------
 
-        
+
         //There is a 25% chance that the plant will kill you when looking at it
         function API() {
 
@@ -314,6 +321,15 @@
                 });
         }
 
+        var audio = document.getElementById("myAudio");
+
+        function playAudio() {
+            audio.play();
+        }
+
+        function pauseAudio() {
+            audio.pause();
+        }
     </script>
 </body>
 

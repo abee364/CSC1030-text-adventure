@@ -19,7 +19,7 @@
             <div id="main" class="showMe">
                 <img class="centre" src="images/SpacePod.png" style="width:90%;" alt="Escape Pod" />
             </div>
-            
+
         </div>
 
         <!-- column 2 - where the buttons go -->
@@ -27,9 +27,17 @@
 
             <h1>Escape Pod</h1>
             <h1>Time Remaining: <span id="timerText">?</span></h1>
+            <audio id="myAudio">
+                <source src="Audio/space-atmospheric-background-124841.mp3" type="audio/mpeg">
+            </audio>
+            <div id="audio">
+                <button onclick="playAudio()" type="button">Play Audio</button>
+                <button onclick="pauseAudio()" type="button">Pause Audio</button>
+            </div>
             <div id="Room5Buttons">
                 <!--Narration-->
-                <p>Computer: “You have reached the escape pod, it seems to be fully functional.<br> I assume that you learnt how
+                <p>Computer: “You have reached the escape pod, it seems to be fully functional.<br> I assume that you
+                    learnt how
                     to
                     fly it during your
                     training <span id="name"></span>. Are you sure you want to leave the ship?” </p>
@@ -111,7 +119,7 @@
         // Load the remaining time and start the timer when the page loads
         window.addEventListener('load', loadTimeRem);
 
-        window.onload = function() {
+        window.onload = function () {
             var fontSize = sessionStorage.getItem("fontSize");
             if (fontSize) {
                 document.body.style.fontSize = fontSize;
@@ -133,11 +141,21 @@
             document.getElementById("col2").style.color = "black";
         }
 
-        window.onload = function() {
+        window.onload = function () {
             var stickyNoteValue = sessionStorage.getItem("stickyNoteValue");
             if (stickyNoteValue) {
                 document.getElementById("PCode").innerHTML = stickyNoteValue;
             }
+        }
+
+        var audio = document.getElementById("myAudio");
+
+        function playAudio() {
+            audio.play();
+        }
+
+        function pauseAudio() {
+            audio.pause();
         }
 
     </script>

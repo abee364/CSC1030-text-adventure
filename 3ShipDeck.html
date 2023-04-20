@@ -49,6 +49,14 @@
                 <button id="previousRoom" onclick="previousRoom()">Previous Room</button>
                 <button id="nextRoom" onclick="nextRoom()">Next Room</button>
             </div>
+
+            <audio id="myAudio">
+                <source src="Audio/space-atmospheric-background-124841.mp3" type="audio/mpeg">
+            </audio>
+            <div id="audio">
+                <button onclick="playAudio()" type="button">Play Audio</button>
+                <button onclick="pauseAudio()" type="button">Pause Audio</button>
+            </div>
             <!-- Button to leave memory game  -->
             <button id="leaveGame" class="hideMe" onclick="leaveGame()">Leave Memory Game</button>
 
@@ -457,6 +465,16 @@
                     if (stickyNoteValue) {
                         document.getElementById("PCode").innerHTML = stickyNoteValue;
                     }
+                }
+
+                var audio = document.getElementById("myAudio");
+
+                function playAudio() {
+                    audio.play();
+                }
+
+                function pauseAudio() {
+                    audio.pause();
                 }
             </script>
 </body>

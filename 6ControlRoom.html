@@ -56,6 +56,13 @@
             <div id="RoomButtons">
                 <button id="previousRoom" onclick="previousRoom()" class="button">Previous Room</button>
             </div>
+            <audio id="myAudio">
+                <source src="Audio/space-atmospheric-background-124841.mp3" type="audio/mpeg">
+            </audio>
+            <div id="audio">
+                <button onclick="playAudio()" type="button">Play Audio</button>
+                <button onclick="pauseAudio()" type="button">Pause Audio</button>
+            </div>
 
             <div id="Room6Buttons">
 
@@ -219,7 +226,7 @@
             document.getElementById('arrival').className = "hideMe";
             document.getElementById('screenInstruction').className = "hideMe";
             document.getElementById('riddleInstruction').className = "hideMe";
-            
+
 
         }
 
@@ -430,6 +437,16 @@
             if (stickyNoteValue) {
                 document.getElementById("PCode").innerHTML = stickyNoteValue;
             }
+        }
+
+        var audio = document.getElementById("myAudio");
+
+        function playAudio() {
+            audio.play();
+        }
+
+        function pauseAudio() {
+            audio.pause();
         }
 
     </script>
