@@ -55,7 +55,6 @@
 
                 <p>Computer: "This is the electricity room, you should be able to find a way to restore power."</p>
                 <button onclick="setWires();">The Wires</button>
-                <button onclick="setDoor();">The Door</button>
                 <button onclick="API();">The Plant</button>
 
             </div>
@@ -83,12 +82,6 @@
                 <p class="gameText">Computer: "Looks like the plant is angry, better try not to upset it"</p>
             </div>
 
-            <div id="doorLocked" class="hideMe">
-                <p class="gameText">Computer: "This door brings you back to the previous room. But it's still dark, try
-                    and find a
-                    way to restore power"</p>
-            </div>
-
             <div id="wireUnavalible" class="hideMe">
                 <p class="gameText">Computer: "You don't have any wire to fix this, maybe go back and look for some"</p>
             </div>
@@ -96,14 +89,7 @@
 
 
         </div>
-        <!-- 
-        <div id="col2Loss" class="hideMe">
-            <h1>Room 2 </h1>
-            <p>
-                You Died, sorry :(
-            </p>
-            <button onclick="Restart();" class="button">Restart game </button>
-        </div> -->
+        
     </div>
 
     <script>
@@ -119,11 +105,6 @@
         function Plant() {
             document.getElementById('plantButtons').className = "showMe";
             document.getElementById('doorLocked').className = "hideMe";
-        }
-
-        function setDoor() {
-            document.getElementById('doorLocked').className = "showMe";
-            document.getElementById('plantButtons').className = "hideMe";
         }
 
         function setWires() {   //============================================================WIREEEEEEEEEEEEEEEEEEEEEEE
