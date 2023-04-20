@@ -8,6 +8,9 @@
 
     <body id="body" class="homeBg">
         <h1>Starbound Quest</h1>
+        <audio id="myAudio">
+            <source src="Audio/space-atmospheric-background-124841.mp3" type="audio/mpeg">
+        </audio>
 
         <div id="wrapper">
             <div id="start">
@@ -25,10 +28,10 @@
                     <option value="hard">Hard (3min 30s)</option>
                 </select>
                 <br>
-                
+
                 <hr>
                 <div id="accessibility">
-                    <h5>Text Size: </h5>
+                    <h5>Settings: </h5>
                     <button onclick="smallText()">small</button>
                     <button onclick="mediumText()">medium</button>
                     <button onclick="largeText()">large</button>
@@ -39,144 +42,158 @@
                     </select>
                     <br>
                     <hr>
-        
+
+                </div>
+
+                <div id="audio">
+                    <button onclick="playAudio()" type="button">Play Audio</button>
+                    <button onclick="pauseAudio()" type="button">Pause Audio</button>
                 </div>
 
                 <!-- Button for starting game  -->
                 <button id="submit" onclick="handleStartButtonClick();">Begin</button>
 
-        </div>
+            </div>
 
-        <script type="text/javascript">
-            //setting values
-            var difficulty;
-            const submit = document.getElementById('submit');
-            let timer;
+            <script type="text/javascript">
+                //setting values
+                var difficulty;
+                const submit = document.getElementById('submit');
+                let timer;
 
-            const difficultySelect = document.getElementById('difficulty');
-            difficultySelect.addEventListener('change', function () {
-                if (this.value !== 'easy' && this.value !== 'medium' && this.value !== 'hard') {
-                    submit.disabled = true;
-                } else {
-                    submit.disabled = false;
-                }
-            });
+                const difficultySelect = document.getElementById('difficulty');
+                difficultySelect.addEventListener('change', function () {
+                    if (this.value !== 'easy' && this.value !== 'medium' && this.value !== 'hard') {
+                        submit.disabled = true;
+                    } else {
+                        submit.disabled = false;
+                    }
+                });
 
-            function handleStartButtonClick() {
-                console.log("Button clicked");
-                const nameInput = document.getElementById('name').value;
-                const difficultyInput = document.getElementById('difficulty').value;
-                // Validation check if any character is present in the name
-                if (nameInput.trim() === "") {
-                    alert("Please enter your name");
-                    return
-                } else if (difficultyInput !== 'easy' && difficultyInput !== 'medium' && difficultyInput !== 'hard') {
-                    alert("Please select diffculty");
-                    return
-                } else {
-                    // Set the player's name in session storage
-                    sessionStorage.setItem('name', nameInput);
-                    startGame();
-                    startTimer();
-                }
-            }
-
-            function startGame() {
-                // Collecting the name value
-                var nameInput = document.getElementById('name').value;
-
-                // Make the start menu disappear
-                document.getElementById('start').style.display = 'none';
-
-                // Set the difficulty and change the timer per difficulty
-                var difficultyStr = "";
-                for (var i = 0; i < difficultySelect.length; i++) {
-                    if (difficultySelect[i].selected) {
-                        difficultyStr = difficultySelect[i].value;
-                        break;
+                function handleStartButtonClick() {
+                    console.log("Button clicked");
+                    const nameInput = document.getElementById('name').value;
+                    const difficultyInput = document.getElementById('difficulty').value;
+                    // Validation check if any character is present in the name
+                    if (nameInput.trim() === "") {
+                        alert("Please enter your name");
+                        return
+                    } else if (difficultyInput !== 'easy' && difficultyInput !== 'medium' && difficultyInput !== 'hard') {
+                        alert("Please select diffculty");
+                        return
+                    } else {
+                        // Set the player's name in session storage
+                        sessionStorage.setItem('name', nameInput);
+                        startGame();
+                        startTimer();
                     }
                 }
-                switch (difficultyStr) {
-                    case 'easy':
-                        sessionStorage.setItem('timeRem', '270');
-                        break;
-                    case 'medium':
-                        sessionStorage.setItem('timeRem', '240');
-                        break;
-                    case 'hard':
-                        sessionStorage.setItem('timeRem', '210');
-                        break;
-                    default:
-                        alert("Select difficulty");
+
+                function startGame() {
+                    // Collecting the name value
+                    var nameInput = document.getElementById('name').value;
+
+                    // Make the start menu disappear
+                    document.getElementById('start').style.display = 'none';
+
+                    // Set the difficulty and change the timer per difficulty
+                    var difficultyStr = "";
+                    for (var i = 0; i < difficultySelect.length; i++) {
+                        if (difficultySelect[i].selected) {
+                            difficultyStr = difficultySelect[i].value;
+                            break;
+                        }
+                    }
+                    switch (difficultyStr) {
+                        case 'easy':
+                            sessionStorage.setItem('timeRem', '270');
+                            break;
+                        case 'medium':
+                            sessionStorage.setItem('timeRem', '240');
+                            break;
+                        case 'hard':
+                            sessionStorage.setItem('timeRem', '210');
+                            break;
+                        default:
+                            alert("Select difficulty");
+                    }
+                    // Takes the player to the monologue page
+                    window.location.replace("Monologue.html");
                 }
-                // Takes the player to the monologue page
-                window.location.replace("Monologue.html");
-            }
 
-            //Starts the timer
-            function startTimer() {
-                var timeRem = sessionStorage.getItem('timeRem');
-                document.getElementById('timerText').innerHTML = timeRem;
-                timer = setInterval(countdown, 1000);
-            }
-
-            //Manages the countdown of the timer
-            function countdown() {
-                var timeRem = sessionStorage.getItem('timeRem');
-                if (timeRem > 0) {
-                    timeRem--;
+                //Starts the timer
+                function startTimer() {
+                    var timeRem = sessionStorage.getItem('timeRem');
                     document.getElementById('timerText').innerHTML = timeRem;
-                    sessionStorage.setItem('timeRem', timeRem);
-                } else {
-                    clearInterval(timer);
-                    document.getElementById('timerText').innerHTML = 'END';
-                    timeRem = 10;
-                    // Redirect to statistics page
-                    window.location.href = 'stats.html';
+                    timer = setInterval(countdown, 1000);
                 }
-            }
 
-            function smallText() {
-                document.getElementById("wrapper").style.fontSize = "small"
-                sessionStorage.setItem('text', 'small');
+                //Manages the countdown of the timer
+                function countdown() {
+                    var timeRem = sessionStorage.getItem('timeRem');
+                    if (timeRem > 0) {
+                        timeRem--;
+                        document.getElementById('timerText').innerHTML = timeRem;
+                        sessionStorage.setItem('timeRem', timeRem);
+                    } else {
+                        clearInterval(timer);
+                        document.getElementById('timerText').innerHTML = 'END';
+                        timeRem = 10;
+                        // Redirect to statistics page
+                        window.location.href = 'stats.html';
+                    }
+                }
 
-            }
+                function smallText() {
+                    document.getElementById("wrapper").style.fontSize = "small"
+                    sessionStorage.setItem('text', 'small');
 
-            function mediumText() {
-                document.getElementById("wrapper").style.fontSize = "medium"
-                sessionStorage.setItem('text', 'medium');
+                }
 
-            }
+                function mediumText() {
+                    document.getElementById("wrapper").style.fontSize = "medium"
+                    sessionStorage.setItem('text', 'medium');
 
-            function largeText() {
-                document.getElementById("wrapper").style.fontSize = "large"
-                sessionStorage.setItem('text', 'large');
-            }
+                }
 
-            function x_largeText() {
-                document.getElementById("wrapper").style.fontSize = "x-large"
-                sessionStorage.setItem('text', 'x-large');
+                function largeText() {
+                    document.getElementById("wrapper").style.fontSize = "large"
+                    sessionStorage.setItem('text', 'large');
+                }
 
-            }
+                function x_largeText() {
+                    document.getElementById("wrapper").style.fontSize = "x-large"
+                    sessionStorage.setItem('text', 'x-large');
 
-            function lightMode() {
-                document.getElementById("wrapper").style.backgroundColor = "ivory";
-                document.getElementById("start").style.backgroundColor = "rgb(216, 216, 216)";
-                document.getElementById("start").style.color = "black";
-                document.getElementById("wrapper").style.color = "black";
-                sessionStorage.setItem("mode", "light")
-            }
+                }
 
-            function darkMode() {
-                document.getElementById("wrapper").style.backgroundColor = "#222629";
-                document.getElementById("start").style.backgroundColor = "black";
-                document.getElementById("start").style.color = "white";
-                document.getElementById("wrapper").style.color = "white";
-                sessionStorage.setItem("mode", "black");
+                function lightMode() {
+                    document.getElementById("wrapper").style.backgroundColor = "ivory";
+                    document.getElementById("start").style.backgroundColor = "rgb(216, 216, 216)";
+                    document.getElementById("start").style.color = "black";
+                    document.getElementById("wrapper").style.color = "black";
+                    sessionStorage.setItem("mode", "light")
+                }
 
-            }
+                function darkMode() {
+                    document.getElementById("wrapper").style.backgroundColor = "#222629";
+                    document.getElementById("start").style.backgroundColor = "black";
+                    document.getElementById("start").style.color = "white";
+                    document.getElementById("wrapper").style.color = "white";
+                    sessionStorage.setItem("mode", "black");
 
-        </script>
+                }
+
+                var audio = document.getElementById("myAudio");
+
+                function playAudio() {
+                    audio.play();
+                }
+
+                function pauseAudio() {
+                    audio.pause();
+                } 
+            </script>
 
     </body>
 
