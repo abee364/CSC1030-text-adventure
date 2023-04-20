@@ -93,7 +93,7 @@
 
     <script>
         //check if the torch should be on or not? 
-        let myNum = sessionStorage.getItem("Torch")
+        let myNum = sessionStorage.getItem("Torch");
         myNum = Number(myNum);
         if (myNum === 1) {
             var div = document.getElementById("light");
@@ -105,7 +105,7 @@
 
         function Plant() {
             document.getElementById('plantButtons').className = "showMe";
-
+            document.getElementById('wireUnavalible').className = "hideMe";
         }
 
         function setWires() {   //============================================================WIREEEEEEEEEEEEEEEEEEEEEEE
@@ -146,11 +146,15 @@
             window.location.replace("Electric_ending.html")
         }
         function Green() {
+            
             console.log("ship Deck = 1");
             sessionStorage.setItem("shipDeck", '1');
             document.getElementById('win').className = "showMe";
             document.getElementById('WireBoard').className = "hideMe";
             document.getElementById('wireButtons').className = "hideMe";
+            document.getElementById('Room2Buttons').className = "showMe";
+            document.getElementById('WireButtonID').className = "hideMe";
+            
 
             sessionStorage.setItem("Door1", 1);
             sessionStorage.setItem("Torch", 1);
