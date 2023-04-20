@@ -57,6 +57,8 @@
           const timeRem = sessionStorage.getItem("timeRem");
           if (timeRem === null) {
             timeRemElement.innerHTML = "?";
+          } else if (timeRem === "END") {
+            timeRemElement.innerHTML = "No more";
           } else {
             timeRemElement.innerHTML = timeRem;
           }

@@ -9,7 +9,7 @@
 <body>
     <div id="wrapper">
         <div class="container">
-            <div id = "Image"><img src="images/Room1.png" alt="Room1" style="width:90%;"></div>
+            <div id="Image"><img src="images/Room1.png" alt="Room1" style="width:90%;"></div>
             <div class="text-block" id="greeting">
                 <p>Computer: Hello there <span id="name"></span> we have a problem, the ship seems to have
                     malfunctioned
@@ -19,7 +19,8 @@
                 <button id="next" onclick="continueText()" class="button">Next</button>
             </div>
             <div class="text-block" id="secondSlide">
-                <p id="finishIntro" class="hideMe"><br>Looks like the lights have turned off, turn on your torch to see</p>
+                <p id="finishIntro" class="hideMe"><br>Looks like the lights have turned off, turn on your torch to see
+                </p>
                 <br>
                 <button id="continue" onclick="Start()" class="hideMe">Turn on Torch</button>
 
@@ -29,7 +30,7 @@
 
     <script>
         function Start() {
-                window.location.replace("Monologue2.html");
+            window.location.replace("Monologue2.html");
         }
 
         function continueText() {
@@ -62,16 +63,16 @@
         var modeColor = sessionStorage.getItem('mode');
         if (modeColor == 'light') {
             lightMode();
-        }
+        } else document.getElementById("wrapper").style.backgroundColor = "black";
 
-        // function lightMode() {
-        //     document.getElementById("wrapper").style.backgroundColor = "ivory";
-        //     document.getElementById("greeting").style.backgroundColor = "rgb(216, 216, 216)";
-        //     document.getElementById("greeting").style.color = "black";
-        //     document.getElementById("secondSlide").style.backgroundColor = "rgb(216, 216, 216)";
-        //     document.getElementById("secondSlide").style.color = "black";
-        //         document.getElementById("wrapper").style.color = "black";
-        // }
+            function lightMode() {
+                document.getElementById("wrapper").style.backgroundColor = "black";
+                document.getElementById("greeting").style.backgroundColor = "rgb(216, 216, 216)";
+                document.getElementById("greeting").style.color = "black";
+                document.getElementById("secondSlide").style.backgroundColor = "rgb(216, 216, 216)";
+                document.getElementById("secondSlide").style.color = "black";
+                document.getElementById("wrapper").style.color = "black";
+            }
 
     </script>
 </body>
