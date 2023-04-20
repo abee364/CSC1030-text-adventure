@@ -140,13 +140,6 @@
             document.getElementById("col2").style.color = "black";
         }
 
-        window.onload = function () {
-            var stickyNoteValue = sessionStorage.getItem("stickyNoteValue");
-            if (stickyNoteValue) {
-                document.getElementById("PCode").innerHTML = stickyNoteValue;
-            }
-        }
-
         var audio = document.getElementById("myAudio");
 
         function playAudio() {
