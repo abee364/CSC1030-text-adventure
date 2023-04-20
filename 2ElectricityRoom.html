@@ -2,7 +2,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Starbound Quest</title>
+    <title>Starbound Quest - Electricity Room</title>
     <link rel="stylesheet" href="SpaceStyleSheet.css">
     <style type="text/css"></style>
     <style>
@@ -145,12 +145,11 @@
             window.location.replace("Electric_ending.html")
         }
         function Green() {
+            console.log("ship Deck = 1");
+            sessionStorage.setItem("shipDeck", '1');
             document.getElementById('win').className = "showMe";
             document.getElementById('WireBoard').className = "hideMe";
             document.getElementById('wireButtons').className = "hideMe";
-            document.getElementById('doorLocked').className = "hideMe";
-
-            sessionStorage.setItem("shipDeck", 1);
 
             sessionStorage.setItem("Door1", 1);
             sessionStorage.setItem("Torch", 1);

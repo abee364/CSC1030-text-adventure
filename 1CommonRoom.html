@@ -6,7 +6,7 @@
 
     <link rel="stylesheet" href="SpaceStyleSheet.css">
 
-    <title>Common Room</title>
+    <title>Starbound Quest </title>
 
     <style>
         .header {
@@ -78,7 +78,7 @@
     </style>
 </head>
 
-<body>
+<body onload="loadPlz()">
     <div id="wrapper">
 
         <div id="col1">
@@ -86,7 +86,7 @@
             <!--This is the div that controls the light-->
             <div id="light"></div>
 
-            <h1 id="title">Starbound Quest</h1>
+            <h1 id="title">Starbound Quest - Common Room</h1>
 
 
             <!-- The main photo  -->
@@ -137,23 +137,24 @@
             <div class="interactionBox">
 
 
-                <p id="textOutput"> Computer: You should probably find a way to restore power to get this door working.</p>
+                <p id="textOutput"> Computer: You should probably find a way to restore power to get this door working.
+                </p>
                 <div id="unlcoked" class="hideMe">Electricity Room Unlocked</div>
 
                 <div id="wireDiv"><button id="Wire" class="showMe" onclick="Wire()">Pick Up Wire</button></div>
                 <button id="door2" class="showMe" onclick="door2()">Examine Pin Pad</button>
                 <button id="airlock" class="showMe" onclick="airlock()">Try Airlock</button>
                 <button id="stickyNote" class="showMe" onclick="getRandNo()">Look At Sticky Note</button>
-               
+
                 <form id="inputForm" class="hideMe" onsubmit="unlockDoor2()">
                     <!------------------------------------------------THIS IS NEWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW-->
 
                     <input type="text" id="word-input">
                     <!--input id="text" type="text" name="userInput"-->
-                    
+
                     <!-- <input class="button" id="submit" type="submit">-->
 
-                </form> 
+                </form>
                 <button id="submit" class="hideMe" onclick="unlockDoor2()">Submit</button><br>
                 <button id="back" class="hideMe" onclick="back()">Back</button>
             </div>
@@ -162,6 +163,18 @@
     </div>
 
     <script>
+        console.log("ONLOAD");
+        let myNum2 = sessionStorage.getItem("WireCoil");
+        myNum2 = Number(myNum2);
+        console.log("MyNum = " + myNum2)
+        if (myNum2 === 1) {
+            document.getElementById('wireDiv').className = "hideMe";
+            document.getElementById('backgroundImg').className = "hideMe";
+            document.getElementById('backgroundImgPostWire').className = "showMe";
+
+        }
+  
+
         let Permission = 0;
 
         let myNum = sessionStorage.getItem("Torch")
@@ -250,15 +263,19 @@
         }
         //Go to Room 3, not room 2 (The method is named wrong )
         function goToRoom2() {
-
-            if (sessionStorage.getItem("shipDeck") == 1) {
+            let tempNumb = sessionStorage.getItem("shipDeck");
+            console.log("Go to room 3. Ship deck value = " + tempNumb);
+            if (tempNumb === '1') {
                 window.location.replace("3ShipDeck.html")
+                textUpdateShipDeck();
+            } else{
+                textUpdateDoor1Locked();
             }
         }
 
         //Go to Room 2, not room 3 (The method is named wrong )
         function goToRoom3() {
- 
+
             let ElectricPerm = sessionStorage.getItem("Rom2permission");
             console.log("Electric Perm = " + ElectricPerm);
             if (ElectricPerm == 1) {
@@ -491,7 +508,7 @@
             document.getElementById("col2").style.color = "black";
         }
 
-        
+
 
 
 
