@@ -112,6 +112,7 @@
 
         /**This is for the main room images on the right **/
         #col1 {
+            grid-area: col1;
             width: 70%;
             float: left;
             text-align: center;
@@ -129,6 +130,8 @@
 
         /**This is for the user options on the left **/
         #col2 {
+
+            grid-area: col2;
             width: 30%;
             float: left;
             padding: 5px;
