@@ -385,7 +385,7 @@
         function loadTimeRem() {
             var timeRem = sessionStorage.getItem('timeRem');
             document.getElementById('timerText').innerHTML = timeRem;
-            timer = setInterval(countdown, 5);
+            timer = setInterval(countdown, 1000);
         }
 
         // Update the timer display and store the remaining time in the session storage every second
