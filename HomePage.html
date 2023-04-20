@@ -1,5 +1,6 @@
 <DOCTYPE! HTML>
     <html>
+
     <head>
         <title>Starbound Quest - Home Page</title>
         <link rel="stylesheet" href="SpaceStyleSheet.css">
@@ -41,8 +42,8 @@
             <button onclick="x_largeText()">x-large</button>
             <br>
             <hr>
-            <button  onclick="lightMode()">Light Mode</button>
-            <button  onclick="darkMode()">Dark Mode</button>
+            <button onclick="lightMode()">Light Mode</button>
+            <button onclick="darkMode()">Dark Mode</button>
             </select>
             <br>
 
@@ -138,33 +139,42 @@
 
             function smallText() {
                 document.getElementById("wrapper").style.fontSize = "small"
+                sessionStorage.setItem('text', 'small');
 
             }
 
             function mediumText() {
                 document.getElementById("wrapper").style.fontSize = "medium"
+                sessionStorage.setItem('text', 'medium');
 
             }
 
             function largeText() {
                 document.getElementById("wrapper").style.fontSize = "large"
+                sessionStorage.setItem('text', 'large');
             }
 
             function x_largeText() {
                 document.getElementById("wrapper").style.fontSize = "x-large"
+                sessionStorage.setItem('text', 'x-large');
 
             }
 
             function lightMode() {
-                document.getElementById("body").style.backgroundColor ="ivory"
-                document.getElementById("wrapper").style.backgroundColor ="rgb(216, 216, 216)"
-                document.getElementById("body").style.color = "black"
+                document.getElementById("wrapper").style.backgroundColor = "ivory";
+                document.getElementById("start").style.backgroundColor = "rgb(216, 216, 216)";
+                document.getElementById("start").style.color = "black";
+                document.getElementById("wrapper").style.color = "black";
+
+                sessionStorage.setItem("mode", "light")
             }
 
             function darkMode() {
-                document.getElementById("body").style.backgroundColor ="black"
-                document.getElementById("wrapper").style.backgroundColor ="#222629"
-                document.getElementById("body").style.color = "white"
+                document.getElementById("wrapper").style.backgroundColor = "#222629";
+                document.getElementById("start").style.backgroundColor = "black";
+                document.getElementById("start").style.color = "white";
+                document.getElementById("wrapper").style.color = "white";
+                sessionStorage.setItem("mode", "black");
 
             }
 
