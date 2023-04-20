@@ -157,7 +157,7 @@
                 <form id="inputForm" class="hideMe" onsubmit="unlockDoor2()">
                     <!------------------------------------------------THIS IS NEWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW-->
 
-                    <input type="text" id="word-input">
+                    <input type="text" id="pinCode">
                     <!--input id="text" type="text" name="userInput"-->
 
                     <!-- <input class="button" id="submit" type="submit">-->
@@ -226,7 +226,7 @@
 
         function textUpdateDoor1Locked() {
 
-            document.getElementById("textOutput").innerHTML = "Door is Locked! You may need to override the locking mechanism with an overdose of electricity if you can find a way to restore power?";
+            document.getElementById("textOutput").innerHTML = "Door is Locked! You may need see if you can find a way to restore power?";
         }
 
         function textUpdateDoor2Locked() {
@@ -326,7 +326,7 @@
 
         function unlockDoor2() {
             console.log("HAS BEEN CALLELD")
-            let num = document.getElementById("word-input").value;
+            let num = document.getElementById("pinCode").value;
             console.log("num = myRand");
             console.log(num);
             console.log(myRand);
