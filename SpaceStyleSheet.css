@@ -240,7 +240,7 @@
     
         .text-block {
             position: fixed;
-            margin: auto;
+            /* margin: auto; */
             top: 30%;
             background-color: black;
             color: white;

@@ -43,7 +43,7 @@
                 </div>
 
                 <!-- Button for starting game  -->
-                <button id="submit" onclick="handleStartButtonClick();" disabled>Begin</button>
+                <button id="submit" onclick="handleStartButtonClick();">Begin</button>
 
         </div>
 
@@ -63,10 +63,15 @@
             });
 
             function handleStartButtonClick() {
+                console.log("Button clicked");
                 const nameInput = document.getElementById('name').value;
+                const difficultyInput = document.getElementById('difficulty').value;
                 // Validation check if any character is present in the name
                 if (nameInput.trim() === "") {
                     alert("Please enter your name");
+                    return
+                } else if (difficultyInput !== 'easy' && difficultyInput !== 'medium' && difficultyInput !== 'hard') {
+                    alert("Please select diffculty");
                     return
                 } else {
                     // Set the player's name in session storage
@@ -79,10 +84,6 @@
             function startGame() {
                 // Collecting the name value
                 var nameInput = document.getElementById('name').value;
-
-                // Display welcome message
-                var output = '<h2>Welcome ' + nameInput + '! To the game.<h2>';
-                document.getElementById('welcome').innerHTML = output;
 
                 // Make the start menu disappear
                 document.getElementById('start').style.display = 'none';
