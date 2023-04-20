@@ -19,9 +19,9 @@
                 <label for="difficulty">Select Your Difficulty: </label>
                 <select id="difficulty">
                     <option value="---">---</option>
-                    <option value="easy">Easy (5 minutes)</option>
-                    <option value="medium">Medium (4 minutes 40 seconds)</option>
-                    <option value="hard">Hard (4 minutes 20 seconds)</option>
+                    <option value="easy">Easy (4min 30s)</option>
+                    <option value="medium">Medium (4min)</option>
+                    <option value="hard">Hard (3min 30s)</option>
                 </select>
                 <br>
 
@@ -98,13 +98,13 @@
                 }
                 switch (difficultyStr) {
                     case 'easy':
-                        sessionStorage.setItem('timeRem', '300');
+                        sessionStorage.setItem('timeRem', '270');
                         break;
                     case 'medium':
-                        sessionStorage.setItem('timeRem', '250');
+                        sessionStorage.setItem('timeRem', '240');
                         break;
                     case 'hard':
-                        sessionStorage.setItem('timeRem', '200');
+                        sessionStorage.setItem('timeRem', '210');
                         break;
                     default:
                         alert("Select difficulty");
