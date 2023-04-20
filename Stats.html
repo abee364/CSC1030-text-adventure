@@ -23,7 +23,6 @@
         </div>
 
         <script type="text/javascript">
-          // Retrieve the mission status from local storage
           const missionStatus = sessionStorage.getItem("missionStatus");
           // Update the HTML element with an ID of "status" to display the correct status
           const statusElement = document.getElementById("status");
@@ -43,7 +42,6 @@
           }
 
           function Restart() {
-            localStorage.removeItem("missionStatus");
             sessionStorage.removeItem("timeRem");
             window.location.replace("HomePage.html");
           }
