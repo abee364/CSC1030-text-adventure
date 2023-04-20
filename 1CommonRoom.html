@@ -182,17 +182,17 @@
 
         function startingText() {
 
-            document.getElementById("textOutput").innerHTML = "What would you like to 'pick up' the stray peice of wire, 'Examine the Pin Pad' or even try the 'Airlock'.";
+            document.getElementById("textOutput").innerHTML = "Computer: You should probably find a way to get this door working.";
         }
 
-        function textUpdateLookAroundLight() {
+        function textUpdateShipDeck() {
 
-            document.getElementById("textOutput").innerHTML = "Looking Around You see the outline of 2 doors <br> an airlock <br> and a Coil of Wire";
+            document.getElementById("textOutput").innerHTML = "Carry on to the Ship Deck";
         }
 
-        function textUpdateLookAroundDark() {
+        function textUpdateStickyNote() {
 
-            document.getElementById("textOutput").innerHTML = "You Attempt to Look Around but cannot due to the dark. Perhaps try turning on your torch?";
+            document.getElementById("textOutput").innerHTML = " ";
         }
 
         function textUpdateLookAroundPostTorch() {
@@ -343,6 +343,8 @@
             var a = document.getElementById("inputForm");
             a.style.display = "none";
 
+            startingText();
+
         }
 
 
@@ -377,6 +379,7 @@
 
                     sessionStorage.setItem("stickyNoteValue", myRand);
                     document.getElementById("PCode").innerHTML = myRand;
+                    textUpdateStickyNote();
                 })
                 .catch(function (error) {
                     console.error('ERROR: ' + error);
