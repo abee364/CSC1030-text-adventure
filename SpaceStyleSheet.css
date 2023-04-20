@@ -244,13 +244,12 @@
     
         .text-block {
             position: fixed;
-            /* margin: auto; */
             top: 30%;
             background-color: black;
             color: white;
             width: 85%;
             text-align: center;
-            font-size: 25px;
+            /* font-size: 25px; */
         }
 
         /**---------------------------------Home Page Specific CSS----------------------------------------**/
