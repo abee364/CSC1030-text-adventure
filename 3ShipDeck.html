@@ -358,6 +358,7 @@
                     output.innerHTML = `<span> You got: </span> ${score} <span><br>You can move on to the next room now! </span>`;
                     output.classList.remove("hideMe");
                     sessionStorage.setItem('gameSS', '1');
+                    document.getElementById("question").className = "hideMe";
                     if (crowbar == 1) {
                         document.getElementById("room3_no_crowbar").className = ("showMe")
                     } else {
