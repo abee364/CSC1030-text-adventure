@@ -57,12 +57,25 @@
           const timeRem = sessionStorage.getItem("timeRem");
           if (timeRem === null) {
             timeRemElement.innerHTML = "?";
+          } else if (timeRem === "END") {
+            timeRemElement.innerHTML = "No more";
           } else {
             timeRemElement.innerHTML = timeRem;
           }
 
           function Restart() {
             sessionStorage.removeItem("name");
+            sessionStorage.removeItem("door1");
+            sessionStorage.removeItem("torch");
+            sessionStorage.removeItem("shipdeck");
+            sessionStorage.removeItem("WireCoil");
+            sessionStorage.removeItem("NewCode");
+            sessionStorage.removeItem("crowbarSS");
+            sessionStorage.removeItem("leverSS");
+            sessionStorage.removeItem("gameSS");
+            sessionStorage.removeItem("extinguisher");
+            sessionStorage.removeItem("fireOut");
+            sessionStorage.removeItem("FireChecker");
             sessionStorage.removeItem("timeRem");
             sessionStorage.removeItem("petName");
             window.location.replace("HomePage.html");
