@@ -158,8 +158,8 @@
 
         /**This is for game output text, like telling the user a door is currently locked**/
         .gameText {
-            color: aqua;
-            text-decoration-color: aqua;
+            color: rgb(0, 0, 0);
+            text-decoration-color: rgb(0, 0, 0);
             size: 50%;
         }
 
