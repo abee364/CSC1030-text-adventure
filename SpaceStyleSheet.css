@@ -215,6 +215,10 @@
             background-image: url("images/andy-holmes-rCbdp8VCYhQ-unsplash.jpg");
             background-color: #cccccc;
         }
+
+        #homepgTitle {
+            text-align: center;
+        }
         
         #gameTitle {
             display: flex;
