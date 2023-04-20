@@ -78,7 +78,7 @@
     </style>
 </head>
 
-<body>
+<body onload = "prePlay()" >
     <div id="wrapper">
 
         <div id="col1">
@@ -262,7 +262,7 @@
 
         function goToRoom3() {
 
-            if (Permission == 0 || sessionStorage.get("permission") != 1) {
+            if (Permission == 0) {
                 document.getElementById("textOutput").innerHTML = "Locked, Pin Required";
             } else {
                 window.location.replace("2ElectricityRoom.html")
@@ -316,6 +316,7 @@
                 document.getElementById('inputForm').className = "hideMe";
                 sessionStorage.set("permission", 1);
                 Permission = 1;
+                sessionStorage.set("r1",1);
             }
 
             // let password = sessionStorage.getItem(pWord);
@@ -329,6 +330,21 @@
             // } else {
             //     window.alert(password);
             // }
+        }
+
+        function prePlay(){
+
+            let check = sessionStorage.getItem("r1");
+
+            if(check == 1){
+
+                Permission = 1;
+                document.getElementById('stickyNote').className = "hideMe";
+                document.getElementById('door2').className = "hideMe";
+
+
+            }
+
         }
 
         function airlock() {
