@@ -181,8 +181,6 @@
             document.getElementById('backgroundImgPostWire').className = "showMe";
         }
 
-       
-  
 
         let Permission = 0;
 
@@ -190,9 +188,19 @@
         myNum = Number(myNum);
         console.log("Torch is " + myNum);
         if (myNum == 1) {
+            console.log("LIGHTS OFF")
             //turns off the light
             var div = document.getElementById("light");
             div.setAttribute("id", "newDivID");
+        }
+
+        //reset torch 
+        let ResetRoom1 = sessionStorage.getItem("reset1");
+
+        if(ResetRoom1 == 1){
+            console.log("RESTARTTT");
+            // var div2 = document.getElementById("newDivID");  
+            // div2.setAttribute("id", "light");
         }
 
         //torch
@@ -345,6 +353,17 @@
         }
 
         function airlock() {
+            
+            if (myNum == 1) {
+                console.log("++++++++++++++++++++++++++++");
+                console.log("++++++++++++++++++++++++++++");
+                console.log("++++++++++++++++++++++++++++");
+                console.log("++++++++++++++++++++++++++++");
+                console.log("++++++++++++++++++++++++++++");
+                console.log("++++++++++++++++++++++++++++");
+            var div2 = document.getElementById("newDivID");  
+            div2.setAttribute("id", "light");
+            }
 
             textUpdateAirlock();
             window.location.replace("Airlock_ending.html")
